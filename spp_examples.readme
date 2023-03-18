@@ -1,0 +1,603 @@
+This file is an nroff'ed copy of sec. #7 of "An Introductory
+User's Guide to IRAF SPP Programming" -- also available from
+the archive in the iraf/docs directory.  See the README file
+in that directory for instructions for downloading that file.
+
+--------------------------
+
+7.  Making an IRAF Package
+
+     An IRAF package is a collection of tasks  that  are  in
+some  way  related.  For instance, an IRAF core system pack-
+age, such as the images, dataio, or plot packages, typically
+contains tasks that serve as generic tools for handling such
+things as IRAF images, tapes and outside  data  formats,  or
+hardcopy  and terminal graphics.  On the other hand, a typi-
+cal package from the  noao  umbrella  of  packages  collects
+together  tasks  that address a more specific data reduction
+need, e.g., the ccdred or apphot packages that provide  sup-
+port  for  pipeline CCD reductions or for numerical aperture
+photometry, respectively.
+
+     You may need such a cohesive package, or you  may  just
+have  a number of homegrown tasks that you would like to add
+to IRAF.  In either case, assembling an IRAF  package  is  a
+good  way  to  proceed,  both  for easy access by your users
+(perhaps only yourself), and also for  easy  maintenence  by
+your programmers (perhaps only yourself).
+
+     To make creating a package easier, a tar  file  of  the
+examples package that contains all of the examples from this
+document is available by anonymous ftp from the IRAF network
+archive.   You  may  find the canned examples package useful
+both to provide example programs to refer to  while  reading
+this  document,  and  also  as a straightforward platform to
+which to add your own tasks.  The particular  examples  were
+written  to provide hooks to support the more frequent sorts
+of things that users are likely to want to do  within  IRAF.
+Moreover,  a small library of useful plotting and astronomi-
+cal algorithms has been included that may be referenced from
+within your own tasks.
+
+7.1.  Installing the examples Package
+
+     The instructions for retrieving  the  examples  package
+archive over the network and for unpacking this archive into
+your own work directory are of necessity host machine depen-
+dent.   Rather than attempting to describe all possible host
+specific  scenarios  in  adequate  detail,  the   particular
+instructions  given  below are for SunOS v4.N.  These should
+apply to  most  varieties  of  Unix,  particularly  Berkeley
+dialects.   You should be able to extrapolate to your situa-
+tion.
+
+     The following is a typical  anonymous  ftp  session  to
+retrieve  the  examples  package  archive  file.   The short
+retrieval instructions for the experienced Internet user are
+that  the  archive  is  contained in the compressed tar file
+spp_examples.tar.Z  in  the  directory  iraf/docs  accessable
+by binary  anonymous  ftp  on the host iraf.noao.edu (which has
+the Internet address 140.252.1.1).  Note that  a  compressed
+PostScript  version  of  the  document  you  are  reading is
+located   in   the   iraf/docs   directory   in   the   file
+sppguide.ps.Z.   The first step should be to create an empty
+directory on your own machine in which to place the  package
+files:
+
+     % cd someplace_convenient
+     % mkdir examples
+     % ftp iraf.noao.edu
+     Connected to tucana.noao.edu.
+     220 tucana FTP server (SunOS, SAG's 28Mar89 version) ready.
+     Name (iraf.noao.edu:seaman): anonymous
+     331 Guest login ok, send ident as password.
+     Password: <seaman@noao.edu>
+     230 Guest login ok, access restrictions apply.
+     ftp> verbose
+     Verbose mode off.
+     ftp> cd iraf/docs
+     ftp> get spp_examples.readme
+     ftp> binary
+     ftp> get spp_examples.tar.Z
+     ftp> quit
+
+
+The angle brackets (<>) in the reply to the password  prompt
+are meant to imply that the identifying password will not be
+echoed on your screen.  The file spp_examples.readme contains
+a variation  of  the instructions that you are currently
+reading.
+
+     If your local machine does not support  anonymous  ftp,
+alternate  arrangements  can  be  made.  Please contact IRAF
+site  support   for   help.    The   email   addresses   are
+iraf@noao.edu  on  the  Internet and also (via a gateway) on
+Bitnet, 5355::IRAF on SPAN  ,  and  uunet!noao.edu!iraf  via
+UUCP.   The  phone  number  for the IRAF hotline is 602-323-
+4160.
+
+     Assuming that you now have the distribution archive  of
+the examples package, spp_examples.tar.Z, on your local machine,
+the files can be unpacked with commands such as:
+
+     % cd examples
+     % zcat ../spp_examples.tar.Z | tar -xpf -
+
+
+     You might also have decided  to  download  the  archive
+file  directly  into  the examples directory (or conversely,
+into /tmp), but placing it in the  parent  directory  avoids
+having  the  file  clutter  up the directory listings illus-
+trated below and also makes recreating the  package  simpler
+if  you  want  to  start  over.   In any case, unpacking the
+archive should only take a few moments.  Since the  examples
+package  is  small, you can specify -v to the tar command if
+you want to see how the unpacking progresses.
+
+     The examples package was archived  without  any  binary
+executable  or  object  files.   IRAF external packages from
+programming groups both inside and outside of NOAO are typi-
+cally  not  distributed  with  binary files for any computer
+architecture.  This is in contrast to the IRAF  core  system
+and  noao  packages which are supported directly by the IRAF
+group and which are distributed with pretested binaries  for
+various  host systems.  In any case, if your computer is not
+configured for IRAF (or host) software  development,  it  is
+best that you find out now while trying to build examples.
+
+     A single copy of IRAF can support multiple host  system
+architectures,  for instance, a Sun 4 fileserver may support
+a number of Sun 3 diskless nodes with an NFS mounted copy of
+IRAF.   This applies to IRAF external packages as well as to
+the core system of IRAF.  The examples  package  is  distri-
+buted  with  hooks  for  supporting the various types of Sun
+computer architectures and floating point options,  specifi-
+cally Sparc, i386, f68881, and ffpa (the last two are float-
+ing point options for the Sun 3 mc68020 architecture).   The
+following  instructions will assume a Sparc host system, but
+the steps would be similar for any of  the  other  architec-
+tures.
+
+     At this point, a directory listing  should  show  these
+files and subdirectories:
+
+     % ls
+     bin             bin.sparc       examples.hd     lib
+     bin.f68881      doc             examples.men    mkpkg
+     bin.generic     examples.cl     examples.par    src
+
+
+If your directory does not look like this, you will have  to
+determine whether the ftp download or the zcat unpacking are
+at fault before continuing.
+
+     To standardize the remainder of the commands  for  this
+section  and  to  avoid  any distracting host dependent com-
+mands, we will get  into  the  IRAF  CL  before  continuing.
+First you will need to utter a few magic incantations to get
+the subsequent commands to work properly:
+
+     % setenv iraf iraf_path/
+     % source $iraf/unix/hlib/irafuser.csh
+
+
+Where iraf_path should be substituted  with  the  full  Unix
+pathname  of  the root directory of the IRAF directory tree.
+Do not forget the trailing slash, /, on  the  definition  of
+iraf.  IRAF, itself, is smart enough to figure out such site
+specific information as where it lives  on  your  computer's
+filesystem.   Recall,  however,  that  the IRAF compiler and
+other programming tools are host level programs.  On a typi-
+cal Unix system, the two commands above serve to supply suf-
+ficient information to the programming tools to let them  do
+their job. The C-shell script irafuser.csh contains a number
+of site specific environment  variable  declarations.   Con-
+versely,  on a VMS system this information was made globally
+available as part of the IRAF system  installation  by  your
+system  manager.   In either case, this detailed information
+is only needed for IRAF software development, not for simply
+running IRAF.  It is most convenient to put the two commands
+above into your .login file so that they will  be  automati-
+cally  executed  the  next  time  you log onto the computer.
+Folks who aren't running  the  C-shell  will  need  to  make
+alternate arrangements.
+
+     One final bit of magic specific to the examples package
+is:
+
+     % setenv examples examples_path/
+
+
+Where examples_path should  be  substituted  with  the  Unix
+pathname  of  the  directory  into  which  the  package  was
+unpacked.  Again, do not forget the trailing /.  The reason-
+ing  behind  this magic will be revealed a little later.  At
+this point you should get into IRAF in whatever way you usu-
+ally do so.  The rest of us will wait for you...
+
+...ok, are you now  waiting  with  bated  breath  at  a  cl>
+prompt?   Let's  continue.   One  side  affect  of the magic
+setenv command is to provide an IRAF  logical  directory  to
+which you can now cd:
+
+     cl> cd examples
+
+
+     The IRAF mkpkg facility is used to maintain all but the
+simplest  of  SPP programs as described in s4.  We will make
+use of some of the standard capabilities of  mkpkg.   First,
+we  should  verify  for  which  of  the  available  software
+development architectures the package happens to be  config-
+ured:
+
+     cl> mkpkg arch
+     system is configured for generic
+
+
+     The generic architecture is correct  for  any  external
+package that is not currently being worked on, and certainly
+for any external package fresh  from  an  archive.   We  are
+building the package under the Sparc architecture.  The com-
+mand to configure the package for this is:
+
+     cl> mkpkg sparc
+     delete any dreg .e files left lying about in the source directories
+     archive and delete generic objects
+     restore archived sparc objects
+     no object archive found; full sysgen will be needed
+
+
+The meaning of these messages will be discussed  below,  but
+if you see a message such as:
+
+     Warning: IRAFARCH is still set in your environment to f68881
+
+
+you are running IRAF on a non-Sparc computer (in this  case,
+a  Sun  3)  and  will either have to log off and find a dif-
+ferent computer, or will have to substitute f68881 (or what-
+ever)  for sparc wherever necessary.  A few additional hints
+for building the package on a non-Sun computer are  included
+at the end of this section (s7.1).
+
+     You should now be ready to rebuild the  entire  package
+by simply typing:
+
+     cl> mkpkg -p examples >& SPOOL &
+     [1]
+
+
+The output and error messages are redirected into  the  file
+SPOOL  for  later review.  Even a small IRAF package such as
+examples may generate hundreds of lines of messages as it is
+being  compiled,  linked, and installed.  We put the command
+into the background so that you can go about  your  business
+for  the  few  moments that the package will take to compile
+and link.
+
+     A handy Unix trick that you may want to use to  monitor
+the  progress  of  the mkpkg is to tail the spool file as it
+grows:
+
+     cl> !tail -f SPOOL
+
+
+This trick will grow in utility as your package grows.   You
+can  escape  from the tail command at any point by typing ^C
+(control-C).
+
+     When mkpkg is finished you should see a message similar
+to:  [1]  done   60.2  2:20  42%.   At this point you should
+review the summary of the spooled mkpkg  and  compiler  mes-
+sages:
+
+     cl> mkpkg summary spool=SPOOL
+     warning: library `libpkg.a' not found
+     ranlib libpkg.a
+     Updated 20 files in libpkg.a
+     move `xx_examples.e' to `examplesbin$x_examples.e'
+
+
+This is a rather Spartan summary in which messages  matching
+a  variety  of  character  templates are simply discarded as
+uninteresting.  In this case,  the  warning  message  merely
+indicates that you are rebuilding the package from a version
+that has been stripped of binaries and so there is no previ-
+ous  copy  of  the package library file, libpkg.a, to search
+for outdated compiled object files.  The ranlib message is a
+bit  of  host  dependent magic that you should never have to
+think about.  We are next  told  that  20  files  have  been
+updated  (or  simply  added)  in  the  package library file.
+These files were scrounged from the src directory  and  from
+its  asttools and airmass subdirectories.  The final message
+tells us that the package executable has been installed in a
+package  bin directory, specifically bin.sparc since we ear-
+lier executed a mkpkg sparc.
+
+     If any of these steps malfunctioned for  whatever  rea-
+son,  you  would  see an error message (not just a warning).
+If any error messages appear that you don't understand,  you
+should first review the full spool file to see if that sheds
+any light on the problem:
+
+     cl> page SPOOL
+
+
+The next step in tracking  down  problems  in  building  the
+package  would be to run through the directions in this sec-
+tion from the top, carefully verifying each.  If  that  does
+not  help then you (or your system manager) need to consider
+whether there is some problem with the host system compilers
+or  libraries  on  the  computer.   For  instance,  does the
+computer even have Fortran and/or C compilers?
+
+     Assuming you made it past the  mkpkg,  you  are  almost
+done.   All  that remains is to grant yourself access to the
+newly retrieved, unpacked, and compiled package.  This  only
+requires that you define the package script as an IRAF task:
+
+     cl> task examples = examples$examples.cl
+
+
+At this point, you can now load the examples package:
+
+     cl> examples
+     fibonnaci hello impix imreplace1 imreplace2 pairmass
+
+
+and execute a task:
+
+     ex> hello
+     Hello, world!
+
+
+and do anything with the package (almost) that  you  can  do
+with other packages and tasks:
+
+     ex> lpar imreplace2
+             input =                 List of input images
+            output =                 List of output images
+            (value = 0.)             Constant for the replacement operation
+            (lower = INDEF)          Lower limit of the replacement window
+            (upper = INDEF)          Upper limit of the replacement window
+             (mode = "ql")
+
+
+     At this point you are all set to run the examples pack-
+age,  at  least  until  you  log out and back in again.  You
+still need to define the package in such a way  that  it  is
+automatically  available  when you log into IRAF.  There are
+two ways to do this.  The first way  is  to  edit  the  task
+statement for the package into your login.cl, or better yet,
+your loginuser.cl file.  The other requirement for  this  to
+work  is  to define examples in the IRAF environment, not in
+the Unix environment as you did in the bit of magic above:
+
+     set examples = examples_path/
+     task examples = examples$examples.cl
+
+
+Note that examples_path can now be specified as an IRAF vir-
+tual pathname.  The two commands should be placed before the
+keep statement in either IRAF login file.  When you next log
+into IRAF, the examples package should be available to you.
+
+     It was indicated above that examples was  almost  ready
+to  be  used in all normal IRAF ways.  The one missing piece
+is access to the package's help pages.  This  brings  us  to
+the  second, politically correct, way to install an external
+package into IRAF.  The connection  between  the  main  IRAF
+system  and each of a particular site's external packages is
+contained in the file hlib$extern.pkg.  All knowledge neces-
+sary  to  access  the  external  packages is limited to that
+file.  This consists of the two items that you were told  to
+add  to  your  loginuser.cl  file  (the examples environment
+variable and the task statement), but  also  the  hook  that
+allows the IRAF help command to find your new package's help
+pages.  A more fundamental reason to  install  your  package
+this  way  is that it allows other folks to use the package,
+too.
+
+     The template extern.pkg from the hlib$ directory  of  a
+fresh IRAF installation looks like:
+
+     # External (non core-system) packages.  To install a new package, add the
+     # two statements to define the package root directory and package task,
+     # then add the package helpdb to the `helpdb' list.
+
+     reset   noao            = iraf$noao/
+     task    noao.pkg        = noao$noao.cl
+
+     #reset  local           = iraf$local/
+     #task   local.pkg       = local$local.cl
+
+     reset   helpdb          = "lib$helpdb.mip\
+                               ,noao$lib/helpdb.mip\
+     #                         ,local$lib/helpdb.mip\
+                               "
+     keep
+
+
+The commented out statements for the local package are meant
+to  serve as an example when adding hooks for a new external
+package.
+
+     Your site's IRAF system manager  can  simply  copy  and
+edit the lines to fully install the examples package for all
+users:
+
+     # External (non core-system) packages.  To install a new package, add the
+     # two statements to define the package root directory and package task,
+     # then add the package helpdb to the `helpdb' list.
+
+     reset   noao            = iraf$noao/
+     task    noao.pkg        = noao$noao.cl
+
+     reset   examples        = examples_path
+     task    examples.pkg    = examples$examples.cl
+
+     #reset  local           = iraf$local/
+     #task   local.pkg       = local$local.cl
+
+     reset   helpdb          = "lib$helpdb.mip\
+                               ,noao$lib/helpdb.mip\
+                               ,examples$lib/helpdb.mip\
+     #                         ,local$lib/helpdb.mip\
+                               "
+     keep
+
+
+     This then is the explanation for  the  setenv  examples
+magic  with which we conjured above.  We needed to enter the
+examples variable into the Unix environment, not  just  into
+the  IRAF  environment, to define it for mkpkg, not for run-
+ning the package.  However,  by  defining  the  variable  in
+extern.pkg, we have solved both problems at the same time.
+
+     One last bit of business  will  conclude  building  the
+Sparc version of the package's binaries:
+
+     cl> mkpkg generic
+     delete any dreg .e files left lying about in the source directories
+     archive and delete sparc objects
+     compress bin.sparc/OBJS.arc [1] 12697
+     restore archived generic objects
+     no object archive found; full sysgen will be needed
+     Warning: IRAFARCH is still set in your environment to sparc
+
+
+The basic result of all this is to confine all the architec-
+ture  dependent files from the Sparc software development to
+the bin.sparc directory.  The initial  delete  any  dreg  .e
+message  tells  you  that  if a previous attempt to link the
+package failed for some reason, any resulting  garbage  exe-
+cutable  files  will be cleaned up.  Another way to leave an
+executable laying about is to execute mkpkg from other  than
+the root directory of an external package, for instance typ-
+ing mkpkg -p examples in the examples$src subdirectory  will
+compile any out-of-date source files and relink the package,
+but will not install the executable in the  appropriate  bin
+directory,  but  rather  leave it in the src directory under
+the name xx_examples.e.
+
+     The archive and delete and compress  messages  indicate
+that  all of the Sparc architecture libraries and individual
+object files will be archived into a compressed  tar  format
+file names OBJS.arc.Z in the bin.sparc directory.  This will
+be unpacked by mkpkg the next time you need  to  update  the
+package for your Sparc machines.
+
+     The restore archived  generic  objects  and  no  object
+archive found messages just represent the whole point of the
+generic pseudo-architecture to provide a neutral  configura-
+tion  for  external  packages.  The final Warning message is
+meant to alert you that the IRAF and the host system are not
+currently  configured  to build the newly selected architec-
+ture.  This does not mean anything for the generic case, but
+is  a very important issue if you are building multiple ver-
+sions of the package on the same computer.
+
+     Finally, you were promised some  hints  for  installing
+the  package on computers other than Suns.  Most of the host
+system  dependencies  on  software  development  are  hidden
+within  IRAF,  which is after all one of the reasons you are
+likely to be interested in programming in SPP.  Details such
+as the libraries that are required by the host compilers and
+the host's particular floating point format are largely hid-
+den  from  you,  and those that aren't are parametrized in a
+machine dependent header file such as  hlib$mach.h  just  in
+case  you  need  to  know.   You will, however, need to keep
+track of the specific architectures of the machines on  your
+local  network.  If you have a fileserver that supports IRAF
+on client machines with varying architectures, you will need
+to  have  an  appropriately  named bin subdirectory for each
+architecture.   You  will  also  need  to  modify  the  file
+examples$mkpkg  to  include  a module for each architecture.
+Entries supporting software development on an Ultrix DECsta-
+tion and a Mips might be:
+
+     dsux:   # DECstation/Ultrix binaries
+             $verbose off
+             $set DIRS = "lib src"
+             !$(hlib)/mkfloat.csh dsux -d $(DIRS)
+             ;
+     mips:   # install mips binaries
+             $verbose off
+             $set DIRS = "lib src"
+             !$(hlib)/mkfloat.csh mips -d $(DIRS)
+             ;
+
+
+The corresponding bin  directories  would  be  bin.dsux  and
+bin.mips.   It  is your responsibility to guarantee that the
+host compiler knows for which architecture you are compiling
+the  package.  On a Sun 3, for instance, you may need to set
+FLOAT_OPTION in your environment to distinguish between  the
+68881 and FPA floating point options.
+
+7.2.  Adding a Task to the Package
+
+     Now that you have acquired your own copy of  the  exam-
+ples  package,  we will discuss how to add your own tasks to
+the package.  Let's say that you want to add the task  howdy
+to  the  package.   The SPP source code for the task is con-
+tained in the file, t_howdy.x, and consists of the following
+variation on the "Hello, world!" theme:
+
+     # HOWDY -- Variation on HELLO.
+
+     procedure t_howdy ()
+
+     pointer howdy, sp
+
+     begin
+             call smark (sp)
+             call salloc (howdy, SZ_LINE, TY_CHAR)
+
+             call clgstr ("howdy", Memc[howdy], SZ_LINE)
+             call printf ("%s\n")
+                 call pargstr (Memc[howdy])
+
+             call sfree (sp)
+     end
+
+
+     Howdy will prompt the user for the string value of  the
+howdy parameter (unless it is specified on the command line)
+and will then  print  that  string  out.   The  task  has  a
+corresponding one line parameter file, howdy.par:
+
+     howdy,s,a,,,,Text string to be echoed
+
+
+The  first  step  is  to  copy  these  two  files  into  the
+examples$src/ directory.
+
+     Next a few files must be edited to  fully  install  the
+task.   Let's  finish  with the src/ directory before moving
+on.  First the SPP task statement must be  edited  into  the
+file  x_examples.x  and  the  mkpkg file must be modified to
+compile and link the object code for t_howdy.x.  Determining
+the  precise  changes that are needed is left as an exercise
+for the reader.  These two changes  take  care  of  actually
+linking the new SPP task into the package executable.
+
+     There are potentially four files that you may  need  to
+change   in  the  examples$  directory  itself.   These  are
+examples.cl to add the CL task statement declaring the  task
+for  the  user, examples.par to update the version timestamp
+for the package, examples.hd and examples.men to add a  help
+file  for  the  task.   Writing a help page is always a good
+idea.  The mkmanpage task in the softools package will  pro-
+vide  a  blank help page for you to edit.  The mkhelpdb task
+compiles the information in  the  helpdb.hd  file  into  the
+machine independent binary file, helpdb.mip:
+
+     cl> cd examples
+     cl> edit helpdb.hd
+     cl> edit helpdb.men
+     cl> softools
+     so> cd doc
+     so> mkmanpage softools
+     so> cd ../lib
+     so> mkhelpdb root.hd helpdb.mip
+
+
+     To actually update the package's binary  executable,  a
+sequence  of  commands such as the following will be needed.
+This assumes that the package has been installed in the file
+hlib$extern.pkg.
+
+     cl> cd examples
+     cl> mkpkg sparc
+     cl> mkpkg -p examples
+     cl> mkpkg generic
+
+
+     More complicated tasks may, of course, have  many  more
+files  associated  with  them  such  .h header files, cursor
+keystroke help files, and multiple source  code  files.   As
+general  advice,  if  a  task requires more than a couple of
+such files then you should create a subdirectory to  contain
+the  selection  of files for the task.  Consult the instruc-
+tions in s5 and in s7.1 for more hints.

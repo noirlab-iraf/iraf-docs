@@ -1,0 +1,6567 @@
+%!PS-Adobe-1.0
+%%Creator: devps (Pipeline Associates, Inc.)
+%%CreationDate: Tue Jul  3 16:35:29 1990
+%%Pages: (atend)
+%%DocumentFonts: (atend)
+
+/X{exch}def
+/r{rmoveto}def
+/m{moveto}def
+/l{lineto}def
+/rl{rlineto}def
+/lc{yc X xc X l st}def
+/mc{yc X xc X m}def
+/el{gs /a X def a div 1 X scale cp np a xc 2 div 0 360 arc st gr}def
+/ar{cp 7 2 roll np xc 5 1 roll atan 3 1 roll atan X arc st}def
+/sp{yc X xc X 6 2 roll yc X xc X 6 2 roll yc X xc X 6 2 roll ct}def
+/st{stroke}def
+/gs{gsave}def
+/gr{grestore}def
+/cp{currentpoint}def
+/np{newpath}def
+/ct{curveto}def
+/m0{0 0 moveto}def
+/BP{/devps-save save def m0}def
+/EP{
+clear devps-save restore
+showpage}def
+/res 10.000000 def
+/V{res neg div 792 add
+currentpoint pop X
+m}def
+/H{res div
+currentpoint X pop
+moveto}def
+/h{res div 0 r}def
+/v{res neg div 0 X r}def
+/xc{res div}def
+/yc{res neg div 792 add}def
+/S{X H show}def
+/psize 10 def
+/height 1 def
+/slant 0 def
+/FF{findfont X dup 12 div setlinewidth /psize X def
+    [psize 0 psize height mul slant sin slant cos div mul psize height mul 0 0]
+    makefont setfont}def
+/shade{gs
+ /dy X def
+ /dx X def
+ np m
+ setgray
+ 0 dy rl
+ dx 0 rl
+ 0 dy neg rl
+ dx neg 0 rl
+ closepath
+ fill
+gr}def
+1 setlinecap
+/R{/Times-Roman FF}def
+/B{/Times-Bold FF}def
+/I{/Times-Italic FF}def
+/Y{/Symbol FF}def
+%%EndProlog
+%%Page: 1 1
+BP
+/slant 0 def
+/height 1.000000 def
+10 R
+10 R
+1230 V
+12 B
+2004(Reduction)S
+2567(of)S
+2703(long)S
+2960(slit)S
+3151(spectra)S
+3560(with)S
+3823(IRAF)S
+1470 V
+10 I
+2706(Francisco)S
+3141(Valdes)S
+1650 V
+10 R
+1336(IRAF)S
+1594(Group,)S
+1904(Central)S
+2228(Computer)S
+2658(Services,)S
+3051(National)S
+3425(Optical)S
+3749(Astronomy)S
+4229(Observatories)S
+1770 V
+2217(P.O.)S
+2425(Box)S
+2622(26732,)S
+2927(Tucson,)S
+3276(Arizona,)S
+3652(85726)S
+1890 V
+2815(March)S
+3105(1986)S
+2230 V
+10 I
+2823(ABSTRACT)S
+2430 V
+9 R
+1210(Tools)S
+1455(for)S
+1600(the)S
+1750(reduction)S
+2130(of)S
+2245(long)S
+2445(slit)S
+2595(spectra)S
+2890(within)S
+3160(the)S
+3310(Interactive)S
+3736(Data)S
+3947(Reduction)S
+4358(and)S
+4529(Analysis)S
+4885(Facility)S
+2530 V
+960(\(IRAF\))S
+1263(at)S
+1366(the)S
+1514(National)S
+1862(Optical)S
+2164(Astronomy)S
+2606(Observatory)S
+3088(\(NOAO\))S
+3445(are)S
+3592(described.)S
+4024(The)S
+4201(user)S
+4388(interface)S
+4740(\(commands)S
+2630 V
+960(and)S
+1121(special)S
+1402(features\))S
+1748(and)S
+1909(the)S
+2050(algorithms)S
+2467(are)S
+2609(discussed.)S
+3036(Application)S
+3493(of)S
+3600(the)S
+3742(reduction)S
+4114(package)S
+4441(to)S
+4543(multi-slit)S
+4905(images)S
+2730 V
+960(is)S
+1047(brie\257y)S
+1309(outlined.)S
+1681(The)S
+1848(author)S
+2105(developed)S
+2502(and)S
+2659(supports)S
+2991(the)S
+3128(package)S
+3450(at)S
+3542(NOAO.)S
+3150 V
+9 B
+2767(1.)S
+2862(Introduction)S
+3350 V
+9 R
+790(This)S
+993(paper)S
+1236(describes)S
+1614(the)S
+1767(tools)S
+1985(currently)S
+2353(available)S
+2721(within)S
+2994(the)S
+3147(Interactive)S
+3575(Data)S
+3788(Reduction)S
+4201(and)S
+4374(Analysis)S
+4733(Facility)S
+5052(\(IRAF\))S
+5361(at)S
+5470(the)S
+3450 V
+540(National)S
+883(Optical)S
+1181(Astronomy)S
+1619(Observatories)S
+2152(\(NOAO\))S
+2505(for)S
+2643(the)S
+2786(reduction)S
+3159(of)S
+3267(long)S
+3460(slit)S
+3603(spectra.)S
+3941(The)S
+4114(reduction)S
+4487(tools,)S
+4718(called)S
+4966(tasks,)S
+5202(are)S
+5345(organ-)S
+3550 V
+540(ized)S
+717(as)S
+819(an)S
+931(IRAF)S
+1163(package)S
+1485(called)S
+9 B
+1727(longslit)S
+9 R
+2007(.)S
+2084(The)S
+2251(tasks)S
+2458(in)S
+2555(the)S
+2692(package)S
+3014(are)S
+3151(summarized)S
+3618(below.)S
+3800 V
+816(apde\256ne)S
+1148(-)S
+1205(De\256ne)S
+1472(apertures)S
+1829(for)S
+1961(1D)S
+2098(aperture)S
+2420(extraction)S
+3385(identify)S
+3692(-)S
+3749(Identify)S
+4061(features)S
+3900 V
+791(apextract)S
+1148(-)S
+1205(Extract)S
+1492(1D)S
+1629(aperture)S
+1951(spectra)S
+3225(illumination)S
+3692(-)S
+3749(Determine)S
+4156(illumination)S
+4623(calibration)S
+4000 V
+696(background)S
+1148(-)S
+1205(Fit)S
+1332(and)S
+1489(subtract)S
+1801(a)S
+1868(line)S
+2030(or)S
+2132(column)S
+2429(background)S
+3315(reidentify)S
+3692(-)S
+3749(Reidentify)S
+4156(features)S
+4100 V
+761(extinction)S
+1148(-)S
+1205(Apply)S
+1457(atmospheric)S
+1924(extinction)S
+2311(corrections)S
+2738(to)S
+2835(images)S
+3350(response)S
+3692(-)S
+3749(Determine)S
+4156(response)S
+4498(calibration)S
+4200 V
+806(\256tcoords)S
+1148(-)S
+1205(Fit)S
+1332(user)S
+1509(coordinates)S
+1951(to)S
+2048(image)S
+2295(coordinates)S
+3350(setimhdr)S
+3692(-)S
+3749(Set)S
+3891(longslit)S
+4188(image)S
+4435(header)S
+4702(parameters)S
+4300 V
+806(\257uxcalib)S
+1148(-)S
+1205(Apply)S
+1457(\257ux)S
+1624(calibration)S
+2036(to)S
+2133(images)S
+3315(transform)S
+3692(-)S
+3749(Transform)S
+4156(longslit)S
+4453(images)S
+4735(to)S
+4832(user)S
+5009(coordinates)S
+4650 V
+790(Since)S
+1026(there)S
+1242(are)S
+1388(many)S
+1624(types)S
+1850(of)S
+1961(long)S
+2157(slit)S
+2303(spectra,)S
+2617(detectors,)S
+3001(and)S
+3167(astronomical)S
+3669(goals)S
+3896(we)S
+4038(do)S
+4165(not)S
+4317(describe)S
+4654(a)S
+4731(reduction)S
+5108(procedure)S
+5505(or)S
+4750 V
+540(path.)S
+773(Reduction)S
+1171(manuals)S
+1499(giving)S
+1757(cookbook)S
+2140(instructions)S
+2588(for)S
+2721(the)S
+2859(reduction)S
+3227(of)S
+3330(certain)S
+3603(types)S
+3821(of)S
+3924(data)S
+4102(at)S
+4195(NOAO)S
+4483(are)S
+4621(available)S
+4974(from)S
+5177(the)S
+5315(Central)S
+4850 V
+540(Computer)S
+927(Services)S
+1259(Division.)S
+1646(Instead,)S
+1956(each)S
+2148(task)S
+2320(is)S
+2407(discussed)S
+2779(separately.)S
+3221(The)S
+3388(primary)S
+3700(emphasis)S
+4062(is)S
+4149(on)S
+4266(the)S
+4403(algorithms.)S
+5050 V
+790(The)S
+957(following)S
+1334(terminology)S
+1801(is)S
+1888(used)S
+2080(in)S
+2177(this)S
+2334(paper.)S
+2611(A)S
+9 I
+2703(long)S
+2890(slit)S
+3027(spectrum)S
+9 R
+3384(is)S
+3471(a)S
+3538(two)S
+3700(dimensional)S
+4167(image.)S
+4464(The)S
+4631(two)S
+4793(image)S
+5040(axes)S
+5227(are)S
+5365(called)S
+5150 V
+9 I
+540(axis)S
+714(1)S
+9 R
+788(and)S
+9 I
+947(axis)S
+1121(2)S
+9 R
+1195(and)S
+1354(the)S
+1493(pixel)S
+1701(coordinates)S
+2144(are)S
+2282(given)S
+2510(in)S
+2608(terms)S
+2836(of)S
+9 I
+2939(columns)S
+9 R
+3267(and)S
+9 I
+3425(lines)S
+9 R
+3595(.)S
+3673(The)S
+3841(long)S
+4029(slit)S
+4167(axes)S
+4355(are)S
+4493(called)S
+4736(the)S
+9 I
+4874(dispersion)S
+5277(axis)S
+9 R
+5450(and)S
+5250 V
+540(the)S
+9 I
+684(slit)S
+828(axis)S
+9 R
+973(.)S
+1057(The)S
+1231(reduction)S
+1605(tasks)S
+1819(do)S
+1943(not)S
+2092(require)S
+2381(a)S
+2455(particular)S
+2834(orientation)S
+3258(of)S
+3367(the)S
+3511(dispersion)S
+3915(and)S
+4079(slit)S
+4223(axes,)S
+4440(however,)S
+4807(these)S
+5026(axes)S
+5220(should)S
+5495(be)S
+5350 V
+540(fairly)S
+772(closely)S
+1064(aligned)S
+1366(with)S
+1563(the)S
+1710(image)S
+1967(axes.)S
+9 B
+2214(In)S
+2336(the)S
+2493(remainder)S
+2935(of)S
+3047(this)S
+3224(paper)S
+3486(the)S
+3643(slit)S
+3795(axis)S
+3982(will)S
+4159(correspond)S
+4631(to)S
+4743(image)S
+5010(axis)S
+5197(1)S
+5279(and)S
+5460(the)S
+5450 V
+540(dispersion)S
+962(axis)S
+1139(with)S
+1336(image)S
+1593(axis)S
+1770(2)S
+9 R
+1815(.)S
+5650 V
+790(There)S
+1030(are)S
+1170(\256ve)S
+1335(types)S
+1555(of)S
+1660(operations)S
+2065(performed)S
+2470(by)S
+2590(the)S
+2730(tasks)S
+2940(in)S
+3040(the)S
+9 B
+3180(longslit)S
+9 R
+3491(package:)S
+3842(\(1\))S
+3978(detector)S
+4299(response)S
+4645(calibration,)S
+5084(\(2\))S
+5220(geometric)S
+5750 V
+540(distortion)S
+913(and)S
+1071(coordinate)S
+1479(recti\256cation,)S
+1960(\(3\))S
+2093(background)S
+2546(sky)S
+2699(subtraction,)S
+3149(\(4\))S
+3281(\257ux)S
+3448(calibration,)S
+3883(and)S
+4040(\(5\))S
+4172(aperture)S
+4494(extraction)S
+4881(of)S
+4983(one)S
+5140(dimensional)S
+5850 V
+540(spectra.)S
+872(These)S
+1114(are)S
+1251(listed)S
+1473(in)S
+1570(the)S
+1707(order)S
+1924(in)S
+2021(which)S
+2268(they)S
+2450(are)S
+2587(usually)S
+2874(performed)S
+3276(and)S
+3433(in)S
+3530(which)S
+3777(they)S
+3959(are)S
+4096(discussed)S
+4468(in)S
+4565(this)S
+4722(paper.)S
+4999(There)S
+5236(is)S
+5323(also)S
+5495(an)S
+5950 V
+540(initialization)S
+1022(task,)S
+9 B
+1217(setimhdr)S
+9 R
+1562(,)S
+1612(and)S
+1769(a)S
+1836(general)S
+2128(routine,)S
+9 B
+2433(ic\256t)S
+9 R
+2578(,)S
+2628(used)S
+2820(in)S
+2917(may)S
+3099(of)S
+3201(the)S
+3338(long)S
+3525(slit)S
+3662(tasks.)S
+3919(These)S
+4161(are)S
+4298(described)S
+4670(\256rst.)S
+6150 V
+9 B
+540(SETIMHDR)S
+1057(-)S
+1114(Set)S
+1261(long)S
+1453(slit)S
+1595(image)S
+1852(header)S
+2144(parameters)S
+6350 V
+9 R
+790(The)S
+958(tasks)S
+1166(in)S
+1264(the)S
+9 B
+1402(longslit)S
+9 R
+1710(package)S
+2033(use)S
+2181(information)S
+2634(contained)S
+3012(in)S
+3110(the)S
+3248(IRAF)S
+3481(image)S
+3729(header.)S
+4047(The)S
+4215(task)S
+9 B
+4389(setimhdr)S
+9 R
+4763(sets)S
+4927(a)S
+4996(required)S
+5325(param-)S
+6450 V
+540(eter)S
+710(in)S
+815(the)S
+960(image)S
+1215(header)S
+1490(advising)S
+1830(the)S
+1975(long)S
+2170(slit)S
+2315(tasks)S
+2530(which)S
+2785(image)S
+3040(axis)S
+3220(corresponds)S
+3690(to)S
+3795(the)S
+3940(dispersion)S
+4345(axis;)S
+4549(the)S
+4693(tasks)S
+4907(work)S
+5126(equally)S
+5425(well)S
+6550 V
+540(with)S
+728(the)S
+866(dispersion)S
+1264(axis)S
+1437(aligned)S
+1730(with)S
+1918(the)S
+2056(image)S
+2304(lines)S
+2503(or)S
+2607(the)S
+2746(image)S
+2995(columns.)S
+3379(This)S
+3568(is)S
+3657(generally)S
+4021(the)S
+4160(\256rst)S
+4329(task)S
+4503(executed)S
+4852(when)S
+5076(reducing)S
+5420(long)S
+6650 V
+540(slit)S
+677(spectra.)S
+6850 V
+9 B
+540(ICFIT)S
+817(-)S
+874(The)S
+1051(IRAF)S
+1298(Interactive)S
+1745(Curve)S
+2012(Fitting)S
+2299(routine)S
+7050 V
+9 R
+790(Many)S
+1036(of)S
+1147(the)S
+1293(tasks)S
+1509(in)S
+1615(the)S
+1761(IRAF)S
+2002(which)S
+2258(\256t)S
+2369(a)S
+2445(one)S
+2612(dimensional)S
+3089(function)S
+3426(utilize)S
+3688(the)S
+3835(same)S
+4057(powerful)S
+4419(interactive)S
+4836(curve)S
+5073(\256tting)S
+5325(routine)S
+7150 V
+540(called)S
+9 B
+786(ic\256t)S
+9 R
+931(.)S
+1012(This)S
+1203(routine)S
+1489(allows)S
+1755(the)S
+1895(user)S
+2075(to)S
+2175(perform)S
+2495(sophisticated)S
+2995(function)S
+3325(\256tting)S
+3570(interactively)S
+4050(and)S
+4210(graphically)S
+4645(or)S
+4750(to)S
+4850(specify)S
+5140(the)S
+5280(function)S
+7250 V
+540(\256tting)S
+786(parameters)S
+1212(in)S
+1313(advance)S
+1639(and)S
+1800(run)S
+1951(the)S
+2092(task)S
+2268(non-interactively.)S
+2964(That)S
+3160(this)S
+3321(routine)S
+3607(is)S
+3698(used)S
+3894(in)S
+3995(many)S
+4226(tasks)S
+4437(also)S
+4613(has)S
+4764(the)S
+4906(advantage)S
+5303(that)S
+5470(the)S
+7920 V
+EP
+%%Page: 2 2
+BP
+/slant 0 def
+/height 1.000000 def
+9 R
+9 R
+460 V
+2980(- 2 -)S
+820 V
+540(user)S
+717(need)S
+914(not)S
+1056(learn)S
+1263(a)S
+1330(new)S
+1507(set)S
+1634(of)S
+1736(commands)S
+2153(and)S
+2310(features)S
+2622(for)S
+2754(each)S
+2946(task)S
+3118(requiring)S
+3475(function)S
+3802(\256tting.)S
+1020 V
+790(The)S
+957(features)S
+1269(of)S
+1371(the)S
+1508(this)S
+1665(curve)S
+1892(\256tting)S
+2134(tool)S
+2301(include:)S
+1220 V
+540(\(1\))S
+790(A)S
+882(choice)S
+1144(of)S
+1246(four)S
+1423(\256tting)S
+1665(functions;)S
+2052(Chebyshev)S
+2479(polynomial,)S
+2939(Legendre)S
+3306(polynomial,)S
+3766(a)S
+3833(linear)S
+4065(spline,)S
+4330(and)S
+4487(a)S
+4554(cubic)S
+4776(spline.)S
+1320 V
+540(\(2\))S
+790(A)S
+882(choice)S
+1144(of)S
+1246(the)S
+1383(polynomial)S
+1820(order)S
+2037(or)S
+2139(the)S
+2276(number)S
+2578(of)S
+2680(spline)S
+2922(pieces.)S
+1420 V
+540(\(3\))S
+790(Deletion)S
+1127(of)S
+1229(individual)S
+1621(points)S
+1868(from)S
+2070(the)S
+2207(\256t.)S
+1520 V
+540(\(4\))S
+790(Selection)S
+1152(of)S
+1254(a)S
+1321(sample)S
+1603(or)S
+1705(subset)S
+1957(of)S
+2059(points)S
+2306(to)S
+2403(be)S
+2515(\256t)S
+2617(\(excluding)S
+3029(the)S
+3166(rest\).)S
+1620 V
+540(\(5\))S
+790(Iterative)S
+1117(deletion)S
+1434(of)S
+1536(points)S
+1783(with)S
+1970(large)S
+2177(residuals)S
+2524(from)S
+2726(the)S
+2863(\256tted)S
+3075(function.)S
+1720 V
+540(\(6\))S
+790(Binning)S
+1107(sets)S
+1269(of)S
+1371(neighboring)S
+1833(points)S
+2080(into)S
+2247(averages)S
+2589(or)S
+2691(medians)S
+3018(which)S
+3265(are)S
+3402(then)S
+3584(\256t)S
+3686(instead)S
+3968(of)S
+4070(the)S
+4207(individual)S
+4599(points.)S
+1920 V
+540(In)S
+642(addition)S
+964(to)S
+1061(the)S
+1198(above)S
+1440(features)S
+1752(the)S
+1889(interactive)S
+2296(graphics)S
+2628(mode)S
+2855(allows)S
+3117(the)S
+3254(user)S
+3431(to:)S
+2120 V
+540(\(1\))S
+790(Iterate)S
+1047(any)S
+1204(number)S
+1506(of)S
+1608(times)S
+1830(on)S
+1947(the)S
+2084(\256tting)S
+2326(parameters.)S
+2220 V
+540(\(2\))S
+790(Display)S
+1097(the)S
+1234(\256t)S
+1336(in)S
+1433(several)S
+1715(di)S
+1785 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+1840(erent)S
+2047(ways;)S
+2284(residuals,)S
+2654(ratios,)S
+2904(and)S
+3061(the)S
+3198(\256t)S
+3300(overplotted)S
+3737(on)S
+3854(the)S
+3991(data)S
+4168(points.)S
+2320 V
+540(\(3\))S
+790(Manipulate)S
+1227(the)S
+1364(graphs)S
+1631(using)S
+1853(a)S
+1920(large)S
+2127(set)S
+2254(of)S
+2356(commands)S
+2773(for)S
+2905(formating)S
+3287(and)S
+3444(expanding)S
+3846(any)S
+4003(part)S
+4170(of)S
+4272(a)S
+4339(graph)S
+4571(for)S
+4703(detailed)S
+5015(examination.)S
+2420 V
+540(\(4\))S
+790(Produce)S
+1112(copies)S
+1369(of)S
+1471(the)S
+1608(graphs)S
+1875(with)S
+2062(a)S
+2129(snap-shot)S
+2501(command.)S
+2620 V
+790(For)S
+949(the)S
+1093(applications)S
+1562(described)S
+1941(in)S
+2045(this)S
+2209(paper)S
+2443(the)S
+2587(most)S
+2796(important)S
+3180(features)S
+3499(are)S
+3643(the)S
+3787(ability)S
+4052(to)S
+4157(adjust)S
+4407(the)S
+4552(function)S
+4887(order,)S
+5135(exclude)S
+5450(bad)S
+2720 V
+540(points,)S
+814(and)S
+975(select)S
+1211(subsets)S
+1502(of)S
+1608(points)S
+1859(to)S
+1960(be)S
+2076(\256t.)S
+2232(Other)S
+2468(useful)S
+2719(features)S
+3035(are)S
+3176(taking)S
+3432(the)S
+3573(median)S
+3869(or)S
+3975(average)S
+4285(of)S
+4390(a)S
+4460(set)S
+4590(of)S
+4695(points)S
+4945(before)S
+5205(\256tting)S
+5450(and)S
+2820 V
+540(iteratively)S
+933(rejecting)S
+1276(deviant)S
+1569(points.)S
+1867(When)S
+2110(used)S
+2303(non-interactively)S
+2946(the)S
+3084(user)S
+3262(selects)S
+3530(the)S
+3668(function)S
+3996(and)S
+4154(the)S
+4292(order.)S
+4560(The)S
+9 B
+4728(longslit)S
+9 R
+5037(tasks)S
+5246(using)S
+5470(the)S
+2920 V
+540(interactive)S
+947(curve)S
+1174(\256tting)S
+1416(routine)S
+1698(are)S
+9 B
+1835(background)S
+9 R
+2300(,)S
+9 B
+2350(identify)S
+9 R
+2645(,)S
+9 B
+2695(illumination)S
+9 R
+3165(,)S
+3215(and)S
+9 B
+3372(response)S
+9 R
+3707(.)S
+3220 V
+9 B
+2400(2.)S
+2495(Detector)S
+2852(Response)S
+3239(Calibrations)S
+3420 V
+9 R
+790(The)S
+964(relative)S
+1268(response)S
+1617(of)S
+1726(the)S
+1870(pixels)S
+2119(in)S
+2223(the)S
+2367(detector)S
+2691(and)S
+2855(the)S
+3000(transmission)S
+3490(of)S
+3600(the)S
+3745(spectrograph)S
+4245(along)S
+4480(the)S
+4625(slit)S
+4770(are)S
+4915(generally)S
+5285(not)S
+5435(uni-)S
+3520 V
+540(form.)S
+794(Outside)S
+1103(of)S
+1206(the)S
+9 B
+1344(longslit)S
+9 R
+1652(package)S
+1975(are)S
+2113(IRAF)S
+2346(tasks)S
+2554(for)S
+2687(creating)S
+9 I
+3005(\257at)S
+3148(\256elds)S
+9 R
+3366(from)S
+3569(quartz)S
+3822(lamp)S
+4030(calibration)S
+4443(images)S
+4726(which)S
+4974(correct)S
+5252(for)S
+5385(small)S
+3620 V
+540(scale)S
+753(response)S
+1101(variations.)S
+1539(Flat)S
+1712(\256elds,)S
+1963(however,)S
+2329(do)S
+2452(not)S
+2600(correct)S
+2883(for)S
+3021(spectrograph)S
+3519(transmission)S
+4007(variations)S
+4395(or)S
+4503(any)S
+4666(large)S
+4879(scale)S
+5092(response)S
+5440(pat-)S
+3720 V
+540(terns.)S
+795(The)S
+965(tasks)S
+9 B
+1175(response)S
+9 R
+1540(and)S
+9 B
+1700(illumination)S
+9 R
+2200(are)S
+2340(specially)S
+2690(designed)S
+3040(for)S
+3175(long)S
+3365(slit)S
+3505(spectra)S
+3790(to)S
+3890(correct)S
+4170(both)S
+4360(the)S
+4500(small)S
+4725(scale)S
+4935(variations)S
+5320(as)S
+5425(well)S
+3820 V
+540(as)S
+642(larger)S
+879(scale)S
+1086(response)S
+1428(patterns)S
+1740(and)S
+1897(slit)S
+2034(illumination)S
+2501(and)S
+2658(transmission)S
+3140(e)S
+3180 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+3235(ects.)S
+4020 V
+790(These)S
+1032(algorithms)S
+1444(make)S
+1666(the)S
+1803(assumption)S
+2240(that)S
+2402(the)S
+2539(wavelength)S
+2981(and)S
+3139(slit)S
+3277(axis)S
+3450(are)S
+3588(very)S
+3776(nearly)S
+4029(aligned)S
+4322(with)S
+4510(the)S
+4648(image)S
+4896(lines)S
+5094(and)S
+5252(columns.)S
+4120 V
+540(If)S
+627(this)S
+784(is)S
+871(not)S
+1013(true)S
+1180(then)S
+1362(the)S
+1499(images)S
+1781(must)S
+1983(be)S
+2095(aligned)S
+2387(\256rst)S
+2554(or)S
+2656(alternate)S
+2993(response)S
+3335(calibration)S
+3747(methods)S
+4079(used.)S
+4320 V
+9 B
+540(RESPONSE)S
+1042(-)S
+1099(Determine)S
+1531(response)S
+1893(calibration)S
+4520 V
+9 R
+790(The)S
+962(task)S
+9 B
+1139(response)S
+9 R
+1506(is)S
+1598(used)S
+1795(with)S
+1987(calibration)S
+2404(images)S
+2691(which)S
+2943(\(1\))S
+3080(do)S
+3202(not)S
+3349(have)S
+3551(any)S
+3713(intrinsic)S
+4040(structure)S
+4387(along)S
+4619(the)S
+4761(slit)S
+4904(dimension)S
+5312(and)S
+5475(\(2\))S
+4620 V
+540(have)S
+748(a)S
+826(smooth)S
+1129(spectrum)S
+1497(without)S
+1810(emission)S
+2168(or)S
+2281(absorption)S
+2699(features.)S
+3072(Typically)S
+3455(the)S
+3603(calibration)S
+4026(images)S
+4319(consist)S
+4606(of)S
+4718(quartz)S
+4980(lamp)S
+5197(exposures.)S
+4720 V
+540(The)S
+708(idea)S
+886(is)S
+975(to)S
+1074(determine)S
+1463(a)S
+1532(response)S
+1876(correction)S
+2270(that)S
+2434(turns)S
+2643(an)S
+2757(observed)S
+3111(calibration)S
+3525(image)S
+3774(into)S
+3943(one)S
+4102(which)S
+4351(is)S
+4440(identical)S
+4779(at)S
+4873(all)S
+4992(points)S
+5241(along)S
+5470(the)S
+4820 V
+540(slit.)S
+5020 V
+790(From)S
+1014(\(1\))S
+1148(a)S
+1217(one)S
+1376(dimensional)S
+1845(spectrum)S
+2204(is)S
+2293(obtained)S
+2632(by)S
+2751(averaging)S
+3135(along)S
+3364(the)S
+3503(slit;)S
+3667(i.e.)S
+3807(averaging)S
+4191(the)S
+4330(columns.)S
+4714(Based)S
+4963(on)S
+5082(\(2\))S
+5216(a)S
+5285(smooth-)S
+5120 V
+540(ing)S
+684(function)S
+1013(is)S
+1102(\256t)S
+1206(to)S
+1305(the)S
+1444(one)S
+1603(dimensional)S
+2072(spectrum)S
+2431(to)S
+2530(reduce)S
+2799(noise)S
+3018(and)S
+3177(eliminate)S
+3541(response)S
+3885(e)S
+3925 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+3980(ects)S
+4149(which)S
+4398(are)S
+4536(coherent)S
+4874(in)S
+4972(wavelength)S
+5415(such)S
+5220 V
+540(as)S
+644(fringing.)S
+1013(The)S
+1182(response)S
+1526(correction)S
+1920(for)S
+2054(each)S
+2248(pixel)S
+2457(is)S
+2546(then)S
+2730(obtained)S
+3069(by)S
+3188(dividing)S
+3517(each)S
+3711(point)S
+3925(along)S
+4155(the)S
+4295(slit)S
+4435(\(the)S
+4605(columns\))S
+4970(by)S
+5090(the)S
+5230(smoothed)S
+5320 V
+540(one)S
+697(dimensional)S
+1164(spectrum.)S
+5520 V
+790(The)S
+968(purpose)S
+1291(of)S
+1404(\256tting)S
+1657(a)S
+1735(function)S
+2073(to)S
+2181(the)S
+2329(one)S
+2497(dimensional)S
+2975(spectrum)S
+3343(is)S
+3441(to)S
+3549(reduce)S
+3827(noise)S
+4055(and)S
+4224(to)S
+4333(remove)S
+4642(coherent)S
+4991(response)S
+5345(e)S
+5385 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+5440(ects)S
+5620 V
+540(which)S
+791(are)S
+932(not)S
+1078(part)S
+1249(of)S
+1355(the)S
+1496(true)S
+1667(quartz)S
+1923(spectrum.)S
+2334(Examples)S
+2720(of)S
+2826(coherent)S
+3167(response)S
+3513(e)S
+3553 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+3608(ects)S
+3779(are)S
+3920(fringing)S
+4241(and)S
+4402(regions)S
+4698(of)S
+4804(low)S
+4970(or)S
+5075(high)S
+5265(response)S
+5720 V
+540(running)S
+847(along)S
+1075(the)S
+1213(slit)S
+1351(dimension)S
+1754(which)S
+2002(are,)S
+2163(therefore,)S
+2539(not)S
+2682(averaged)S
+3035(out)S
+3178(in)S
+3276(the)S
+3414(one)S
+3572(dimensional)S
+4040(spectrum.)S
+4448(The)S
+4616(choice)S
+4879(of)S
+4982(smoothing)S
+5390(func-)S
+5820 V
+540(tion)S
+709(is)S
+798(dictated)S
+1112(by)S
+1231(the)S
+1370(behavior)S
+1714(of)S
+1818(the)S
+1957(particular)S
+2331(detector.)S
+2699(Di)S
+2789 H
+	(f)show 9 -.5 mul h (\256)show
+9 R
+2865(cult)S
+3028(cases)S
+3246(are)S
+3384(treated)S
+3657(with)S
+3845(the)S
+3983(interactive)S
+4391(graphical)S
+4754(function)S
+5082(\256tting)S
+5325(routine)S
+5920 V
+9 B
+540(ic\256t)S
+9 R
+685(.)S
+762(For)S
+914(the)S
+1051(automated)S
+1453(case)S
+1635(the)S
+1772(user)S
+1949(speci\256es)S
+2286(the)S
+2423(smoothing)S
+2830(function)S
+3157(and)S
+3314(order.)S
+6120 V
+790(This)S
+980(calibration)S
+1395(algorithm)S
+1775(has)S
+1925(the)S
+2065(advantage)S
+2460(of)S
+2565(removing)S
+2940(spatial)S
+3205(frequencies)S
+3650(at)S
+3745(almost)S
+4015(all)S
+4135(scales;)S
+4405(in)S
+4505(particular,)S
+4903(there)S
+5113(is)S
+5204(no)S
+5325(model-)S
+6220 V
+540(ing)S
+686(of)S
+792(the)S
+933(response)S
+1279(pattern)S
+1560(along)S
+1791(the)S
+1932(slit)S
+2073(dimension.)S
+2529(The)S
+2700(only)S
+2891(modeling)S
+3262(is)S
+3353(the)S
+3494(\256t)S
+3600(to)S
+3700(the)S
+9 B
+3840(average)S
+9 R
+4170(spectrum)S
+4530(of)S
+4635(the)S
+4775(calibration)S
+5190(source.)S
+5505(In)S
+6320 V
+540(tests)S
+737(at)S
+839(NOAO)S
+1136(this)S
+1303(algorithm)S
+1690(was)S
+1867(able)S
+2054(to)S
+2161(reduce)S
+2438(the)S
+2585(response)S
+2937(variations)S
+3329(to)S
+3436(less)S
+3608(0.2%,)S
+3856(to)S
+3964(correct)S
+4252(for)S
+4395(a)S
+4473(broad)S
+4716(diagonal)S
+5064(region)S
+5332(of)S
+5445(low)S
+6420 V
+540(response)S
+888(in)S
+991(one)S
+1154(of)S
+1262(the)S
+1405(CCD)S
+1623(detectors)S
+1981(\(the)S
+2154(CRYOCAM\),)S
+2695(and)S
+2858(to)S
+2961(remove)S
+3263(strong)S
+3520(fringing)S
+3842(in)S
+3944(spectra)S
+4231(taken)S
+4458(in)S
+4560(the)S
+4702(red)S
+4849(portion)S
+5141(of)S
+5248(the)S
+5390(spec-)S
+6520 V
+540(trum)S
+737(where)S
+984(the)S
+1121(detector)S
+1438(is)S
+1525(particularly)S
+1967(subject)S
+2249(to)S
+2346(fringing.)S
+6720 V
+790(One)S
+974(feature)S
+1258(common)S
+1607(to)S
+9 B
+1711(response)S
+9 R
+2080(and)S
+9 B
+2244(illumination)S
+9 R
+2748(is)S
+2842(that)S
+3012(the)S
+3157(algorithm)S
+3542(can)S
+3702(be)S
+3822(restricted)S
+4192(to)S
+4297(a)S
+4372(section)S
+4662(of)S
+4772(the)S
+4917(calibration)S
+5337(image.)S
+6820 V
+540(The)S
+717(response)S
+1069(corrections)S
+1506(are)S
+1653(then)S
+1845(determined)S
+2287(only)S
+2484(within)S
+2751(that)S
+2923(section.)S
+3265(If)S
+3362(a)S
+3439(response)S
+3791(image)S
+4048(does)S
+4250(not)S
+4402(exist)S
+4609(initially)S
+4926(then)S
+5118(the)S
+5265(response)S
+6920 V
+540(values)S
+804(outside)S
+1098(the)S
+1242(section)S
+1531(are)S
+1675(set)S
+1809(to)S
+1913(unity.)S
+2182(If)S
+2276(the)S
+2420(response)S
+2769(image)S
+3023(does)S
+3222(exist)S
+3426(then)S
+3615(the)S
+3759(points)S
+4013(outside)S
+4307(the)S
+4451(section)S
+4740(are)S
+4885(not)S
+5035(changed.)S
+5420(This)S
+7020 V
+540(feature)S
+822(is)S
+914(used)S
+1111(with)S
+1302(data)S
+1483(containing)S
+1894(several)S
+2180(slits)S
+2356(on)S
+2477(one)S
+2638(image)S
+2889(such)S
+3085(as)S
+3191(produced)S
+3557(by)S
+3678(the)S
+3819(multi-slit)S
+4180(masks)S
+4436(at)S
+4532(Kitt)S
+4703(Peak)S
+4909(National)S
+5250(Observa-)S
+7120 V
+540(tory.)S
+7920 V
+EP
+%%Page: 3 3
+BP
+/slant 0 def
+/height 1.000000 def
+9 R
+9 R
+460 V
+2980(- 3 -)S
+820 V
+790(When)S
+1036(there)S
+1247(are)S
+1388(many)S
+1619(calibration)S
+2035(images)S
+2322(this)S
+2484(algorithm)S
+2866(may)S
+3053(be)S
+3170(applied)S
+3467(to)S
+3569(each)S
+3766(image)S
+4018(separately)S
+4415(or)S
+4522(to)S
+4624(an)S
+4741(average)S
+5053(of)S
+5160(the)S
+5302(images.)S
+920 V
+540(If)S
+634(applied)S
+933(separately)S
+1332(the)S
+1476(response)S
+1825(images)S
+2114(may)S
+2303(be)S
+2422(averaged)S
+2781(or)S
+2890(applied)S
+3189(to)S
+3293(the)S
+3436(appropriate)S
+3879(long)S
+4072(slit)S
+4215(spectra;)S
+4528(typically)S
+4876(the)S
+5019(one)S
+5182(nearest)S
+5470(the)S
+1020 V
+540(object)S
+793(exposure)S
+1151(in)S
+1254(time)S
+1448(or)S
+1557(telescope)S
+1926(position.)S
+2300(The)S
+2474(task)S
+2653(allows)S
+2922(a)S
+2996(list)S
+3140(of)S
+3249(calibration)S
+3668(images)S
+3957(from)S
+4166(which)S
+4420(a)S
+4494(set)S
+4628(of)S
+4737(response)S
+5086(corrections)S
+5520(is)S
+1120 V
+540(determined.)S
+1320 V
+790(Figure)S
+1053(1)S
+1126(shows)S
+1379(a)S
+1447(portion)S
+1735(of)S
+1838(an)S
+1951(average)S
+2259(quartz)S
+2512(spectrum)S
+2870(ratioed)S
+3148(with)S
+3336(the)S
+3474(smooth)S
+3767(\256t)S
+3870(to)S
+3968(the)S
+4107(spectrum.)S
+4516(It)S
+4600(is)S
+4689(one)S
+4848(of)S
+4952(the)S
+5091(graphs)S
+5360(which)S
+1420 V
+540(can)S
+693(be)S
+806(produced)S
+1169(with)S
+1357(the)S
+9 B
+1495(ic\256t)S
+9 R
+1668(routine)S
+1951(and,)S
+2132(with)S
+2320(the)S
+2458(other)S
+2671(\256gures)S
+2944(in)S
+3042(this)S
+3200(paper,)S
+3451(illustrates)S
+3829(the)S
+3966(formating,)S
+4371(zooming,)S
+4736(and)S
+4893(snap-shot)S
+5265(capabili-)S
+1520 V
+540(ties)S
+700(in)S
+805(IRAF.)S
+1096(The)S
+1272(\256gure)S
+1518(shows)S
+1779(considerable)S
+2270(structure)S
+2621(of)S
+2732(periodic)S
+3063(high)S
+3259(response)S
+3610(lines)S
+3816(and)S
+3982(fringing)S
+4308(which,)S
+4587(because)S
+4908(they)S
+5099(are)S
+5245(primarily)S
+1620 V
+540(aligned)S
+834(with)S
+1023(the)S
+1162(image)S
+1411(lines,)S
+1633(are)S
+1772(still)S
+1936(present)S
+2225(in)S
+2324(the)S
+2463(average)S
+2772(quartz)S
+3026(spectrum.)S
+3435(Note)S
+3639(that)S
+3803(this)S
+3962(is)S
+4051(not)S
+4195(the)S
+4334(response)S
+4678(since)S
+4892(it)S
+4971(is)S
+5059(the)S
+5197(average)S
+5505(of)S
+1720 V
+540(all)S
+664(the)S
+808(columns;)S
+1172(an)S
+1291(actual)S
+1540(response)S
+1889(column)S
+2193(would)S
+2452(have)S
+2656(much)S
+2890(larger)S
+3135(variations)S
+3525(including)S
+3900(pixel-to-pixel)S
+4425(response)S
+4775(di)S
+4845 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+4900(erences)S
+5205(as)S
+5315(well)S
+5505(as)S
+1820 V
+540(large)S
+747(scale)S
+954(response)S
+1296(patterns)S
+1608(such)S
+1800(as)S
+1902(the)S
+2039(diagonal)S
+2376(structure)S
+2718(mentioned)S
+3125(previously.)S
+2020 V
+9 B
+540(ILLUMINATION)S
+1267(-)S
+1324(Determine)S
+1756(illumination)S
+2253(calibration)S
+2220 V
+9 R
+790(The)S
+963(task)S
+9 B
+1141(illumination)S
+9 R
+1644(corrects)S
+1962(for)S
+2100(large)S
+2313(scale)S
+2526(variations)S
+2914(along)S
+3147(the)S
+3290(slit)S
+3433(and)S
+3596(dispersion)S
+3999(dimensions)S
+4442(due)S
+4605(to)S
+4708(illumination)S
+5181(or)S
+5290(spectro-)S
+2320 V
+540(graph)S
+780(transmission)S
+1270(variations)S
+1659(\(often)S
+1908(called)S
+2157(the)S
+9 I
+2301(slit)S
+2445(pro\256le)S
+9 R
+2680(\).)S
+2794(When)S
+3043(the)S
+3187(detector)S
+3511(response)S
+3860(function)S
+4194(is)S
+4288(determined)S
+4727(from)S
+4936(quartz)S
+5195(calibration)S
+2420 V
+540(images,)S
+853(using)S
+9 B
+1083(response)S
+9 R
+1418(,)S
+1476(an)S
+1596(illumination)S
+2071(error)S
+2281(may)S
+2472(be)S
+2593(introduced)S
+3014(due)S
+3180(to)S
+3286(di)S
+3356 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+3411(erences)S
+3717(in)S
+3823(the)S
+3969(way)S
+4155(the)S
+4301(spectrograph)S
+4802(is)S
+4898(illuminated)S
+5344(by)S
+5470(the)S
+2520 V
+540(quartz)S
+792(lamp)S
+999(compared)S
+1381(to)S
+1478(that)S
+1640(of)S
+1742(an)S
+1854(astronomical)S
+2346(exposure.)S
+2748(This)S
+2935(violates)S
+3242(the)S
+3379(the)S
+3516(assumption)S
+3953(that)S
+4115(the)S
+4252(calibration)S
+4664(spectrum)S
+5021(has)S
+5168(no)S
+5285(intrinsic)S
+2620 V
+540(structure)S
+889(along)S
+1123(the)S
+1267(slit.)S
+9 B
+1461(Illumination)S
+9 R
+1975(is)S
+2070(also)S
+2250(used)S
+2450(when)S
+2680(only)S
+2875(the)S
+3020(small)S
+3250(scale)S
+3465(response)S
+3815(variations)S
+4205(have)S
+4410(been)S
+4615(removed)S
+4965(using)S
+5195(a)S
+5270(\257at)S
+5420(\256eld)S
+2720 V
+540(correction.)S
+2920 V
+790(The)S
+958(approach)S
+1316(to)S
+1414(determining)S
+1877(the)S
+2015(response)S
+2359(correction)S
+2753(is)S
+2842(similar)S
+3121(to)S
+3220(that)S
+3384(described)S
+3758(for)S
+9 B
+3892(response)S
+9 R
+4227(.)S
+4306(Namely,)S
+4643(the)S
+4782(response)S
+5126(correction)S
+5520(is)S
+3020 V
+540(the)S
+682(ratio)S
+879(of)S
+986(a)S
+1058(calibration)S
+1475(image)S
+1727(to)S
+1829(the)S
+1971(expected)S
+2323(calibration)S
+2740(image.)S
+3042(Again,)S
+3317(the)S
+3459(expected)S
+3811(calibration)S
+4228(image)S
+4480(is)S
+4572(that)S
+4739(which)S
+4991(has)S
+5143(no)S
+5265(structure)S
+3120 V
+540(along)S
+772(the)S
+914(slit.)S
+1106(Calibration)S
+1543(images)S
+1830(may)S
+2017(be)S
+2134(quartz)S
+2391(lamp)S
+2603(exposures,)S
+3018(assuming)S
+3390(there)S
+3602(is)S
+3694(no)S
+3816(illumination)S
+4288(problem,)S
+4643(and)S
+4806(blank)S
+5039(sky)S
+5197(exposures.)S
+3220 V
+540(In)S
+642(the)S
+779(worst)S
+1006(case,)S
+1211(object)S
+1458(exposures)S
+1845(also)S
+2017(may)S
+2199(be)S
+2311(used)S
+2503(if)S
+2585(the)S
+2722(extent)S
+2969(of)S
+3071(the)S
+3208(object)S
+3455(in)S
+3552(the)S
+3689(slit)S
+3826(is)S
+3913(small.)S
+3420 V
+790(There)S
+1027(are)S
+1164(several)S
+1446(important)S
+1823(di)S
+1893 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+1948(erences)S
+2245(between)S
+2572(this)S
+2729(algorithm)S
+3106(and)S
+3263(that)S
+3425(of)S
+9 B
+3527(response)S
+9 R
+3862(:)S
+3620 V
+540(\(1\))S
+790(The)S
+957(spectra)S
+1239(are)S
+1376(not)S
+1518(required)S
+1845(to)S
+1942(be)S
+2054(smooth)S
+2346(in)S
+2443(wavelength)S
+2885(and)S
+3042(may)S
+3224(contain)S
+3516(strong)S
+3768(emission)S
+4115(and)S
+4272(absorption)S
+4679(lines.)S
+3720 V
+540(\(2\))S
+790(The)S
+957(response)S
+1299(correction)S
+1691(is)S
+1778(a)S
+1845(smooth,)S
+2160(large)S
+2367(scale)S
+2574(function)S
+2901(only.)S
+3820 V
+540(\(3\))S
+790(Since)S
+1018(the)S
+1156(signal-to-noise)S
+1719(of)S
+1822(spectra)S
+2105(from)S
+2308(blank)S
+2536(sky)S
+2689(and)S
+2847(object)S
+3095(images)S
+3378(is)S
+3466(lower)S
+3699(than)S
+3883(quartz)S
+4137(calibration)S
+4551(images,)S
+4858(steps)S
+5067(must)S
+5271(be)S
+5385(taken)S
+3920 V
+790(to)S
+887(minimize)S
+1254(noise.)S
+4020 V
+540(\(4\))S
+790(Care)S
+987(must)S
+1189(be)S
+1301(taken)S
+1523(that)S
+1685(the)S
+1822(spectral)S
+2129(features)S
+2441(do)S
+2558(not)S
+2700(a)S
+2740 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+2795(ect)S
+2927(the)S
+3064(response)S
+3406(determination.)S
+4220 V
+790(The)S
+970(algorithm)S
+1360(which)S
+1621(satis\256es)S
+1947(these)S
+2173(requirements)S
+2684(is)S
+2785(as)S
+2901(follows.)S
+3262(First)S
+3468(the)S
+3619(calibration)S
+4045(spectrum)S
+4416(is)S
+4517(binned)S
+4803(in)S
+4914(wavelength.)S
+5420(This)S
+4320 V
+540(addresses)S
+921(the)S
+1067(signal-to-noise)S
+1638(consideration)S
+2159(\(3\))S
+2300(and)S
+2466(is)S
+2562(permitted)S
+2943(because)S
+3264(only)S
+3460(large)S
+3676(scale)S
+3892(response)S
+4242(variations)S
+4632(are)S
+4777(being)S
+5012(determined)S
+5452(\(2\).)S
+4420 V
+540(Next)S
+742(a)S
+809(smoothing)S
+1216(function)S
+1543(is)S
+1630(\256t)S
+1732(along)S
+1959(the)S
+2096(slit)S
+2233(dimension)S
+2635(in)S
+2733(each)S
+2926(bin;)S
+3094(i.e.)S
+3233(each)S
+3426(wavelength)S
+3869(bin)S
+4012(is)S
+4100(smoothed)S
+4478(to)S
+4576(reduce)S
+4844(noise)S
+5062(and)S
+5220(determine)S
+4520 V
+540(the)S
+680(large)S
+890(scale)S
+1100(slit)S
+1240(pro\256le.)S
+1555(Then)S
+1770(each)S
+1965(bin)S
+2110(is)S
+2200(normalized)S
+2635(to)S
+2735(the)S
+2875(central)S
+3150(point)S
+3365(in)S
+3465(the)S
+3605(slit)S
+3745(to)S
+3845(remove)S
+4145(the)S
+4284(spectral)S
+4593(signature)S
+4952(of)S
+5056(the)S
+5195(calibration)S
+4620 V
+540(image.)S
+837(Finally,)S
+1142(the)S
+1279(binned)S
+1551(response)S
+1893(is)S
+1980(interpolated)S
+2437(back)S
+2634(to)S
+2731(the)S
+2868(original)S
+3175(image)S
+3422(size.)S
+4820 V
+790(The)S
+960(normalization)S
+1490(to)S
+1590(the)S
+1730(central)S
+2005(point)S
+2220(in)S
+2320(the)S
+2460(slit)S
+2600(is)S
+2690(an)S
+2805(assumption)S
+3245(which)S
+3495(limits)S
+3730(the)S
+3870(ability)S
+4130(of)S
+4236(the)S
+4377(illumination)S
+4848(algorithm)S
+5229(to)S
+5330(correct)S
+4920 V
+540(for)S
+679(all)S
+803(wavelength)S
+1252(dependent)S
+1656(response)S
+2005(e)S
+2045 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+2100(ects.)S
+2324(There)S
+2568(is)S
+2662(a)S
+2736(wavelength)S
+3185(dependence,)S
+3667(however,)S
+4034(in)S
+4138(that)S
+4307(the)S
+4451(slit)S
+4595(pro\256le)S
+4863(is)S
+4956(a)S
+5029(function)S
+5362(of)S
+5470(the)S
+5020 V
+540(wavelength)S
+982(though)S
+1259(normalized)S
+1691(to)S
+1788(unity)S
+2000(at)S
+2092(the)S
+2229(central)S
+2501(point)S
+2713(of)S
+2815(the)S
+2952(slit.)S
+5220 V
+790(The)S
+965(wavelength)S
+1415(bins)S
+1601(and)S
+1767(bin)S
+1918(widths)S
+2194(need)S
+2400(not)S
+2551(be)S
+2672(constant.)S
+3058(The)S
+3234(bins)S
+3420(are)S
+3566(chosen)S
+3852(to)S
+3958(sample)S
+4249(the)S
+4395(large)S
+4611(scale)S
+4827(variations)S
+5218(in)S
+5324(the)S
+5470(slit)S
+5320 V
+540(pro\256le)S
+807(as)S
+913(a)S
+984(function)S
+1315(of)S
+1421(wavelength,)S
+1890(to)S
+1991(obtain)S
+2247(good)S
+2458(signal)S
+2704(statistics,)S
+3068(and)S
+3229(to)S
+3330(avoid)S
+3561(e)S
+3601 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+3656(ects)S
+3827(due)S
+3988(to)S
+4089(variations)S
+4475(in)S
+4576(the)S
+4717(positions)S
+5073(and)S
+5234(widths)S
+5505(of)S
+5420 V
+540(strong)S
+794(emission)S
+1143(lines.)S
+1392(This)S
+1581(last)S
+1735(point)S
+1949(means)S
+2208(that)S
+2372(bin)S
+2516(boundaries)S
+2940(should)S
+3209(not)S
+3353(intersect)S
+3687(strong)S
+3941(emission)S
+4290(lines)S
+4490(though)S
+4770(the)S
+4910(bin)S
+5055(itself)S
+5265(may)S
+5450(and)S
+5520 V
+540(should)S
+813(contain)S
+1111(strong)S
+1369(lines.)S
+1622(Another)S
+1950(way)S
+2133(to)S
+2236(put)S
+2384(this)S
+2547(criterion)S
+2885(is)S
+2978(that)S
+3146(changes)S
+3469(in)S
+3572(the)S
+3714(data)S
+3896(in)S
+3998(the)S
+4140(wavelength)S
+4587(bins)S
+4769(should)S
+5041(be)S
+5158(small)S
+5385(when)S
+5620 V
+540(the)S
+677(bin)S
+819(boundaries)S
+1241(are)S
+1378(changed)S
+1705(slightly.)S
+5820 V
+790(The)S
+964(bins)S
+1148(may)S
+1337(be)S
+1456(set)S
+1590(interactively)S
+2074(using)S
+2303(a)S
+2377(graph)S
+2616(of)S
+2725(the)S
+2869(average)S
+3183(spectrum)S
+3547(or)S
+3656(automatically)S
+4180(by)S
+4304(dividing)S
+4638(the)S
+4782(dispersion)S
+5186(axis)S
+5365(into)S
+5540(a)S
+5920 V
+540(speci\256ed)S
+890(number)S
+1195(of)S
+1300(equal)S
+1525(width)S
+1759(bins.)S
+1988(When)S
+2232(the)S
+2371(number)S
+2675(of)S
+2779(bins)S
+2958(is)S
+3047(small)S
+3271(\(and)S
+3460(the)S
+3599(number)S
+3903(of)S
+4007(wavelength)S
+4451(points)S
+4700(in)S
+4799(each)S
+4993(bin)S
+5137(is)S
+5226(large\))S
+5465(bin)S
+6020 V
+540(boundary)S
+914(e)S
+954 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+1009(ects)S
+1183(are)S
+1328(likely)S
+1568(to)S
+1673(be)S
+1793(insigni\256cant.)S
+2323(A)S
+2423(single)S
+2673(bin)S
+2823(consisting)S
+3223(of)S
+3333(all)S
+3458(wavelengths,)S
+3966(i.e.)S
+4112(the)S
+4257(sum)S
+4442(of)S
+4552(all)S
+4677(the)S
+4822(image)S
+5077(lines,)S
+5305(may)S
+5495(be)S
+6120 V
+540(used)S
+749(if)S
+848(no)S
+982(wavelength)S
+1440(dependence)S
+1908(is)S
+2011(expected)S
+2374(in)S
+2487(the)S
+2640(response.)S
+3048(Illumination)S
+3536(e)S
+3576 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+3631(ects)S
+3814(introduced)S
+4242(with)S
+9 B
+4445(response)S
+9 R
+4780(,)S
+4846(however,)S
+5222(appear)S
+5505(as)S
+6220 V
+540(wavelength)S
+982(dependent)S
+1379(variations)S
+1761(in)S
+1858(the)S
+1995(slit)S
+2132(pro\256le.)S
+6420 V
+790(Smoothing)S
+1216(of)S
+1322(each)S
+1519(bin)S
+1666(along)S
+1898(the)S
+2040(slit)S
+2182(dimension)S
+2589(is)S
+2681(done)S
+2888(with)S
+3080(the)S
+3222(interactive)S
+3634(curve)S
+3866(\256tting)S
+4113(routine.)S
+4450(The)S
+4622(curve)S
+4854(\256tting)S
+5101(may)S
+5288(be)S
+5405(done)S
+6520 V
+540(graphically)S
+982(and)S
+1149(interactively)S
+1636(on)S
+1763(any)S
+1930(set)S
+2067(of)S
+2179(bins)S
+2366(or)S
+2478(automatically)S
+3005(by)S
+3132(specifying)S
+3544(the)S
+3691(function)S
+4028(and)S
+4195(order)S
+4422(initially.)S
+4789(The)S
+4966(\256tting)S
+5218(should)S
+5495(be)S
+6620 V
+540(done)S
+743(interactively)S
+1221(\(at)S
+1344(least)S
+1537(on)S
+1655(the)S
+1793(\256rst)S
+1961(bin\))S
+2134(in)S
+2232(order)S
+2450(to)S
+2548(exclude)S
+2856(objects)S
+3139(when)S
+3362(the)S
+3500(sky)S
+3654(is)S
+3743(not)S
+3887(truly)S
+4086(blank)S
+4315(and)S
+4474(contains)S
+4803(faint)S
+4997(objects)S
+5281(or)S
+5385(when)S
+6720 V
+540(object)S
+787(exposures)S
+1174(must)S
+1376(be)S
+1488(used)S
+1680(to)S
+1777(determine)S
+2164(the)S
+2301(slit)S
+2438(pro\256le.)S
+6920 V
+790(As)S
+920(with)S
+9 B
+1110(response)S
+9 R
+1445(,)S
+1498(several)S
+1783(blank)S
+2013(sky)S
+2168(images)S
+2453(may)S
+2638(be)S
+2753(available)S
+3108(\(though)S
+3418(this)S
+3578(is)S
+3668(less)S
+3833(often)S
+4048(true)S
+4218(in)S
+4318(practice\).)S
+4713(An)S
+4854(illumination)S
+5325(correc-)S
+7020 V
+540(tion)S
+712(may)S
+899(be)S
+1016(determined)S
+1453(for)S
+1590(each)S
+1787(calibration)S
+2204(image)S
+2456(or)S
+2563(one)S
+2725(illumination)S
+3197(correction)S
+3594(may)S
+3781(be)S
+3898(computed)S
+4285(from)S
+4492(the)S
+4634(average)S
+4946(of)S
+5053(the)S
+5195(calibration)S
+7120 V
+540(images.)S
+876(Also)S
+1077(the)S
+1218(illumination)S
+1689(response)S
+2035(correction)S
+2431(may)S
+2617(be)S
+2733(determined)S
+3169(for)S
+3305(only)S
+3496(a)S
+3567(section)S
+3854(of)S
+3961(the)S
+4103(calibration)S
+4520(image)S
+4772(so)S
+4884(as)S
+4991(to)S
+5093(be)S
+5210(applicable)S
+7220 V
+540(to)S
+637(multi-slit)S
+994(data.)S
+7920 V
+EP
+%%Page: 4 4
+BP
+/slant 0 def
+/height 1.000000 def
+9 R
+9 R
+460 V
+2980(- 4 -)S
+820 V
+790(Figure)S
+1053(2)S
+1126(shows)S
+1379(the)S
+1517(\256t)S
+1620(to)S
+1718(one)S
+1876(of)S
+1979(the)S
+2117(wavelength)S
+2560(bins;)S
+2763(lines)S
+2961(1)S
+3034(to)S
+3132(150)S
+3295(have)S
+3493(been)S
+3691(summed)S
+4024(and)S
+4182(the)S
+4320(sum)S
+4498(is)S
+4586(plotted)S
+4864(as)S
+4968(a)S
+5037(function)S
+5366(of)S
+5470(slit)S
+920 V
+540(position)S
+862(\(column\).)S
+1274(The)S
+1446(data)S
+1628(is)S
+1720(from)S
+1927(a)S
+1999(response)S
+2346(image)S
+2598(produced)S
+2965(by)S
+9 B
+3087(response)S
+9 R
+3422(.)S
+3503(This)S
+3694(\256gure)S
+3935(illustrates)S
+4316(a)S
+4387(number)S
+4693(of)S
+4799(things.)S
+9 B
+5100(Illumination)S
+1020 V
+9 R
+540(may)S
+723(be)S
+836(run)S
+984(on)S
+1102(a)S
+1170(response)S
+1513(image)S
+1761(to)S
+1859(remove)S
+2157(the)S
+2295(large)S
+2503(scale)S
+2711(illumination)S
+3179(and)S
+3337(slit)S
+3475(transmission)S
+3958(e)S
+3998 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+4053(ects.)S
+4272(This)S
+4461(creates)S
+4740(a)S
+4809(\257at)S
+4953(\256eld)S
+5142(in)S
+5241(a)S
+5310(manner)S
+1120 V
+540(di)S
+610 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+665(erent)S
+879(than)S
+1068(normal)S
+1357(surface)S
+1651(\256tting.)S
+1950(The)S
+2123(\256gure)S
+2366(shows)S
+2624(that)S
+2792(response)S
+3140(e)S
+3180 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+3235(ects)S
+3408(occur)S
+3641(at)S
+3739(all)S
+3862(scales)S
+4110(\(keeping)S
+4458(in)S
+4561(mind)S
+4779(that)S
+4947(the)S
+5090(pixel-to-pixel)S
+1220 V
+540(response)S
+884(has)S
+1033(been)S
+1232(largely)S
+1511(averaged)S
+1865(out)S
+2009(by)S
+2128(summing)S
+2492(150)S
+2656(columns\).)S
+3070(It)S
+3154(also)S
+3328(illustrates)S
+3707(how)S
+3891(the)S
+4030(illumination)S
+4500(algorithm)S
+4880(works)S
+5130(for)S
+5265(a)S
+5335(typical)S
+1320 V
+540(slit)S
+691(pro\256le.)S
+1017(In)S
+1133(this)S
+1304(example)S
+1650(about)S
+1891(half)S
+2072(the)S
+2223(large)S
+2444(scale)S
+2665(variation)S
+3025(in)S
+3135(the)S
+3285(slit)S
+3435(pro\256le)S
+3710(is)S
+3810(due)S
+3980(to)S
+4090(illumination)S
+4570(e)S
+4610 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+4665(ects)S
+4845(and)S
+5015(half)S
+5195(is)S
+5295(real)S
+5470(slit)S
+1420 V
+540(transmission)S
+1027(variations.)S
+1464(For)S
+1621(a)S
+1693(blank)S
+1925(sky)S
+2082(or)S
+2189(object)S
+2441(image)S
+2693(the)S
+2835(main)S
+3047(di)S
+3117 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+3172(erences)S
+3474(would)S
+3731(be)S
+3848(larger)S
+4090(data)S
+4272(values)S
+4534(\(hundreds)S
+4926(to)S
+5028(thousands\))S
+5450(and)S
+1520 V
+540(possibly)S
+867(objects)S
+1149(present)S
+1436(in)S
+1533(the)S
+1670(slit)S
+1807(to)S
+1904(be)S
+2016(excluded)S
+2368(from)S
+2570(the)S
+2707(\256t.)S
+1820 V
+9 B
+1921(3.)S
+2016(Distortion)S
+2433(Corrections)S
+2915(and)S
+3087(Coordinate)S
+3549(Transformations)S
+2020 V
+9 R
+790(The)S
+958(removal)S
+1281(of)S
+1384(geometric)S
+1772(distortions)S
+2181(and)S
+2340(the)S
+2479(application)S
+2908(of)S
+3012(coordinate)S
+3421(transformations)S
+4015(are)S
+4154(closely)S
+4438(related.)S
+4762(Both)S
+4966(involve)S
+5265(applying)S
+2120 V
+540(a)S
+609(transformation)S
+1168(to)S
+1267(the)S
+1406(observed)S
+1759(image)S
+2007(to)S
+2105(form)S
+2308(the)S
+2446(desired)S
+2734(\256nal)S
+2922(image.)S
+3220(Generally,)S
+3626(both)S
+3814(steps)S
+4022(are)S
+4160(combined)S
+4543(into)S
+4711(a)S
+4779(single)S
+5022(image)S
+5270(transfor-)S
+2220 V
+540(mation)S
+824(producing)S
+1223(distortion)S
+1602(corrected)S
+1971(images)S
+2260(with)S
+2455(linear)S
+2695(wavelength)S
+3145(coordinates)S
+3595(\(though)S
+3910(the)S
+4055(pixel)S
+4270(interval)S
+4580(may)S
+4770(be)S
+4890(logarithmic\).)S
+5420(This)S
+2320 V
+540(di)S
+610 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+665(ers)S
+803(from)S
+1011(other)S
+1229(systems)S
+1547(\(for)S
+1715(example,)S
+2076(the)S
+2219(Kitt)S
+2392(Peak)S
+2600(IPPS\))S
+2842(which)S
+3094(perform)S
+3416(distortion)S
+3793(corrections)S
+4225(on)S
+4347(each)S
+4544(axis)S
+4721(independently)S
+5263(and)S
+5425(then)S
+2420 V
+540(apply)S
+767(a)S
+834(dispersion)S
+1232(correction)S
+1625(on)S
+1743(the)S
+1881(distortion)S
+2254(corrected)S
+2617(image.)S
+2915(While)S
+3163(this)S
+3321(approach)S
+3679(is)S
+3767(modular)S
+4095(it)S
+4173(requires)S
+4491(several)S
+4774(transformations)S
+5367(of)S
+5470(the)S
+2520 V
+540(images)S
+822(and)S
+979(does)S
+1171(not)S
+1313(couple)S
+1580(the)S
+1717(distortions)S
+2124(in)S
+2221(each)S
+2413(dimension)S
+2815(into)S
+2982(a)S
+3049(single)S
+3291(two)S
+3453(dimensional)S
+3920(distortion.)S
+2720 V
+790(To)S
+918(transform)S
+1296(long)S
+1484(slit)S
+1622(images)S
+1905(requires)S
+2223(\(1\))S
+2357(identifying)S
+2781(spectral)S
+3090(features)S
+3404(and)S
+3563(measuring)S
+3967(their)S
+4161(positions)S
+4515(in)S
+4614(arc)S
+4753(lamp)S
+4962(or)S
+5066(sky)S
+5220(exposures)S
+2820 V
+540(at)S
+639(a)S
+713(number)S
+1022(of)S
+1131(points)S
+1385(in)S
+1488(the)S
+1631(image,)S
+1907(\(2\))S
+2045(determining)S
+2513(the)S
+2656(distortions)S
+3069(in)S
+3172(the)S
+3315(slit)S
+3458(positions)S
+3816(at)S
+3914(a)S
+3987(number)S
+4295(of)S
+4403(points)S
+4656(along)S
+4889(the)S
+5032(dispersion)S
+5435(axis)S
+2920 V
+540(using)S
+776(either)S
+1022(calibration)S
+1448(images)S
+1744(taken)S
+1980(with)S
+2181(special)S
+2472(masks)S
+2738(or)S
+2854(narrow)S
+3151(objects)S
+3448(such)S
+3655(as)S
+3772(stars,)S
+4002(\(3\))S
+4149(determining)S
+4626(a)S
+4708(transformation)S
+5280(function)S
+3020 V
+540(between)S
+870(the)S
+1010(image)S
+1260(coordinates)S
+1705(and)S
+1865(the)S
+2005(user)S
+2185(coordinates)S
+2630(for)S
+2765(the)S
+2905(measured)S
+3280(wavelength)S
+3725(and)S
+3885(slit)S
+4025(positions,)S
+4403(\(4\))S
+4538(and)S
+4697(interpolating)S
+5186(the)S
+5325(images)S
+3120 V
+540(to)S
+641(a)S
+712(uniform)S
+1033(grid)S
+1209(in)S
+1310(the)S
+1451(user)S
+1632(coordinates)S
+2078(according)S
+2464(to)S
+2565(the)S
+2706(transformation)S
+3267(function.)S
+3648(The)S
+3819(coordinate)S
+4230(feature)S
+4511(information)S
+4967(and)S
+5128(the)S
+5270(transfor-)S
+3220 V
+540(mation)S
+817(functions)S
+1179(are)S
+1316(stored)S
+1563(in)S
+1660(a)S
+1727(database.)S
+2114(If)S
+2201(needed,)S
+2506(the)S
+2643(database)S
+2980(may)S
+3162(be)S
+3274(examined)S
+3651(and)S
+3808(edited.)S
+3420 V
+790(An)S
+927(important)S
+1304(part)S
+1471(of)S
+1573(this)S
+1730(task)S
+1902(is)S
+1989(the)S
+2126(feature)S
+2403(center)S
+2650(determination.)S
+3227(This)S
+3414(algorithm)S
+3791(is)S
+3878(described)S
+4250(in)S
+4347(a)S
+4414(separate)S
+4736(section)S
+5018(below.)S
+3620 V
+9 B
+540(IDENTIFY)S
+1007(-)S
+1064(Identify)S
+1396(features)S
+3820 V
+9 R
+790(The)S
+957(tasks)S
+9 B
+1164(identify)S
+9 R
+1486(and)S
+9 B
+1643(reidentify)S
+9 R
+2045(are)S
+2182(general)S
+2475(tools)S
+2678(used)S
+2871(for)S
+3004(one)S
+3162(dimensional,)S
+3653(multi-aperture,)S
+4219(multi-slit,)S
+4600(echelle,)S
+4906(and)S
+5064(long)S
+5252(slit)S
+5390(spec-)S
+3920 V
+540(tra.)S
+713(The)S
+881(tasks)S
+1089(are)S
+1227(also)S
+1400(general)S
+1693(in)S
+1791(the)S
+1929(sense)S
+2152(that)S
+2315(they)S
+2498(are)S
+2636(used)S
+2829(to)S
+2927(identify)S
+3235(features)S
+3548(in)S
+3646(any)S
+3803(one)S
+3960(dimensional)S
+4427(vector.)S
+4729(For)S
+4881(long)S
+5068(slit)S
+5205(reductions)S
+4020 V
+540(they)S
+723(are)S
+861(used)S
+1054(to)S
+1152(identify)S
+1461(and)S
+1620(trace)S
+1824(objects)S
+2108(in)S
+2207(the)S
+2346(slit)S
+2485(and)S
+2644(to)S
+2743(identify,)S
+3075(trace,)S
+3302(and)S
+3461(determine)S
+3850(wavelength)S
+4294(solutions)S
+4648(for)S
+4782(spectral)S
+5091(features)S
+5405(from)S
+4120 V
+540(arc)S
+677(calibration)S
+1089(images)S
+1371(and)S
+1528(from)S
+1730(sky)S
+1882(and)S
+2039(object)S
+2286(exposures.)S
+4320 V
+9 B
+790(Identify)S
+9 R
+1124(is)S
+1213(used)S
+1407(to)S
+1506(identify)S
+1815(emission)S
+2165(or)S
+2270(absorption)S
+2680(features)S
+2995(in)S
+3095(a)S
+3165(one)S
+3325(dimensional)S
+3795(projection)S
+4190(of)S
+4295(an)S
+4410(image.)S
+4710(This)S
+4900(projection)S
+5295(consists)S
+4420 V
+540(of)S
+644(an)S
+758(image)S
+1007(line)S
+1171(or)S
+1275(column)S
+1574(or)S
+1678(the)S
+1817(average)S
+2126(of)S
+2230(many)S
+2459(lines)S
+2658(or)S
+2762(columns.)S
+3146(Averaging)S
+3555(is)S
+3644(used)S
+3838(to)S
+3937(increase)S
+4261(the)S
+4400(signal)S
+4643(in)S
+4741(weak)S
+4959(features)S
+5272(and)S
+5430(pro-)S
+4520 V
+540(vide)S
+725(better)S
+961(accuracy)S
+1312(in)S
+1413(determining)S
+1879(the)S
+2020(one)S
+2181(dimensional)S
+2652(positions)S
+3008(of)S
+3114(the)S
+3255(features.)S
+3621(The)S
+3792(identi\256ed)S
+4163(features)S
+4479(are)S
+4620(assigned)S
+4961(user)S
+5142(coordinates.)S
+4620 V
+540(The)S
+707(user)S
+884(coordinates)S
+1326(will)S
+1493(ultimately)S
+1885(de\256ne)S
+2132(the)S
+2269(\256nal)S
+2456(coordinates)S
+2898(of)S
+3000(the)S
+3137(recti\256ed)S
+3459(images.)S
+4820 V
+790(For)S
+944(determining)S
+1408(the)S
+1547(distortions)S
+1956(along)S
+2185(the)S
+2324(slit,)S
+2486(the)S
+2625(positions)S
+2980(of)S
+3085(object)S
+3335(pro\256les)S
+3635(or)S
+3740(pro\256les)S
+4040(obtained)S
+4380(with)S
+4570(multi-aperture)S
+5115(masks)S
+5370(in)S
+5470(the)S
+4920 V
+540(slit)S
+690(are)S
+840(measured)S
+1224(at)S
+1328(a)S
+1407(reference)S
+1781(line.)S
+2005(The)S
+2184(user)S
+2373(coordinates)S
+2827(are)S
+2976(then)S
+3170(taken)S
+3404(to)S
+3513(be)S
+3637(the)S
+3786(positions)S
+4150(at)S
+4254(this)S
+4423(reference)S
+4797(line.)S
+5021(The)S
+5200(coordinate)S
+5020 V
+540(recti\256cation)S
+999(will)S
+1168(then)S
+1352(correct)S
+1631(for)S
+1765(the)S
+1904(distortion)S
+2278(to)S
+2377(bring)S
+2596(the)S
+2735(object)S
+2984(positions)S
+3338(at)S
+3432(the)S
+3571(other)S
+3785(lines)S
+3985(to)S
+4085(the)S
+4225(same)S
+4440(position.)S
+4810(\(Note)S
+5045(that)S
+5210(it)S
+5290(is)S
+5380(feasi-)S
+5120 V
+540(ble)S
+677(to)S
+774(make)S
+996(an)S
+1108(actual)S
+1350(coordinate)S
+1757(transformation)S
+2314(of)S
+2416(the)S
+2553(spatial)S
+2815(axis)S
+2987(to)S
+3084(arc)S
+3221(seconds)S
+3533(or)S
+3635(some)S
+3852(other)S
+4064(units\).)S
+5320 V
+790(For)S
+943(wavelength)S
+1386(features)S
+1700(arc)S
+1839(calibration)S
+2253(images)S
+2537(are)S
+2676(generally)S
+3040(used,)S
+3257(though)S
+3536(sky)S
+3690(and)S
+3849(object)S
+4098(exposures)S
+4487(can)S
+4641(also)S
+4815(be)S
+4929(used)S
+5123(if)S
+5207(necessary.)S
+5420 V
+540(After)S
+762(marking)S
+1094(a)S
+1166(number)S
+1473(of)S
+1580(spectral)S
+1892(features)S
+2209(and)S
+2371(assigning)S
+2743(them)S
+2955(wavelength)S
+3402(coordinates)S
+3849(a)S
+9 I
+3920(dispersion)S
+4326(solution)S
+9 R
+4647(can)S
+4803(be)S
+4919(computed)S
+5305(relating)S
+5520 V
+540(the)S
+684(image)S
+938(coordinate)S
+1352(to)S
+1456(the)S
+1601(wavelength;)S
+11 Y
+2082(l = )S
+11 I
+2279(f)S
+11 R
+2346(\()S
+11 I
+2382(l)S
+11 R
+2422(\))S
+9 R
+2458(,)S
+2516(where)S
+11 Y
+2777(l)S
+9 R
+2873(is)S
+2968(wavelength)S
+3418(and)S
+11 I
+3589(l)S
+9 R
+3655(is)S
+3750(the)S
+3895(image)S
+4150(line.)S
+4370(The)S
+4545(dispersion)S
+4950(solution)S
+5275(is)S
+5370(deter-)S
+5620 V
+540(mined)S
+807(using)S
+1044(the)S
+9 B
+1196(ic\256t)S
+9 R
+1382(routines)S
+1713(described)S
+2099(earlier.)S
+2420(This)S
+2621(dispersion)S
+3032(solution)S
+3363(is)S
+3464(used)S
+3670(in)S
+3781(the)S
+3932(long)S
+4133(slit)S
+4284(package)S
+4620(only)S
+4821(as)S
+4937(an)S
+5063(aid)S
+5214(in)S
+5325(\256nding)S
+5720 V
+540(misidenti\256ed)S
+1041(lines)S
+1242(and)S
+1403(to)S
+1504(automatically)S
+2025(add)S
+2186(new)S
+2368(features)S
+2685(from)S
+2892(a)S
+2964(wavelength)S
+3411(list.)S
+3603(The)S
+3775(dispersion)S
+4177(solution)S
+4499(actually)S
+4816(used)S
+5013(in)S
+5115(transforming)S
+5820 V
+540(the)S
+677(images)S
+959(is)S
+1046(a)S
+1113(two)S
+1275(dimensional)S
+1742(function)S
+2069(determined)S
+2501(with)S
+2688(the)S
+2825(task)S
+9 B
+2997(\256tcoords)S
+9 R
+3332(.)S
+6020 V
+790(Figure)S
+1064(3)S
+1148(shows)S
+1412(a)S
+1491(graph)S
+1735(from)S
+9 B
+1949(identify)S
+9 R
+2283(used)S
+2487(on)S
+2616(a)S
+2695(Helium-Neon-Argon)S
+3490(arc)S
+3640(calibration)S
+4065(image.)S
+4375(Only)S
+4595(three)S
+4815(lines)S
+5025(were)S
+5240(identi\256ed)S
+6120 V
+540(interactively)S
+1022(and)S
+1184(the)S
+1326(reminder)S
+1683(were)S
+1889(added)S
+2135(automatically)S
+2656(from)S
+2862(a)S
+2933(standard)S
+3269(line)S
+3435(list.)S
+3626(Note)S
+3832(that)S
+3998(the)S
+4139(abscissa)S
+4465(is)S
+4556(in)S
+4657(wavelength)S
+5103(units)S
+5309(and)S
+5470(the)S
+6220 V
+540(ordinate)S
+867(is)S
+959(displayed)S
+1336(logarithmically.)S
+1968(The)S
+2140(latter)S
+2357(again)S
+2584(illustrates)S
+2966(the)S
+3108(\257exibility)S
+3490(the)S
+3632(user)S
+3814(has)S
+3966(to)S
+4068(modify)S
+4360(the)S
+4502(graph)S
+4739(formats.)S
+5097(Each)S
+5310(marked)S
+6320 V
+540(feature)S
+817(is)S
+904(stored)S
+1151(in)S
+1248(a)S
+1315(database)S
+1652(and)S
+1809(is)S
+1896(automatically)S
+2413(reidenti\256ed)S
+2850(at)S
+2942(other)S
+3154(columns)S
+3486(in)S
+3583(the)S
+3720(image)S
+3967(with)S
+9 B
+4154(reidentify)S
+9 R
+4529(.)S
+6520 V
+9 B
+540(REIDENTIFY)S
+1132(-)S
+1189(Reidentify)S
+1616(features)S
+6720 V
+9 R
+790(The)S
+964(task)S
+9 B
+1143(reidentify)S
+9 R
+1552(automatically)S
+2076(reidenti\256es)S
+2510(the)S
+2654(spectral)S
+2968(and)S
+3132(object)S
+3386(features)S
+3705(and)S
+3870(measures)S
+4240(their)S
+4440(positions)S
+4800(at)S
+4900(a)S
+4975(number)S
+5285(of)S
+5395(other)S
+6820 V
+540(columns)S
+877(and)S
+1039(lines)S
+1240(starting)S
+1541(from)S
+1747(those)S
+1968(identi\256ed)S
+2339(interactively)S
+2820(with)S
+9 B
+3011(identify)S
+9 R
+3306(.)S
+3387(The)S
+3558(algorithms)S
+3974(and)S
+4135(the)S
+4276(feature)S
+4557(information)S
+5013(produced)S
+5379(is)S
+5470(the)S
+6920 V
+540(same)S
+752(as)S
+854(that)S
+1016(of)S
+9 B
+1118(identify)S
+9 R
+1440(including)S
+1807(averaging)S
+2189(a)S
+2256(number)S
+2558(of)S
+2660(lines)S
+2857(or)S
+2959(columns)S
+3291(to)S
+3388(enhance)S
+3710(weak)S
+3927(features.)S
+4289(The)S
+4456(automatic)S
+4838(tracing)S
+5116(can)S
+5269(be)S
+5382(set)S
+5510(to)S
+7020 V
+540(stop)S
+726(or)S
+837(continue)S
+1183(when)S
+1414(a)S
+1490(feature)S
+1775(fails)S
+1965(to)S
+2070(be)S
+2190(found)S
+2435(in)S
+2540(a)S
+2615(new)S
+2800(column)S
+3105(or)S
+3215(line;)S
+3410(failure)S
+3680(is)S
+3775(de\256ned)S
+4075(by)S
+4200(the)S
+4345(position)S
+4670(either)S
+4910(becoming)S
+5300(indeter-)S
+7120 V
+540(minate)S
+812(or)S
+914(shifting)S
+1216(by)S
+1333(more)S
+1545(than)S
+1727(a)S
+1794(speci\256ed)S
+2141(amount)S
+2438(\()S
+9 I
+2468(cradius)S
+9 R
+2765(de\256ned)S
+3057(in)S
+3154(the)S
+3291(next)S
+3473(section\).)S
+7920 V
+EP
+%%Page: 5 5
+BP
+/slant 0 def
+/height 1.000000 def
+9 R
+9 R
+460 V
+2980(- 5 -)S
+820 V
+9 B
+540(CENTER1D)S
+1052(-)S
+1109(One)S
+1296(dimensional)S
+1788(feature)S
+2090(centering)S
+1020 V
+9 R
+790(The)S
+957(one)S
+1114(dimensional)S
+1581(position)S
+1898(of)S
+2000(a)S
+2067(feature)S
+2344(is)S
+2431(determined)S
+2863(by)S
+2980(solving)S
+3272(the)S
+3409(equation)S
+1238 V
+15 Y
+2547(\362)S
+1227 V
+11 R
+2588(\()S
+11 I
+2624(I)S
+11 Y
+2669(-)S
+11 I
+2730(I)S
+1249 V
+8 R
+2779(0)S
+1227 V
+11 R
+2828(\))S
+11 I
+2873(f)S
+11 R
+2940(\()S
+11 I
+2976(X)S
+11 Y
+3052(-)S
+11 I
+3113(X)S
+1249 V
+8 I
+3180(c)S
+1227 V
+11 R
+3224(\))S
+11 I
+3260(dX)S
+3391( )S
+11 Y
+3424(= )S
+11 R
+3518(0)S
+9 R
+5475(\(1\))S
+1488 V
+540(where)S
+11 I
+797(I)S
+9 R
+864(is)S
+955(the)S
+1096(intensity)S
+1437(at)S
+1533(position)S
+11 I
+1860(X)S
+9 R
+1927(,)S
+11 I
+1987(I)S
+1510 V
+8 R
+2036(0)S
+1488 V
+9 R
+2116(is)S
+2207(the)S
+2348(continuum)S
+2764(intensity,)S
+11 I
+3134(X)S
+9 R
+3232(is)S
+3323(the)S
+3464(vector)S
+3720(coordinate,)S
+4154(and)S
+11 I
+4321(X)S
+1510 V
+8 I
+4388(c)S
+1488 V
+9 R
+4463(is)S
+4554(the)S
+4695(desired)S
+4986(feature)S
+5267(position.)S
+1588 V
+540(The)S
+713(convolution)S
+1176(function)S
+11 I
+1524(f)S
+11 R
+1591(\()S
+11 I
+1627(X)S
+11 Y
+1712(-)S
+11 I
+1773(X)S
+1610 V
+8 I
+1840(c)S
+1588 V
+11 R
+1884(\))S
+9 R
+1953(is)S
+2046(a)S
+2119(sawtooth)S
+2477(as)S
+2585(shown)S
+2853(in)S
+2956(\256gure)S
+3199(4.)S
+3327(For)S
+3485(absorption)S
+3898(features)S
+4216(the)S
+4359(negative)S
+4697(of)S
+4805(this)S
+4968(function)S
+5300(is)S
+5392(used.)S
+1688 V
+540(The)S
+709(\256gure)S
+948(de\256nes)S
+1232(the)S
+1371(parameter)S
+9 I
+1760(fwidth)S
+9 R
+2014(which)S
+2263(is)S
+2352(set)S
+2481(to)S
+2580(be)S
+2694(approximately)S
+3243(the)S
+3382(width)S
+3616(of)S
+3720(the)S
+3860(feature.)S
+4190(If)S
+4280(it)S
+4360(is)S
+4450(too)S
+4595(large)S
+4805(the)S
+4945(centering)S
+5310(may)S
+5495(be)S
+1788 V
+540(a)S
+580 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+635(ected)S
+852(by)S
+969(neighboring)S
+1431(features)S
+1743(and)S
+1900(if)S
+1982(it)S
+2059(is)S
+2146(too)S
+2288(small)S
+2510(the)S
+2647(accuracy)S
+2994(is)S
+3081(worse.)S
+1988 V
+790(For)S
+945(emission)S
+1295(features)S
+1610(the)S
+1750(continuum,)S
+11 I
+2194(I)S
+2010 V
+8 R
+2243(0)S
+1988 V
+9 R
+2292(,)S
+2345(is)S
+2435(assumed)S
+2775(to)S
+2875(be)S
+2990(zero.)S
+3225(For)S
+3380(absorption)S
+3790(features)S
+4105(the)S
+4245(continuum)S
+4660(is)S
+4750(the)S
+4890(maximum)S
+5285(value)S
+5510(in)S
+2088 V
+540(the)S
+678(region)S
+936(around)S
+1214(the)S
+1352(initial)S
+1590(guess)S
+1818(for)S
+11 I
+1957(X)S
+2110 V
+8 I
+2024(c)S
+2088 V
+9 R
+2068(.)S
+2146(The)S
+2314(size)S
+2482(of)S
+2585(the)S
+2723(region)S
+2981(on)S
+3099(each)S
+3291(side)S
+3463(of)S
+3565(the)S
+3702(initial)S
+3939(guess)S
+4166(is)S
+4253(the)S
+4390(sum)S
+4567(of)S
+9 I
+4669(fwidth)S
+9 R
+4894(/2,)S
+5014(to)S
+5111(allow)S
+5338(for)S
+5470(the)S
+2188 V
+540(feature)S
+818(itself,)S
+9 I
+1049(cradius)S
+9 R
+1319(,)S
+1370(to)S
+1468(allow)S
+1696(for)S
+1829(the)S
+1967(uncertainty)S
+2400(in)S
+2498(the)S
+2636(feature)S
+2914(position,)S
+3255(and)S
+9 I
+3413(fwidth)S
+9 R
+3638(,)S
+3689(for)S
+3822(a)S
+3890(bu)S
+3980 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+4035(er.)S
+4183(Admittedly)S
+4621(this)S
+4779(is)S
+4868(not)S
+5012(the)S
+5151(best)S
+5325(contin-)S
+2288 V
+540(uum)S
+727(but)S
+869(it)S
+946(contains)S
+1273(the)S
+1410(fewest)S
+1672(assumptions)S
+2144(and)S
+2301(is)S
+2388(tolerant)S
+2690(of)S
+2792(nearby)S
+3064(contaminating)S
+3606(features.)S
+2488 V
+790(Equation)S
+1150(\(1\))S
+1290(is)S
+1385(solved)S
+1655(iteratively)S
+2055(starting)S
+2360(with)S
+2555(the)S
+2700(initial)S
+2945(position.)S
+3320(When)S
+3570(successive)S
+3985(positions)S
+4346(agree)S
+4577(within)S
+4843(0.1%)S
+5067(of)S
+5178(a)S
+5254(pixel)S
+5470(the)S
+2588 V
+540(position)S
+863(is)S
+956(returned.)S
+1339(If)S
+1432(the)S
+1575(position)S
+1898(wanders)S
+2231(further)S
+2509(than)S
+2697(the)S
+2840(user)S
+3023(de\256ned)S
+3321(distance)S
+9 I
+3649(cradius)S
+9 R
+3952(from)S
+4160(the)S
+4303(initial)S
+4546(guess)S
+4779(or)S
+4887(outside)S
+5180(of)S
+5288(the)S
+5430(data)S
+2688 V
+540(vector)S
+792(then)S
+974(the)S
+1111(position)S
+1428(is)S
+1515(considered)S
+1932(to)S
+2029(be)S
+2141(inde\256nite.)S
+2888 V
+9 B
+540(FITCOORDS)S
+1102(-)S
+1159(Fit)S
+1296(user)S
+1488(coordinates)S
+1960(to)S
+2062(image)S
+2319(coordinates)S
+3088 V
+9 R
+790(Let)S
+938(us)S
+1046(denote)S
+1314(the)S
+1452(image)S
+1700(coordinates)S
+2143(of)S
+2246(a)S
+2315(point)S
+2529(in)S
+2628(the)S
+2767(two)S
+2931(dimensional)S
+3400(image)S
+3649(as)S
+11 R
+3759(\()S
+11 I
+3795(c)S
+11 R
+3843(,)S
+3889( )S
+11 I
+3922(l)S
+11 R
+3962(\))S
+9 R
+4027(where)S
+11 I
+4282(c)S
+9 R
+4359(is)S
+4448(the)S
+4587(column)S
+4886(coordinate)S
+5295(and)S
+11 I
+5460(l)S
+9 R
+5520(is)S
+3188 V
+540(the)S
+688(line)S
+861(coordinate.)S
+1329(Similarly,)S
+1725(denote)S
+2003(the)S
+2151(long)S
+2349(slit)S
+2497(coordinates)S
+2950(as)S
+11 R
+3069(\()S
+11 I
+3105(s)S
+11 R
+3148(,)S
+3194( )S
+11 Y
+3227(l)S
+11 R
+3288(\))S
+9 R
+3362(where)S
+11 I
+3625(s)S
+9 R
+3705(is)S
+3802(the)S
+3949(slit)S
+4096(position)S
+4423(and)S
+11 Y
+4596(l)S
+9 R
+4694(is)S
+4791(the)S
+4938(wavelength.)S
+5440(The)S
+3288 V
+540(results)S
+802(of)S
+9 B
+904(identify)S
+9 R
+1226(and)S
+9 B
+1383(reidentify)S
+9 R
+1785(is)S
+1872(a)S
+1939(set)S
+2066(of)S
+2168(points)S
+11 R
+2421(\()S
+11 I
+2457(c)S
+11 R
+2505(,)S
+2551( )S
+11 I
+2584(l)S
+11 R
+2615(,)S
+2661( )S
+11 I
+2694(s)S
+11 R
+2746(\))S
+9 R
+2809(and)S
+11 R
+2972(\()S
+11 I
+3008(c)S
+11 R
+3056(,)S
+3102( )S
+11 I
+3135(l)S
+11 R
+3166(,)S
+3212( )S
+11 Y
+3245(l)S
+11 R
+3306(\))S
+9 R
+3369(recorded)S
+3711(in)S
+3808(the)S
+3945(database.)S
+3488 V
+790(Two)S
+989(dimensional)S
+1463(functions)S
+1832(of)S
+1941(the)S
+2085(image)S
+2339(coordinates)S
+2788(are)S
+2932(\256t)S
+3042(to)S
+3147(the)S
+3292(user)S
+3477(coordinates)S
+3927(for)S
+4067(each)S
+4267(set)S
+4402(of)S
+4512(slit)S
+4657(and)S
+4822(wavelength)S
+5272(features,)S
+3588 V
+11 I
+540(s)S
+592( )S
+11 Y
+625(= )S
+11 I
+719(t)S
+3610 V
+8 I
+750(s)S
+3588 V
+11 R
+790(\()S
+11 I
+826(c)S
+11 R
+874(,)S
+11 I
+911(l)S
+11 R
+951(\))S
+9 R
+1016(and)S
+11 Y
+1181(l = )S
+11 I
+1369(t)S
+3610 V
+8 Y
+1413(l)S
+3588 V
+11 R
+1466(\()S
+11 I
+1502(c)S
+11 R
+1550(,)S
+11 I
+1587(l)S
+11 R
+1627(\))S
+9 R
+1663(,)S
+1714(which)S
+1962(are)S
+2100(stored)S
+2348(in)S
+2446(the)S
+2584(database.)S
+2972(Note)S
+3175(that)S
+3338(the)S
+3476(second)S
+3754(function)S
+4082(is)S
+4170(a)S
+4238(two)S
+4401(dimensional)S
+4869(dispersion)S
+5267(solution.)S
+3688 V
+540(It)S
+624(is)S
+713(this)S
+872(function)S
+1201(which)S
+1450(is)S
+1540(used)S
+1735(to)S
+1835(transform)S
+2215(the)S
+2355(long)S
+2545(slit)S
+2685(images)S
+2970(to)S
+3070(linear)S
+3305(wavelength)S
+3750(coordinates.)S
+4245(Many)S
+4485(images)S
+4770(may)S
+4955(be)S
+5070(used)S
+5265(to)S
+5365(create)S
+3788 V
+540(a)S
+607(single)S
+849(transformation)S
+1406(or)S
+1508(each)S
+1700(calibration)S
+2112(images)S
+2394(may)S
+2576(be)S
+2688(used)S
+2880(separately)S
+3272(to)S
+3369(create)S
+3611(a)S
+3678(set)S
+3805(of)S
+3907(transformations.)S
+3988 V
+790(This)S
+986(task)S
+1167(has)S
+1323(both)S
+1519(an)S
+1641(interactive)S
+2058(and)S
+2225(non-interactive)S
+2807(mode.)S
+3094(For)S
+3256(the)S
+3403(non-interactive)S
+3985(mode)S
+4222(the)S
+4369(user)S
+4556(speci\256es)S
+4903(the)S
+5050(transformation)S
+4088 V
+540(function,)S
+901(either)S
+1143(a)S
+1220(two)S
+1392(dimensional)S
+1869(Chebyshev)S
+2306(or)S
+2418(Legendre)S
+2795(polynomial,)S
+3265(and)S
+3432(separate)S
+3764(orders)S
+4026(for)S
+4168(the)S
+4315(column)S
+4622(and)S
+4789(line)S
+4961(axes.)S
+5208(When)S
+5460(run)S
+4188 V
+540(interactively)S
+1017(the)S
+1154(user)S
+1331(can)S
+1483(try)S
+1610(di)S
+1680 H
+	(f)show 9 -.5 mul h (f)show
+9 R
+1735(erent)S
+1942(functions)S
+2304(and)S
+2461(orders,)S
+2736(delete)S
+2978(bad)S
+3135(points,)S
+3405(and)S
+3562(examine)S
+3894(the)S
+4031(data)S
+4208(and)S
+4365(the)S
+4503(transformation)S
+5061(in)S
+5159(a)S
+5227(variety)S
+5505(of)S
+4288 V
+540(graphical)S
+916(formats.)S
+1282(The)S
+1463(interactive)S
+1884(option)S
+2155(is)S
+2256(quite)S
+2477(useful)S
+2738(in)S
+2849(initially)S
+3170(setting)S
+3451(the)S
+3602(transformation)S
+4173(function)S
+4514(parameters)S
+4950(and)S
+5120(deleting)S
+5450(bad)S
+4388 V
+540(points.)S
+838(The)S
+1006(two)S
+1169(dimensional)S
+1637(function)S
+1965(\256tting)S
+2208(routine)S
+2491(is)S
+2579(similar)S
+2857(in)S
+2955(spirit)S
+3168(to)S
+3266(the)S
+9 B
+3404(ic\256t)S
+9 R
+3577(one)S
+3736(dimensional)S
+4205(function)S
+4534(\256tting)S
+4778(routine.)S
+5112(It)S
+5196(is)S
+5285(possible)S
+4488 V
+540(that)S
+702(this)S
+859(routine)S
+1141(may)S
+1323(\256nd)S
+1490(uses)S
+1672(in)S
+1769(other)S
+1981(IRAF)S
+2213(tasks.)S
+4688 V
+790(Figure)S
+1054(5)S
+1128(shows)S
+1382(a)S
+1451(graph)S
+1685(from)S
+9 B
+1889(\256tcoords)S
+9 R
+2224(.)S
+2303(The)S
+2472(feature)S
+2751(image)S
+3000(coordinates)S
+3444(of)S
+3548(four)S
+3727(objects)S
+4011(in)S
+4110(the)S
+4249(slit)S
+4388(\(the)S
+4557(\256rst)S
+4726(of)S
+4830(which)S
+5080(is)S
+5170(very)S
+5360(weak\))S
+4788 V
+540(from)S
+9 B
+750(identify)S
+9 R
+1080(and)S
+9 B
+1245(reidentify)S
+9 R
+1655(are)S
+1800(plotted.)S
+2135(This)S
+2330(information)S
+2790(is)S
+2885(used)S
+3085(to)S
+3190(measure)S
+3524(the)S
+3668(distortion)S
+4047(of)S
+4156(the)S
+4300(spectrograph)S
+4799(in)S
+4903(the)S
+5047(slit)S
+5191(axis.)S
+5420(This)S
+4888 V
+540(example)S
+873(shows)S
+1126(particularly)S
+1569(gross)S
+1787(distortions;)S
+2220(often)S
+2433(the)S
+2571(distortions)S
+2979(would)S
+3232(not)S
+3375(be)S
+3488(visible)S
+3756(in)S
+3854(such)S
+4047(a)S
+4115(graph,)S
+4371(though)S
+4649(expanding)S
+5052(it)S
+5131(would)S
+5385(make)S
+4988 V
+540(the)S
+685(distortion)S
+1065(visible.)S
+1390(The)S
+1565(transformation)S
+2130(surface)S
+2425(\256t)S
+2535(to)S
+2640(this)S
+2805(data)S
+2990(removes)S
+3330(this)S
+3495(distortion)S
+3875(almost)S
+4150(entirely)S
+4460(as)S
+4570(seen)S
+4764(in)S
+4868(the)S
+5012(residual)S
+5331(plot)S
+5505(of)S
+5088 V
+540(\256gure)S
+777(6.)S
+899(Figure)S
+1161(7)S
+1233(shows)S
+1485(the)S
+1622(equivalent)S
+2024(residual)S
+2336(plot)S
+2503(for)S
+2635(the)S
+2772(wavelength)S
+3214(coordinates;)S
+3681(a)S
+3748(two)S
+3910(dimensional)S
+4377(dispersion)S
+4774(solution.)S
+5288 V
+9 B
+540(TRANSFORM)S
+1147(-)S
+1204(Transform)S
+1651(long)S
+1843(slit)S
+1985(images)S
+2277(to)S
+2379(user)S
+2571(coordinates)S
+5488 V
+9 R
+790(The)S
+960(coordinate)S
+1370(transformations)S
+1965(determined)S
+2400(with)S
+2590(the)S
+2730(task)S
+9 B
+2905(\256tcoords)S
+9 R
+3270(are)S
+3410(read)S
+3595(from)S
+3800(the)S
+3940(database.)S
+4330(The)S
+4500(transformations)S
+5095(are)S
+5235(evaluated)S
+5588 V
+540(on)S
+658(a)S
+726(grid)S
+899(of)S
+1002(columns)S
+1335(and)S
+1493(lines,)S
+11 I
+1720(s)S
+5610 V
+8 I
+1763(i)S
+5588 V
+1794( )S
+11 Y
+1827(= )S
+11 I
+1921(t)S
+5610 V
+8 I
+1952(s)S
+5588 V
+11 R
+1992(\()S
+11 I
+2028(c)S
+5610 V
+8 I
+2076(i)S
+5588 V
+11 R
+2107(,)S
+11 I
+2144(l)S
+5610 V
+8 I
+2175(i)S
+5588 V
+11 R
+2206(\))S
+9 R
+2270(and)S
+11 Y
+2434(l)S
+5610 V
+8 I
+2495(i)S
+5588 V
+2526( )S
+11 Y
+2559(= )S
+11 I
+2653(t)S
+5610 V
+8 Y
+2697(l)S
+5588 V
+11 R
+2750(\()S
+11 I
+2786(c)S
+5610 V
+8 I
+2834(i)S
+5588 V
+11 R
+2865(,)S
+11 I
+2902(l)S
+5610 V
+8 I
+2933(i)S
+5588 V
+11 R
+2964(\))S
+9 R
+3000(.)S
+3078(If)S
+3165(no)S
+3282(transformation)S
+3839(is)S
+3926(de\256ned)S
+4218(for)S
+4350(a)S
+4417(particular)S
+4789(dimension)S
+5191(then)S
+5373(a)S
+5440(unit)S
+5688 V
+540(transformation)S
+1101(is)S
+1192(used.)S
+1438(If)S
+1529(more)S
+1746(than)S
+1933(one)S
+2095(transformation)S
+2657(for)S
+2794(a)S
+2866(dimension)S
+3273(is)S
+3365(given)S
+3597(then)S
+3784(a)S
+3856(set)S
+3988(of)S
+4095(points)S
+4347(is)S
+4439(computed)S
+4826(for)S
+4963(each)S
+5160(transforma-)S
+5788 V
+540(tion.)S
+762(The)S
+934(inverse)S
+1226(transformations)S
+1823(are)S
+1965(obtained)S
+2307(by)S
+2429(\256tting)S
+2676(transformation)S
+3238(functions)S
+3604(of)S
+3710(the)S
+3851(same)S
+4067(type)S
+4253(and)S
+4414(orders)S
+4670(to)S
+4771(the)S
+4912(set)S
+5043(of)S
+5149(slit)S
+5290(position)S
+5888 V
+540(and)S
+697(wavelength)S
+1139(points.)S
+1436(Note)S
+1638(how)S
+1820(this)S
+1977(allows)S
+2239(combining)S
+2651(separate)S
+2973(transformations)S
+3565(into)S
+3732(one)S
+3889(inverse)S
+4176(transformation.)S
+6088 V
+790(The)S
+960(inverse)S
+1250(transformations,)S
+11 I
+1874(c)S
+1931( )S
+11 Y
+1964(= )S
+11 I
+2058(t)S
+6110 V
+8 I
+2089(c)S
+6088 V
+11 R
+2133(\()S
+11 I
+2169(s)S
+11 R
+2212(,)S
+11 Y
+2258(l)S
+11 R
+2319(\))S
+9 R
+2385(and)S
+11 I
+2551(l)S
+2591( )S
+11 Y
+2624(= )S
+11 I
+2718(t)S
+6110 V
+8 I
+2749(l)S
+6088 V
+11 R
+2780(\()S
+11 I
+2816(s)S
+11 R
+2859(,)S
+11 Y
+2905(l)S
+11 R
+2966(\))S
+9 R
+3002(,)S
+3055(are)S
+3195(used)S
+3390(to)S
+3490(rectify)S
+3755(a)S
+3825(set)S
+3955(of)S
+4060(input)S
+4275(images.)S
+4611(The)S
+4782(user)S
+4963(speci\256es)S
+5304(a)S
+5375(linear)S
+6188 V
+540(grid)S
+721(for)S
+862(the)S
+1008(transformed)S
+1479(images)S
+1770(by)S
+1896(de\256ning)S
+2227(some)S
+2453(subset)S
+2714(of)S
+2824(the)S
+2969(starting)S
+3274(and)S
+3439(ending)S
+3719(coordinates,)S
+4192(the)S
+4337(pixel)S
+4552(interval,)S
+4885(and)S
+5050(the)S
+5195(number)S
+5505(of)S
+6288 V
+540(points.)S
+837(In)S
+939(addition)S
+1261(the)S
+1398(pixel)S
+1605(interval)S
+1907(can)S
+2059(be)S
+2171(speci\256ed)S
+2518(to)S
+2615(be)S
+2727(logarithmic;)S
+3195(used)S
+3388(primarily)S
+3751(on)S
+3869(the)S
+4007(wavelength)S
+4450(axis)S
+4623(for)S
+4756(radial)S
+4989(velocity)S
+5307(studies.)S
+6388 V
+540(The)S
+712(inverse)S
+1004(transformations)S
+1601(de\256ne)S
+1852(the)S
+1993(image)S
+2244(column)S
+2545(and)S
+2706(line)S
+2872(to)S
+2973(be)S
+3089(interpolated)S
+3550(in)S
+3651(the)S
+3792(input)S
+4008(image.)S
+4309(The)S
+4480(user)S
+4661(has)S
+4812(the)S
+4953(choice)S
+5219(of)S
+5325(several)S
+6488 V
+540(types)S
+775(of)S
+895(image)S
+1160(interpolation;)S
+1691(bilinear,)S
+2035(bicubic,)S
+2369(and)S
+2545(biquintic)S
+2911(polynomials)S
+3402(and)S
+3578(bicubic)S
+3889(spline.)S
+4200(In)S
+4321(addition)S
+4662(the)S
+4818(interpolation)S
+5324(can)S
+5495(be)S
+6588 V
+540(speci\256ed)S
+887(to)S
+984(conserve)S
+1331(\257ux)S
+1498(by)S
+1615(multiplying)S
+2062(the)S
+2199(interpolated)S
+2656(value)S
+2878(by)S
+2995(the)S
+3132(Jacobian)S
+3474(of)S
+3576(the)S
+3713(transformation.)S
+6788 V
+790(The)S
+957(wavelength)S
+1399(of)S
+1501(the)S
+1638(\256rst)S
+1805(pixel)S
+2012(and)S
+2169(the)S
+2306(pixel)S
+2513(wavelength)S
+2955(interval)S
+3257(are)S
+3394(recorded)S
+3736(in)S
+3833(image)S
+4080(headers)S
+4382(for)S
+4515(later)S
+4703(use)S
+4851(in)S
+4949(making)S
+5247(plots)S
+5450(and)S
+6888 V
+540(in)S
+637(the)S
+9 B
+774(onedspec)S
+9 R
+1151(package.)S
+1523(In)S
+1625(addition)S
+1947(a)S
+2014(\257ag)S
+2176(is)S
+2263(set)S
+2390(in)S
+2487(the)S
+2624(header)S
+2891(indicating)S
+3278(that)S
+3440(the)S
+3577(image)S
+3824(has)S
+3971(been)S
+4168(dispersion)S
+4565(corrected.)S
+7188 V
+9 B
+2534(4.)S
+2629(Background)S
+3131(Subtraction)S
+7920 V
+EP
+%%Page: 6 6
+BP
+/slant 0 def
+/height 1.000000 def
+9 B
+9 B
+460 V
+9 R
+2980(- 6 -)S
+820 V
+9 B
+540(BACKGROUND)S
+1227(-)S
+1284(Fit)S
+1421(and)S
+1593(subtract)S
+1940(a)S
+2012(line)S
+2179(or)S
+2291(column)S
+2603(background)S
+1020 V
+9 R
+790(If)S
+885(required,)S
+1243(the)S
+1388(background)S
+1848(sky)S
+2008(at)S
+2108(each)S
+2308(wavelength)S
+2758(is)S
+2853(subtracted)S
+3258(from)S
+3468(the)S
+3613(objects)S
+3903(using)S
+4133(regions)S
+4433(of)S
+4543(the)S
+4688(slit)S
+4833(not)S
+4983(occupied)S
+5344(by)S
+5470(the)S
+1120 V
+540(object.)S
+843(This)S
+1035(must)S
+1242(be)S
+1359(done)S
+1566(on)S
+1688(coordinate)S
+2100(recti\256ed)S
+2427(images)S
+2714(since)S
+2931(the)S
+3073(lines)S
+3275(or)S
+3382(columns)S
+3719(of)S
+3826(the)S
+3968(image)S
+4220(must)S
+4427(correspond)S
+4859(exactly)S
+5151(to)S
+5253(the)S
+5395(same)S
+1220 V
+540(wavelength.)S
+1039(A)S
+1138(set)S
+1272(of)S
+1381(points)S
+1635(along)S
+1869(the)S
+2013(slit)S
+2157(dimension,)S
+2589(which)S
+2843(are)S
+2987(representative)S
+3526(of)S
+3635(the)S
+3779(background,)S
+4261(are)S
+4405(chosen)S
+4690(interactively.)S
+5225(Generally)S
+1320 V
+540(this)S
+700(will)S
+870(consist)S
+1150(of)S
+1255(two)S
+1420(strips)S
+1645(on)S
+1765(either)S
+2000(side)S
+2175(of)S
+2280(the)S
+2420(object)S
+2669(spectrum.)S
+3078(At)S
+3197(each)S
+3391(wavelength)S
+3835(a)S
+3904(low)S
+4068(order)S
+4287(function)S
+4616(is)S
+4705(\256t)S
+4809(to)S
+4908(the)S
+5047(sky)S
+5201(points)S
+5450(and)S
+1420 V
+540(then)S
+722(subtracted)S
+1119(from)S
+1321(the)S
+1458(entire)S
+1690(line)S
+1852(or)S
+1954(column.)S
+1620 V
+790(Ideally)S
+1068(the)S
+1206(response)S
+1549(corrections)S
+1977(and)S
+2135(coordinate)S
+2543(recti\256cation)S
+3001(will)S
+3169(make)S
+3392(the)S
+3530(background)S
+3983(sky)S
+4136(constant)S
+4464(at)S
+4557(all)S
+4675(points)S
+4924(on)S
+5043(the)S
+5182(slit)S
+5321(at)S
+5415(each)S
+1720 V
+540(wavelength)S
+991(and)S
+1157(the)S
+1303(subtracted)S
+1709(background)S
+2170(is)S
+2266(just)S
+2432(a)S
+2508(constant.)S
+2894(However,)S
+3283(if)S
+3374(desired)S
+3670(a)S
+3746(higher)S
+4012(order)S
+4238(function)S
+4574(may)S
+4765(be)S
+4885(used)S
+5085(to)S
+5190(correct)S
+5475(for)S
+1820 V
+540(de\256ciencies)S
+997(in)S
+1099(the)S
+1242(data.)S
+1475(A)S
+1573(possible)S
+1901(problem)S
+2234(is)S
+2327(focus)S
+2555(variations)S
+2943(which)S
+3196(cause)S
+3429(the)S
+3572(width)S
+3810(of)S
+3918(the)S
+4061(sky)S
+4219(emission)S
+4572(lines)S
+4775(to)S
+4878(vary)S
+5071(along)S
+5304(the)S
+5447(slit.)S
+1920 V
+540(One)S
+717(may)S
+899(partially)S
+1226(compensate)S
+1678(for)S
+1810(the)S
+1947(focus)S
+2169(variations)S
+2551(by)S
+2668(using)S
+2890(a)S
+2957(higher)S
+3214(order)S
+3431(background)S
+3883(\256tting)S
+4125(function.)S
+2120 V
+790(The)S
+959(background)S
+1413(\256tting)S
+1657(uses)S
+1841(the)S
+1980(interactive)S
+2390(curve)S
+2620(\256tting)S
+2865(routine)S
+9 B
+3150(ic\256t)S
+9 R
+3325(described)S
+3700(earlier.)S
+4010(Figure)S
+4275(8)S
+4350(shows)S
+4605(a)S
+4675(graph)S
+4910(from)S
+9 B
+5115(background)S
+2220 V
+9 R
+540(illustrating)S
+957(how)S
+1139(the)S
+1276(user)S
+1453(sets)S
+1615(two)S
+1777(sample)S
+2059(regions)S
+2351(de\256ning)S
+2673(the)S
+2810(sky)S
+2962(\(indicated)S
+3349(a)S
+3416(the)S
+3553(bottom)S
+3835(of)S
+3937(the)S
+4074(graph\).)S
+2520 V
+9 B
+2689(5.)S
+2784(Flux)S
+2986(Calibration)S
+2720 V
+540(EXTINCTION)S
+1147(-)S
+1204(Apply)S
+1466(atmospheric)S
+1968(extinction)S
+2375(corrections)S
+2832(to)S
+2934(images)S
+2920 V
+9 R
+790(A)S
+885(set)S
+1015(of)S
+1120(coordinate)S
+1530(recti\256ed)S
+1855(images)S
+2140(is)S
+2230(corrected)S
+2595(for)S
+2731(atmospheric)S
+3202(extinction)S
+3593(with)S
+3784(the)S
+3925(task)S
+9 B
+4101(extinction)S
+9 R
+4481(.)S
+4562(The)S
+4733(extinction)S
+5124(correction)S
+5520(is)S
+3020 V
+540(given)S
+767(by)S
+884(the)S
+1021(formula)S
+3277 V
+11 R
+2428(correction factor )S
+11 Y
+3191(= )S
+11 R
+3285(10)S
+3217 V
+8 R
+3395(0.4 )S
+8 I
+3519(E)S
+3233 V
+5 Y
+3576(l)S
+3217 V
+3610( )S
+8 I
+3634(A)S
+3527 V
+9 R
+540(where)S
+11 I
+796(E)S
+3549 V
+8 Y
+876(l)S
+3527 V
+9 R
+959(are)S
+1099(tabulated)S
+1459(extinctions)S
+1884(values)S
+2144(and)S
+11 I
+2310(A)S
+9 R
+2407(is)S
+2497(the)S
+2637(air)S
+2762(mass)S
+2972(of)S
+3077(the)S
+3217(observation)S
+3667(\(determined)S
+4132(from)S
+4338(information)S
+4794(in)S
+4895(the)S
+5036(image)S
+5287(header\).)S
+3627 V
+540(The)S
+710(tabulated)S
+1070(extinctions)S
+1495(are)S
+1635(interpolated)S
+2095(to)S
+2195(the)S
+2335(wavelength)S
+2780(of)S
+2885(each)S
+3080(pixel)S
+3290(and)S
+3450(the)S
+3590(correction)S
+3985(applied)S
+4280(to)S
+4380(the)S
+4520(input)S
+4734(pixel)S
+4943(value)S
+5167(to)S
+5266(form)S
+5470(the)S
+3727 V
+540(output)S
+797(pixel)S
+1004(value.)S
+1276(The)S
+1443(user)S
+1620(may)S
+1802(supply)S
+2069(the)S
+2206(extinction)S
+2593(table)S
+2795(but)S
+2937(generally)S
+3299(a)S
+3366(standard)S
+3698(extinction)S
+4085(table)S
+4287(is)S
+4374(used.)S
+3927 V
+790(The)S
+960(air)S
+1085(mass)S
+1295(is)S
+1385(sought)S
+1655(in)S
+1755(the)S
+1895(image)S
+2145(header)S
+2415(under)S
+2650(the)S
+2790(keyword)S
+3135(AIRMASS.)S
+3615(If)S
+3705(the)S
+3846(air)S
+3972(mass)S
+4183(is)S
+4274(not)S
+4420(found)S
+4661(then)S
+4847(it)S
+4928(is)S
+5019(computed)S
+5405(from)S
+4027 V
+540(the)S
+677(zenith)S
+924(distance,)S
+1269(ZD,)S
+1439(using)S
+1661(the)S
+1798(approximation)S
+2350(formula)S
+2662(from)S
+2864(Allen's)S
+3156("Astrophysical)S
+3720(Quantities",)S
+4177(1973,)S
+4407(pages)S
+4639(125)S
+4801(and)S
+4958(133)S
+4277 V
+11 I
+2611(A)S
+11 Y
+2687(=)S
+11 R
+2748(\(cos\(ZD\))S
+4233 V
+8 R
+3148(2)S
+4277 V
+3197( )S
+11 Y
+3230(+ )S
+11 R
+3324(2)S
+11 I
+3379(s)S
+3431( )S
+11 Y
+3464(+ )S
+11 R
+3558(1\))S
+4233 V
+8 R
+3649 H
+	8 .6 mul R
+	8 -3 mul v(1)show
+	8 3 mul v
+	8 R(/)show
+	8 .6 mul R(2)show
+	8 R
+8 R
+4527 V
+9 R
+540(where)S
+11 I
+793(s)S
+9 R
+836(,)S
+886(the)S
+1023(atmospheric)S
+1490(scale)S
+1697(height,)S
+1972(is)S
+2059(set)S
+2186(to)S
+2283(be)S
+2395(750.)S
+2607(If)S
+2694(the)S
+2831(zenith)S
+3078(distance)S
+3400(is)S
+3487(not)S
+3630(found)S
+3868(then)S
+4051(it)S
+4129(must)S
+4332(be)S
+4445(computed)S
+4828(from)S
+5031(the)S
+5169(hour)S
+5362(angle,)S
+4627 V
+540(the)S
+684(declination,)S
+1141(and)S
+1305(the)S
+1449(observation)S
+1903(latitude.)S
+2284(The)S
+2458(hour)S
+2657(angle)S
+2886(may)S
+3075(be)S
+3194(computed)S
+3583(from)S
+3792(the)S
+3936(right)S
+4140(ascension)S
+4524(and)S
+4688(the)S
+4832(siderial)S
+5131(time.)S
+5375(Com-)S
+4727 V
+540(puted)S
+767(quantities)S
+1144(are)S
+1281(recorded)S
+1623(in)S
+1720(the)S
+1857(image)S
+2104(header.)S
+2421(Flags)S
+2643(indicating)S
+3030(extinction)S
+3417(correction)S
+3809(are)S
+3946(also)S
+4118(set)S
+4245(in)S
+4342(the)S
+4479(image)S
+4726(header.)S
+4927 V
+9 B
+540(FLUXCALIB)S
+1097(-)S
+1154(Apply)S
+1416(\257ux)S
+1588(calibration)S
+2035(to)S
+2137(images)S
+5127 V
+9 R
+790(The)S
+959(speci\256ed)S
+1308(images)S
+1592(are)S
+1731(\257ux)S
+1900(calibrated)S
+2284(using)S
+2508(a)S
+2577(\257ux)S
+2746(calibration)S
+3160(\256le)S
+3304(derived)S
+3603(with)S
+3792(the)S
+9 B
+3931(onedspec)S
+9 R
+4310(package)S
+4635(using)S
+4860(standard)S
+5195(stars.)S
+5440(The)S
+5227 V
+540(standard)S
+884(stars)S
+1088(are)S
+1237(extracted)S
+1605(from)S
+1818(response)S
+2171(corrected,)S
+2567(coordinate)S
+2985(recti\256ed,)S
+3341(and)S
+3509(background)S
+3972(subtracted)S
+4380(long)S
+4578(slit)S
+4726(images)S
+5019(using)S
+5252(the)S
+5400(tasks)S
+5327 V
+9 B
+540(apde\256ne)S
+9 R
+894(and)S
+9 B
+1053(apextract)S
+9 R
+1418(.)S
+1497(The)S
+1666(standard)S
+2000(stars)S
+2194(must)S
+2398(not)S
+2542(be)S
+2656(extinction)S
+3045(corrected)S
+3409(because)S
+3723(this)S
+3882(is)S
+3971(done)S
+4175(by)S
+4294(the)S
+9 B
+4433(onedspec)S
+9 R
+4812(\257ux)S
+4981(calibration)S
+5395(algo-)S
+5427 V
+540(rithms.)S
+854(The)S
+1028(user)S
+1212(may)S
+1401(specify)S
+1695(\257ux)S
+1868(per)S
+2016(unit)S
+2189(wavelength,)S
+11 R
+2666(F)S
+5449 V
+8 Y
+2728(l)S
+5427 V
+9 R
+2781(,)S
+2837(or)S
+2945(\257ux)S
+3118(per)S
+3266(unit)S
+3439(frequency,)S
+11 R
+3861(F)S
+5449 V
+8 Y
+3923(n)S
+5427 V
+9 R
+3974(.)S
+4057(The)S
+4230(\257ux)S
+4403(is)S
+4496(computed)S
+4884(using)S
+5112(the)S
+5255(exposure)S
+5527 V
+540(time)S
+727(and)S
+884(dispersion)S
+1281(from)S
+1483(the)S
+1620(image)S
+1867(headers)S
+2169(and)S
+2326(a)S
+2393(\257ux)S
+2560(calibration)S
+2972(\257ag)S
+3134(is)S
+3221(set.)S
+5827 V
+9 B
+2248(6.)S
+2343(Extraction)S
+2780(of)S
+2882(One)S
+3069(Dimensional)S
+3576(Spectra)S
+6027 V
+9 R
+790(The)S
+962(user)S
+1144(may)S
+1331(wish)S
+1533(to)S
+1635(extract)S
+1912(one)S
+2075(dimensional)S
+2548(spectra)S
+2836(at)S
+2934(various)S
+3232(points)S
+3485(along)S
+3718(the)S
+3861(slit.)S
+4054(As)S
+4187(mentioned)S
+4600(earlier,)S
+4886(this)S
+5049(is)S
+5142(necessary)S
+5525(if)S
+6127 V
+540(observations)S
+1030(of)S
+1140(standard)S
+1480(stars)S
+1680(are)S
+1825(to)S
+1930(be)S
+2050(used)S
+2250(to)S
+2355(calibrate)S
+2700(the)S
+2845(\257uxes.)S
+3145(The)S
+3320(\257ux)S
+3495(calibration)S
+3915(values)S
+4180(are)S
+4325(determined)S
+4765(from)S
+4975(one)S
+5140(dimensional)S
+6227 V
+540(spectra)S
+829(of)S
+938(standard)S
+1277(stars)S
+1476(using)S
+1705(the)S
+9 B
+1849(onedspec)S
+9 R
+2233(package.)S
+2612(The)S
+2786(tools)S
+2995(to)S
+3099(extract)S
+3378(one)S
+3542(dimensional)S
+4016(aperture)S
+4345(spectra)S
+4634(from)S
+4843(long)S
+5037(slit)S
+5181(spectra)S
+5470(are)S
+6327 V
+9 B
+540(apde\256ne)S
+9 R
+892(and)S
+9 B
+1049(apextract)S
+9 R
+1414(.)S
+6527 V
+9 B
+540(APDEFINE)S
+1027(-)S
+1084(De\256ne)S
+1356(apertures)S
+1753(for)S
+1895(1D)S
+2032(aperture)S
+2394(extraction)S
+6727 V
+9 R
+790(Extraction)S
+1195(apertures)S
+1555(are)S
+1695(de\256ned)S
+1990(as)S
+2095(a)S
+2165(list)S
+2305(consisting)S
+2700(of)S
+2805(an)S
+2920(aperture)S
+3245(number)S
+3550(and)S
+3710(lower)S
+3945(and)S
+4105(upper)S
+4340(limits)S
+4575(for)S
+4710(the)S
+4850(aperture.)S
+5225(The)S
+5395(aper-)S
+6827 V
+540(ture)S
+716(limits)S
+957(are)S
+1103(speci\256ed)S
+1459(as)S
+1570(column)S
+1876(or)S
+1987(line)S
+2158(positions)S
+2519(which)S
+2775(need)S
+2981(not)S
+3132(be)S
+3253(integers.)S
+3624(The)S
+3800(user)S
+3985(may)S
+4175(create)S
+4425(a)S
+4500(\256le)S
+4650(containing)S
+5065(these)S
+5285(aperture)S
+6927 V
+540(de\256nitions)S
+947(with)S
+1134(an)S
+1246(editor)S
+1483(or)S
+1585(use)S
+1732(the)S
+1869(interactive)S
+2276(graphics)S
+2608(task)S
+9 B
+2780(apde\256ne)S
+9 R
+3105(.)S
+7127 V
+9 B
+790(Apde\256ne)S
+9 R
+1165(graphs)S
+1435(the)S
+1575(sum)S
+1755(of)S
+1860(a)S
+1930(number)S
+2235(of)S
+2340(lines)S
+2540(or)S
+2645(columns)S
+2980(\(depending)S
+3415(on)S
+3535(the)S
+3675(dispersion)S
+4075(axis\))S
+4280(and)S
+4441(allows)S
+4707(the)S
+4848(user)S
+5029(to)S
+5130(interactively)S
+7227 V
+540(de\256ne)S
+801(and)S
+972(adjust)S
+1228(apertures)S
+1599(either)S
+1845(with)S
+2046(the)S
+2197(cursor)S
+2463(or)S
+2579(using)S
+2815(explicit)S
+3125(commands.)S
+3605(If)S
+3705(an)S
+3830(aperture)S
+4165(de\256nition)S
+4550(\256le)S
+4705(exists)S
+4950(the)S
+5100(apertures)S
+5470(are)S
+7920 V
+EP
+%%Page: 7 7
+BP
+/slant 0 def
+/height 1.000000 def
+9 R
+9 R
+460 V
+2980(- 7 -)S
+820 V
+540(indicated)S
+897(on)S
+1014(the)S
+1151(graph)S
+1383(initially.)S
+1740(When)S
+1982(the)S
+2119(user)S
+2296(is)S
+2383(done)S
+2585(a)S
+2652(new)S
+2829(aperture)S
+3151(de\256nition)S
+3523(\256le)S
+3665(is)S
+3752(written.)S
+1020 V
+9 B
+540(APEXTRACT)S
+1127(-)S
+1184(Extract)S
+1501(1D)S
+1638(aperture)S
+2000(spectra)S
+1220 V
+9 R
+790(One)S
+967(dimensional)S
+1434(aperture)S
+1756(spectra)S
+2038(are)S
+2175(extracted)S
+2532(from)S
+2734(a)S
+2801(list)S
+2938(of)S
+3040(long)S
+3227(slit)S
+3364(images)S
+3646(using)S
+3868(an)S
+3980(aperture)S
+4302(de\256nition)S
+4674(\256le.)S
+4866(The)S
+5033(extraction)S
+5420(con-)S
+1320 V
+540(sists)S
+722(of)S
+824(the)S
+961(sum)S
+1138(of)S
+1240(the)S
+1377(pixels,)S
+1642(including)S
+2009(partial)S
+2266(pixels,)S
+2531(at)S
+2623(each)S
+2815(column)S
+3112(or)S
+3214(line)S
+3376(along)S
+3603(the)S
+3740(dispersion)S
+4137(axis)S
+4309(between)S
+4636(the)S
+4773(aperture)S
+5095(limits.)S
+1520 V
+790(More)S
+1021(sophisticated)S
+1527(algorithms)S
+1948(than)S
+2139(simple)S
+2415(strip)S
+2611(extraction)S
+3007(are)S
+3153(available)S
+3514(in)S
+3620(IRAF)S
+3861(and)S
+4027(will)S
+4203(soon)S
+4409(be)S
+4530(incorporated)S
+5021(in)S
+5127(the)S
+5273(long)S
+5470(slit)S
+1620 V
+540(package.)S
+920(The)S
+1095(other)S
+1315(extraction)S
+1710(tasks)S
+1925(trace)S
+2134(the)S
+2278(positions)S
+2637(of)S
+2746(features,)S
+3088(i.e.)S
+3233(the)S
+3377(aperture)S
+3706(is)S
+3800(not)S
+3949(\256xed)S
+4163(at)S
+4262(certain)S
+4541(columns)S
+4880(or)S
+4989(lines,)S
+5216(and)S
+5380(allow)S
+1720 V
+540(weighted)S
+899(extractions)S
+1323(and)S
+1482(detecting)S
+1841(and)S
+2000(removing)S
+2374(bad)S
+2533(pixels)S
+2777(such)S
+2971(as)S
+3075(cosmic)S
+3359(rays.)S
+3588(The)S
+3757(weighted)S
+4116(extractions)S
+4540(can)S
+4695(be)S
+4810(chosen)S
+5090(to)S
+5190(be)S
+5305(optimal)S
+1820 V
+540(in)S
+637(a)S
+704(statistical)S
+1071(sense.)S
+2120 V
+9 B
+2845(Conclusion)S
+2320 V
+9 R
+790(The)S
+962(IRAF)S
+1199(long)S
+1391(slit)S
+1533(reduction)S
+1905(tasks)S
+2117(have)S
+2319(been)S
+2521(used)S
+2719(at)S
+2817(NOAO)S
+3110(for)S
+3248(about)S
+3481(six)S
+3619(months)S
+3917(and)S
+4080(have)S
+4283(yielded)S
+4581(good)S
+4794(results.)S
+5112(The)S
+5285(package)S
+2420 V
+540(does)S
+736(not)S
+882(contain)S
+1178(speci\256c)S
+1484(analysis)S
+1805(tasks.)S
+2065(Some)S
+2300(analysis)S
+2620(task)S
+2795(will)S
+2965(be)S
+3080(added)S
+3325(in)S
+3425(time.)S
+3665(The)S
+3835(package)S
+4160(is)S
+4250(part)S
+4420(of)S
+4525(the)S
+4665(software)S
+5005(distributed)S
+5420(with)S
+2520 V
+540(release)S
+817(of)S
+919(the)S
+1056(IRAF.)S
+1338(The)S
+1505(author)S
+1762(of)S
+1864(this)S
+2021(paper)S
+2248(wrote)S
+2480(and)S
+2637(supports)S
+2969(the)S
+3106(tasks)S
+3313(described)S
+3685(here.)S
+3917(Any)S
+4099(comments)S
+4496(are)S
+4633(welcome.)S
+3220 V
+9 B
+540(Captions)S
+912(for)S
+1054(Figures:)S
+3420 V
+9 R
+540(Figure)S
+810(1.)S
+940(Ratio)S
+1170(of)S
+1280(average)S
+1595(quartz)S
+1855(spectrum)S
+2221(to)S
+2327(\256t)S
+2438(of)S
+2549(a)S
+2625(20)S
+2751(piece)S
+2977(cubic)S
+3208(spline)S
+3459(for)S
+3520 V
+540(determination)S
+1067(of)S
+1169(response)S
+1511(correction)S
+1903(using)S
+9 B
+2125(response)S
+9 R
+2460(.)S
+3720 V
+540(Figure)S
+802(2.)S
+924(Fit)S
+1051(of)S
+1153(4)S
+1225(piece)S
+1442(cubic)S
+1664(spline)S
+1906(to)S
+2003(the)S
+2140(slit)S
+2277(pro\256le)S
+2539(from)S
+2741(the)S
+2878(average)S
+3185(of)S
+3287(the)S
+3424(\256rst)S
+3820 V
+540(150)S
+702(lines)S
+899(in)S
+996(a)S
+1063(response)S
+1405(image)S
+1652(using)S
+9 B
+1874(illumination)S
+9 R
+2344(.)S
+4020 V
+540(Figure)S
+811(3.)S
+942(Identi\256cation)S
+1458(of)S
+1569(emission)S
+1925(lines)S
+2131(from)S
+2342(the)S
+2488(central)S
+2769(column)S
+3075(of)S
+3187(a)S
+3264(Helium-)S
+4120 V
+540(Neon-Argon)S
+1022(spectrum)S
+1379(using)S
+1601(task)S
+9 B
+1773(identify)S
+9 R
+2068(.)S
+4320 V
+540(Figure)S
+824(4.)S
+968(Sawtooth)S
+1357(convolution)S
+1836(function)S
+2185(of)S
+2309(width)S
+9 I
+2563(fwidth)S
+9 R
+2837(used)S
+3051(in)S
+3170(the)S
+3329(pro\256le)S
+4420 V
+540(centering)S
+902(algorithm.)S
+4620 V
+540(Figure)S
+814(5.)S
+948(Graph)S
+1212(of)S
+1326(stellar)S
+1585(object)S
+1844(positions)S
+2208(identi\256ed)S
+2587(with)S
+9 B
+2786(identify)S
+9 R
+3081(,)S
+3144(traced)S
+3404(with)S
+4720 V
+9 B
+540(reidentify)S
+9 R
+915(,)S
+965(and)S
+1122(graphed)S
+1439(by)S
+9 B
+1556(\256tcoords)S
+9 R
+1918(showing)S
+2250(the)S
+2387(spectrograph)S
+2879(distortions.)S
+4920 V
+540(Figure)S
+806(6.)S
+932(Residuals)S
+1313(of)S
+1419(the)S
+1560(\256t)S
+1666(of)S
+1772(a)S
+1844(two)S
+2011(dimensional)S
+2483(6th)S
+2630(order)S
+2852(Chebyshev)S
+3284(polyno-)S
+5020 V
+540(mial)S
+727(to)S
+824(the)S
+961(data)S
+1138(of)S
+1240(\256gure)S
+1477(5)S
+1549(using)S
+9 B
+1771(\256tcoords)S
+9 R
+2106(.)S
+5220 V
+540(Figure)S
+806(7.)S
+932(Residuals)S
+1313(of)S
+1419(the)S
+1560(\256t)S
+1666(of)S
+1772(a)S
+1844(two)S
+2011(dimensional)S
+2483(6th)S
+2630(order)S
+2852(Chebyshev)S
+3284(polyno-)S
+5320 V
+540(mial)S
+727(to)S
+824(the)S
+961(image)S
+1208(positions)S
+1560(of)S
+1662(wavelength)S
+2104(features)S
+2416(using)S
+9 B
+2638(\256tcoords)S
+9 R
+2973(.)S
+5520 V
+540(Figure)S
+814(8.)S
+948(Constant)S
+1307(background)S
+1771(\256t)S
+1885(to)S
+1994(a)S
+2073(line)S
+2247(of)S
+2361(an)S
+2485(object)S
+2744(spectrum)S
+3114(using)S
+9 B
+3349(back-)S
+5620 V
+540(ground)S
+9 R
+820(.)S
+903(The)S
+1076(marks)S
+1329(at)S
+1427(the)S
+1570(bottom)S
+1858(of)S
+1966(the)S
+2109(graph)S
+2347(indicate)S
+2664(the)S
+2806(set)S
+2938(of)S
+3045(points)S
+3297(used)S
+3494(in)S
+5720 V
+540(the)S
+677(\256t.)S
+7920 V
+EP
+%%Trailer
+%%DocumentFonts: Times-Roman Times-Bold Times-Italic Symbol
+%%Pages: 7

@@ -1,0 +1,336 @@
+
+                   TABLE OF CONTENTS FOR IRAF NEWSLETTERS
+
+
+                     IRAF Newsletter Number 1, June 1986
+
+INTRODUCTION................................................................1
+IRAF PROJECT STATUS AND ACTIVITIES FOR 1986.................................2
+HOW TO GET THE NEW RELEASE..................................................5
+IRAF PERFORMANCE EVALUATION REPORTS.........................................5
+NOTES FROM THE VMS SYSTEM MANAGER'S PORTFOLIO...............................6
+NOTES AND EXPERIENCES INSTALLING IRAF V2.2..................................7
+SUMMARY OF REVISIONS IN IRAF VERSION 2.3....................................11
+
+
+                    IRAF Newsletter Number 2, September 1987
+
+IRAF STATUS AND PLANS - FALL 1987...........................................1
+NEW NEWSLETTER POLICY.......................................................5
+PUBLIC RELEASE OF IRAF VERSION 2.5..........................................5
+SUMMARY OF REVISIONS IN IRAF VERSION 2.5....................................6
+SITE SUPPORT AND THE IRAF HOTLINE...........................................8
+DENSITY TO INTENSITY CALIBRATION PACKAGE....................................8
+THE PHASE DISPERSION MINIMIZATION PROGRAM...................................9
+UPDATE ON NEW IRAF PACKAGES - CCDRED AND APPHOT.............................10
+FITS UPDATE.................................................................10
+SIMPLE CL SCRIPTS...........................................................11
+IRAF MAGNETIC TAPE I/O NEWS.................................................11
+MODIFICATIONS TO ONEDSPEC CALIBRATION FILES.................................12
+CUSTOMIZING HOST-SYSTEM AND IRAF LOGIN FILES................................14
+KEYWORD CHANGES TO NOAO FITS TAPES..........................................16
+NOTES ON GRAPHICS DEVICES...................................................17
+NOTE ABOUT VMS SHARED LIBRARIES.............................................19
+IRAF NETWORKING WITH DECNET.................................................20
+IRAF BENCHMARKS.............................................................20
+NEW IRAF LOGO...............................................................20
+ELECTRONIC COMMUNICATION WITH THE IRAF PROJECT..............................21
+
+
+                    IRAF Newsletter Number 3, February 1988
+
+SYSTEM NEWS.................................................................1
+UPDATE ON THE APPHOT PACKAGE................................................2
+UPDATE ON THE CCDRED PACKAGE................................................3
+A USER'S GUIDE TO SCRIPT WRITING NOW AVAILABLE..............................3
+UNDERSTANDING THE NULL STRING...............................................3
+NEW TASK IMCOMBINE ADDED TO IMAGES PACKAGE..................................4
+PROTOTYPE CODE FOR IR IMAGES................................................4
+MODIFICATIONS AND ADDITIONS TO THE ASTUTIL PACKAGE..........................5
+SHIFTING OF DISPERSION SOLUTIONS NOW AVAILABLE..............................6
+MODIFICATIONS TO THE APEXTRACT PACKAGE......................................7
+NEW ECHELLE PACKAGE (IN PROGRESS)...........................................8
+CURRENT PLOTTER DEVICES SUPPORTED BY IRAF...................................9
+OVERSEAS IRAF SHIPMENTS.....................................................10
+A REQUEST TO SITE MANAGERS..................................................10
+INVITATION TO WORK WITH THE IRAF PROGRAMMING GROUP..........................10
+
+
+                      IRAF Newsletter Number 4, June 1988
+
+SYSTEM NEWS.................................................................1
+SUMMARY OF APPLICATIONS SOFTWARE DEVELOPMENTS...............................3
+IRAF AWARDED FUNDS BY NASA HEADQUARTERS.....................................4
+IRAF AT THE STEWARD MIRROR LAB..............................................4
+COMINGS AND GOINGS WITHIN THE IRAF GROUP....................................5
+INVITATION TO WORK WITH THE IRAF PROGRAMMING GROUP..........................5
+TWO NEW IMAGE DISPLAY UTILITIES FOR IRAF....................................6
+IMPROVED APERTURE SUMMING AND BACKGROUND SUBTRACTION IN APEXTRACT...........6
+SUN3/IRAF [FLOATING DIVIDE BY ZERO] ERROR...................................7
+IMPROVED DEBLENDING WITH SPLOT..............................................8
+DENSITY TO INTENSITY (DTOI) PACKAGE MODIFICATIONS...........................8
+MODIFICATIONS TO VTEL.......................................................9
+DECOMP IN IRAF..............................................................9
+LINEAR COORDINATES IN SPLOT AND IDENTIFY....................................10
+IMAGE INTERPOLATION IN IRAF.................................................11
+SKY SUBTRACTION IN LOW-DISPERSION LONG-SLIT SPECTRA.........................11
+CURRENT IRAF E-MAIL ADDRESSES...............................................12
+
+
+                   IRAF Newsletter Number 5, October 1988
+
+SYSTEM NEWS.................................................................1
+INVITATION TO WORK WITH THE IRAF PROGRAMMING GROUP..........................2
+NOTE TO POTENTIAL SUN386i/IRAF USERS........................................2
+AN INTEGRATED DATA ACQUISITION/REDUCTION ENVIRONMENT FOR CFHT...............3
+IRAF IMAGE DISPLAY ON THE VMS VAXSTATION....................................5
+APPHOT NEWS.................................................................6
+NEW IMAGE REGISTRATION AND MOSAIC PACKAGE...................................7
+IMAGE MATCHING IN IRAF......................................................8
+VOLUME VISUALIZATION IN IRAF................................................9
+ANNOUNCING A NEW VERSION OF FOCAS...........................................10
+SUMMARY OF IRAF USER QUESTIONNAIRE #1.......................................12
+INTERESTING IRAF STATISTICS.................................................17
+IRAF ACKNOWLEDGMENT.........................................................18
+CURRENT IRAF E-MAIL ADDRESSES...............................................19
+
+
+                  IRAF Newsletter Number 6, February 1989
+
+System News.................................................................1
+IRAF at the USC Psychology Department.......................................2
+Unix/IRAF Image File Protection (the `..' File).............................4
+Calling IMFORT Procedures from C Programs...................................5
+HEDIT Operations............................................................6
+APSCATTER: A New Task for Subtracting Scattered Light.......................7
+Support for MULTISPEC Format................................................8
+Radial Velocity Analysis Package Under Development..........................9
+New Spectrum Plotting Task..................................................10
+Volume Rendering Update, Video Recording....................................10
+FITS Standards Efforts and IRAF.............................................11
+First FOCAS Users Meeting...................................................11
+IRAF Copyright and Licensing Agreement......................................12
+IRAF Version 2.8 in Preparation for Release.................................12
+Current IRAF E-mail Addresses...............................................13
+
+
+                   IRAF Newsletter Number 7, June 1989
+
+System News.................................................................1
+Things to Watch Out For with IRAF V2.8......................................1
+Job Announcement............................................................3
+Beta Release of Convex/IRAF V2.8 Now Available..............................3
+IRAF Ported to the DECstation 3100..........................................4
+Status Report on the Apollo/IRAF Port.......................................4
+IRAF on the SPARCstation....................................................5
+IRAF Version 2.8 Distribution in Progress...................................5
+IRAF Supported SGI Graphics Devices.........................................5
+Capital Letters in VMS/IRAF V2.8............................................6
+A New Task Called TVMARK....................................................7
+IMEXAMINE - A New Task for Examining Images.................................7
+IMEDIT: New Image Examination and Pixel Editing Task........................8
+Specifying Pixel Directories with IMFORT....................................9
+APPHOT Update...............................................................10
+RV Package Available for Testing............................................10
+The IRAF DAOPHOT Package....................................................11
+IUE Spectra in IRAF.........................................................11
+Image Display on VMS Workstations...........................................12
+How to Make Portrait Plots..................................................14
+Using and Customizing the EPARAM and EHISTORY Editors.......................15
+Password Prompts and IRAF Networking........................................16
+The Process Cache...........................................................17
+Don't Load Packages in Scripts!.............................................17
+FOCAS News..................................................................18
+Add-on Software Available for IRAF Version 2.8..............................20
+Erratum.....................................................................20
+IRAF Version 2.8 Revisions Summary..........................................21
+
+
+                   IRAF Newsletter Number 8, October 1989
+
+System News.................................................................1
+Things to Watch Out For with IRAF V2.8......................................2
+IRAF Version 2.9 in Preparation.............................................3
+New IRAF Distribution Policy................................................3
+IRAF Users' Committee Report - 1989.........................................3
+Beta Release of SAOimage Now Available......................................5
+Steward Observatory Announces Local Tape Readers............................5
+Beta Release of DAOPHOT/IRAF Announced......................................5
+New Developments in the IRAF Reduction of Multiple Object Spectroscopy......6
+RV Package Available for Testing............................................6
+IRAF Demos Available for Distribution.......................................7
+APPHOT Update...............................................................7
+First Version of ARTDATA in Progress........................................8
+Using the Image Section Notation............................................8
+FOCAS News..................................................................9
+Add-on Software Available for IRAF Version 2.8..............................10
+
+
+                IRAF Newsletter Number 9, February/June 1990
+
+System News.................................................................1
+IRAF Version 2.9 Now Available..............................................2
+Plans for an IRAF Conference in 1991........................................3
+The New World Coordinate System (MWCS) Interface............................3
+Support for IEEE Floating Point Added to FITS...............................4
+The IRAF Artificial Data Package, ARTDATA...................................4
+APPHOT Update...............................................................6
+IRRED Package Notes.........................................................6
+New Calibration Data Files..................................................7
+Equivalent Widths in IRAF SPLOT.............................................7
+Status of the NEWIMRED Packages.............................................8
+Escaping to the OS and More.................................................9
+News from Steward Observatory...............................................10
+IRAF on the Solbourne.......................................................10
+FOCAS Update................................................................11
+Summary of New Documentation Available......................................13
+Add-on Software Available for IRAF Versions 2.8/2.9.........................14
+IRAF Version 2.9 Revisions Summary..........................................16
+
+
+                   IRAF Newsletter Number 10, October 1990
+
+System News.................................................................1
+Release of IRAF Version 2.9.1...............................................3
+Changes to the ARTDATA Package: Version 1.1.................................4
+CCDRED News.................................................................5
+IMRED Package Revisions Summary: IRAF Version 2.10..........................5
+ONEDSPEC Package Revisions Summary: IRAF Version 2.10.......................6
+APEXTRACT Package Revisions Summary: IRAF Version 2.10......................7
+Radial Velocity Analysis Package Being Revised..............................8
+Photometry Package, BASPHOTC, Available from Hawaii.........................9
+Problems with Long Image Headers............................................10
+Getting Help in IRAF........................................................11
+Parameter Sets or Psets.....................................................11
+Saving IRAF Plots in PostScript Files.......................................13
+Using PostScript Fonts with IRAF Plots......................................14
+FOCAS News #4...............................................................16
+Astronomical Calculator and Calendar Programs...............................17
+IRAF Documentation..........................................................17
+Add-on Software Available for IRAF Versions 2.8/2.9/2.9.1...................18
+
+
+                   IRAF Newsletter Number 11, April 1991
+
+System News.................................................................1
+Update on Software Conference...............................................2
+Missing This Issue of the IRAF Newsletter?..................................2
+IRAF Acknowledgment.........................................................2
+Modifying the Pixel Pathname................................................3
+Setting Up Multiple Fifo Pipes for SAOimage.................................3
+New Radial Velocity Package Availability....................................5
+New ASTUTIL Task for Computing Grating Parameters...........................5
+New Echelle Software........................................................6
+FOCAS News #5...............................................................6
+Add-on Software Available for IRAF Versions 2.8/2.9/2.9.1...................7
+
+
+                    IRAF Newsletter Number 12, July 1992
+
+System News.................................................................1
+Retiring IRAF Support for Certain Platforms.................................2
+1992 Software Conference Update.............................................2
+Multiobject SPP.............................................................3
+World Coordinate System Support in IRAF V2.10...............................5
+Improved CL Scanning and Printing Facilities................................7
+EPS Output Files in IRAF Version 2.10.......................................8
+Major Changes to WFITS in IRAF V2.10........................................8
+A New Version of IMCOMBINE..................................................9
+Coordinate Overlay Task WCSLAB Installed in TV Package......................11
+New Task HFIX Announced.....................................................12
+Changes to the ICFIT Routine................................................12
+New DIGIPHOT Packages in IRAF V2.10.........................................13
+APPHOT Package Update.......................................................13
+DAOPHOT Package Update......................................................14
+PHOTCAL Package Added to DIGIPHOT...........................................15
+New OBSERVATORY Database....................................................16
+CCDRED in V2.10.............................................................16
+Radial Velocity Package Update..............................................17
+The Version 2.10 NOAO Spectroscopy Packages.................................17
+What's New in SPLOT.........................................................19
+Changes to the ONEDSTDS Directory in IRAF Version 2.10......................21
+Interfacing an HP LaserJet Printer to IRAF..................................21
+New MEM0 Add-on Package.....................................................23
+IRAF Tools for Accessing the ADC CDROM......................................24
+IRAF Documentation..........................................................26
+Add-on Software Available for IRAF Versions 2.8/2.9/2.10....................27
+Erratum.....................................................................28
+IRAF Version 2.10 Revisions Summary (not included in electronic copy)
+
+
+                IRAF Newsletter Number 13, December 1994 
+
+System Update...............................................................1
+IRAF Version 2.10.3BETA Release.............................................2
+ADASS Conference Update.....................................................3
+IRAF in Japan...............................................................4
+New Network Device Driver...................................................5
+X11 Support Package X11IRAF.................................................6
+Hints for Setting Up and Using XGTERM and XIMTOOL...........................7
+IRAF Network Information Services...........................................11
+Frequently Asked Questions List Available...................................13
+Reorganization of the Network Archive.......................................14
+Tips and Tools for Learning IRAF............................................15
+The IRAF External Package GRASP.............................................15
+A New Package for Nebular Analysis..........................................17
+FORTRAN Program and IRAF Script Produce Fast Scientific Output..............19
+Using EVVEXPR to Process Vector Expressions.................................20
+New Image Expression Evaluation Task........................................21
+New Image Registration Task.................................................22
+Fitting a Surface with SURFIT...............................................23
+Editing and Modifying Headers with ASTHEDIT.................................23
+Revisions to IMCOMBINE for V2.10.2..........................................25
+An Enhancement to COSMICRAYS................................................26
+CCDTIME---Predicting Exposure Times.........................................26
+New Radial Velocity Tasks, RVIDLINES and RVREIDLINES........................27
+New Conversion Tools for 1D Image Spectra...................................27
+SFLIP---Flip Data or Dispersion Coordinates in Spectra......................28
+APPHOT Package Update.......................................................28
+New Version of the DAOPHOT Crowded-Field Photometry Package Released........30
+PHOTCAL Package Update......................................................33
+PTOOLS Package Update.......................................................34
+Aperture Correction Tasks Installed in the PHOTCAL Package..................34
+Measuring Stellar Image Widths for Seeing and Focus Characterization........35
+Image Conversions Using IMPORT/EXPORT.......................................36
+IRAF Documentation..........................................................37
+Layered Software Available for IRAF Versions 2.8/2.9/2.10...................38
+Brief Summary of Application Software Modifications in IRAF V2.10.3BETA.....40
+
+
+                IRAF Newsletter Number 14, April 1998
+
+IRAF Update..................................................................1 
+IRAF Project Awarded NASA Grants.............................................2 
+The Online IRAF News.........................................................3 
+IRAF Archive Mirror Sites....................................................4 
+IRAF V2.11 Supported Platforms...............................................5 
+PC-IRAF Project Status.......................................................5
+Combined Distributions for Sun/IRAF and for PC-IRAF..........................6
+STIS and NICMOS Calibration Pipelines........................................7 
+PROS Report.................................................................10 
+The NOAO Mosaic Data Handling System........................................10 
+The SAO R&D Software Suite..................................................12 
+X11IRAF Project Developments................................................13 
+Client Display Library--CDL.................................................14 
+IRAF FITS Image Kernel......................................................15 
+New IRAF Image Format.......................................................16 
+IMFORT Changes in V2.11.....................................................17 
+The IMEXTN and IMTYPE Environment Variables.................................17 
+New Fonts for Hardcopy Graphics.............................................19 
+IMAGES Package Reorganized..................................................20 
+New Image Astrometry Tasks..................................................21 
+New Coordinate Transformation Tasks.........................................22 
+New Image Registration Tasks................................................24 
+Pixel Masks in DISPLAY, FIXPIX, and CCDPROC.................................24 
+Changes to the RFITS and WFITS Tasks........................................25 
+Converting IRAF images with IMPORT/EXPORT...................................27 
+DIGIPHOT Package Update.....................................................27 
+Update on the NOAO Spectroscopy Packages....................................28 
+Iterative Correction of Spectra: TELLURIC and SKYTWEAK......................29 
+IMTYPE and the IMRED Spectral Reductions Tasks..............................30 
+Hints on Reading and Writing FITS Files.....................................31 
+The TAPECAP File Explained..................................................32 
+Measuring Coordinates with the FINDER Package...............................36 
+The Mosaic Data Reduction Package--MSCRED...................................37 
+Archiving Data with "Save The Bits".........................................38 
+Layered Software Available for IRAF Versions 2.10 and 2.11..................40

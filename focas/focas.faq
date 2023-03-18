@@ -1,0 +1,298 @@
+This first FAQ file was put together quickly and is not exhaustive.  Hopeful
+this will be refined and additional questions added.  Frank Valdes
+
+
+		FREQUENTLY ASKED QUESTIONS ABOUT FOCAS
+
+Is there a newsletter or other source of FOCAS information?
+
+    There is no newsletter or e-mail distribution devoted to FOCAS.  However,
+    occasional articles may appear in the IRAF Newsletter.  Also discussion
+    and user questions of general interested will be posted in the
+    newsgroup adass.iraf.applications.  This newgroup is part of the
+    ADASS newsgroups which individuals or institutions must subscribe
+    to.  The newsgroups can also be obtained by an e-mail listserver.
+    For additional information contact iraf@noao.edu or look at the
+    IRAF WWW Homepage, http://iraf.noao.edu/.
+
+Why does REVIEW display an all black/white image?
+
+    Unlike some systems like IRAF, FOCAS does not have an algorithm to
+    automatically choose a data to 8-bit mapping; i.e.  the linear
+    transformation which maps a range of the data to the 200 values used in
+    SAOimage.  What FOCAS does is require the user to set the desired data
+    range in the image header.  Rather than doing this directly it is done
+    with FDISPLAY (IRAF alias for the FOCAS DISPLAY program).  Basically
+    you must run FDISPLAY at least once on each image and respond with a
+    data range when you are queried.  This might be iterated if you don't
+    know the range.  Note that even if the image is display all black or
+    all white you can then use the 'c' command in FDISPLAY to read back a
+    few pixel values to figure out the sky level.  You can repeatedly load
+    the image in FDISPLAY until you get a reasonable image.  REVIEW will
+    then automatically load the display with these values.
+
+FDISPLAY crashes after I type the display range.  Why?
+
+    The fact that FDISPLAY crashes is due to not reacting nicely to an
+    error.  The error causing this is likely to be that FOCAS cannot
+    store the display range (keywords DSCALE and DZERO) in the image
+    header.  The two possible reasons for this are that the image
+    does not have write permission or the header contains too many
+    keywords.  The latter problem is due to to the IMFORT interface
+    used by FOCAS to access IRAF images having a built-in limit.
+
+Why does the 'h' key in REVIEW hang the image display?  Why don't the
+isophotes appear in the SAOimage window?
+
+    This is a very vexing problem which I have not been able to resolve over
+    the years.  It can be very bad and makes the 'h' key virtually unusable
+    with SAOimage.  While it is much rarer with IMTOOL it does happen there.
+    As far as I've been able to deduce it has something to do with the pipes
+    used to communicate between a client application (REVIEW) and the display
+    server.  The thing about FOCAS is that it draws the isophotes by sending
+    every pixel down the pipe as a separate "iis" packet (the communication
+    protocol used by SAOimage/IMTOOL).  This produces a very high rate of data
+    passing down the pipes.  Something in the transfer gets corrupted and sync
+    is lost between the client and the server.  (This rate issue means that
+    sometimes things work better when the link, such as displaying to a remote
+    node with IRAF kernel serving, is slowed down).  Sometimes the sync will
+    restore which appears as a gap in the objects drawn.  However often it
+    hangs SAOimage for reasons I have not tracked down.  IRAF at one point had
+    this problem but it has gone away (I've not heard of a problem in years).
+    This is probably because all IRAF communications are in much bigger
+    blocks. Recently I tried an experiment with a new approach which almost
+    works.
+
+    There is a related problem that the isophotes only appear in
+    the little field window and you must cause an event in SAOimage to
+    update the big window.
+
+Why don't the catalog object coordinates or the coordinates reported by
+the display when loaded by FOCAS agree with IRAF? 
+
+    FOCAS uses zero indexing while IRAF uses one indexing.  Thus the first
+    pixel of an image is (0,0) in FOCAS and (1,1) in IRAF.
+
+Why is the image displayed upside down?  Why is the display not centered?
+
+    Unlike IRAF, FOCAS displays images starting at the image display
+    (0,0) coordinate (FOCAS is zero indexed as in C and not 1 indexed
+    as in IRAF).  SAOimage follows the IIS convention (common to many
+    image displays) that (0,0) is the upper left corner.  IRAF usually
+    centers the image and puts the first pixel in the lower left but
+    FOCAS will put the image in the upper right corner with increasing
+    lines going down.  In other words the convention is upside down from
+    that of IRAF.
+
+Why do I get an error about buffer overflow when running MATCH?
+
+    Matching is done using the RA/DEC fields in the catalog (the names are
+    misleading as they are usually transformed pixel coordinates).  These
+    fields are not automatically filled in in versions before about 1995.
+    They are set by running SETCAT again and answering yes to the section
+    about transformation coordinates.  If you fail to do this then all
+    objects will have coordinates (0,0) and the program then overflows its
+    own memory allocation (which is fixed and not actually dependent on the
+    machine memory).  So you must set up the coordinate transformation.
+    The usual technique is to run SETCAT on one catalog which is to be the
+    coordinate reference and answer no to all question so that ultimately
+    the default linear transformation is performed; x,y --> RA/DEC.  For
+    any other catalogs one either computes and enters a transformation or
+    uses reference points.  The reference point approach is done using
+    REVIEW and marking a few stars with the 'r' key and entering the
+    coordinates in the final system.  This is quite easy with a display
+    with multiple frame buffers and REVIEW (which can load multiple
+    catalogs and let you switch between them).  However SAOimage is
+    deficient in this capablity so it is not so simple.  You might need to
+    REVIEW the coordinate reference image and select and write down the x,y
+    coordinates of some stars and then run the other fields individually to
+    set the reference coordinates for the same objects.  However you do it,
+    in SETCAT you would then answer yes to using the reference stars and it
+    will find them in the catalog and compute the transformation between
+    x,y and RA,DEC and then apply that transform to all objects in the
+    catalog.  The transformation will also be stored in the catalog header
+    which can be viewed with INFO.
+
+Is there an up-to-date FOCAS User's Guide or manual?
+
+    A FOCAS User's Guide is available in iraf/docs/focas/focasguide.ps.Z.
+    The FOCAS manual was written in 1982 and is not currently available
+    electronically.  It may be requested by mail to iraf@noao.edu or
+    jbarnes@noao.edu.  The manual descriptions may be out-of-date for
+    some programs.  The most up-to-date information about a program
+    is the short usage information produced by specifying '^' as the
+    first and only argument to a FOCAS program.  There are some
+    documents in the FTP archive at iraf.noao.edu in directory
+    iraf/docs/focas.
+
+Why do I get an error about no sky pixels?
+
+    A procedural change about 1984 was to separate the sky evaluation
+    from the other photometry and astrometry evaluation.  One must
+    run the program SKY before EVALUATE.
+
+I get the loader error "ld: Undefined symbol _MAIN_"?
+
+    An undefined "_MAIN_" is usually caused by a known bug in the Sun 1.4
+    compiler under (at least) SunOS 4.1.3.  The bug seems to have been
+    introduced by installing the ld1.1.38 patch (?) and is seen when loading
+    mixed language modules as when building FOCAS.  Whatever, it has an easy
+    fix, you need to install a Sun patch ID #100332-06,  It is available on the
+    4.1.3 CD-ROM.  If you don't want to bother with the patch, a workaround is
+    to load statically rather than dynamically with the Sun shared libraries.
+    This is done by adding the flag -/Bstatic to the definition of CC in the
+    FOCAS Makefile.  That should fix the problem; let us know if not.
+
+How can I increase the detection filter size?
+
+    The following changes allow specifying a larger detection filter.  The
+    filter size is part of the catalog header data structure as defined by
+    focas1.h.  So any FOCAS program which reads a catalog produced with these
+    changes will be in incorrect unless recompiled even if the filter is not
+    used by the program.  So all FOCAS tasks should be recompiled and linked
+    after making these changes.
+
+    1.  Make the following changes in focas1.h.  Note that the LFWRD and
+    LBACK definitions are moved to after the maximum filter size and defined
+    in terms of the filter size.
+
+    #define NXFLT       25          /* Maximum dimension of detection filter*/
+    #define NYFLT       25
+    #define LFWRD       NYFLT       /* Incore scan lines forward of current */
+    #define LBACK       NYFLT       /* Incore scan lines back of current    */
+
+    2. In detect.c make the following changes:
+
+    < PIXEL * lnptrs[9];
+    ---
+    > PIXEL *lnptrs[NYFLT];
+
+    (Occurs twice)
+    <       if ((x % SKY) == xfltsz) {
+    ---
+    >       if (((x-xfltsz) % SKY) == 0) {
+
+    <               yp += 5;
+    ---
+    >               yp += sp.fy;
+
+    3. In initsky.c make the following changes:
+
+    < PIXEL * lnptrs[9];
+    ---
+    > PIXEL *lnptrs[NYFLT];
+
+    (Occurs twice)
+    <       if ((j % SKY) == xfltsz) {
+    ---
+    >       if (((j-xfltsz) % SKY) == 0) {
+
+I get the FOCAS commands to appear in IRAF but when I try to run them I
+get "command not found"?
+
+    Because the FOCAS commands are foreign to IRAF they are run by passing
+    the command to the host.  Thus for these programs to be found the FOCAS
+    bin directory must be in the user's path.  Note also the commands are
+    executed from a subshell so if PATH is redefined in .cshrc then it will
+    continue to fail.  A final note is that on some systems there is a
+    system command "filter" which conflicts with a commonly used FOCAS
+    command of that name causing mysterious behavior.  If this is the case
+    the PATH should be set up so FOCAS comes first.
+
+I get an error when running AUTOPSF: "rdcathdr: Unknown catalog type xx".
+
+    Check that the task "filter" is the one from FOCAS.  Depending on how
+    the UNIX path is defined it is possible to get a different program.  A
+    way to check this is with the Unix "which" command.  Type "which
+    filter" and see if the directory is the one for the FOCAS programs and
+    not some other directory.  The fix is simply to change your PATH to
+    make the FOCAS directory come first.  If this is not the problem let me
+    know.
+
+    Starting in 1996 the FOCAS "filter" command was renamed to "ffilter".
+    All the scripts then use "ffilter".
+
+
+How do I use the isophotes from one catalog to do photometry on another image?
+
+    1. Copy the catalog to use for the master isophotes (might be a catalog
+    based on the sum of several).  You do not need to copy the area file,
+    two catalogs can reference the same area file and it would only be
+    an error if a program is run that modifies this file.
+
+    2. Use SETCAT to change the image that the catalog points too.  You can
+    force SETCAT to use the original area file.  You can change the zero
+    point if desired.  DO NOT SET THE SKY SIGMA TO ZERO!!!!  The sky
+    sigma is only computed by DETECT and a zero value for other programs
+    will cause the programs to hang.
+
+    3. Run SKY and EVALUATE on the new catalog.
+
+    4. The total magnitudes of objects are based on a scheme of apportioning
+    the parent light as done by SPLITS.  In order to update the total
+    magnitudes for the split objects in the new catalog you must run the
+    program TOTMAG.  This reevaluates the total magnitudes like SPLITS.
+
+
+Can FOCAS make use of the socket connections in XImtool for image display?
+
+    Yes, as long as it was compiled against a V2.10.3 or later system.
+    Users may be familiar with setting the FOCASPIPE environment variable to 
+    define a personal fifo pipe to be used instead of the default /dev/imt* 
+    pipes, internally this pipe specification is turned into the same 
+    "fifo:<input_fifo>:<output_fifo>" syntax used when defining the IMTDEV 
+    environment variable.  This means that if FOCASPIPE is an empty string, 
+    i.e. it's defined simply with
+
+	    % setenv FOCASPIPE
+
+    the display code uses the same heuristic to determine the connection type
+    (looks for IMTDEV specification and if not found attempts to use the
+    default unix domain socket) as a normal IRAF display command, so with   
+    this definition and using XImtool as a display server there is no need
+    to use private fifos with FOCAS.  This also means that in this case IMTDEV
+    can still be used to define the connection type, what's not obvious is 
+    that it's also possible to set FOCASPIPE as you would IMTDEV to specify
+    the protocol.  For example, the following are equivalent to display to 
+    a remote XImtool running on node foo.bar.edu:
+
+	    % setenv IMTDEV inet:foo.bar.edu
+	    % setenv FOCASPIPE
+	    % fdisplay
+    or
+	    % setenv FOCASPIPE inet:foo.bar.edu
+	    % fdisplay
+
+
+EVALUATE is hanging (never completing).
+
+    This occurs when IEEE special values get in the catalog.  The infinity
+    specal value is produced in EVALUATE when the sky sigma is zero.
+    This state is obtained when following the recipe for doing photometry
+    of different images with common isophotes and reseting the sky
+    sigma value to zero with SETCAT.  The solution is run SETCAT again
+    and reset the sigma value.
+
+CATLIST prints zero for some magnitudes but REVIEW shows a magnitude.
+
+    The catalog actually stores the instrumental luminosity; i.e. the
+    sum of the sky subtracted data values.  When CATLIST is asked to print
+    magnitudes it prints zero if the luminosity is negative (it is an error
+    to take the log of a negative number).  REVIEW prints magnitudes by
+    using the absolute value of the luminosity.  So REVIEW is giving a
+    misleading idea.  The original reason for this was that "dark" objects,
+    those detected below sky, would have "dark magnitudes".  I don't think
+    this is a very good idea any more and REVIEW should probably be
+    changed.  So, a zero value in CATLIST means a negative luminosity and
+    the REVIEW value is not physical.  This should only occur with the
+    faintest objects which are probably not real anyway.
+
+The FILTER command does not work and seems not to recognize the catalog.
+
+    In 1996 the name of the "filter" command was changed to "ffilter"
+    to avoid a common confusion with other system filter commands.  You
+    should start using "ffilter" in place of "filter".  If you would
+    prefer to use "filter" then you can make a symbolic link in the
+    FOCAS bin directory mapping "filter" to "ffilter";
+
+	% ln -s ffilter filter

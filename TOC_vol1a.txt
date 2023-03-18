@@ -1,0 +1,43 @@
+
+                      IRAF User Handbook Volume 1A
+                            The IRAF System
+
+                           Table of Contents
+
+[The following documents are in IRAF User Handbook Volume 1A.  Those
+documents marked with an * can be found in the network archive as either
+compressed ASCII text (.txt.Z) or compressed PostScript (.ps.Z) format
+documents. The names of the files, as they exist in the archive, are given
+in ().]
+
+
+System Overview
+ * The IRAF Data Reduction and Analysis System, by Doug Tody, April 1986.
+   (iraf.ps.Z)
+
+CL User's Guide
+ * A User's Introduction to the IRAF Command Language Version 2.3, by Peter
+   Shames and Doug Tody, revised August 1986. (cluser.ps.Z)
+
+IRAF Test Procedures
+ * Preliminary Test Procedure for IRAF, Part 1.  Image and dataio tests, by
+   Jeannette Barnes, revised May 26, 1989. (testproc.ps.Z)
+
+IRAF Directory Trees
+ * Sun/IRAF directory structure - Version 2.8 (d28sun.ps.Z)
+ * VMS/IRAF directory structure - Version 2.8 (d28vms.ps.Z)
+
+IMFORT
+ * Specifying Pixel Directories with IMFORT, by Doug Tody, June 26, 1989.
+   (imfortmem.ps.Z)
+
+ * A User's Guide to Fortran Programming in IRAF, The IMFORT Interface, by
+   Doug Tody, revised April 1987. (imfort.ps.Z)
+
+NOTES
+   The IIS Image Display, by Richard Wolff, February 1986.
+
+
+
+Revised IRAF Version 2.8
+

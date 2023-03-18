@@ -1,0 +1,456 @@
+                               The NOAO Packages
+                               IRAF Version 2.8
+
+
+
+noao.astutil:
+	airmass - Compute the airmass at a given elevation above the horizon
+       asttimes - Compute UT, Julian day, epoch, and siderial time
+	ccdtime	- Compute time required to observe star of given magnitude
+       galactic - Convert ra, dec to galactic coordinates
+    observatory - Print observatory parameters
+	    pdm - Find periods in light curves by Phase Dispersion Minimization
+	precess - Precess a list of astronomical coordinates
+      rvcorrect - Compute radial velocity corrections
+     setairmass - Compute effective airmass and middle UT for an exposure
+
+
+noao.digiphot:
+         apphot - Aperture Photometry Package
+
+
+noao.digiphot.apphot:
+       apselect - Extract select fields from apphot output files
+	 center - Compute accurate centers for a list of objects
+     centerpars - Edit the centering parameters
+	daofind - Find stars in an image using the DAO algorithm
+       datapars - Edit the data dependent parameters
+	 fitpsf - Model the stellar psf with an analytic function
+         fitsky - Compute sky values in a list of annular or circular regions
+     fitskypars - Edit the sky fitting parameters
+	   phot - Measure magnitudes for a list of stars
+       photpars - Edit the photometry parameters
+       polymark - Create polygon lists for polyphot
+       polypars - Edit the polyphot parameters
+       polyphot - Measure magnitudes inside a list of polygonal regions
+	  qphot - Measure quick magnitudes for a list of stars
+        radprof - Compute the stellar radial profile of a list of stars
+	  wphot - Measure magnitudes for a list of stars with weighting
+
+
+noao.imred:
+	   bias - General bias subtraction tools
+	 ccdred - CCD reductions
+	  coude - Coude reductions
+	   dtoi - Density to Intensity reductions for photographic plates
+	echelle - Echelle spectra reductions
+        generic - Generic image reductions tools
+	   iids - KPNO IIDS spectral reductions
+	  irred - KPNO IR camera reductions
+	    irs - KPNO IRS spectral reductions
+	  msred - Reduction package for multiple spectra data
+    observatory - Print observatory parameters
+     setairmass - Set midtime airmass and universal time
+       specphot - Spectrophotometric reductions
+	   vtel - Solar vacuum telescope image reductions
+
+
+noao.imred.bias:
+        colbias - Fit and subtract an average column bias
+       linebias - Fit and subtract an average line bias
+
+
+noao.imred.ccdred:
+    badpiximage - Create a bad pixel mask image from a bad pixel file
+      ccdgroups - Group CCD images into image lists
+       ccdhedit - CCD image header editor
+        ccdlist - List CCD processing information
+        ccdproc - Process CCD images
+        ccdtest - CCD test and demonstration package
+        combine - Combine CCD images
+     cosmicrays - Detect and replace cosmic rays
+    darkcombine - Combine and process dark count images
+    flatcombine - Combine and process flat field images
+    mkfringecor - Make fringe correction images from sky images
+     mkillumcor - Make flat field illumination correction images
+    mkillumflat - Make illumination corrected flat fields
+       mkskycor - Make sky illumination correction images
+      mkskyflat - Make sky corrected flat field images
+  setinstrument - Set instrument parameters
+    zerocombine - Combine and process zero level images
+
+          ADDITIONAL HELP TOPICS
+    ccdgeometry - Discussion of CCD coordinate/geometry keywords
+         ccdred - CCD image reduction package
+       ccdtypes - Description of the CCD image types
+     flatfields - Discussion of CCD flat field calibrations
+          guide - Introductory guide to using the CCDRED package
+    instruments - Instrument specific data files
+        subsets - Description of CCD subsets
+
+
+noao.imred.ccdred.ccdtest:
+	   demo - Run a demonstration of the CCD reduction package
+	mkimage - Make or modify an image with simple values
+	observe - Create an artificial CCD observation
+     subsection - Create an artificial subsection CCD observation
+
+
+noao.imred.coude:
+      apdefault - Set the default aperture parameters
+         apedit - Edit apertures interactively
+	 apfind - Automatically find spectra and define apertures
+ 	   apio - Set the I/O parameters for the APEXTRACT tasks
+          apsum - Extract one dimensional aperture sums
+	aptrace - Trace positions of spectra
+
+          bplot - Batch plots of spectra
+        combine - Combine spectra having different wavelength ranges
+      continuum - Fit the continuum in spectra
+        dispcor - Dispersion correct spectra
+       identify - Identify features in spectrum for dispersion solution
+	  names - Generate a list of image names from a string
+          rebin - Rebin spectra to new dispersion parameters
+     refspectra - Assign wavelength reference spectra to other spectra
+     reidentify - Automatically identify features in spectra
+	setdisp - Set dispersion image header parameters
+       sextract - Extract subspectra from dispersion corrected spectra
+	  sflip - Flip direction of dispersion
+	 shedit - Edit spectrum header parameters
+          slist - List spectral header elements
+       specplot - Stack and plot multiple spectra
+          splot - Preliminary spectral plot/analysis
+
+
+noao.imred.dtoi:
+	dematch - Match a list of density values to exposure values
+	  hdfit - Fit a curve to density, log exposure values
+	hdshift - Align related HD curves
+          hdtoi - Apply DTOI transformation to density image
+       selftest - Self test program to check DTOI transformation
+       spotlist - Generate a list of calibration spot values
+
+
+noao.imred.echelle:
+      apdefault - Set the default aperture parameters
+         apedit - Edit apertures interactively
+	 apfind - Automatically find spectra and define apertures
+ 	   apio - Set the I/O parameters for the APEXTRACT tasks
+    apnormalize - Normalize aperture flat fields
+      apscatter - Fit and subtract scattered light
+          apsum - Extract one dimensional aperture sums
+	aptrace - Trace positions of spectra
+
+      calibrate - Extinction and flux calibrate spectra
+	ecbplot - Batch plots of echelle spectra
+    eccontinuum - Fit the continuum of echelle spectra
+      ecdispcor - Dispersion correct spectra
+     ecidentify - Identify features in spectrum for dispersion solution
+   ecreidentify - Automatically reidentify features in spectra
+       ecselect - Select and extract apertures from echelle spectra
+     refspectra - Assign wavelength reference spectra to other spectra
+       sensfunc - Compute sensitivity/flux calibration from standard stars
+	setdisp - Set dispersion image header parameters
+	 shedit - Edit spectrum header parameters
+          slist - List spectrum header parameters
+       specplot - Stack and plot multiple spectra
+          splot - Preliminary spectral plot/analysis
+       standard - Compile standard flux calibration stars
+
+
+noao.imred.generic:
+     background - Fit and subtract a line or column background
+     cosmicrays - Detect and replace cosmic rays
+	darksub - Scale and subtract a dark count image
+         flat1d - Make flat field by fitting a 1D func. to the lines or columns
+        flatten - Flatten images using a flat field
+      normalize - Normalize images
+       normflat - Create a flat field by normalizing and replacing low values
+
+
+noao.imred.iids:
+	addsets - Add subsets of strings of spectra
+       batchred - Batch processing of IIDS/IRS spectra
+          bplot - Batch plots of spectra
+	bswitch - Beam-switch strings of spectra to make obj-sky pairs
+      calibrate - Apply sensitivity correction to spectra
+          coefs - Extract mtn reduced ceofficients from henear scans
+	coincor - Correct spectra for detector count rates
+        combine - Combine spectra having different wavelength ranges
+      continuum - Fit the continuum in spectra
+	dispcor - Dispersion correct spectra
+	flatdiv - Divide spectra by flat field
+	flatfit - Sum and normalize flat field spectra
+       identify - Identify features in spectrum for dispersion solution
+         lcalib - List calibration file data
+         mkspec - Generate an artificial spectrum
+          names - Generate a list of image names from a string
+       powercor - Apply power law correction to mountain reduced spectra
+	process - A task generated by BATCHRED
+          rebin - Rebin spectra to new dispersion parameters
+     refspectra - Assign reference spectra to object spectra
+     reidentify - Automatically identify features in spectra
+       sensfunc - Create sensitivity function
+       sextract - Extract subspectra from dispersion corrected spectra
+	  sflip - Flip direction of dispersion
+	 shedit - Edit spectrum header parameters
+        sinterp - Interpolate a table of x,y pairs to create a spectrum
+	  slist - List spectral header elements
+       specplot - Stack and plot multiple spectra
+	  splot - Preliminary spectral plot/analysis
+       standard - Identify standard stars to be used in sensitivity calc
+	subsets - Substract pairs in strings of spectra
+           sums - Generate sums of object and sky spectra by aperture
+
+
+noao.imred.irred:
+         bscale - Brightness scale images 
+	 center - Compute accurate centers for a list of objects
+     centerpars - Edit the centering parameters
+       datapars - Edit the data dependent parameters
+        flatten - Flatten images using a flat field
+        iralign - Align the image produced by irmosaic
+      irmatch1d - Align and intensity match the image produced by irmosaic (1D)
+      irmatch2d - Align and intensity match the image produced by irmosaic (2D)
+       irmosaic - Mosaic an ordered list of images onto a grid
+        mosproc - Prepare images for quick look mosaicing
+
+
+noao.imred.irs:
+	addsets - Add subsets of strings of spectra
+       batchred - Batch processing of IIDS/IRS spectra
+          bplot - Batch plots of spectra
+	bswitch - Beam-switch strings of spectra to make obj-sky pairs
+      calibrate - Apply sensitivity correction to spectra
+          coefs - Extract mtn reduced ceofficients from henear scans
+        combine - Combine spectra having different wavelength ranges
+      continuum - Fit the continuum in spectra
+	dispcor - Dispersion correct spectra
+	flatdiv - Divide spectra by flat field
+	flatfit - Sum and normalize flat field spectra
+       identify - Identify features in spectrum for dispersion solution
+         lcalib - List calibration file data
+         mkspec - Generate an artificial spectrum
+          names - Generate a list of image names from a string
+	process - A task generated by BATCHRED
+          rebin - Rebin spectra to new dispersion parameters
+     refspectra - Assign reference spectra to object spectra
+     reidentify - Automatically identify features in spectra
+       sensfunc - Create sensitivity function
+       sextract - Extract subspectra from dispersion corrected spectra
+	  sflip - Flip direction of dispersion
+	 shedit - Edit spectrum header parameters
+        sinterp - Interpolate a table of x,y pairs to create a spectrum
+	  slist - List spectral header elements
+       specplot - Stack and plot multiple spectra
+	  splot - Preliminary spectral plot/analysis
+       standard - Identify standard stars to be used in sensitivity calc
+	subsets - Substract pairs in strings of spectra
+           sums - Generate sums of object and sky spectra by aperture
+
+
+noao.imred.msred:
+      apdefault - Set the default aperture parameters
+         apedit - Edit apertures interactively
+	 apfind - Automatically find spectra and define apertures
+    apnormalize - Normalize aperture by average spectrum
+      apscatter - Fit and subtract scattered light
+          apsum - Extract one dimensional aperture sums
+	aptrace - Trace positions of spectra
+ 
+      calibrate - Extinction and flux calibrate spectra
+       identify - Identify features in spectrum for dispersion solution
+      msdispcor - Dispersion correct spectra
+   msreidentify - Reidentify features from one multispec image to another
+       msselect - Select and extract apertures from spectra
+     refspectra - Assign wavelength reference spectra to other spectra
+     reidentify - Automatically reidentify features in spectra
+       sensfunc - Compute instrumental sensitivity from standard stars
+	setdisp - Set dispersion image header parameters
+       specplot - Scale, stack, and plot multiple spectra
+          splot - Preliminary spectral plot/analysis
+       standard - Tabluate standard star counts and fluxes
+
+
+noao.imred.specphot:
+      apdefault - Set the default aperture parameters
+         apedit - Edit apertures interactively
+	 apfind - Automatically find spectra and define apertures
+ 	   apio - Set the I/O parameters for the APEXTRACT tasks
+          apsum - Extract one dimensional aperture sums
+	aptrace - Trace positions of spectra
+
+          bplot - Batch plots of spectra
+      calibrate - Apply sensitivity correction to spectra
+        combine - Combine spectra having different wavelength ranges
+      continuum - Fit the continuum in spectra
+        dispcor - Dispersion correct spectra
+       identify - Identify features in spectrum for dispersion solution
+         lcalib - List calibration file data
+          rebin - Rebin spectra to new dispersion parameters
+     refspectra - Assign reference spectra to object spectra
+     reidentify - Automatically identify features in spectra
+       sensfunc - Create sensitivity function
+	setdisp - Set dispersion image header parameters
+       sextract - Extract subspectra from dispersion corrected spectra
+	  sflip - Flip direction of dispersion
+	 shedit - Edit spectrum header paramters
+        sinterp - Interpolate a table of x,y pairs to create a spectrum
+          slist - List spectrum header elements
+       specplot - Stack and plot multiple spectra
+          splot - Preliminary spectral plot/analysis
+       standard - Identify standard stars to be used in sensitivity calc
+           sums - Generate sums of object and sky spectra by aperture
+
+
+noao.imred.vtel:
+       destreak - Destreak He 10830 grams.
+      destreak5 - First pass processing CL script for 10830 grams.
+       dicoplot - Make dicomed plots of carrington maps.
+       fitslogr - Make a log of certain header parameters from a FITS tape.
+	getsqib - Extract the squibby brightness image from a full disk scan.
+     makehelium - Cl script for processing destreaked 10830 grams(second pass).
+     makeimages - Cl script for processing magnetograms into projected maps
+	  merge - Merge daily grams into a Carrington map.
+       mrotlogr - Log some header parameters from a FITS rotation map tape.
+	  mscan - Read all sector scans on a tape and put them into images.
+	pimtext - Put text directly into images using a pixel font.
+	putsqib - Merge a squibby brightness image into a full disk image.
+       quickfit - Fit an ellipse to the solar limb.
+	 readvt - Read a full disk tape and produce an IRAF image.
+	   rmap - Map a full disk image into a 180 by 180 flat image.
+	syndico - Make dicomed print of daily grams 18 cm across.
+	  tcopy - Tape to tape copy routine.
+	   trim - Set all pixels outside the limb to 0.0 (use sqib for limb).
+	 unwrap - Remove effects of data wraparound on continuum scans.
+	vtblink - Blink daily grams on the IIS to check for registration.
+      vtexamine - Examine a vacuum telescope tape, print headers and profile.
+      writetape - Cl script to write 5 full disk grams to tape.
+	writevt - Write an IRAF image to tape in vacuum telescope format.
+
+
+noao.mtlocal:
+	 ldumpf - List the permanent files on a Cyber DUMPF tape
+	   r2df - Convert a CTIO 2-d frutti image into an IRAF image
+        rcamera - Convert a CAMERA image into an IRAF image
+	 rdumpf - Convert IPPS rasters from a DUMPF tape to IRAF images
+       ridsfile - Convert IDSFILES from a DUMPF tape to IRAF images
+	ridsmtn - Convert mountain format IDS/IRS data to IRAF images
+        ridsout - Convert a text file in IDSOUT format to IRAF images
+           rpds - Convert a PDS image into an IRAF image
+	 rrcopy - Convert IPPS rasters from an RCOPY tape to IRAF images
+       widstape - Convert ONEDSPEC spectra to IDSOUT text format
+
+
+noao.onedspec:
+        addsets - Add subsets of strings of spectra
+       batchred - Batch reductions of beam-switched data
+          bplot - Batch plots of spectra
+	bswitch - Beam-switch strings of spectra to make obj-sky pairs
+      calibrate - Apply extinction and flux calibrations to spectra
+	coincor - Correct spectra for detector count rates
+        combine - Combine spectra having different wavelength ranges
+      continuum - Fit the continuum in spectra
+        dispcor - Dispersion correct spectra
+        flatdiv - Divide spectra by flat field
+        flatfit - Sum and normalize flat field spectra
+       identify - Identify features in spectrum for dispersion solution
+         lcalib - List calibration file data
+         mkspec - Generate an artificial spectrum
+          names - Generate a list of image names from a string
+    observatory - Print observatory parameters
+       onedspec - Additional information about the ONEDSPEC package
+       powercor - Apply a power-law flux correction correction
+        process - A task generated by BATCHRED
+          rebin - Rebin spectra to new dispersion parameters
+     refspectra - Assign wavelength reference spectra to other spectra
+     reidentify - Automatically identify features in spectra
+       sensfunc - Create sensitivity function
+	setdisp - Set dispersion image header parameters
+       sextract - Extract subspectra from dispersion corrected spectra
+	  sflip - Flip direction of dispersion
+	 shedit - Edit spectrum header parameters
+        sinterp - Interpolate a table of x,y pairs to create a spectrum
+          slist - List spectrum header parameters
+       specplot - Stack and plot multiple spectra
+          splot - Preliminary spectral plot/analysis
+       standard - Identify standard stars to be used in sensitivity calc
+        subsets - Substract pairs in strings of spectra
+           sums - Generate sums of object and sky spectra by aperture
+
+
+noao.proto:
+         binfil - Create a binary file from an IRAF image
+       binpairs - Bin pairs of (x,y) points in log separation
+	 bscale - Brightness scale images:  new = (old - bzero) / bscale
+	   epix - Edit pixels in an image
+	 fields - Extract specified fields from a list
+         fixpix - Fix bad pixels by linear interpolation from nearby pixels
+	 imcntr - Locate the center of a stellar image
+	 imedit - Examine and edit pixels in images
+      imexamine - Examine images using image display, graphics, and text
+     imfunction - Apply a function to the image pixel values
+      imreplace - Replace pixels in a range by a constant
+	imscale - Scale an image to a specified (windowed) mean
+	imslice - Slice images into images of lower dimension
+	imstack - Stack images into an image of higher dimension
+	imtitle - Change the title of an image
+         interp - Interpolate for a value in a table of X,Y pairs
+         irafil - Create an IRAF image from a binary data file
+        iralign - Align the mosaiced image produced by irmosaic
+      irmatch1d - Align and intensity match image produced by irmosaic (1D)
+      irmatch2d - Align and intensity match image produced by irmosaic (2D)
+       irmosaic - Mosaic an ordered list of images onto a grid
+	   join - Join two files line by line
+    mkhistogram - List or plot the histogram of a data stream
+	 ndprep - Make neutral density filter calibration image
+	 radplt - Plot a radial profile of a stellar image
+	slitpic - Generate IRAF image of aperture slit mask
+     toonedspec - Extract lines/columns from 2D spectra to 1D spectra
+	 tvmark - Mark objects on the image display
+
+
+noao.twodspec:
+      apextract - Aperture Extraction Package
+       longslit - Longslit Package
+      multispec - Multi-Spectra Extraction Package
+    observatory - Print observatory parameters
+     setairmass - Set midtime airmass and universal time
+        setdisp - Set dispersion image header parameters
+
+
+noao.twodspec.apextract:
+      apdefault - Set the default aperture parameters
+         apedit - Edit apertures interactively
+	 apfind - Automatically find spectra and define apertures
+ 	   apio - Set the I/O parameters for the APEXTRACT tasks
+    apnormalize - Normalize 2D apertures by 1D functions
+      apscatter - Fit and subtract scattered light
+        apstrip - Extract two dimensional aperture strips
+          apsum - Extract one dimensional aperture sums
+	aptrace - Trace positions of spectra
+
+
+noao.twodspec.longslit:
+     background - Fit and subtract a line or column background
+     extinction - Apply atmospheric extinction corrections to images
+      fitcoords - Fit user coordinates to image coordinates
+      fluxcalib - Apply flux calibration to images
+       identify - Identify features
+   illumination - Determine illumination calibration
+     reidentify - Reidentify features
+       response - Determine response calibration
+      transform - Transform longslit images to user coordinates
+
+
+noao.twodspec.multispec:
+      findpeaks - Find the peaks
+    fitfunction - Fit a function to the spectra parameter values
+      fitgauss5 - Fit spectra profiles with five parameter Gaussian model
+      modellist - List data and model pixel values
+      msextract - Extract spectra
+	 mslist - List entries in a MULTISPEC database
+	 msplot - Plot a line of image and model data
+	  msset - Set entries in a MULTISPEC database
+  newextraction - Create a new MULTISPEC extraction database
+       newimage - Create a new multi-spectra image

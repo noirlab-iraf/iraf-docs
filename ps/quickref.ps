@@ -1,0 +1,3387 @@
+%!PS-Adobe-1.0
+%%Creator: devps (Pipeline Associates, Inc.)
+%%CreationDate: Fri Oct 30 02:53:12 1992
+%%Pages: (atend)
+%%DocumentFonts: (atend)
+
+/X{exch}def
+/r{rmoveto}def
+/m{moveto}def
+/l{lineto}def
+/rl{rlineto}def
+/lc{yc X xc X l st}def
+/mc{yc X xc X m}def
+/el{gs /a X def a div 1 X scale cp np a xc 2 div 0 360 arc st gr}def
+/ar{cp 7 2 roll np xc 5 1 roll atan 3 1 roll atan X arc st}def
+/sp{yc X xc X 6 2 roll yc X xc X 6 2 roll yc X xc X 6 2 roll ct}def
+/st{stroke}def
+/gs{gsave}def
+/gr{grestore}def
+/cp{currentpoint}def
+/np{newpath}def
+/ct{curveto}def
+/m0{0 0 moveto}def
+/BP{/devps-save save def m0}def
+/EP{
+clear devps-save restore
+showpage}def
+/res 10.000000 def
+/V{res neg div 792 add
+currentpoint pop X
+m}def
+/H{res div
+currentpoint X pop
+moveto}def
+/h{res div 0 r}def
+/v{res neg div 0 X r}def
+/xc{res div}def
+/yc{res neg div 792 add}def
+/S{X H show}def
+/psize 10 def
+/height 1 def
+/slant 0 def
+/FF{findfont X dup 12 div setlinewidth /psize X def
+    [psize 0 psize height mul slant sin slant cos div mul psize height mul 0 0]
+    makefont setfont}def
+/shade{gs
+ /dy X def
+ /dx X def
+ np m
+ setgray
+ 0 dy rl
+ dx 0 rl
+ 0 dy neg rl
+ dx neg 0 rl
+ closepath
+ fill
+gr}def
+1 setlinecap
+/R{/Times-Roman FF}def
+%%EndProlog
+%%Page: 1 1
+BP
+/slant 0 def
+/height 1.000000 def
+10 R
+10 R
+	/irafsave save def			
+	0 72 840 10 div sub translate	
+	/erasepage {} def			
+	/initgraphics {} def			
+	/showpage {} def			
+%!
+
+/TWOUPDICT 32 dict def
+
+TWOUPDICT begin
+
+    % LEFTSIDE false is appropriate for normally two sided documents.
+
+    /LEFTSIDE     true def	% Start on LHS of page?
+    /PRESERVE     true def	% Preserve aspect ratio?
+
+    /PAGEWIDTH    8.50 def	% Physical width of the page.
+    /PAGEHEIGHT  11.00 def	% Physical height of the page.
+
+    /LPAGEWIDTH   8.50 def	% Width of a page of the input.
+    /LPAGEHEIGHT 13.00 def	% Height of a page of the input.
+
+    /XOFFSET      0.00 def	% Fudge factors shouldn't be needed, but...
+    /YOFFSET      0.00 def	% Note: offsets are in actual inch units
+    /XSADJUST     0.98 def
+    /YSADJUST     0.98 def	% Set these slightly < 1 for elbow room.
+    /RIGHTFUDGE  -0.50 def	% A negative value shifts RHS to the left.
+
+
+    /XSCALE PAGEHEIGHT LPAGEWIDTH 2 mul div XSADJUST mul def
+    /YSCALE PAGEWIDTH LPAGEHEIGHT       div YSADJUST mul def
+
+    PRESERVE {
+	XSCALE YSCALE lt
+	    { /YSCALE XSCALE def }
+	    { /XSCALE YSCALE def }
+	ifelse
+    } if
+
+    /XOFF { % correction for excess margin in landscape X direction
+	PAGEHEIGHT LPAGEWIDTH 2 mul XSCALE mul sub	% actual inch units
+	dup 0 le
+	    { pop 0 }
+	    { XSCALE div 72 mul 4 div }		% virtual point units, 4 parts
+	ifelse
+    } bind def
+
+    /YOFF { % correction for excess margin in landscape Y direction
+	PAGEWIDTH LPAGEHEIGHT YSCALE mul sub	% actual inch units
+	dup 0 le
+	    { pop 0 }
+	    { YSCALE div 72 mul 2 div }		% virtual point units, 2 parts
+	ifelse
+    } bind def
+
+    /LEFT   {
+	XOFFSET XSCALE div 72 mul	% actual inches --> virtual points
+	LPAGEWIDTH PAGEWIDTH sub 72 mul add
+	XOFF add
+    } bind def
+
+    /BOTTOM {
+	PAGEWIDTH YSCALE div 72 mul neg
+	YOFFSET YSCALE div 72 mul add	% actual inches --> virtual points
+	LPAGEHEIGHT PAGEHEIGHT sub 72 mul add
+	YOFF add
+    } bind def
+
+    /INITPAGE { 90 rotate XSCALE YSCALE scale LEFT BOTTOM translate } bind def
+    /RIGHTORIGIN {
+	PAGEHEIGHT 2 div RIGHTFUDGE add
+	XSCALE div 72 mul 0 translate
+    } bind def
+
+end
+
+
+/showpage {
+    TWOUPDICT begin
+	LEFTSIDE {
+	    systemdict /initgraphics get exec
+	    INITPAGE
+	    RIGHTORIGIN
+	    /LEFTSIDE false def
+	} {
+	%%%%    systemdict /showpage get exec	% implicit initgraphics
+	    INITPAGE
+	    /LEFTSIDE true def
+	} ifelse
+    end
+} def
+
+
+
+TWOUPDICT begin
+    INITPAGE
+    LEFTSIDE not { RIGHTORIGIN } if
+end
+%!PS-Adobe-1.0
+
+/X{exch}def
+/r{rmoveto}def
+/m{moveto}def
+/l{lineto}def
+/rl{rlineto}def
+/lc{yc X xc X l st}def
+/mc{yc X xc X m}def
+/el{gs /a X def a div 1 X scale cp np a xc 2 div 0 360 arc st gr}def
+/ar{cp 7 2 roll np xc 5 1 roll atan 3 1 roll atan X arc st}def
+/sp{yc X xc X 6 2 roll yc X xc X 6 2 roll yc X xc X 6 2 roll ct}def
+/st{stroke}def
+/gs{gsave}def
+/gr{grestore}def
+/cp{currentpoint}def
+/np{newpath}def
+/ct{curveto}def
+/m0{0 0 moveto}def
+/BP{/devps-save save def m0}def
+/EP{
+clear devps-save restore
+showpage}def
+/res 10.000000 def
+/V{res neg div 792 add
+currentpoint pop X
+m}def
+/H{res div
+currentpoint X pop
+moveto}def
+/h{res div 0 r}def
+/v{res neg div 0 X r}def
+/xc{res div}def
+/yc{res neg div 792 add}def
+/S{X H show}def
+/psize 10 def
+/height 1 def
+/slant 0 def
+/FF{findfont X dup 12 div setlinewidth /psize X def
+    [psize 0 psize height mul slant sin slant cos div mul psize height mul 0 0]
+    makefont setfont}def
+/shade{gs
+ /dy X def
+ /dx X def
+ np m
+ setgray
+ 0 dy rl
+ dx 0 rl
+ 0 dy neg rl
+ dx neg 0 rl
+ closepath
+ fill
+gr}def
+1 setlinecap
+/R{/Times-Roman FF}def
+/B{/Times-Bold FF}def
+/I{/Times-Italic FF}def
+/C{/Courier FF}def
+/CI{/Courier-Oblique FF}def
+/CX{/Courier-BoldOblique FF}def
+BP
+/slant 0 def
+/height 1.000000 def
+10 R
+10 R
+840 V
+12 B
+2118(An)S
+2307(SPP/VOS)S
+2837(Quick)S
+3188(Reference)S
+3735(Card)S
+996 V
+11 R
+900(The)S
+1108(short)S
+1366(name)S
+1641(for)S
+1806(each)S
+2043(interface)S
+2462(is)S
+2574(in)S
+2699(parentheses)S
+3248(following)S
+3715(the)S
+3888(title.)S
+4160(The)S
+4369(IRAF)S
+4659(directory)S
+5093(for)S
+1116 V
+900(the)S
+1072(source)S
+1395(code)S
+1639(is)S
+1751(the)S
+1923(same)S
+2186(as)S
+2315(the)S
+2487(short)S
+2745(name.)S
+3081(Pertinent)S
+3516(system)S
+3860(header)S
+4187(\256les)S
+4408(\(located)S
+4797(in)S
+11 I
+4920(lib$)S
+11 R
+5129(or)S
+1236 V
+11 I
+900(hlib$)S
+11 R
+1127(\))S
+1209(are)S
+1387(listed)S
+1672(at)S
+1797(the)S
+1977(end)S
+2181(of)S
+2318(the)S
+2498(title)S
+2716(line.)S
+2988(The)S
+3204(names)S
+3531(given)S
+3822(to)S
+3955(the)S
+4136(arguments)S
+4640(are)S
+4819(meant)S
+5134(to)S
+1356 V
+900(re\257ect)S
+1213(their)S
+1454(usage)S
+1743(\(and)S
+1977(thus)S
+2201(their)S
+2442(datatype\),)S
+2917(but)S
+3098(you)S
+3303(may)S
+3532(still)S
+3739(\256nd)S
+3951(that)S
+4155(you)S
+4359(need)S
+4604(to)S
+4729(consult)S
+5086(the)S
+1476 V
+900(source)S
+1230(code.)S
+1542(Some)S
+1838(routines)S
+2237(can)S
+2433(be)S
+2581(located)S
+2942(through)S
+3329(the)S
+3508(help)S
+3742(database:)S
+9 C
+4248(help)S
+4531(error)S
+4868(opt=so)S
+11 R
+5192(.)S
+1596 V
+900(Others)S
+1250(can)S
+1458(be)S
+1618(listed)S
+1914(directly:)S
+9 C
+2391(page)S
+2685(etc$pagefiles.x)S
+11 R
+3495(.)S
+3613(Examples)S
+4103(are)S
+4292(scattered)S
+4737(throughout)S
+1716 V
+900(IRAF)S
+1194(and)S
+1395(usage)S
+1687(is)S
+1804(described)S
+2267(more)S
+2536(fully)S
+2788(in)S
+2918(\2476)S
+3072(of)S
+11 I
+3207(An)S
+3373(Introductory)S
+3972(User's)S
+4308(Guide)S
+4620(to)S
+4750(IRAF)S
+5031(SPP)S
+1836 V
+900(Programming)S
+11 R
+1517(.)S
+2121 V
+11 B
+900(Command)S
+1428(Language)S
+1927(Input/Output)S
+2600(\()S
+12 CX
+2636(clio)S
+11 B
+2924(\))S
+2286 V
+9 C
+1676(clgstr)S
+2055(\(param,)S
+2487(outstr,)S
+2919(maxch\))S
+9 B
+3925(Get)S
+4092(a)S
+4164(string)S
+4416(parameter.)S
+2396 V
+9 C
+1676(clpstr)S
+2055(\(param,)S
+2487(string\))S
+9 B
+3925(Output)S
+4232(a)S
+4304(string)S
+4556(parameter.)S
+2506 V
+9 C
+1072(value)S
+1396(=)S
+1676(clget_)S
+2055(\(param\))S
+9 B
+3925(Get)S
+4092(a)S
+4164(typed)S
+4406(parameter.)S
+2616 V
+9 C
+1676(clput_)S
+2055(\(param,)S
+2487(value\))S
+9 B
+3925(Output)S
+4232(a)S
+4304(typed)S
+4546(parameter.)S
+2726 V
+9 C
+1126(stat)S
+1396(=)S
+1676(clgcur)S
+2055(\(param,)S
+2487(x,y,wcs,)S
+2973(key,cmd,maxch\))S
+9 B
+3925(Read)S
+4152(a)S
+4224(cursor)S
+4501(parameter.)S
+2836 V
+9 C
+1126(stat)S
+1396(=)S
+1676(clgwrd)S
+2055(\(param,)S
+2487(keyword,)S
+2973(maxch,)S
+3351(dict\))S
+9 B
+3925(Look)S
+4152(up)S
+4279(a)S
+4351(parameter)S
+4783(in)S
+4885(a)S
+4957(dictionary.)S
+2946 V
+9 C
+1126(list)S
+1396(=)S
+1622(clpopni)S
+2055(\(param\))S
+9 B
+3925(Open)S
+4162(a)S
+4234(\256le)S
+4376(template)S
+4738(or)S
+4850(the)S
+9 C
+4997(STDIN)S
+9 B
+5267(.)S
+3056 V
+9 C
+1126(list)S
+1396(=)S
+1622(clpopns)S
+2055(\(param\))S
+9 B
+3925(Open)S
+4162(a)S
+4234(sorted)S
+4501(template.)S
+3166 V
+9 C
+1126(list)S
+1396(=)S
+1622(clpopnu)S
+2055(\(param\))S
+9 B
+3925(Open)S
+4162(an)S
+4284(unsorted)S
+4651(template.)S
+3276 V
+9 C
+1676(clpcls)S
+2055(\(list\))S
+9 B
+3925(Close)S
+4162(a)S
+4234(\256le)S
+4376(template.)S
+3386 V
+9 C
+1018(nfiles)S
+1396(=)S
+1676(clplen)S
+2055(\(list\))S
+9 B
+3925(Return)S
+4227(the)S
+4374(number)S
+4706(of)S
+4808(\256les)S
+4985(in)S
+5087(a)S
+5159(list.)S
+3496 V
+9 C
+1126(stat)S
+1396(=)S
+1676(clgfil)S
+2055(\(list,)S
+2433(outstr,)S
+2865(maxch\))S
+9 B
+3925(Get)S
+4092(the)S
+4239(next)S
+4431(\256le)S
+4573(name.)S
+3606 V
+9 C
+1676(clcmdw)S
+2055(\(command\))S
+9 B
+3925(Send)S
+4142(a)S
+4214(command)S
+4621(to)S
+4723(the)S
+4870(CL)S
+5022(and)S
+5194(wait.)S
+3936 V
+11 B
+900(File)S
+1110(Input/Output)S
+1783(\()S
+12 CX
+1819(fio)S
+11 B
+2035(\))S
+10 C
+3925(<fset.h>)S
+4101 V
+9 C
+1234(fd)S
+1396(=)S
+1784(open)S
+2055(\(fname,)S
+2487(mode,)S
+2811(type\))S
+9 B
+3925(Open)S
+4162(a)S
+4234(\256le)S
+4376(for)S
+4518(I/O.)S
+4211 V
+9 C
+1730(close)S
+2055(\(fd\))S
+9 B
+3925(Close)S
+4162(a)S
+4234(\256le)S
+4376(when)S
+4608(\256nished.)S
+4321 V
+9 C
+1126(stat)S
+1396(=)S
+1784(read)S
+2055(\(fd,)S
+2325(buffer,)S
+2757(maxch\))S
+9 B
+3925(Binary)S
+4217(byte)S
+4409(stream)S
+4701(input.)S
+4431 V
+9 C
+1730(write)S
+2055(\(fd,)S
+2325(buffer,)S
+2757(maxch\))S
+9 B
+3925(Binary)S
+4217(byte)S
+4409(stream)S
+4701(output.)S
+4541 V
+9 C
+1730(flush)S
+2055(\(fd\))S
+9 B
+3925(Flush)S
+4167(the)S
+4314(bu)S
+4414 H
+	(f)show 9 -.5 mul h (f)show
+9 B
+4469(ers)S
+4611(immediately.)S
+4651 V
+9 C
+1126(stat)S
+1396(=)S
+1676(access)S
+2055(\(fname,)S
+2487(mode,)S
+2811(type\))S
+9 B
+3925(Can)S
+4112(the)S
+4259(\256le)S
+4401(be)S
+4518(accessed?)S
+4761 V
+9 C
+1126(stat)S
+1396(=)S
+1676(fstati)S
+2055(\(fd,)S
+2325(param\))S
+9 B
+3925(Get)S
+4092(the)S
+4239(status)S
+4491(of)S
+4593(an)S
+4715(open)S
+4927(\256le.)S
+4871 V
+9 C
+1730(fseti)S
+2055(\(fd,)S
+2325(param,)S
+2703(value\))S
+9 B
+3925(Set)S
+4072(a)S
+4144(FIO)S
+4331(option.)S
+4981 V
+9 C
+1676(delete)S
+2055(\(fname\))S
+9 B
+3925(Delete)S
+4192(the)S
+4339(named)S
+4626(\256le.)S
+5091 V
+9 C
+1676(rename)S
+2055(\(old_fname,)S
+2703(new_fname\))S
+9 B
+3925(Rename)S
+4267(a)S
+4339(\256le.)S
+5201 V
+9 C
+1676(mktemp)S
+2055(\(root,)S
+2433(fname,)S
+2811(maxch\))S
+9 B
+3925(Make)S
+4172(a)S
+4244(temporary)S
+4681(\256le)S
+4823(name)S
+5060(.)S
+5311 V
+9 C
+1126(stat)S
+1396(=)S
+1622(protect)S
+2055(\(fname,)S
+2487(action\))S
+9 B
+3925(Protect)S
+4232(or)S
+4344(unprotect)S
+4746(a)S
+4818(\256le.)S
+5421 V
+9 C
+1126(stat)S
+1396(=)S
+1622(getline)S
+2055(\(fd,)S
+2325(linebuf\))S
+9 B
+3925(Get)S
+4092(a)S
+4164(line)S
+4331(of)S
+4433(text)S
+4605(from)S
+4822(a)S
+4894(\256le.)S
+5531 V
+9 C
+1622(putline)S
+2055(\(fd,)S
+2325(linebuf\))S
+9 B
+3925(Output)S
+4232(a)S
+4304(line)S
+4471(of)S
+4573(text)S
+4745(to)S
+4847(a)S
+4919(\256le.)S
+5861 V
+11 B
+900(Image)S
+1225(Input/Output)S
+1898(\()S
+12 CX
+1934(imio)S
+11 B
+2222(\))S
+10 C
+3925(<imhdr.h>,)S
+4585(<imset.h>)S
+6026 V
+9 C
+1234(im)S
+1396(=)S
+1730(immap)S
+2055(\(image,)S
+2487(mode,)S
+2811(hdr_arg\))S
+9 B
+3925(Map)S
+4132(\(\252open\272\))S
+4494(an)S
+4616(image.)S
+6136 V
+9 C
+1622(imunmap)S
+2055(\(im\))S
+9 B
+3925(Unmap)S
+4237(\(\252close\272\))S
+4599(an)S
+4721(image.)S
+6246 V
+9 C
+1622(imflush)S
+2055(\(im\))S
+9 B
+3925(Flush)S
+4167(the)S
+4314(image)S
+4571(bu)S
+4671 H
+	(f)show 9 -.5 mul h (f)show
+9 B
+4726(ers.)S
+6356 V
+9 C
+1180(buf)S
+1396(=)S
+1676(imgl)S
+9 CI
+1892(N)S
+9 C
+1946(_)S
+2055(\(im)S
+2271([,)S
+2433(line)S
+2703([,)S
+2865(band]]\))S
+9 B
+3925(Get)S
+4092(a)S
+4164(line)S
+4331(from)S
+4548(an)S
+4670(image,)S
+9 CI
+4950(N)S
+9 C
+5004(=[123])S
+9 B
+5328(.)S
+6466 V
+9 C
+1676(impl)S
+9 CI
+1892(N)S
+9 C
+1946(_)S
+2055(\(im)S
+2271([,line)S
+2649([,band]]\))S
+9 B
+3925(Output)S
+4232(a)S
+4304(line)S
+4471(to)S
+4573(an)S
+4695(image,)S
+9 CI
+4975(N)S
+9 C
+5029(=[123])S
+9 B
+5353(.)S
+6576 V
+9 C
+1180(buf)S
+1396(=)S
+1676(imgs)S
+9 CI
+1892(N)S
+9 C
+1946(_)S
+2055(\(im,)S
+2325(x1,x2)S
+2649([,y1,y2)S
+3081([,z1,z2]]\))S
+9 B
+3925(Get)S
+4092(a)S
+4164(section)S
+4456(from)S
+4673(an)S
+4795(image,)S
+9 CI
+5075(N)S
+9 C
+5129(=[123])S
+9 B
+5453(.)S
+6686 V
+9 C
+1676(imps)S
+9 CI
+1892(N)S
+9 C
+1946(_)S
+2055(\(im,)S
+2325(x1,x2)S
+2649([,y1,y2)S
+3081([,z1,z2]]\))S
+9 B
+3925(Output)S
+4232(a)S
+4304(section)S
+4596(to)S
+4698(an)S
+4820(image,)S
+9 CI
+5100(N)S
+9 C
+5154(=[123])S
+9 B
+5478(.)S
+6796 V
+9 C
+1126(stat)S
+1396(=)S
+1676(imgnl_)S
+2055(\(im,)S
+2325(bufptr,)S
+2757(v\))S
+9 B
+3925(Generalized)S
+4417(get)S
+4559(next)S
+4751(line.)S
+6906 V
+9 C
+1676(impnl_)S
+2055(\(im,)S
+2325(bufptr,)S
+2757(v\))S
+9 B
+3925(Generalized)S
+4417(output)S
+4699(next)S
+4891(line.)S
+7016 V
+9 C
+1126(stat)S
+1396(=)S
+1676(imaccf)S
+2055(\(im,)S
+2325(key\))S
+9 B
+3925(Does)S
+4137(the)S
+4284(named)S
+4571(keyword)S
+4933(exist?)S
+7126 V
+9 C
+1676(imaddf)S
+2055(\(im,)S
+2325(key,)S
+2595(type\))S
+9 B
+3925(Add,)S
+4140(but)S
+4297(don't)S
+4529(initialize,)S
+4909(a)S
+4981(keyword.)S
+7236 V
+9 C
+1676(imadd_)S
+2055(\(im,)S
+2325(key,)S
+2595(value\))S
+9 B
+3925(Add)S
+4117(or)S
+4229(modify)S
+4526(a)S
+4598(header)S
+4890(keyword.)S
+7346 V
+9 C
+1676(imastr)S
+2055(\(im,)S
+2325(key,)S
+2595(value\))S
+9 B
+3925(Add)S
+4117(or)S
+4229(modify)S
+4526(a)S
+4598(string)S
+4850(keyword.)S
+7456 V
+9 C
+1676(imdelf)S
+2055(\(im,)S
+2325(key\))S
+9 B
+3925(Delete)S
+4192(a)S
+4264(header)S
+4556(keyword.)S
+7566 V
+9 C
+1072(value)S
+1396(=)S
+1676(imget_)S
+2055(\(im,)S
+2325(key\))S
+9 B
+3925(Get)S
+4092(a)S
+4164(keyword)S
+4526(of)S
+4628(the)S
+4775(speci\256ed)S
+5132(type.)S
+7676 V
+9 C
+1676(imgstr)S
+2055(\(im,)S
+2325(key,)S
+2595(outstr,)S
+3027(maxch\))S
+9 B
+3925(Get)S
+4092(a)S
+4164(string)S
+4416(valued)S
+4698(keyword.)S
+7786 V
+9 C
+1676(imput_)S
+2055(\(im,)S
+2325(key,)S
+2595(value\))S
+9 B
+3925(Modify)S
+4232(an)S
+4354(existing)S
+4676(header)S
+4968(keyword.)S
+7896 V
+9 C
+1676(impstr)S
+2055(\(im,)S
+2325(key,)S
+2595(value\))S
+9 B
+3925(Modify)S
+4232(an)S
+4354(existing)S
+4676(string)S
+4928(keyword.)S
+8006 V
+9 C
+1126(code)S
+1396(=)S
+1568(imgftype)S
+2055(\(im,)S
+2325(key\))S
+9 B
+3925(What)S
+4167(is)S
+4254(the)S
+4401(keyword's)S
+4828(datatype?)S
+8116 V
+9 C
+1568(imdelete)S
+2055(\(image\))S
+9 B
+3925(Delete)S
+4192(an)S
+4314(\(unmapped\))S
+4811(image.)S
+8226 V
+9 C
+1180(imt)S
+1396(=)S
+1568(imtopenp)S
+2055(\(param\))S
+9 B
+3925(Open)S
+4162(an)S
+4284(image)S
+4541(template.)S
+8336 V
+9 C
+1568(imtclose)S
+2055(\(imt\))S
+9 B
+3925(Close)S
+4162(an)S
+4284(image)S
+4541(template.)S
+8446 V
+9 C
+1126(stat)S
+1396(=)S
+1568(imtgetim)S
+2055(\(imt,)S
+2379(outstr,)S
+2811(maxch\))S
+9 B
+3925(Get)S
+4092(the)S
+4239(next)S
+4431(image)S
+4688(name.)S
+8556 V
+9 C
+1126(stat)S
+1396(=)S
+1514(imtrgetim)S
+2055(\(imt,)S
+2379(index,)S
+2757(outstr,)S
+3189(maxch\))S
+9 B
+3925(Get)S
+4092(a)S
+4164(randomly)S
+4566(indexed)S
+4893(image)S
+5150(name.)S
+8666 V
+9 C
+964(nimages)S
+1396(=)S
+1676(imtlen)S
+2055(\(imt\))S
+9 B
+3925(Return)S
+4227(the)S
+4374(number)S
+4706(of)S
+4808(images)S
+5100(in)S
+5202(a)S
+5274(list.)S
+8776 V
+9 C
+1676(imtrew)S
+2055(\(imt\))S
+9 B
+3925(Rewind)S
+4247(an)S
+4369(image)S
+4626(list.)S
+9432 V
+EP
+BP
+/slant 0 def
+/height 1.000000 def
+9 B
+9 B
+470 V
+11 R
+2963(- 2 -)S
+2100 V
+11 B
+900(Memory)S
+1333(Management)S
+1981(\()S
+12 CX
+2017(memio)S
+11 B
+2377(\))S
+2280 V
+9 C
+1730(smark)S
+2055(\(sp\))S
+9 B
+3925(Save)S
+4132(the)S
+4279(current)S
+4596(stack)S
+4823(pointer.)S
+2400 V
+9 C
+1676(salloc)S
+2055(\(ptr,)S
+2379(nelem,)S
+2757(type\))S
+9 B
+3925(Allocate)S
+4267(space)S
+4504(on)S
+4626(the)S
+4773(stack.)S
+2520 V
+9 C
+1730(sfree)S
+2055(\(sp\))S
+9 B
+3925(Pop)S
+4102(the)S
+4249(stack.)S
+2640 V
+9 C
+1676(malloc)S
+2055(\(ptr,)S
+2379(nelem,)S
+2757(type\))S
+9 B
+3925(Allocate)S
+4267(space)S
+4504(on)S
+4626(the)S
+4773(heap.)S
+2760 V
+9 C
+1676(calloc)S
+2055(\(ptr,)S
+2379(nelem,)S
+2757(type\))S
+9 B
+3925(Allocate)S
+4267(and)S
+4439(zero)S
+4631(space.)S
+2880 V
+9 C
+1622(realloc)S
+2055(\(ptr,)S
+2379(nelem,)S
+2757(type\))S
+9 B
+3925(Adjust)S
+4212(the)S
+4359(size)S
+4526(of)S
+4628(a)S
+4700(bu)S
+4800 H
+	(f)show 9 -.5 mul h (f)show
+9 B
+4855(er.)S
+3000 V
+9 C
+1730(mfree)S
+2055(\(ptr,)S
+2379(type\))S
+9 B
+3925(Free)S
+4127(space)S
+4364(on)S
+4486(the)S
+4633(heap.)S
+3360 V
+11 B
+900(Graphics)S
+1368(Input/Output)S
+2041(\()S
+12 CX
+2077(gio)S
+11 B
+2293(\))S
+10 C
+3925(<gset.h>)S
+3540 V
+9 C
+1234(gp)S
+1396(=)S
+1730(gopen)S
+2055(\(device,)S
+2541(mode,)S
+2865(fd\))S
+9 B
+3925(Open)S
+4162(a)S
+4234(graphics)S
+4591(stream.)S
+3660 V
+9 C
+1676(gclose)S
+2055(\(gp\))S
+9 B
+3925(Close)S
+4162(a)S
+4234(graphics)S
+4591(stream.)S
+3780 V
+9 C
+1676(gflush)S
+2055(\(gp\))S
+9 B
+3925(Flush)S
+4167(the)S
+4314(graphics)S
+4671(output.)S
+3900 V
+9 C
+1730(gline)S
+2055(\(gp,)S
+2325(x1,)S
+2541(y1,)S
+2757(x2,)S
+2973(y2\))S
+9 B
+3925(Draw)S
+4167(a)S
+4239(line)S
+4406(from)S
+9 C
+4623(\(x1,y1\))S
+9 B
+5028(to)S
+9 C
+5130(\(x2,y2\))S
+9 B
+5508(.)S
+4020 V
+9 C
+1676(gpline)S
+2055(\(gp,)S
+2325(xa,)S
+2541(ya,)S
+2757(npts\))S
+9 B
+3925(Draw)S
+4167(a)S
+4239(polyline.)S
+4140 V
+9 C
+1730(gmark)S
+2055(\(gp,)S
+2325(x,)S
+2487(y,)S
+2649(type,)S
+2973(xs,)S
+3189(ys\))S
+9 B
+3925(Draw)S
+4167(a)S
+4239(marker)S
+4556(of)S
+4658(a)S
+4730(given)S
+4962(size.)S
+4260 V
+9 C
+1676(gpmark)S
+2055(\(gp,)S
+2325(xa,)S
+2541(ya,)S
+2757(npts,)S
+3081(type,)S
+3405(xs,)S
+3621(ys\))S
+9 B
+3925(Draw)S
+4167(a)S
+4239(polymarker.)S
+4380 V
+9 C
+1676(gamove)S
+2055(\(gp,)S
+2325(x,)S
+2487(y\))S
+9 B
+3925(Move)S
+4167(the)S
+4314(pen)S
+4481(to)S
+4583(the)S
+4730(absolute)S
+5077(position.)S
+4500 V
+9 C
+1676(gadraw)S
+2055(\(gp,)S
+2325(x,)S
+2487(y\))S
+9 B
+3925(Draw)S
+4167(\(absolute\))S
+4574(from)S
+4791(the)S
+4938(current)S
+5255(position.)S
+4620 V
+9 C
+1730(gseti)S
+2055(\(gp,)S
+2325(param,)S
+2703(value\))S
+9 B
+3925(Set)S
+4072(a)S
+4144(GIO)S
+4346(option.)S
+4740 V
+9 C
+1676(gswind)S
+2055(\(gp,)S
+2325(x1,)S
+2541(x2,)S
+2757(y1,)S
+2973(y2\))S
+9 B
+3925(Set)S
+4072(the)S
+4219(window)S
+4546(in)S
+4648(the)S
+4795(world)S
+5047(coordinates.)S
+4860 V
+9 C
+1676(gsview)S
+2055(\(gp,)S
+2325(x1,)S
+2541(x2,)S
+2757(y1,)S
+2973(y2\))S
+9 B
+3925(Set)S
+4072(the)S
+4219(viewport)S
+4586(in)S
+4688(normalized)S
+5150(device)S
+5417(coordinates.)S
+4980 V
+9 C
+1622(gascale)S
+2055(\(gp,)S
+2325(array,)S
+2703(npts,)S
+3027(axis\))S
+9 B
+3925(Scale)S
+4152(the)S
+4299(axis)S
+4476(to)S
+4578(\256t)S
+4685(the)S
+4832(data.)S
+5100 V
+9 C
+1676(glabax)S
+2055(\(gp,)S
+2325(title,)S
+2703(xlabel,)S
+3135(ylabel\))S
+9 B
+3925(Draw)S
+4167(and)S
+4339(label)S
+4551(the)S
+4698(axes.)S
+5220 V
+9 C
+1514(gpagefile)S
+2055(\(gp,)S
+2325(file,)S
+2649(prompt\))S
+9 B
+3925(Page)S
+4137(a)S
+4209(\256le)S
+4351(from)S
+4568(graphics)S
+4925(cursor)S
+5202(mode.)S
+5580 V
+11 B
+900(Vector)S
+1247(Operators)S
+1761(\()S
+12 CX
+1797(vops)S
+11 B
+2085(\))S
+5760 V
+9 C
+1730(amov_)S
+2055(\(a,)S
+2271(b,)S
+2433(npix\))S
+9 B
+3925(Copy)S
+4157(a)S
+4229(vector.)S
+5880 V
+9 C
+1676(amovk_)S
+2055(\(k,)S
+2271(b,)S
+2433(npix\))S
+9 B
+3925(Copy)S
+4157(a)S
+4229(constant)S
+4581(into)S
+4758(a)S
+4830(vector.)S
+6000 V
+9 C
+1730(aabs_)S
+2055(\(a,)S
+2271(b,)S
+2433(npix\))S
+9 B
+3925(Absolute)S
+4292(value)S
+4524(of)S
+4626(a)S
+4698(vector.)S
+6120 V
+9 C
+1730(aadd_)S
+2055(\(a,)S
+2271(b,)S
+2433(c,)S
+2595(npix\))S
+9 B
+3925(Vector)S
+9 C
+4212(c)S
+9 B
+4293(is)S
+4380(the)S
+4527(sum)S
+4714(of)S
+4816(vectors)S
+9 C
+5118(a)S
+9 B
+5199(and)S
+9 C
+5371(b)S
+9 B
+5425(.)S
+6240 V
+9 C
+1730(aaddk)S
+2055(\(a,)S
+2271(b,)S
+2433(c,)S
+2595(npix\))S
+9 B
+3925(Vector)S
+9 C
+4212(c)S
+9 B
+4293(is)S
+4380(the)S
+4527(sum)S
+4714(of)S
+4816(vector)S
+9 C
+5083(a)S
+9 B
+5164(and)S
+5336(scalar)S
+9 C
+5593(b)S
+9 B
+5647(.)S
+6360 V
+9 C
+1730(aavg_)S
+2055(\(a,)S
+2271(npix,)S
+2595(mean,)S
+2919(sigma\))S
+9 B
+3925(Mean)S
+4172(and)S
+4344(sigma)S
+4596(of)S
+4698(a)S
+4770(vector.)S
+6480 V
+9 C
+1072(value)S
+1396(=)S
+1730(amed_)S
+2055(\(a,)S
+2271(npix\))S
+9 B
+3925(Return)S
+4227(the)S
+4374(median)S
+4686(of)S
+4788(a)S
+4860(vector.)S
+6600 V
+9 C
+1730(abav_)S
+2055(\(a,)S
+2271(b,)S
+2433(nblocks,)S
+2919(blocksize\))S
+9 B
+3925(Block)S
+4172(average)S
+4499(of)S
+4601(a)S
+4673(vector.)S
+6720 V
+9 C
+1730(abeq_)S
+2055(\(a,)S
+2271(b,)S
+2433(c,)S
+2595(npix\))S
+3925(c[i]=1)S
+9 B
+4276(if)S
+9 C
+4358(a[i])S
+4628(==)S
+4790(b[i])S
+9 B
+5006(,)S
+5056(else)S
+9 C
+5223(c[i]=0)S
+9 B
+5547(.)S
+6840 V
+9 C
+1730(alim_)S
+2055(\(a,)S
+2271(npix,)S
+2595(minval,)S
+3027(maxval\))S
+9 B
+3925(Compute)S
+4307(the)S
+4454(min)S
+4631(and)S
+4803(max)S
+4995(of)S
+5097(a)S
+5169(vector.)S
+7200 V
+11 B
+900(Miscellaneous)S
+1593(\()S
+12 CX
+1629(etc)S
+11 B
+1845(\))S
+7380 V
+9 C
+1730(error)S
+2055(\(code,)S
+2433(message\))S
+9 B
+3925(Generate)S
+4307(an)S
+4429(error)S
+4661(action)S
+4923(\(may)S
+5145(be)S
+5262(trapped\).)S
+7500 V
+9 C
+1676(erract)S
+2055(\(severity\))S
+9 B
+3925(Take)S
+4147(an)S
+4269(error)S
+4501(action.)S
+7620 V
+9 C
+1180(len)S
+1396(=)S
+1622(envgets)S
+2055(\(key,)S
+2379(value,)S
+2757(maxch\))S
+9 B
+3925(Fetch)S
+4167(the)S
+4314(string)S
+4566(value)S
+4798(of)S
+4900(an)S
+5022(environment)S
+5539(variable.)S
+7740 V
+9 C
+1072(value)S
+1396(=)S
+1622(envget_)S
+2055(\(key\))S
+9 B
+3925(Return)S
+4227(the)S
+4374(typed)S
+4616(value)S
+4848(of)S
+4950(an)S
+5072(environment)S
+5589(variable.)S
+7860 V
+9 C
+1730(qsort)S
+2055(\(array,)S
+2487(nelems,)S
+2919(compare\))S
+9 B
+3925(Sort)S
+4117(an)S
+4239(integer)S
+4536(array)S
+4778(by)S
+4900(the)S
+5047(function)S
+9 C
+5394(compare)S
+5826(\(\))S
+9 B
+5934(.)S
+7980 V
+9 C
+1676(gqsort)S
+2055(\(array,)S
+2487(nelems,)S
+2919(compare,)S
+3405(arg\))S
+9 B
+3925(Sort)S
+4117(by)S
+4239(a)S
+4311(function)S
+4658(with)S
+4855(an)S
+4977(argument.)S
+8100 V
+9 C
+1514(pagefiles)S
+2055(\(files\))S
+9 B
+3925(Page)S
+4137(text)S
+4309(\256le\(s\))S
+4546(on)S
+4668(the)S
+4815(STDOUT.)S
+8220 V
+9 C
+1568(pagefile)S
+2055(\(file,)S
+2433(prompt\))S
+9 B
+3925(Page)S
+4137(a)S
+4209(text)S
+4381(\256le)S
+4523(on)S
+4645(the)S
+4792(STDOUT.)S
+8340 V
+9 C
+1126(real)S
+1396(=)S
+1730(urand)S
+2055(\(seed\))S
+9 B
+3925(Uniform)S
+4282(\252random\272)S
+4704(number)S
+5036(in)S
+5138(the)S
+5285(interval)S
+5612(\(0,1\).)S
+8460 V
+9 C
+1730(sysid)S
+2055(\(outstr,)S
+2541(maxch\))S
+9 B
+3925(Return)S
+4227(a)S
+4299(system)S
+4586(and)S
+4758(user)S
+4950(identi\256cation)S
+5482(string.)S
+8580 V
+9 C
+1180(int)S
+1396(=)S
+1784(btoi)S
+2055(\(bool\))S
+9 B
+3925(Convert)S
+4267(a)S
+4339(boolean)S
+4666(to)S
+4768(an)S
+4890(integer)S
+5187(\()S
+9 C
+5217(YES)S
+9 B
+5406(or)S
+9 C
+5518(NO)S
+9 B
+5626(\).)S
+9432 V
+EP
+	irafsave restore			
+7920 V
+EP
+%%Page: 0 2
+BP
+/slant 0 def
+/height 1.000000 def
+11 R
+11 R
+	/irafsave save def			
+	0 72 840 10 div sub translate	
+	/erasepage {} def			
+	/initgraphics {} def			
+	/showpage {} def			
+%!
+
+/TWOUPDICT 32 dict def
+
+TWOUPDICT begin
+
+    % LEFTSIDE false is appropriate for normally two sided documents.
+
+    /LEFTSIDE     true def	% Start on LHS of page?
+    /PRESERVE     true def	% Preserve aspect ratio?
+
+    /PAGEWIDTH    8.50 def	% Physical width of the page.
+    /PAGEHEIGHT  11.00 def	% Physical height of the page.
+
+    /LPAGEWIDTH   8.50 def	% Width of a page of the input.
+    /LPAGEHEIGHT 13.00 def	% Height of a page of the input.
+
+    /XOFFSET      0.00 def	% Fudge factors shouldn't be needed, but...
+    /YOFFSET      0.00 def	% Note: offsets are in actual inch units
+    /XSADJUST     0.98 def
+    /YSADJUST     0.98 def	% Set these slightly < 1 for elbow room.
+    /RIGHTFUDGE  -0.50 def	% A negative value shifts RHS to the left.
+
+
+    /XSCALE PAGEHEIGHT LPAGEWIDTH 2 mul div XSADJUST mul def
+    /YSCALE PAGEWIDTH LPAGEHEIGHT       div YSADJUST mul def
+
+    PRESERVE {
+	XSCALE YSCALE lt
+	    { /YSCALE XSCALE def }
+	    { /XSCALE YSCALE def }
+	ifelse
+    } if
+
+    /XOFF { % correction for excess margin in landscape X direction
+	PAGEHEIGHT LPAGEWIDTH 2 mul XSCALE mul sub	% actual inch units
+	dup 0 le
+	    { pop 0 }
+	    { XSCALE div 72 mul 4 div }		% virtual point units, 4 parts
+	ifelse
+    } bind def
+
+    /YOFF { % correction for excess margin in landscape Y direction
+	PAGEWIDTH LPAGEHEIGHT YSCALE mul sub	% actual inch units
+	dup 0 le
+	    { pop 0 }
+	    { YSCALE div 72 mul 2 div }		% virtual point units, 2 parts
+	ifelse
+    } bind def
+
+    /LEFT   {
+	XOFFSET XSCALE div 72 mul	% actual inches --> virtual points
+	LPAGEWIDTH PAGEWIDTH sub 72 mul add
+	XOFF add
+    } bind def
+
+    /BOTTOM {
+	PAGEWIDTH YSCALE div 72 mul neg
+	YOFFSET YSCALE div 72 mul add	% actual inches --> virtual points
+	LPAGEHEIGHT PAGEHEIGHT sub 72 mul add
+	YOFF add
+    } bind def
+
+    /INITPAGE { 90 rotate XSCALE YSCALE scale LEFT BOTTOM translate } bind def
+    /RIGHTORIGIN {
+	PAGEHEIGHT 2 div RIGHTFUDGE add
+	XSCALE div 72 mul 0 translate
+    } bind def
+
+end
+
+
+/showpage {
+    TWOUPDICT begin
+	LEFTSIDE {
+	    systemdict /initgraphics get exec
+	    INITPAGE
+	    RIGHTORIGIN
+	    /LEFTSIDE false def
+	} {
+	%%%%    systemdict /showpage get exec	% implicit initgraphics
+	    INITPAGE
+	    /LEFTSIDE true def
+	} ifelse
+    end
+} def
+
+
+
+TWOUPDICT begin
+    INITPAGE
+    LEFTSIDE not { RIGHTORIGIN } if
+end
+%!PS-Adobe-1.0
+
+/X{exch}def
+/r{rmoveto}def
+/m{moveto}def
+/l{lineto}def
+/rl{rlineto}def
+/lc{yc X xc X l st}def
+/mc{yc X xc X m}def
+/el{gs /a X def a div 1 X scale cp np a xc 2 div 0 360 arc st gr}def
+/ar{cp 7 2 roll np xc 5 1 roll atan 3 1 roll atan X arc st}def
+/sp{yc X xc X 6 2 roll yc X xc X 6 2 roll yc X xc X 6 2 roll ct}def
+/st{stroke}def
+/gs{gsave}def
+/gr{grestore}def
+/cp{currentpoint}def
+/np{newpath}def
+/ct{curveto}def
+/m0{0 0 moveto}def
+/BP{/devps-save save def m0}def
+/EP{
+clear devps-save restore
+showpage}def
+/res 10.000000 def
+/V{res neg div 792 add
+currentpoint pop X
+m}def
+/H{res div
+currentpoint X pop
+moveto}def
+/h{res div 0 r}def
+/v{res neg div 0 X r}def
+/xc{res div}def
+/yc{res neg div 792 add}def
+/S{X H show}def
+/psize 10 def
+/height 1 def
+/slant 0 def
+/FF{findfont X dup 12 div setlinewidth /psize X def
+    [psize 0 psize height mul slant sin slant cos div mul psize height mul 0 0]
+    makefont setfont}def
+/shade{gs
+ /dy X def
+ /dx X def
+ np m
+ setgray
+ 0 dy rl
+ dx 0 rl
+ 0 dy neg rl
+ dx neg 0 rl
+ closepath
+ fill
+gr}def
+1 setlinecap
+/R{/Times-Roman FF}def
+/B{/Times-Bold FF}def
+/I{/Times-Italic FF}def
+/C{/Courier FF}def
+/CI{/Courier-Oblique FF}def
+/CX{/Courier-BoldOblique FF}def
+BP
+/slant 0 def
+/height 1.000000 def
+9 B
+9 B
+480 V
+11 R
+2963(- 3 -)S
+840 V
+11 B
+900(Formatted)S
+1431(Input/Output)S
+2104(\()S
+12 CX
+2140(fmtio)S
+11 B
+2500(\))S
+10 C
+3925(<chars.h>,)S
+4585(<ctype.h>)S
+1020 V
+9 C
+1676(printf)S
+2055(\(format\))S
+9 B
+3925(Begin)S
+4172(a)S
+4244(print)S
+4466(to)S
+4568(the)S
+9 C
+4715(STDOUT)S
+9 B
+5039(.)S
+1140 V
+9 C
+1622(eprintf)S
+2055(\(format\))S
+9 B
+3925(Begin)S
+4172(a)S
+4244(print)S
+4466(to)S
+4568(the)S
+9 C
+4715(STDERR)S
+9 B
+5039(.)S
+1260 V
+9 C
+1622(fprintf)S
+2055(\(fd,)S
+2325(format\))S
+9 B
+3925(Begin)S
+4172(a)S
+4244(print)S
+4466(to)S
+4568(a)S
+4640(\256le.)S
+1380 V
+9 C
+1622(sprintf)S
+2055(\(outstr,)S
+2541(maxch,)S
+2919(format\))S
+9 B
+3925(Begin)S
+4172(a)S
+4244(print)S
+4466(to)S
+4568(a)S
+4640(string.)S
+1500 V
+9 C
+1568(clprintf)S
+2055(\(param,)S
+2487(format\))S
+9 B
+3925(Begin)S
+4172(a)S
+4244(print)S
+4466(to)S
+4568(a)S
+4640(CL)S
+4792(parameter.)S
+1620 V
+9 C
+1730(parg_)S
+2055(\(value\))S
+9 B
+3925(Complete)S
+4322(a)S
+4394(typed)S
+4636(format.)S
+1740 V
+9 C
+1622(pargstr)S
+2055(\(string\))S
+9 B
+3925(Complete)S
+4322(a)S
+4394(string)S
+4646(format.)S
+1860 V
+9 C
+1126(stat)S
+1396(=)S
+1784(scan)S
+2055(\(\))S
+9 B
+3925(Begin)S
+4172(a)S
+4244(scan)S
+4441(from)S
+4658(the)S
+9 C
+4805(STDIN)S
+9 B
+5075(.)S
+1980 V
+9 C
+1126(stat)S
+1396(=)S
+1730(fscan)S
+2055(\(fd\))S
+9 B
+3925(Begin)S
+4172(a)S
+4244(scan)S
+4441(from)S
+4658(\256le.)S
+2100 V
+9 C
+1126(stat)S
+1396(=)S
+1730(sscan)S
+2055(\(str\))S
+9 B
+3925(Begin)S
+4172(a)S
+4244(scan)S
+4441(from)S
+4658(a)S
+4730(string.)S
+2220 V
+9 C
+1126(stat)S
+1396(=)S
+1676(clscan)S
+2055(\(param\))S
+9 B
+3925(Begin)S
+4172(a)S
+4244(scan)S
+4441(from)S
+4658(a)S
+4730(CL)S
+4882(parameter.)S
+2340 V
+9 C
+1730(garg_)S
+2055(\(value\))S
+9 B
+3925(Get)S
+4092(a)S
+4164(typed)S
+4406(value.)S
+2460 V
+9 C
+1622(gargstr)S
+2055(\(outstr,)S
+2541(maxch\))S
+9 B
+3925(Get)S
+4092(the)S
+4239(rest)S
+4411(of)S
+4513(the)S
+4660(line.)S
+2580 V
+9 C
+1622(gargwrd)S
+2055(\(outstr,)S
+2541(maxch\))S
+9 B
+3925(Get)S
+4092(the)S
+4239(next)S
+4431(\252word\272.)S
+2700 V
+9 C
+1126(stat)S
+1396(=)S
+1676(strdic)S
+2055(\(input,)S
+2487(keyword,)S
+2973(maxch,)S
+3351(dict\))S
+9 B
+3925(Look)S
+4152(up)S
+4279(a)S
+4351(string)S
+4603(in)S
+4705(a)S
+4777(dictionary.)S
+2820 V
+9 C
+1126(bool)S
+1396(=)S
+1730(streq)S
+2055(\(string1,)S
+2595(string2\))S
+9 B
+3925(Compare)S
+4312(two)S
+4479(strings)S
+4766(for)S
+4908(equality.)S
+2940 V
+9 C
+1676(strcpy)S
+2055(\(string1,)S
+2595(string2,)S
+3081(maxch\))S
+9 B
+3925(Copy)S
+9 C
+4157(string1)S
+9 B
+4562(to)S
+9 C
+4664(string2)S
+9 B
+5042(.)S
+3240 V
+11 I
+2573(Format)S
+2936(Speci\256cations)S
+3456 V
+11 R
+900(An)S
+1087(SPP)S
+1326(format)S
+1671(speci\256cation)S
+2279(has)S
+2478(the)S
+2665(form)S
+2931(\252)S
+11 C
+2979(%)S
+11 CI
+3045(w)S
+11 C
+3111(.)S
+11 CI
+3177(dC)S
+11 R
+3309(\272,)S
+3438(where)S
+11 CI
+3790(w)S
+11 R
+3909(is)S
+4036(the)S
+4223(\256eld)S
+4472(width,)S
+11 CI
+4838(d)S
+11 R
+4958(is)S
+5086(the)S
+3576 V
+900(number)S
+1274(of)S
+1404(decimal)S
+1790(places)S
+2102(or)S
+2232(the)S
+2405(number)S
+2779(of)S
+2909(digits)S
+3194(of)S
+3324(precision,)S
+3793(and)S
+11 CI
+4023(C)S
+11 R
+4128(is)S
+4241(the)S
+4414(format)S
+4745(code.)S
+5050(The)S
+3696 V
+11 CI
+900(w)S
+11 R
+999(and)S
+11 CI
+1223(d)S
+11 R
+1322(\256elds)S
+1594(are)S
+1759(optional.)S
+2214(The)S
+2417(format)S
+2742(codes)S
+11 CI
+3057(C)S
+11 R
+3156(are)S
+3321(as)S
+3445(follows:)S
+3876 V
+9 C
+1397(b)S
+9 B
+1615(boolean)S
+1942(\()S
+9 C
+1972(YES)S
+9 B
+2161(or)S
+9 C
+2273(NO)S
+9 B
+2381(\))S
+3996 V
+9 C
+1397(c)S
+9 B
+1615(single)S
+1862(character)S
+2259(\()S
+9 C
+2289(c)S
+9 B
+2343(,)S
+9 C
+2393(\\c)S
+9 B
+2501(,)S
+2551(or)S
+9 C
+2663(\\nnn)S
+9 B
+2879(\))S
+4116 V
+9 C
+1397(d)S
+9 B
+1615(decimal)S
+1942(integer)S
+4236 V
+9 C
+1397(e)S
+9 B
+1615(exponential)S
+2087(format,)S
+9 CI
+2402(d)S
+9 B
+2483(is)S
+2570(the)S
+2717(precision)S
+4356 V
+9 C
+1397(f)S
+9 B
+1615(\256xed)S
+1827(format,)S
+9 CI
+2142(d)S
+9 B
+2223(is)S
+2310(the)S
+2457(number)S
+2789(of)S
+2891(decimal)S
+3218(places)S
+4476 V
+9 C
+1397(g)S
+9 B
+1615(general)S
+1927(format,)S
+9 CI
+2242(d)S
+9 B
+2323(is)S
+2410(the)S
+2557(precision)S
+4596 V
+9 C
+1397(h)S
+9 I
+1615(hms)S
+9 B
+1787(format)S
+2079(\()S
+9 C
+2109(hh:mm:ss.ss)S
+9 B
+2703(,)S
+9 CI
+2753(d)S
+9 B
+2834(is)S
+2921(the)S
+3068(number)S
+3400(of)S
+3502(decimal)S
+3829(places\))S
+4716 V
+9 C
+1397(H)S
+9 I
+1615(HMS)S
+9 B
+1827(format,)S
+2142(convert)S
+2459(from)S
+2676(degrees)S
+2993(to)S
+3095(hours)S
+3342(\256rst)S
+3524(\(divide)S
+3816(by)S
+3938(15\))S
+4836 V
+9 C
+1397(m)S
+9 I
+1615(ms)S
+9 B
+1742(or)S
+9 I
+1854(hs)S
+9 B
+1961(format)S
+2253(\()S
+9 C
+2283(mm:ss.ss)S
+9 B
+2715(\),)S
+9 CI
+2795(d)S
+9 B
+2876(is)S
+2963(the)S
+3110(number)S
+3442(of)S
+3544(decimal)S
+3871(places)S
+4956 V
+9 C
+1397(M)S
+9 I
+1615(MS)S
+9 B
+1762(or)S
+9 I
+1874(HS)S
+9 B
+2011(format,)S
+2326(convert)S
+2643(from)S
+2860(degrees)S
+3177(to)S
+3279(hours)S
+3526(\256rst)S
+5076 V
+9 C
+1397(o)S
+9 B
+1615(octal)S
+1827(integer)S
+5196 V
+9 C
+1397(r)S
+9 CI
+1451(N)S
+9 B
+1615(convert)S
+1932(integer)S
+2229(to)S
+2331(or)S
+2443(from)S
+2660(radix)S
+9 CI
+2892(N)S
+5316 V
+9 C
+1397(s)S
+9 B
+1615(string,)S
+9 CI
+1890(d)S
+9 B
+1971(is)S
+2058(the)S
+2205(maximum)S
+2622(number)S
+2954(of)S
+3056(chars)S
+3293(to)S
+3395(print)S
+5436 V
+9 C
+1397(t)S
+9 B
+1615(advance)S
+1957(to)S
+2059(column)S
+2371(given)S
+2603(by)S
+9 CI
+2725(w)S
+5556 V
+9 C
+1397(u)S
+9 B
+1615(unsigned)S
+1987(decimal)S
+2314(integer)S
+5676 V
+9 C
+1397(w)S
+9 B
+1615(output)S
+1897(the)S
+2044(number)S
+2376(of)S
+2478(spaces)S
+2750(given)S
+2982(by)S
+9 CI
+3104(w)S
+5796 V
+9 C
+1397(x)S
+9 B
+1615(hexadecimal)S
+2122(integer)S
+5916 V
+9 C
+1397(z)S
+9 B
+1615(complex)S
+1962(format)S
+2254(\()S
+9 C
+2284(\(r,r\))S
+9 B
+2554(\),)S
+9 CI
+2634(d)S
+9 B
+2715(is)S
+2802(the)S
+2949(precision)S
+6036 V
+9 C
+1397(*)S
+9 B
+1615(deferred,)S
+1995(get)S
+2137(the)S
+2284(\256eld)S
+2476(from)S
+2693(the)S
+2840(next)S
+9 C
+3032(parg_)S
+9 B
+3329(call)S
+6252 V
+11 R
+900(Conventions)S
+1490(for)S
+1650(specifying)S
+2140(the)S
+2307(\256eld)S
+2536(width:)S
+6432 V
+9 CI
+1126(w)S
+9 C
+1234(=)S
+1396(n)S
+9 B
+1615(right)S
+1832(justify)S
+2104(and)S
+2276(blank)S
+2523(\256ll)S
+2650(in)S
+2752(a)S
+2824(\256eld)S
+3016(of)S
+9 C
+3118(n)S
+9 B
+3199(characters)S
+6552 V
+9 CI
+1126(w)S
+9 C
+1234(=)S
+1342(-n)S
+9 B
+1615(left)S
+1767(justify)S
+2039(and)S
+2211(blank)S
+2458(\256ll)S
+2585(in)S
+2687(a)S
+2759(\256eld)S
+2951(of)S
+9 C
+3053(n)S
+9 B
+3134(characters)S
+6672 V
+9 CI
+1126(w)S
+9 C
+1234(=)S
+1342(0n)S
+9 B
+1615(right)S
+1832(justify)S
+2104(and)S
+2276(zero)S
+2468(\256ll)S
+2595(in)S
+2697(a)S
+2769(\256eld)S
+2961(of)S
+9 C
+3063(n)S
+9 B
+3144(characters)S
+6792 V
+9 CI
+1126(w)S
+9 C
+1234(=)S
+1396(0)S
+9 B
+1615(use)S
+1767(as)S
+1874(much)S
+2116(space)S
+2353(as)S
+2460(needed)S
+6912 V
+9 C
+1126(absent)S
+9 B
+1615(same)S
+1837(as)S
+9 CI
+1944(w)S
+9 C
+2052(=)S
+2160(0)S
+7128 V
+11 R
+900(Escape)S
+1242(sequences)S
+1718(for)S
+1878(string)S
+2162(literals)S
+2494(and)S
+2685(character)S
+3116(constants:)S
+7308 V
+9 C
+1342(\\b)S
+9 B
+1615(backspace)S
+7428 V
+9 C
+1342(\\f)S
+9 B
+1615(form)S
+1832(feed)S
+7548 V
+9 C
+1342(\\n)S
+9 B
+1615(newline)S
+1937(\()S
+9 C
+1967(<CR><LF>)S
+9 B
+2399(\))S
+7668 V
+9 C
+1342(\\r)S
+9 B
+1615(carriage)S
+1962(return)S
+7788 V
+9 C
+1342(\\t)S
+9 B
+1615(tab)S
+7908 V
+9 C
+1342(\\")S
+9 B
+1615(string)S
+1867(delimiter)S
+2244(character)S
+8028 V
+9 C
+1342(\\')S
+9 B
+1615(character)S
+2012(constant)S
+2364(delimiter)S
+2741(character)S
+8148 V
+9 C
+1342(\\\\)S
+9 B
+1615(backslash)S
+2017(character)S
+8268 V
+9 C
+1234(\\nnn)S
+9 B
+1615(octal)S
+1827(value)S
+2059(of)S
+2161(character)S
+8484 V
+11 R
+900(Any)S
+1130(combination)S
+1721(of)S
+1853(the)S
+2028(\256elds)S
+11 CI
+2341(w)S
+11 R
+2407(,)S
+11 CI
+2509(d)S
+11 R
+2575(,)S
+11 CI
+2677(C)S
+11 R
+2743(,)S
+2812(or)S
+11 CI
+2977(N)S
+11 R
+3084(may)S
+3314(be)S
+3459(speci\256ed)S
+3891(as)S
+4024(asterisks)S
+4444(\()S
+11 C
+4480(*)S
+11 R
+4546(\))S
+4624(in)S
+4752(the)S
+4928(format)S
+8604 V
+900(string,)S
+1212(allowing)S
+1630(the)S
+1797(\256eld)S
+2026(to)S
+2145(be)S
+2281(passed)S
+2606(at)S
+2718(run)S
+2897(time)S
+3126(in)S
+3245(a)S
+9 C
+3347(parg_)S
+11 R
+3650(call.)S
+9432 V
+EP
+BP
+/slant 0 def
+/height 1.000000 def
+11 R
+11 R
+480 V
+2963(- 4 -)S
+840 V
+11 B
+900(SPP)S
+1129(Intrinsic)S
+1566(Functions)S
+1020 V
+11 I
+1150(Type)S
+1396(Conversions)S
+1200 V
+9 C
+1321(char)S
+1591(=)S
+1869(char)S
+2140(\(integer\))S
+9 B
+2965(Convert)S
+3307(to)S
+3409(character.)S
+1320 V
+9 C
+1267(short)S
+1591(=)S
+1815(short)S
+2140(\(z\))S
+9 B
+2965(Convert)S
+3307(to)S
+3409(short.)S
+1440 V
+9 C
+1375(int)S
+1591(=)S
+1923(int)S
+2140(\(z\))S
+9 B
+2965(Truncate)S
+3347(to)S
+3449(integer.)S
+1560 V
+9 C
+1375(int)S
+1591(=)S
+1869(nint)S
+2140(\(x\))S
+9 B
+2965(Round)S
+3252(to)S
+3354(integer.)S
+1680 V
+9 C
+1321(long)S
+1591(=)S
+1869(long)S
+2140(\(z\))S
+9 B
+2965(Convert)S
+3307(to)S
+3409(long)S
+3601(integer.)S
+1800 V
+9 C
+1321(real)S
+1591(=)S
+1869(real)S
+2140(\(z\))S
+9 B
+2965(Convert)S
+3307(to)S
+3409(real.)S
+1920 V
+9 C
+1321(real)S
+1591(=)S
+1815(aimag)S
+2140(\(complex\))S
+9 B
+2965(Imaginary)S
+3397(part.)S
+2040 V
+9 C
+1213(double)S
+1591(=)S
+1761(double)S
+2140(\(z\))S
+9 B
+2965(Convert)S
+3307(to)S
+3409(double)S
+3696(precision.)S
+2160 V
+9 C
+1159(complex)S
+1591(=)S
+1707(complex)S
+2140(\(z\))S
+9 B
+2965(Convert)S
+3307(to)S
+3409(complex.)S
+2400 V
+11 I
+1150(Trigonometry)S
+10 R
+2965(\(angles)S
+3283(are)S
+3434(in)S
+3542(radians\))S
+2580 V
+9 C
+1483(y)S
+1591(=)S
+1923(sin)S
+2140(\(y\))S
+9 B
+2965(Sine.)S
+2700 V
+9 C
+1483(y)S
+1591(=)S
+1923(cos)S
+2140(\(y\))S
+9 B
+2965(Cosine.)S
+2820 V
+9 C
+1483(x)S
+1591(=)S
+1923(tan)S
+2140(\(x\))S
+9 B
+2965(Tangent.)S
+2940 V
+9 C
+1483(x)S
+1591(=)S
+1869(asin)S
+2140(\(x\))S
+9 B
+2965(Inverse)S
+3277(sine.)S
+3060 V
+9 C
+1483(x)S
+1591(=)S
+1869(acos)S
+2140(\(x\))S
+9 B
+2965(Inverse)S
+3277(cosine.)S
+3180 V
+9 C
+1483(x)S
+1591(=)S
+1869(atan)S
+2140(\(x\))S
+9 B
+2965(Inverse)S
+3277(tangent.)S
+3300 V
+9 C
+1483(x)S
+1591(=)S
+1815(atan2)S
+2140(\(x1,)S
+2410(x2\))S
+9 B
+2965(Inverse)S
+3277(tangent)S
+3594(of)S
+9 C
+3696(x1/x2)S
+9 B
+3966(.)S
+3420 V
+9 C
+1483(x)S
+1591(=)S
+1869(sinh)S
+2140(\(x\))S
+9 B
+2965(Hyperbolic)S
+3422(sine.)S
+3540 V
+9 C
+1483(x)S
+1591(=)S
+1869(cosh)S
+2140(\(x\))S
+9 B
+2965(Hyperbolic)S
+3422(cosine.)S
+3660 V
+9 C
+1483(x)S
+1591(=)S
+1869(tanh)S
+2140(\(x\))S
+9 B
+2965(Hyperbolic)S
+3422(tangent.)S
+3900 V
+11 I
+1150(Miscellaneous)S
+4080 V
+9 C
+1483(w)S
+1591(=)S
+1923(abs)S
+2140(\(z\))S
+9 B
+2965(Absolute)S
+3332(value.)S
+4200 V
+9 C
+1159(complex)S
+1591(=)S
+1761(conjug)S
+2140(\(complex\))S
+9 B
+2965(Complex)S
+3337(conjugate.)S
+4320 V
+9 C
+1483(w)S
+1591(=)S
+1923(min)S
+2140(\(w1,)S
+2410(w2,)S
+2626(...\))S
+9 B
+2965(Minimum)S
+3377(value.)S
+4440 V
+9 C
+1483(w)S
+1591(=)S
+1923(max)S
+2140(\(w1,)S
+2410(w2,)S
+2626(...\))S
+9 B
+2965(Maximum)S
+3392(value.)S
+4560 V
+9 C
+1483(w)S
+1591(=)S
+1923(mod)S
+2140(\(w1,)S
+2410(w2\))S
+9 B
+2965(Remainder)S
+3422(after)S
+9 C
+3634(w1/w2)S
+9 B
+3904(.)S
+4680 V
+9 C
+1483(y)S
+1591(=)S
+1869(sqrt)S
+2140(\(y\))S
+9 B
+2965(Square)S
+3267(root.)S
+4800 V
+9 C
+1483(y)S
+1591(=)S
+1923(log)S
+2140(\(y\))S
+9 B
+2965(Natural)S
+3292(logarithm.)S
+4920 V
+9 C
+1483(x)S
+1591(=)S
+1815(log10)S
+2140(\(x\))S
+9 B
+2965(Common)S
+3347(logarithm.)S
+5040 V
+9 C
+1483(y)S
+1591(=)S
+1923(exp)S
+2140(\(y\))S
+9 B
+2965(Exponentiation.)S
+5316 V
+11 R
+1150(The)S
+1353(allowed)S
+1733(datatypes)S
+2180(of)S
+2304(the)S
+2471(arguments)S
+2961(and)S
+3152(returned)S
+3549(values)S
+3862(are:)S
+5496 V
+9 C
+1483(w)S
+1591(=)S
+1700(integer)S
+9 R
+2078(,)S
+9 C
+2156(real)S
+9 R
+2372(,)S
+2440(or)S
+9 C
+2570(double)S
+5616 V
+1483(x)S
+1591(=)S
+2156(real)S
+9 R
+2438(or)S
+9 C
+2570(double)S
+5736 V
+1483(y)S
+1591(=)S
+2156(real)S
+9 R
+2372(,)S
+9 C
+2570(double)S
+9 R
+2894(,)S
+2962(or)S
+9 C
+3092(complex)S
+5856 V
+1483(z)S
+1591(=)S
+1700(integer)S
+9 R
+2078(,)S
+9 C
+2156(real)S
+9 R
+2372(,)S
+9 C
+2570(double)S
+9 R
+2894(,)S
+2962(or)S
+9 C
+3092(complex)S
+6072 V
+11 R
+1150(Do)S
+1338(not)S
+1534(use)S
+9 C
+1756(short)S
+11 R
+2081(or)S
+9 C
+2248(long)S
+11 R
+2519(integer)S
+2878(arguments)S
+3390(with)S
+3641(any)S
+3854(functions)S
+4318(other)S
+4598(than)S
+4842(the)S
+5031(type)S
+6192 V
+1150(conversion)S
+1675(intrinsics.)S
+2184(The)S
+2398(datatypes)S
+2856(must)S
+3115(match)S
+3427(for)S
+3598(functions)S
+4050(with)S
+4289(more)S
+4557(than)S
+4789(one)S
+4990(argu-)S
+6312 V
+1150(ment.)S
+1479(The)S
+1697(datatype)S
+2116(returned)S
+2528(by)S
+2686(the)S
+2868(functions)S
+3325(is)S
+3447(the)S
+3629(same)S
+3902(as)S
+4042(the)S
+4225(arguments,)S
+4759(except)S
+5093(for)S
+6432 V
+1150(type)S
+1376(conversions)S
+1937(or)S
+2065(the)S
+2236(absolute)S
+2639(value)S
+2912(of)S
+3039(a)S
+9 C
+3144(complex)S
+11 R
+3558(number.)S
+3990(SPP)S
+4212(performs)S
+4643(the)S
+4813(\252normal\272)S
+6552 V
+1150(automatic)S
+1616(type)S
+1838(conversions)S
+2395(in)S
+2514(expressions.)S
+	/irafsave save def			
+	0 72 6552 10 div sub translate	
+	/erasepage {} def			
+	/initgraphics {} def			
+	/showpage {} def			
+%!PS-Adobe-2.0 EPSF-2.0
+/iraflogo
+{newpath
+109.8 736.7 moveto
+192.8 736.7 lineto
+192.8 639.9 lineto
+109.8 639.9 lineto
+closepath
+0 setgray
+fill
+newpath
+112.1 698.0 moveto
+115.4 698.7 lineto
+118.1 699.4 lineto
+120.9 700.3 lineto
+123.2 701.2 lineto
+125.5 702.4 lineto
+128.7 704.2 lineto
+130.1 705.4 lineto
+132.9 707.7 lineto
+132.0 698.0 lineto
+131.0 688.8 lineto
+129.6 678.6 lineto
+128.7 680.9 lineto
+127.8 682.8 lineto
+126.7 684.6 lineto
+125.5 686.5 lineto
+124.3 687.8 lineto
+122.7 689.2 lineto
+121.1 690.6 lineto
+119.4 691.3 lineto
+117.2 692.0 lineto
+115.4 692.5 lineto
+113.5 692.9 lineto
+111.7 693.4 lineto
+closepath
+1 setgray
+fill
+newpath
+136.1 734.8 moveto
+141.4 729.5 lineto
+143.6 726.5 lineto
+145.1 724.3 lineto
+146.5 721.9 lineto
+147.6 720.1 lineto
+148.7 717.8 lineto
+149.5 715.9 lineto
+150.4 712.7 lineto
+151.2 710.0 lineto
+151.8 707.2 lineto
+152.5 704.4 lineto
+152.8 701.7 lineto
+153.1 698.9 lineto
+153.1 697.1 lineto
+153.0 694.1 lineto
+152.2 691.5 lineto
+151.3 690.2 lineto
+149.5 688.8 lineto
+149.5 687.8 lineto
+150.3 683.2 lineto
+151.5 679.6 lineto
+153.1 675.9 lineto
+152.2 675.0 lineto
+144.9 666.7 lineto
+141.6 669.4 lineto
+140.9 665.7 lineto
+140.2 662.5 lineto
+139.3 660.7 lineto
+134.7 655.6 lineto
+131.0 651.0 lineto
+128.7 647.8 lineto
+126.8 645.0 lineto
+125.0 641.8 lineto
+130.6 675.0 lineto
+132.7 688.8 lineto
+133.8 698.0 lineto
+134.7 708.1 lineto
+closepath
+1 setgray
+fill
+newpath
+142.1 716.4 moveto
+142.8 713.6 lineto
+143.6 711.3 lineto
+144.0 708.1 lineto
+144.5 704.4 lineto
+144.6 700.3 lineto
+144.3 698.9 lineto
+143.9 697.5 lineto
+143.0 696.1 lineto
+142.1 695.2 lineto
+closepath
+0 setgray
+fill
+newpath
+150.4 716.4 moveto
+154.1 712.3 lineto
+156.8 709.0 lineto
+163.1 699.8 lineto
+166.5 694.3 lineto
+170.8 686.9 lineto
+177.0 676.3 lineto
+180.0 670.3 lineto
+186.3 656.5 lineto
+188.1 651.9 lineto
+189.3 648.2 lineto
+190.0 645.0 lineto
+185.4 650.1 lineto
+181.8 653.8 lineto
+178.9 656.6 lineto
+177.1 658.4 lineto
+170.3 663.4 lineto
+170.2 666.1 lineto
+166.8 668.2 lineto
+166.5 667.1 lineto
+166.0 666.7 lineto
+162.1 670.3 lineto
+158.5 673.3 lineto
+154.1 676.3 lineto
+155.0 682.8 lineto
+155.3 686.5 lineto
+155.0 690.6 lineto
+154.8 695.2 lineto
+154.5 698.0 lineto
+154.1 702.6 lineto
+153.1 706.3 lineto
+152.4 710.0 lineto
+151.6 712.7 lineto
+closepath
+1 setgray
+fill
+newpath
+161.9 693.4 moveto
+164.7 688.8 lineto
+166.8 684.2 lineto
+168.0 680.9 lineto
+168.6 678.6 lineto
+169.0 676.3 lineto
+169.4 673.1 lineto
+169.7 669.4 lineto
+167.0 670.8 lineto
+167.1 675.0 lineto
+166.9 676.3 lineto
+166.6 678.6 lineto
+166.1 680.9 lineto
+165.2 684.2 lineto
+163.6 688.8 lineto
+closepath
+0 setgray
+fill
+newpath
+158.2 710.0 moveto
+163.3 708.6 lineto
+168.1 707.7 lineto
+171.6 707.4 lineto
+174.3 707.5 lineto
+177.1 707.9 lineto
+180.8 709.0 lineto
+180.5 707.1 lineto
+179.9 705.4 lineto
+171.6 704.4 lineto
+172.5 702.6 lineto
+175.3 704.0 lineto
+176.6 701.7 lineto
+173.4 698.9 lineto
+176.2 694.3 lineto
+173.4 690.2 lineto
+172.5 688.3 lineto
+167.9 695.2 lineto
+164.2 700.7 lineto
+closepath
+1 setgray
+fill } def
+gsave
+0.5 setlinewidth
+70 -100 translate
+iraflogo
+grestore
+showpage
+	irafsave restore			
+8232 V
+2700(National)S
+3111(Optical)S
+3467(Astronomy)S
+3995(Observatories)S
+8352 V
+2700(P.O.)S
+2930(Box)S
+3147(26732,)S
+3483(Tucson,)S
+3867(AZ)S
+4079(85726-6732)S
+9432 V
+EP
+	irafsave restore			
+7920 V
+EP
+%%Page: 0 3
+BP
+/slant 0 def
+/height 1.000000 def
+11 R
+11 R
+7920 V
+EP
+%%Trailer
+%%DocumentFonts: Times-Roman
+%%Pages: 3
+

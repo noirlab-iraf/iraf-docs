@@ -1,0 +1,90 @@
+
+                         IRAF User Handbook Volume 2B
+                        User's Guides / KPNO Cookbooks
+
+                              Table of Contents
+
+[The following documents are in IRAF User Handbook Volume 2B.  Those
+documents marked with an * can be found in the network archive as 
+either compressed ASCII text (.txt.Z) or compressed PostScript (.ps.Z)
+format documents. The names of the files, as they exist in the archive,
+are given in ().]
+
+
+Glossary
+ * The IRAF Packages, IRAF Version 2.10. (glos210a.ps.Z)
+ * The NOAO Packages, IRAF Version 2.10. (glos210b.ps.Z)
+
+Overview Papers for IRAF Packages
+ * The IRAF CCD Reduction Package - CCDRED, by Francisco Valdes, September 1987.
+   (ccdred.ps.Z)
+
+ * Reduction of long slit spectra with IRAF, by Francisco Valdes. (lslit.ps.Z)
+
+ * The IRAF APEXTRACT Package, by Francisco Valdes, April 1989. (apex.ps.Z)
+
+ * An Overview of the IRAF DTOI Package, by Suzanne Hammond Jacoby, revised
+   July 1988. (dtoi.ps.Z)
+
+ * Some Notes on the ONEDSPEC Package, by George Jacoby, June 1985. (oned.ps.Z)
+
+ * APEXTRACT Package Revisions Summary: IRAF Version 2.10, by Francisco
+   Valdes, May 1992. (apexv210.ps.Z)
+
+ * ONEDSPEC/IMRED Package Revisions Summary: IRAF Version 2.10, by Francisco
+   Valdes, May 1992. (onedv210.ps.Z)
+
+Design Documents for IRAF Packages
+ * Specifications for the Aperture Photometry Package, by Lindsey Davis,
+   revised October 1987. (apspec.ps.Z)
+
+User's Guides for IRAF Packages and Tasks
+ * Radial Velocity Measurements with IDENTIFY, by Francisco Valdes, revised
+   August 1990.  (identify.ps.Z)
+
+ * A User's Guide to the IRAF APPHOT Package, by Lindsey Davis, revised May
+   1989. (apuser.ps.Z)
+ 
+ * User's Guide to the CCDRED Package, by Francisco Valdes, revised February
+   1988. (ccdguide.ps.Z)
+
+ * Guide to the Coude Three Fiber Reduction Task DO3FIBER, by Francisco
+   Valdes, April 1992. (do3fiber.ps.Z)
+
+ * Guide to the ARGUS Reduction Task DOARGUS, by Francisco Valdes, April 1992.
+   (doargus2.ps.Z)
+
+ * Guide to the Slit Spectra Reduction Task DOECSLIT, by Francisco Valdes,
+   April 1992. (doecslit.ps.Z)
+
+ * Guide to the Multifiber Reduction Task DOFIBERS, by Francisco Valdes,
+   April 1992. (dofibers2.ps.Z)
+
+ * Guide to the Fiber Optic Echelle Reduction Task DOFOE, by Francisco Valdes,
+   April 1992. (dofoe.ps.Z)
+
+ * Guide to the HYDRA Reduction Task DOHYDRA, by Francisco Valdes, April 1992.
+   (dohydra.ps.Z)
+
+ * Guide to the Slit Spectra Reduction Task DOSLIT, by Francisco Valdes,
+   April 1992. (doslit2.ps.Z)
+
+KPNO Cookbooks/User's Guides for Data Reductions Using IRAF
+ * A User's Guide to CCD Reductions with IRAF, by Phil Massey, June 1992.
+   (ccduser2.ps.Z)
+
+ * A User's Guide to Stellar CCD Photometry with IRAF, by Philip Massey and 
+   Lindsey Davis, April 1992. (daophot2.ps.Z)
+
+ * A User's Guide to Reducing Slit Spectra with IRAF, by Phil Massey, Frank
+   Valdes, Jeannette Barnes, April 1992. (spect.ps.Z)
+
+User's Guides for IRAF Programming
+ * An Introductory User's Guide to IRAF Scripts, revised by Rob Seaman,
+   September 1989. (script.ps.Z)
+
+
+
+
+Revised IRAF version 2.10
+     6/10/92

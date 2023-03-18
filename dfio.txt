@@ -1,0 +1,1798 @@
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+                      IRAF DATAFILE I/O INTERFACE
+                               Doug Tody
+                             February 1988
+
+
+
+1. INTRODUCTION
+
+    The DFIO (Datafile I/O) interface is  a  general  purpose  interface
+used  to  store  and access arbitrary binary data tables maintained in a
+machine independent  random  access  binary  file  on  disk.   The  main
+purpose   of  the  present  interface  is  to  support  the  IRAF  image 
+structures, although it may also  be  considered  a  prototype  for  the
+planned  IRAF  DBIO  (Database I/O) interface, and could also be used by
+applications as a interim interface for catalog output  and  intermodule
+communication.
+
+The   capabilities  or  features  of  the  DFIO  prototype  include  the 
+following.
+
+    o   The ability to store multiple binary tables in a single file.
+    
+    o   Data definition via a high level data definition language.
+    
+    o   Runtime mapping of internal  stored  tables  to  and  from  user
+        defined   record  structures  for  full  data  independence  and 
+        programmer convenience.
+    
+    o   Abstract user defined domains, including storage of  information
+        for formatting tabular output.
+    
+    o   Highly  efficient  storage  and  access  for both very small and
+        very large tables.
+    
+    o   Efficient symbolic access via a SYMTAB binary hash table.
+    
+    o   A simple sparse indexing scheme for tables stored  sorted  by  a
+        user  defined primary key, providing fast lookup for arbitrarily
+        large tables provided retrieval is based on the primary key.
+    
+    o   Dynamic updating  and  insertion,  including  updating  variable
+        sized records.
+    
+    o   Array valued fields, including variable length arrays.
+    
+    o   Record valued fields.
+    
+    o   The ability to dynamically add fields to existing tables.
+    
+
+
+
+
+
+                                  -1-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+    o   Default values for uninitialized or newly added fields.
+    
+    o   Nested   tables  (logical  hierarchical  structures  implemented 
+        physically as independent relational base tables).
+    
+    o   A fully self describing data format.
+    
+    o   A fully machine independent external data format.
+    
+    o   Distributed access via IRAF networking.
+
+The major areas NOT  dealt  with  by  DFIO  include  concurrency,  crash
+recovery  (important  for  large  updatable  databases,  such  as  those 
+produced  by  sophisticated  analysis  programs),  transaction  logging, 
+dense  indexes, multiple indexes, support for transparent access to host
+databases, and all  higher  level  database  functions  such  as  record
+selection   via   a  symbolically  defined  predicate  (fundamental  for 
+efficiently querying the database).   With  the  possible  exception  of
+concurrency  and crash recovery, these areas are not considered of major
+importance to the immediate goal of solving the general problem of  IRAF
+image storage; they will be dealt with by DBIO.
+
+
+
+2. TERMINOLOGY
+
+    A  DATAFILE  may  be  thought  of  as  a  database, or collection of
+TABLES,  with  an  associated  CATALOG  (table  of  tables),  and   DATA 
+DICTIONARY,  describing the RELATIONS (record types), ATTRIBUTES (fields
+of  the  records),  DOMAINS  (user  logical  datatypes),  and   MAPPINGS 
+(mappings  of  applications  structures onto datafile objects) stored in
+the database.  Physically, a datafile is a  single  IRAF  random  access
+binary  file  containing  both the data dictionary and data tables.  One
+or more separate text files containing statements written in a  symbolic
+DATA  DEFINITION  LANGUAGE  are  used  to define the data elements to be
+stored in the datafile.
+
+        Formal Relational Term          Informal Equivalent (Date, 86)
+
+              relation                      table
+              tuple                         row or record
+              attribute                     column or field
+              primary key                   unique identifier
+              domain                        pool of legal values
+
+A table is a named instance of a predefined  relation.   To  distinguish
+tables  from relations or mappings, tables are often referred to as DATA
+TABLES or BASE TABLES.  A data table may be thought of  as  a  table  of
+rows  and  columns,  where  the  rows are the DATA RECORDS making up the
+table, and the columns are the FIELDS of the data records.   The  fields
+of  a  data  record correspond to the attributes of the relation used to
+construct the data table.  Each attribute is defined upon some  specific
+
+
+                                  -2-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+domain,  e.g.,  "int"  or "real".  Often one or more of the columns of a
+table will be concatenated  to  form  the  PRIMARY  KEY  of  the  table.
+Tables  with  a primary key are stored sorted by the primary key with an
+associated index of key values, allowing efficient  record  access  even
+for very large tables.
+
+To  make  tables  more useful in scientific applications, DFIO makes two
+major extensions to the relational model upon  which  the  interface  is
+based.   First,  fields  may  be  array  valued,  with such arrays being
+either fixed in size, or variable in  size  with  effectively  no  upper
+bound  on  the  size  of  the array.  Second, the fields of a record may
+themselves be records, arrays of records, or other  tables  (SUBTABLES).
+Although  this  appears at first glance to violate the relational model,
+the subtables are independent tables with  their  own  catalog  entries,
+and  the  database  may  still  be  viewed  as  a  collection of largely
+independent tables characterized by a somewhat generalized idea of  what
+constitutes a field.
+
+
+
+3. DATA DEFINITION LANGUAGE
+
+    Before  any  data  can  be stored in a datafile, the set of possible
+object datatypes (relations, attributes, and domains) must  be  defined.
+This  is  most  conveniently done using a high level textual description
+of the data objects, expressed in  the  DFIO  data  definition  language
+(DDL).   Data  objects  may  also be defined, or old definitons altered,
+using the procedural interface outlined in section 4.1.2.  It  is  these
+same  procedures  which are ultimately called when a data defintion file
+(DDF) is compiled.
+
+
+
+3.1 DDL LEXICAL FORM
+
+    The lexical form of the DDL is consistent with that  of  other  IRAF
+text  data formats, i.e., comments may appear anywhere and are marked by
+a #, backslash may be used to continue long lines, and blank  lines  are
+ignored.    Whitespace   and   newline   delimits  tokens,  and  strings 
+containing  whitespace  or  DDL  metacharacters  must  be  quoted.   The 
+language keywords should be given in lower case.
+
+
+
+3.2 LANGUAGE ELEMENTS
+
+    The  DFIO  data definition language consists of only six statements,
+DEFINE, INCLUDE, DOMAIN, RELATION, MAPPING, and SET.
+
+
+
+
+
+
+                                  -3-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+3.2.1 PREPROCESSOR DIRECTIVES
+
+    The DDL includes the standard  preprocessor  directives  DEFINE  and
+INCLUDE,  which  are  virtually  identical  to  those  used  in  the SPP
+language.
+
+        INCLUDE <fname> 
+        INCLUDE "pathname"
+        DEFINE  macro_name replacement_string
+
+If the include file is specified as <fname>  the  system  libraries  are
+searched  for  the named file, otherwise the file should be specified by
+an absolute pathname (IRAF VFN), to ensure that the file may be  located
+reliably  regardless  of  the  default  directory  set  at runtime.  The
+arguments to macro defines are indicated as  $1,  $2,  ...  $9.   It  is
+recommended  that  use of file inclusion be minimized in data definition
+files intended to be read frequently at runtime.
+
+
+
+3.2.2 THE DOMAIN STATEMENT
+
+    Each attribute of a relation (field of a record, column of a  table)
+must  be  defined upon some particular DOMAIN.  A domain is similar to a
+primitive datatype such as real or integer, but carries additional, more
+application dependent meaning.
+
+        DOMAIN domain_name [domain_attribute=value [, ... ]]
+
+The possible attributes of a domain are the following:
+
+    default   Default  value  to be assigned to fields defined upon this
+              domain.
+    
+    format    FMTIO style format string (e.g, "%5.2f")  to  be  used  to
+              print the values of fields defined upon this domain.
+    
+    type      The  datatype  to be used to store values for this domain.
+              Either a  primitive  datatype,  or  the  name  of  another
+              domain.   If  another  domain  is  specified,  the  domain 
+              currently being defined inherits  the  attributes  of  the
+              referenced domain.
+    
+    units     A  string to be used in printed output to define the units
+              for the domain, e.g., "pixels", "degrees", and so on.
+
+Note that inheritance (naming an existing domain  as  the  type  of  the
+domain  currently  being  defined) serves only to set the default values
+of the domain attributes.  Subsequent DOMAIN_ATTRIBUTE=VALUE  assigments
+will  override  these default values, and the resultant domain will have
+a primitive datatype.
+
+
+
+                                  -4-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+All domains are ultimately defined in terms  of  the  following  set  of
+primitive  datatypes.   Note  that  fixed  size character strings, e.g.,
+CH*80, are considered a primitive type.  The  B2  datatype  is  used  to
+store  binary  data  in  the  datafile without it being subjected to any
+format conversions, e.g., when  storing  data  which  has  already  been
+rendered into a machine independent form by the applications program.
+
+        Name                     Description
+
+        b2              16 bit opaque binary data
+        ch [ *N ]       character (stored one byte per character)
+        i2              16 bit signed integer
+        i4              32 bit signed integer
+        r4              32 bit floating point
+        r8              64 bit floating point
+
+In addition, the following set of STANDARD DOMAINS are normally defined.
+All user domains should be defined in terms of these  standard  domains,
+to  ensure  that  reasonable  defaults  are  established  for the domain
+attributes.
+
+        Name            Type     Default  Format    Units
+
+        char [ *N ]      ch        ""     %s        none
+        short            i2         0     %6d       none
+        int, long        i4         0     %11d      none
+        real             r4         0.0   %14.7g    none
+        double           r4         0.0   %21.14g   none
+        opaque           b2         0     %6o       none
+        stime            i4         0     %5D       seconds
+        ltime            i4         0     %8D       seconds
+        sdate            i4         0     %12T      seconds
+        ldate            i4         0     %22T      seconds
+
+The special domains STIME and LTIME, and  SDATE  and  LDATE,  provide  a
+standard  way  of  representing  timestamp  information.   All times are
+stored internally as long integers  in  IRAF  VOS  time  units  (seconds
+starting  at  1970.0  LST).   The  only difference in the different time
+domains is the way the output is formatted.  Examples of the  short  and
+long time formats are shown below.
+
+        stime           12:28
+        ltime           12:28:36
+        sdate           Feb 20 12:28
+        ldate           Sat 12:28:36 20-Feb-88
+
+Note  that domains can only be defined, directly or indirectly, in terms
+of the  primitive  types.   Array  or  record  valued  domains  are  not
+permitted.
+
+
+
+
+
+                                  -5-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+3.2.3 THE RELATION STATEMENT
+
+    The  RELATION statement is used to define a grouping of zero or more
+ATTRIBUTES, each  defined  upon  some  particular  DOMAIN.   Defining  a
+relation  does  not  in itself add any data to a datafile; to store data
+in a datafile, one must create a DATA TABLE, which is a  named  instance
+of  some  predefined relation, and then write DATA RECORDS to the table.
+A relation is a typed object, like a domain,  and  may  be  used  as  an
+element in an array, or as an attribute of another relation.
+
+        RELATION relation_name {
+            attribute1 [, alias...] :   type [ "[" nelem "]" ],  label
+                        ...
+            attributeN [, alias...] :   type [ "[" nelem "]" ],  label
+        }
+
+A  relation  may  have any number of attributes.  The order in which the
+attributes are defined is arbitrary and should  be  chosen  for  logical
+clarity  (tables  are  stored  in  a  packed  format  hence there are no
+alignment considerations).  Note that aliases may be  provided  for  the
+attribute  name, and that the attribute name is given first, followed by
+a colon and then a  comma  delimited  list  of  the  attributes  of  the
+attribute  being defined.  The attribute TYPE should be a domain name or
+the name of a predefined relation.  The LABEL is optional, and  is  used
+as  a  comment  or  column  label  to identify the attribute in the data
+definition and in formatted output tables.
+
+The attributes of a relation may be scalars, fixed  or  variable  length
+arrays  of  any  predefined  type,  i.e.,  of  any  predefined domain or
+relation, or actual base tables.  The  elements  of  an  array  must  be
+fixed  in  size,  hence  arrays  of  variable  length  records  are  not 
+permitted.  Array and table valued attributes are denoted  as  shown  in
+the examples below.  EVENT is a predefined fixed size relation.
+
+        x:              real            # simple scalar field
+        coeff:          real[10]        # simple array valued field
+        name:           char*20         # simple string valued field
+        month:          char*3[12]      # array of strings
+        label:          char[]          # variable length array
+        event:          event           # record valued field
+        event:          event[8]        # fixed array of records
+        event:          event[]         # variable array of records
+        event:          event[*]        # distinct base table
+
+Any  relation  containing  variable  length  arrays is a variable length
+relation.  A table valued attribute does not make  a  relation  variable
+length,  since  the  table  is stored separately from the records of the
+parent table.  Storage for fixed or  small  variable  length  arrays  is
+allocated  within  a variable length data record, hence small arrays are
+the most efficient.  Large arrays and table valued  attributes  are  the
+least   efficient   since  storage  is  separately  allocated  (although 
+clustering of the records from different tables  on  the  same  datafile
+
+
+                                  -6-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+page  is  possible).  Array or table valued attributes cannot be used in
+indexes.  The DF_FLEN function may be used to determine  the  length  of
+(number of elements or records in) an array or table valued attribute.
+
+
+
+3.2.4 THE MAPPING STATEMENT
+
+    The  DDL MAPPING statement is used to define a user record structure
+(e.g., a dynamically allocated  SPP  binary  data  structure),  and  the
+mapping  of  that structure onto a datafile relation (or base table, and
+hence implicitly onto some relation).  In the current implementation,  a
+mapping  cannot  map  onto  more than one relation, but there can be any
+number of mappings of the same relation.
+
+The syntax of the MAPPING statement is as follows.
+
+        MAPPING mapping_name {
+            field1 : spp_type, struct_offset, attribute [, flags]
+                        ...
+            fieldN : spp_type, struct_offset, attribute [, flags]
+        }
+
+where  FIELDN  is  the  name  by  which  the  field  will  be  known  in 
+applications  programs,  SPP_TYPE  is  a  SPP  type  name,  e.g., "int",
+"real", "real[6]", and so on, STRUCT_OFFSET is the  zero-indexed  struct
+offset  of the field in the SPP data structure, ATTRIBUTE is the name of
+the attribute to which the field is to be mapped, and FLAGS  tells  DFIO
+how  to  do  the  mapping,  e.g.,  whether  to  abort or issue a warning
+message if the field cannot be mapped.
+
+Variable length arrays are implemented in SPP structures via  a  pointer
+to  a  separately  allocated  array.   This  construct is indicated in a
+mapping by the DFIO variable array declaration, plus a reference to  the
+LEN  intrinsic  function  to  identify  the field to be used to hold the
+length of the array, e.g.,
+
+        ncoeff:         int,            0,      len(coeff)
+        coeff:          real[],         1,      coeff
+
+The corresponding SPP structure  should  declare  COEFFP  as  a  pointer
+variable  in  the main data structure.  In a record retrieval operation,
+DFIO will automatically allocate  a  buffer  of  the  correct  size  and
+initialize   the   NCEOFF   and  COEFFP  fields  of  the  SPP  structure 
+accordingly.   In  a  record  insert  or  update  operation,  NCOEFF  is 
+required to pass the length of the array pointed to by COEFFP.
+
+An  applications  program  may  reference  either  a  maping of the data
+table, or the table itself; in general  the  applications  program  does
+not  know  the difference, although a mapping must always be used to map
+stored records  to  and  from  SPP  data  structures.   Since  different
+applications  may have different mappings of the same relations, and the
+
+
+                                  -7-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+relations themselves may change with time,  a  mapping  is  bound  to  a
+relation  at  runtime when the data table is opened.  A mapping is bound
+to a relation by resolving the symbolic field references  into  physical
+datatypes  and  offsets  into  the  stored  record,  setting up a binary
+transformation  table  to  be  used   to   perform   efficient   runtime 
+transformations   of   records   between  their  internal  and  external 
+representations.  This is  the  most  efficient  way  to  access  entire
+records,  short  of dealing directly with the packed record as stored in
+the datafile (as is done by some system code,  e.g.,  when  implementing
+record selection).
+
+The MAPPING construct performs two important functions:
+
+    [1] The  MAPPING  construct  contributes significantly to the degree
+        of data independence provided by  DFIO.   Applications  code  is
+        isolated   from  knowledge  of  the  logical  structure  of  the 
+        datafile  (specific  record  types  and   field   names,   field 
+        ordering,  etc.),  as well as from the physical structure of the
+        datafile (external representation  of  the  stored  records  and
+        binary  datatypes).   The  logical structure of the datafile can
+        be changed without having to change applications programs  which
+        access   the  datafile.   Different  applications  programs  (or 
+        versions of the same applications program)  can  view  the  same
+        data in different ways.
+    
+    [2] The  MAPPING  construct  makes  it possible for the applications
+        programmer to work directly with  conventional  compiled  binary
+        data  structures without having to consider how these are stored
+        in the datafile.
+
+Although the MAPPING construct is part of the DDL, there is an important
+difference  between  a  mapping and the other DDL constructs.  A mapping
+is  logically  part  of  an  applications  program,   whereas   domains, 
+relations,  and  so  on  are fundamentally tied to the datafile.  Hence,
+while it is customary to compile the  binary  description  of  the  data
+definition  for  a  datafile  and store it in the datafile itself, it is
+unwise to do so for mappings.  The data definition for mappings  may  be
+precompiled  if  desired,  but the compiled (and source) mappings should
+be stored with the applications program and not  with  the  data.   That
+way,  the  mappings  can  be  reliably updated whenever the applications
+program is modified.  Ideally the data definition should be mechanically
+generated from the host language structure definitions at compile time.
+
+
+
+3.2.5 THE SET STATEMENT
+
+    The  DDL  SET  statement  is  used  to  set  the  default  values of
+parameters governing the physical configuration of  the  datafile.   All
+such  parameters  have  DFIO  defined defaults, but generally it will be
+desirable to tune the datafile parameters according to the type of  data
+to  be  stored  in  the datafile, and the expected type of access.  Note
+
+
+                                  -8-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+that this is normally done  by  the  programmer  when  they  design  the
+datafile,  rather  than  by  the end user, who need not be aware of such
+details.
+
+        SET parameter = value
+
+The set of parameters currently defined includes at least the  following
+(more will doubtless be added as the interface evolves).
+
+
+    pagesize = 8192     The  datafile page size in bytes.  The page size
+                        chosen  must  be  large  enough  to  store   the 
+                        largest  possible  data record entirely within a
+                        single page.  The page size is  fixed  when  the
+                        datafile is created.
+    
+    percentfull = 80    The  percentage  of the total space in a page to
+                        be filled  before  starting  a  new  page,  when
+                        writing   to   the  datafile.   Extra  space  is 
+                        desirable if frequent updates or insertions  are
+                        anticipated.   If  the datafile will be readonly
+                        once created, the pages should  be  as  full  as
+                        possible.
+    
+    sbufsize = 1024     The  default  size  of the string buffer portion
+                        of the symbol table in  bytes.   At  least  this
+                        much  space  will  be  reserved,  but additional
+                        space  will  automatically   be   allocated   if 
+                        required.
+    
+    symtabsize = 1024   The  default  size  of  the symbol table area in
+                        bytes.   At  least  this  much  space  will   be 
+                        reserved,     but    additional    space    will   
+                        automatically be allocated if required.
+
+These parameters are discussed  in  more  detail  in  section  5,  which
+describes the PHYSICAL SCHEMA of the datafile.
+
+
+
+3.3 EXAMPLE 1:  DATA DEFINITION
+
+    A   complete   example  of  the  data  definition  for  a  (somewhat 
+simplified) image header relation is shown below.  Note  that  the  data
+records  of  the  HISTORY relation will be variable length, and that the
+history relation appears as an attribute of  the  IMHDR  relation.   The
+WCS  attribute  is  implemented  as  an  opaque array, implying that all
+management of the contents of the array, e.g., conversions to  and  from
+the  external  packed format, are being handled at a higher level.  This
+has the advantage of isolating all knowledge of  the  WCS  structure  to
+the  high  level  package, but requires that specialized code be used to
+access the data.
+
+
+                                  -9-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+        set     pagesize=       2048
+
+        domain  spptype         type=char*8,    format=%8s
+        domain  posint          type=short,     format=%5d
+
+        # History record.
+        relation history {
+                time:           stime,          "Event time"
+                text:           char[],         "History text"
+        }
+
+        # Image header.
+        relation imhdr {
+                naxis, ndim:    posint,         "Number of axes"
+                axlen:          long[7],        "Axis lengths"
+                pixtype:        spptype,        "Pixel datatype"
+                title:          char[],         "Image title"
+                history:        history[*],     "Image history"
+                wcs:            opaque[],       "World Coordinates"
+        }
+
+        # Mapping of history record.
+        mapping m_history {
+                time:           int,            0,      time
+                text            char[256]       1,      text
+        }
+
+        # Mapping of image header record.
+        mapping m_imhdr {
+                pixtype:        int,            0,      pixtype
+                ndim:           int,            1,      ndim
+                axlen:          long[7],        2,      axlen
+                title:          char[130],      10,     title
+                history:        char[32],       140,    history
+        }
+
+Note that in the mapping of the history  relation,  a  fixed  size  text
+buffer  is used for simplicity, since we don't have to conserve storage,
+and we don't expect the history text in each record to  be  very  large.
+The  same  approach  is  taken  for the title string in the image header
+mapping.  Since the history is stored as a subtable, only  the  name  of
+the  subtable  appears in the parent record, hence in the header mapping
+we need provide only a simple static char buffer to receive the name  of
+the  history  subtable.   The  WCS  array is not mapped since we may not
+need it, and can easily fetch it separately.
+
+
+
+
+
+
+
+
+
+                                 -10-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+4. DFIO APPLICATIONS INTERFACE
+
+    The DFIO applications interface, if we ignore  the  data  definition
+language  which is rarely used in applications programs, is a PROCEDURAL
+INTERFACE  emphasizing  data  tables  and  the   retrieval,   insertion, 
+modification, and deletion of records in tables.
+
+
+
+4.1 DFIO PROCEDURES
+
+    The  DFIO  interface  procedures  are  logically subdivided into the
+following sets of procedures:
+
+    GENERAL DATAFILE MANAGEMENT PROCEDURES
+        Open and close, delete, rename, etc., a datafile.
+    
+    DATA DEFINITION PROCEDURES
+        These procedures are used to define the objects to be stored  in
+        the  datafile,  and the mapping of those objects to and from the
+        corresponding objects in an applications program.  This must  be
+        done  before  any  data can be stored in the datafile.  The data
+        definition is itself stored in the datafile, hence the  datafile
+        is self describing.
+    
+    TABLE ACCESS PROCEDURES
+        These  procedures  make  use  of the access method procedures to
+        fetch,  insert,  update,  and  delete  packed  data  records  as 
+        physically  stored  in  the datafile, using the data definitions
+        to encode and decode the stored records, and map the records  to
+        and  from  the  representation used by the applications program.
+        The primary functions of this interface are to pack  and  unpack
+        data  records,  and  to provide applications programs with ready
+        access to these records.
+    
+    ACCESS METHOD PROCEDURES
+        The  access  method  procedures  have  sole  responsibility  for 
+        managing  the  area  of  the datafile used to store data tables.
+        At this level a data record is just an opaque byte stream.   The
+        access  method  is  responsible  for  creating and deleting data
+        tables,  maintaining  any  indexes  defined  on  a  table,   and 
+        fetching,  inserting,  updating, or deleting packed data records
+        in base tables.
+
+The data definition procedures are rarely used directly by applications,
+which  are  expected to rely primarily upon the DDL for data definition.
+DFIO makes use of the data definition procedures when it compiles a data
+definition expressed in the DDL.  Likewise, applications programs should
+rarely need to call the access method  procedures  directly;  the  higer
+level,  more  data independent table access procedures are used instead.
+The main exception to this is when it is  necessary  to  perform  record
+selection  on a table as efficienty as possible, as is sometimes done in
+
+
+                                 -11-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+system code (e.g., the POE image  kernel  will  use  the  access  method
+directly  when  selecting  photon  event  records  from  the photon list
+table).
+
+
+
+4.1.1 GENERAL DATAFILE MANAGEMENT PROCEDURES
+
+    These are the usual top level package initialization,  cleanup,  and
+query  procedures,  used to open an existing database, create a new one,
+and so on.
+
+           df = df_open (datafile, mode)
+               df_close (df)
+
+                df_copy (df_in, df_out, what)
+              df_rename (old_datafile, new_datafile)
+             df_recover (datafile, out_fd)
+             df_destroy (datafile)
+
+                df_seti (df, param, ival)
+        ival = df_stati (df, param)
+                df_info (df, out_fd, what)
+                df_sync (df)
+
+New datafiles are  always  empty  when  created.   The  data  definition
+procedures  described  in  the  next  section must be used to define the
+data elements to be stored  in  the  datafile,  after  which  the  table
+access  procedures  may  be  used  to  create new tables and insert data
+records into them.
+
+
+
+4.1.2 DATA DEFINITION PROCEDURES
+
+    The data definition procedures are used to define the  data  objects
+(domains  and relations) to be stored in the database.  These procedures
+are called either directly  in  user  code,  or  indirectly  during  the
+compilation  of a data definition text file, i.e., with DF_COMPILE.  The
+DF_INHERIT procedure is used to load a precompiled data definition  into
+the datafile, e.g., to make a new version of an existing datafile.
+
+             df_compile (df, ddf_fname)                 # compile ddf
+            df_compileo (df, fd)                        # compile stream
+             df_inherit (df, old_df)                    # inherit ddf
+            df_setmapdf (df, mf)                        # set map ddf
+
+The   DF_SETMAPDF   function  is  used  to  identify  the  mapping  data 
+definitions to be used by the table access procedures.  This  defines  a
+second  data  dictionary  (data  definition symbol table) to be searched
+BEFORE  the  datafile  data  dictionary  is  searched.   Note  that  the 
+argument  MF is a datafile descriptor, hence a separate MAPPING DATAFILE
+
+
+                                 -12-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+is used to store the mappings.  This is a convenient way to implement  a
+precompiled, efficient binary representation of the mapping definitions,
+yet allows the mappings to be stored separately from the data,  allowing
+multiple  mappings  of the same data to exist.  The mapping datafile may
+be kept open and used to access a sequence of  "data"  datafiles,  or  a
+single  mapping  datafile  may  be shared by several simultaneously open
+datafiles.
+
+The DFD and DFR procedures are used to define new domains or  relations,
+alter  existing  domain  or  relation  definitions,  or examine existing
+definitions, including traversing  the  lists  of  existing  domain  and
+relation definitions using the NEXT functions.  The OPENTB functions are
+used to access the domain or  relation  descriptors  for  existing  base
+tables  or  fields,  without  having to know the relation or domain type
+upon which the table or field is defined.
+
+          dp = dfd_open (df, domain, mode)              # domains
+        dp = dfd_opentb (tb, field, mode)
+          dp = dfd_next (dp)
+              dfd_close (dp)
+
+            dfd_set[is] (dp, param, [is]val)
+       ival = dfd_stati (dp, param)
+        nch = dfd_stats (dp, param, outstr, maxch)
+
+          rp = dfr_open (df, relation, mode)            # relations
+       rp = dfr_newcopy (df, relation, old_relation)
+        rp = dfr_opentb (tb, mode)
+          rp = dfr_next (rp)
+              dfr_close (rp)
+
+attno= dfr_addattribute (rp, attribute)
+ nch = dfr_setattribute (rp, attno, attribute, maxch)
+            dfr_set[is] (rp, param, [is]val)
+       ival = dfr_stati (rp, param)
+        nch = dfr_stats (rp, param, outstr, maxch)
+
+For example, to define a  new  DOMAIN,  one  opens  a  new  domain  with
+DFD_OPEN,  then  sets  the  attributes  of  the  domain with the DFD_SET
+functions.  Setting the domain type to the name of another domain causes
+the  attributes  to  be  initialized to the values defined for the other
+domain.  Domain  attributes  not  explicitly  initialized  retain  their
+default  values.   To  examine an existing domain one opens it read only
+by name, then uses the DFD_STAT functions to query the  attributes.   If
+the  domain  name is the null string the most recently defined domain is
+opened, and the DFD_NEXT function may be used to traverse  the  list  of
+currently defined domains.
+
+The  procedure for defining or querying RELATION definitions is similar,
+except that a relation definition has an extra dimension  -  a  relation
+is  a  list  of  attributes,  and  each attribute is defined by a set of
+attributes of its  own.   A  new  attribute  definition  is  begun  with
+
+
+                                 -13-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+DFR_ADDATTRIBUTE,  then  the  DFR_SET  functions are used to the set the
+attributes of the attribute.  The procedure  for  ALTERING  an  existing
+relation  definition  by  adding  a  new  attribute  is  the  same.  The
+DFR_NEWCOPY function makes a copy of an  existing  relation  definition;
+this  is  used  when a new data table is created, to give that table its
+own  private  relation  definition  (necessary  if  the  table   is   to 
+subsequently be altered by the addition of a new field).
+
+          mp = dfm_open (df, mapping_name, mode)
+            dfm_mapuser (mp, name, type, offset, df_name, flags)
+          mp = dfm_next (mp)
+              dfm_close (mp)
+
+attno= dfm_addattribute (mp, attribute)
+ nch = dfm_setattribute (mp, attno, attribute, maxch)
+            dfm_set[is] (mp, param, [is]val)
+       ival = dfm_stati (mp, param)
+        nch = dfm_stats (mp, param, outstr, maxch)
+
+
+The  DFM  procedures are used to implement MAPPINGS, i.e., to define the
+binary record structures  used  by  an  applications  program,  and  the
+mapping  of these structures onto the attributes of relations defined in
+the datafile; the relation definitions then define the  mapping  of  the
+relation  onto  the physical record format as stored in the datafile.  A
+user structure may only be mapped to a single datafile  relation,  i.e.,
+a   mapping   cannot   access   fields  from  several  different  tables 
+simultaneously.  There can however be any number of  different  mappings
+of user structures onto a single datafile relation.
+
+A general set of functions similar to those used to define relations are
+provided for use by the DDL  compiler,  plus  the  function  DFM_MAPUSER
+which  is  provided  to  make runtime mapping definition in applications
+programs more convenient and concise.   Multiple  calls  to  DFM_MAPUSER
+are  made,  one  for  each field in the mapping being defined.  The TYPE
+argument specifies the SPP datatype of the struct  field  as  a  string,
+e.g.,  "r".   Arrays  are  indicated  symbolically,  e.g.,  "r[5]" for a
+static array, or "r[]" for a  dynamically  allocated  (variable  length)
+array.   Anything  else  is  the  name  of  a  previously  defined  user 
+structure, allowing nested substructures to be defined.
+
+Note that the name of the relation or data table  onto  which  the  user
+structure  is  to  be mapped is not specified until the mapping is bound
+to a specific relation at runtime in the DF_OPENTB  (open  table)  call.
+Obviously  the  attribute  names  DF_NAME  specified when the mapping is
+defined must match those of the target relation, and  the  implied  type
+conversions  must  be  legal,  but as long as these requirements are met
+the mapping may be bound to any suitable relation.
+
+
+
+
+
+
+                                 -14-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+4.1.3 TABLE ACCESS PROCEDURES
+
+    This portion  of  the  interface  combines  knowledge  of  the  data
+definition  subsystem,  plus  the  facilities  provided  by the raw file
+access subsystem, to provide an applications level interface for  record
+storage.   The  main functions of this code are to manage the *contents*
+of the data records, and to transform data to  and  from  the  internal,
+machine  independent, packed representation, and the representation seen
+by the applications program.
+
+The data definition procedures must have  been  used  prior  to  calling
+these  routines  to define the datafile and user data formats (relations
+and  domains),  and  define   the   mappings   used   to   establish   a 
+transformation  between  the  fields of the user record and those of the
+base table.  The user  sees  only  conventional,  dynamically  allocated
+binary  data  structures,  indicated  as  URECPTR  in  the  figure.  The
+argument UREC_TYPE is the name of the mapping to be  used;  if  this  is
+null the data table is accessed directly.
+
+              df_droptb (df, table)
+            df_renametb (df, old_name, new_name)
+       tb = df_createtb (df, table, urec_type, keyfields, flags)
+         tb = df_opentb (df, table, urec_type, mode)
+     nrecords = df_tlen (tb)
+             df_closetb (tb)
+
+              df_setkey (tb, keyfields)         # select index
+      nkeys = df_getkey (tb, keyfields, maxch)  # get keylist string
+    urecptr = df_mkurec (tb, urecptr)           # make/copy urec
+              df_rmurec (tb, urecptr)           # deallocate urec
+
+                df_seek (tb, urecptr, keylen, flag)
+          df_seek[cird] (tb, key[cird], flag)
+
+         df_fetch[cird] (tb, key[cird], urecptr, flag)
+     rid|EOF = df_fetch (tb, urecptr, flag)
+              df_insert (tb, urecptr)
+
+              df_update (tb, urecptr)           # udpate record by key
+               df_upcur (tb, urecptr)           # update current record
+               df_uprec (tb, rid, urecptr)      # update by RID
+
+              df_delete (tb, urecptr)           # composite key
+        df_delete[cird] (tb, key[cird])         # simple key
+               df_dlcur (tb)                    # delete current record
+               df_dlrec (tb, rid)               # delete by RID
+
+In  a  fetch  operation the user defined data structure is allocated and
+filled in by DFIO, to be reused in subsequent fetches,  and  deallocated
+when  the  table  is  closed.   A  private  copy of the structure may be
+generated with DF_MKUREC if desired.  In an insert,  update,  or  delete
+operation  the  structure pointed to by URECPTR is provided by the user;
+
+
+                                 -15-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+the structure returned by the  fetch  operation  may  be  passed  in  if
+desired.
+
+Access  may  be  either random or sequential.  If the table has an index
+then a key value may be specified in a  DF_SEEK  call  to  position  the
+CURRENT RECORD POINTER to the desired record.  A DF_FETCH call with FLAG
+set to DF_CURRENT will fetch the desired  record.   In  the  case  of  a
+simple  integer,  real, or string valued key the DF_FETCH[CIRD] call may
+be used to search the index and  fetch  the  record  all  in  one  call.
+Subsequent   fetches  with  FLAG  set  to  DF_NEXT  will  fetch  records 
+sequentially.  If the internal record id (RID) is known,  DF_FETCHI  can
+be  used  with  FLAG  set  to  DF_RECORD  to  fetch the indicated record
+directly without searching the index.
+
+The record INSERT and UPDATE operations are slightly  different  because
+if  the  table  has an index, the primary key value determines the point
+at which the record must be inserted or updated in  the  table  (indexed
+tables  are  maintained  in  sort  order  based on the primary key).  Of
+course  if  the  key  values  increase  monotonically  as  records   are 
+inserted,  then  the  new  records will simply be appended to the table;
+this is the most efficient insertion mode.  If the table  has  no  index
+then  new  records are always inserted at the end of file.  In an update
+of a non-indexed file updates may occur at any point, specified  by  the
+RID or the current record.  Deletion is similar.
+
+   rp = df_access[cird] (tb, key[cird], flag)   # get record by key
+    rp|NULL = df_access (tb, flag)              # get next record
+             df_release (rp, flag)              # free+ins|upd|del
+
+    val = df_get[silrd] (rp, field)             # access fields
+          df_put[silrd] (rp, field, val)
+          nch = df_gstr (rp, field, outstr, maxch)
+                df_pstr (rp, field, sval)
+             df_[gp]rec (rp, field, urecptr, urec_type)
+
+        nelem = df_flen (rp, field)
+ nelem = df_gvec[silrd] (rp, field, vector, first, maxelem)
+      df_[pu]vec[silrd] (rp, field, vector, first, nelem)
+
+A  second  set  of  functions,  shown  above, are provided for operating
+piecemeal upon data records without having  to  deal  with  binary  data
+structures  in  user  code.   These  functions operate directly upon the
+individual fields of a record.  The record  to  be  accessed  is  loaded
+into  an  internal  buffer  by  DF_ACCESS,  and the record is updated or
+inserted (if modified) and the buffer freed  by  a  subsequent  call  to
+DF_RELEASE,  after  accessing  the  record  with  the  GET and PUT calls
+shown.  If the table has  a  simple  key,  or  access  is  by  RID,  the
+DF_ACCESS[CIRD]  routines may be used to directly fetch the record to be
+accessed, otherwise a DF_SEEK call must be made first  to  position  the
+current  record  pointer.   Sequential  access  is  indicated by calling
+DF_ACCESS  with  FLAG  set  to  DF_NEXT.   Multiple   records   may   be 
+simultaneously   accessed   by  making  multiple  ACCESS  calls  without 
+
+
+                                 -16-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+RELEASEing the accessed records.
+
+SUBTABLES may be accessed by obtaining the table name  from  the  parent
+record  and  opening the table independently with DF_OPENTB; if a record
+has a subtable, the subtable field is string valued  and  contains  only
+the  name  of  the  subtable.  Records stored directly within the parent
+record  may  be  accessed  with  the  DF_[GP]REC  functions,  or  mapped 
+directly  onto the user structure with a mapping.  The individual fields
+of an embedded record may also be accessed directly by name in a put  or
+get  call,  e.g.,  "cvfit.ncoeff",  if CVFIT is a record embedded within
+the record currently being accessed.
+
+VECTOR FIELDS of  arbitrary  size  may  be  read  or  written  with  the
+DF_[GPU]VEC  calls.  When writing to a stored vector, DF_PVEC may change
+the length of the stored vector (make it shorter; either  a  put  or  an
+update  may  be  used  to  make  it  longer).   The DF_UVEC call (update
+vector) should be used to rewrite segments of an existing stored  vector
+without changing its length.  The length of a vector may be queried with
+DF_FLEN.  Variable length vectors will  have  zero  length  until  first
+written to.
+
+
+
+4.2 EXAMPLE 2: SIMPLE TABLE ACCESS
+
+    The  following examples are based upon the following simple data and
+user  structure  definitions,  assumed  to  be  stored  in   the   files 
+"pkg$curve_d.ddf"  and  "pkg$curve_m.ddf".   These could just as well be
+entries in a larger DDF containing definitions for  a  number  of  other
+objects.   The  code  has  been  simplified  to  avoid  complicating the
+example.
+
+# CURVE -- Relation used to describe a simple 1-Dim fitted curve.
+relation curve {
+        recno:          short,          "Record number"
+        functype:       char*8,         "Fitting function"
+        x1:             real,           "Minimum input X value"
+        x2:             real,           "Maximum input X value"
+        coeff:          real[]          "Coefficient array"
+}
+
+# CVFIT -- Applications mapping of the curve relation.
+mapping cvfit {
+        id:             int,            0,      recno
+        x1:             real,           1,      x1
+        x2:             real,           2,      x2
+        ncoeff:         int,            3,      len(coeff)
+        coeffp:         real[],         4,      coeff
+        function:       char[9],        10,     functype
+}
+
+The CURVE relation defines the record structure of  a  curve  record  as
+
+
+                                 -17-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+stored  in  the  physical  datafile.   The  CVFIT entry defines the user
+record structure CVFIT, and the  mapping  of  that  structure  onto  the
+CURVE   relation.    CVFIT  is  a  compiled  SPP  binary  structure,  as 
+referenced directly in SPP code.  Note that in the example  shown  here,
+fields 5-9 of the SPP structure are unassigned, and COEFF is implemented
+as a pointer to  a  separately  allocated  variable  length  coefficient
+array,  in  order  to  avoid  having  a builtin limit on the size of the
+array.  The names,  order,  precision,  and  size  of  the  fields  have
+intentionally  been  made  to  disagree  to  illustrate  the  use of the
+mapping.
+
+
+# MK_MAPDF -- Create a new datafile containing the mappings we shall use
+# to access the curve datafile.
+
+pointer procedure mk_mapdf (mfname)
+
+char    mfname[ARB]             # mapfile name
+pointer mf, tb
+pointer df_open(), df_createtb()
+
+begin
+        mf = df_open (mfname, NEW_FILE)
+        call df_compile (mf, "pkg$curve_m.ddf")
+        call df_close (mf)
+
+        return (df_open (mfname, READ_ONLY))
+end
+
+
+# MK_CURVEDF -- Create a new datafile containing an empty curve table,
+# with the ID field as the primary key.
+
+pointer procedure mk_curvedf (dfname, tbname, mf)
+
+char    dfname[ARB]             # datafile name
+char    tbname[ARB]             # curve table name
+pointer mf                      # mapfile
+
+pointer df
+pointer df_open(), df_createtb()
+
+begin
+        df = df_open (dfname, NEW_FILE)
+        call df_compile (df, "pkg$curve_d.ddf")
+        call df_setmapdf (df, mf)
+
+        call df_closetb (df_createtb (df, tbname, "cvfit", "id", 0))
+
+        return (df)
+end
+
+
+
+                                 -18-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+# ADD_CURVE -- Add a curve record to the datafile.
+
+procedure add_curve (df, tbname, cv)
+
+pointer df                      # datafile
+char    tbname[ARB]             # curve table name
+pointer cv                      # pointer to curve struct
+
+pointer tb
+pointer df_opentb()
+int     df_tlen()
+
+begin
+        tb = df_opentb (df, tbname, "cvfit")
+        CV_ID(cv) = df_tlen(tb) + 1
+        call df_insert (tb, cv)
+        call df_closetb (tb)
+end
+
+
+# GET_CURVE -- Retrieve a curve record by the record ID number.
+# Note that we must return a copy of the curve descriptor, since
+# the descriptor returned by fetchi will be deallocated when the
+# table is closed.
+
+pointer procedure get_curve (df, tbname, id)
+
+pointer df                      # datafile
+char    tbname[ARB]             # curve table name
+int     id                      # curve record id
+
+pointer tb, cv, o_cv
+pointer df_opentb(), df_mkurec()
+
+begin
+        tb = df_opentb (df, tbname, "cvfit")
+        call df_fetchi (tb, id, cv, DF_EQUAL)
+        o_cv = df_mkurec (tb, cv)
+        call df_closetb (tb)
+
+        return (o_cv)
+end
+
+
+
+
+
+
+
+
+
+
+
+
+                                 -19-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+5. ACCESS METHOD (PHYSICAL FILE MANAGEMENT)
+
+    This interface is responsible for all physical file accesses and for
+managing  file  storage for all but the header and symbol table portions
+of the datafile, which are managed separately by the  datafile  manager.
+The  purpose  of  the  interface  is  to provide access to binary tables
+stored as a sequence  of  records,  where  each  record  is  a  variable
+length,  opaque  sequence  of  bytes.   The interface also handles index
+creation and  management,  including  use  of  any  indexes  for  record
+retrieval.   The  interface does not know anything about record types or
+field datatypes, nor anything about the contents of the records that  it
+manages (except any used internally by the interface).
+
+
+
+5.1 ACCESS METHOD PROCEDURES
+
+    At this level, a table consists of a name with an associated integer
+table-id (TID) and primary key, both of which  are  assigned  at  create
+time.   A  key  consists  of  a sequence of zero or more segments of the
+packed record of fixed lengths, at fixed offsets  in  a  record  of  the
+table (hence only fields stored at fixed offsets can be used in a key).
+
+                rf_init (fd, offset, pagesize)  # file management
+           rf = rf_open (fd, offset)            # open existing database
+                rf_sync (rf)                    # update database data
+               rf_close (rf)                    # close database
+
+              rf_droptb (rf, table)
+       tb = rf_createtb (rf, table, keydesc, flags)
+         tb = rf_opentb (rf, table, mode)
+                rf_info (tb, info)              # get info on table
+             rf_closetb (tb)                    # close table
+
+                rf_seek (tb, rbuf, keylen, flag)
+               rf_seekr (tb, rid)
+       rid = rf_current (tb)                    # get current RID
+       rid = rf_lastacc (tb)                    # last record accessed
+
+    rlen|EOF = rf_readp (tb, rid, rptr, mode)   # get ptr to record
+     rlen|EOF = rf_read (tb, rid, rbuf, mode)   # get record
+               rf_write (tb, rbuf, rlen)        # insert new record
+
+              rf_update (tb, rbuf, rlen)        # update a record
+               rf_uprec (tb, rid, rbuf, rlen)   # update by RID
+              rf_delete (tb, rbuf, keylen)      # delete a record
+               rf_dlrec (tb, rid)               # delete by RID
+
+This  is  intended  to be a self-contained interface.  All it needs is a
+file descriptor and an offset in the file at which it can begin writing.
+Thereafter,  all  access to that region of the file (through to the EOF)
+must be via this interface.  Since the i/o is  page  oriented,  all  i/o
+
+
+                                 -20-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+will  be  done  using  low  level  calls  (aread/awrite/await, or kernel
+calls).
+
+The RF_INIT function is called when a datafile is created to  initialize
+the  data storage area.  Thereafter, RF_OPEN is called to gain access to
+the area and initialize the access method package.
+
+New data tables are created with RF_CREATEB, specifying the  table  name
+and  the  offsets and sizes of the record segments to be concatenated to
+form the primary key.  It is not necessary to specify the relation  type
+or  field types, since the access method has no knowledge of the data to
+be stored in the tables it manages.  The reason why  the  types  of  the
+fields  used  in a key key do not have to be specified is less obvious -
+the external representation of the  datatypes  supported  by  DFIO  have
+been  designed specifically to make it possible for the access method to
+build and maintain indexes without concern for the datatypes of  fields,
+i.e.,  a  simple  short integer order comparison, applied to the encoded
+external representation of  any  data  type,  returns  the  same  result
+regardless of the data type.
+
+Record  access may be either random or sequential, based on the concepts
+of the CURRENT  and  LAST  ACCESSED  records  for  an  open  table.   To
+position  the  current  record  pointer  for an indexed table, one calls
+RF_SEEK with FLAG set to a value such as  RF_EQUAL,  RF_GEQUAL,  and  so
+on.   The  RF_SEEKR  procedure is used to position to a record given its
+RID.  A RF_READ with FLAG set to RF_CURRENT returns the current  record;
+successive calls with FLAG set to RF_NEXT sequentially access the table.
+
+The RF_READP function returns a pointer to the record rather than a copy
+of  the  record,  and  is  the  most  efficient  form  of  access   when 
+sequentially  reading  a  large number of records, e.g., when performing
+record selection.  Note that record selection, like  index  maintenance,
+may  be  performed  directly  on  the  packed records in the file buffer
+regardless  of  the  field  datatype  (assuming  no  type  coercion   is 
+necessary),   allowing   record   selection   to   be  implemented  very 
+efficiently in carefully constructed systems code.
+
+         bid = rf_alloc (rf, nchars)            # storage management
+             rf_realloc (rf, bid, nchars)
+                rf_free (rf, bid)
+                rf_read (rf, bid, buf, nchars)
+               rf_write (rf, bid, buf, nchars)
+    nchars = rf_bufsize (rf, bid)
+
+Large VARIABLE LENGTH ARRAYS cannot  be  stored  directly  in  a  packed
+record,  hence  must  be  stored  elsewhere  in  the  data  area  of the
+datafile.  This is handled by the high level  table  access  code  using
+the  routines  shown  above.   The  access  method provides only the raw
+facilities; it does not know anything about variable length  arrays,  or
+their association with specific records.
+
+As  long  as  a record will fit within a page, even if the record varies
+
+
+                                 -21-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+in size, it is intended that the standard read, write,  update  routines
+be  used  to access the packed record.  Records which contain very large
+variable length fields must use the  storage  management  facilities  to
+store  the  data.   The  storage  manager  will  reserve  file pages for
+itself, independent of the pages used for record storage.   All  buffers
+are  referred  to  by  their  buffer-id  (BID), an index into a table of
+buffers maintained  by  the  storage  allocator,  to  avoid  fixing  the
+location of a buffer to an absolute offset in the file.
+
+
+
+5.2 ISAM ACCESS METHOD (FOR REFERENCE)
+
+    The  main functions of the ISAM interface (Indexed Sequential Access
+Method) are provided here for reference.  ISAM corresponds  to  the  rf_
+functions shown above for DFIO.
+
+                                                               rid cur
+           td = isbuild (fname, reclen, keydesc, mode)
+            td = isopen (fname, mode)
+                isclose (td)
+
+               isdelete (td, recptr)                            *
+               isdelrec (td, rid)                               *
+              isdelcurr (td)                                    *
+
+              isrewrite (td, recptr)                            *
+               isrewrec (td, rid, recptr)                       *
+              isrewcurr (td, recptr)                            *
+
+                isstart (td, keydesc, keylen, recptr, mode)     *   *
+                 isread (td, recptr, mode)                      *   *
+                iswrite (td, recptr)                            *
+               iswrcurr (td, recptr)                            *   *
+
+Sequential  record access via ISAM is based on the concept of a "current
+record" the value of which is maintained internally  by  the  interface.
+The  current  record  defines  the  record to be read in the next ISREAD
+call where the mode is read-current or read-next.  The  columns  at  the
+right   in   the   figure   above   show   which  operators  modify  the 
+last-record-accessed variable (RID in the figure) or the  current-record
+variable (CUR).
+
+
+
+5.3 INGRES ACCESS METHOD (FOR REFERENCE)
+
+    The  Access  Methods  Interface  (AMI)  implemented  in the original
+university INGRES is summarized in the figure below.
+
+
+
+
+
+                                 -22-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+                  openr (fd, mode, relation_name)
+                 closer (fd)
+
+                 paramd (fd, ac_struct)
+                 parami (index_descriptor, ac_struct)
+
+                   find (fd, key, rid, key_type)
+                    get (fd, rid, limit_rid, next_flag)
+                 insert (fd, recptr)
+                replace (fd, rid, new_recptr)
+                 delete (fd, rid)
+
+FIND is normally called twice to determine the lower  and  upper  limits
+of  the  range  of  record  ids  to be scanned.  GET fetches the records
+sequentially, incrementing the value of the RID argument  in  each  call
+provided  the next flag is set.  Random access is implemented by calling
+GET with the desired RID and with the next flag set to zero.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                 -23-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+6. PHYSICAL SCHEMA
+
+    A DFIO database is  stored  as  a  single  variable  length,  random
+access   binary  file,  called  a  DATAFILE.   The  file  is  physically 
+subdivided into two main segments, as follows:
+
+           -----+-----
+                |
+           file header          fixed size DFIO file header (small)
+                |
+           -----+-----
+                |
+            data pages          any number; managed by access method
+                |
+                V
+
+The first structure in the file is a  fixed  size  binary  FILE  HEADER,
+identifying  the  file  as  a  DFIO  datafile, and containing sufficient
+information defining the major file parameters so that DFIO  can  access
+the  file.   The  remainder  of  the file is logically subdivided into a
+sequence of fixed size file PAGES, ranging from 1-32  Kb  in  size,  the
+size  being  set  for  the  entire datafile at datafile create time (the
+page size should be chosen to maximize storage efficiency  and  optimize
+record  access  for the type of data to be stored in the datafile).  The
+data pages contain the DATA DICTIONARY, implemented as a  symbol  table,
+a  number  of SYSTEM TABLES, most notably the datafile CATALOG, or table
+of tables, and the user defined data tables.
+
+
+
+6.1 DATAFILE FILE HEADER
+
+    To  access  an  existing  datafile,  DFIO  reads  the  file  header, 
+verifies  that the file is indeed a DFIO datafile, obtains the offset of
+the data area, and opens the data area with the access method  procedure
+RF_OPEN.   The  symbol table is then read in and DFIO is ready to access
+or create data tables under the direction of the calling program.
+
+        struct dfio_header {
+                int     df_magic                # file type code
+                int     df_version              # DFIO version at create time
+                int     df_pagesize             # current page size
+                int     df_stbid                # symtab buffer-id
+                char    df_stfile[SZ_PATHNAME]  # symtab file, if external
+        }
+
+The datafile header structure is stored in a machine  independent  form,
+i.e., the integer fields are MII and the character data is byte packed.
+
+
+
+
+
+
+                                 -24-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+6.2 DATA DICTIONARY
+
+    The  data  dictionary,  or  SYMBOL  TABLE,  is a machine independent
+binary data structure managed by the standard IRAF SYMTAB  package.   It
+is  used  to  define  the  domains and relations, etc., used in the data
+tables.  This may be placed in a separate datafile to  be  read  by  any
+number   of   other   datafiles,   if  they  can  share  the  same  data 
+definitions.  The packed symbol table is stored in the data area of  the
+datafile   as  an  opaque  variable  length  array,  using  the  storage 
+management facilities provided by the access  method  (RF_ALLOC).   Note
+that  the  data  dictionary  is  not  actually  stored in data tables as
+perhaps it should be (this would allow it  to  be  queried  and  perhaps
+edited  with  standard tools), but SYMTAB is ideal for this application,
+and a binary hash table is probably the most efficient implementation in
+any case.
+
+The  symbol  table  consists  of  a  combination  of  DFIO specific data
+structures and other data structures which are  private  to  the  SYMTAB
+package.   The  table  is  represented  in  external storage as a packed
+variable length array to be stored in the datafile, with  the  following
+structure:
+
+        struct st_save {
+                int     st_ndomains             # number of domains
+                int     st_first_domain         # head of domains list
+                int     st_nrelations           # number of relations
+                int     st_first_relation       # head of relations list
+                int     st_nmappings            # number of mappings
+                int     st_first_mapping        # head of mappings list
+                char    st_data[]               # stored symbol table
+        }
+
+The  actual  size  of this structure depends upon the size of the stored
+symbol table.  Within the symbol  table,  DFIO  maintains  a  number  of
+structures  to  describe the DFIO data objects.  For every symbol in the
+symbol table there is an associated data  structure  selected  from  the
+set  shown  here, describing the object.  In addition there are a number
+of linked lists through the symbol table, e.g., each object of the  same
+type  is  on a list, and objects are linked on another list in the order
+of definition.  If symbols are redefined another list (the hash  bucket)
+may be tranversed to locate the desired symbol.
+
+Given  any  symbol  at  runtime,  DFIO can compute the hash function and
+look up the symbol descriptor.  The SYMTYPE field then gives the  symbol
+type;  if  the type is not what is desired (i.e., we want a relation and
+we get an attribute) it  may  be  that  the  same  symbol  is  used  for
+multiple  types  of objects, and the redef chain for that symbol much be
+searched until the desired symbol descriptor is found.   In  most  cases
+we   can   hash  directly  to  the  desired  binary  symbol  descriptor. 
+Relations and mappings are reconstructed  by  direct  traversal  of  the
+attribute or field list.
+
+
+
+                                 -25-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+        struct domain_descriptor {
+                int     d_symtype               # type of symbol
+                int     d_name                  # pointer to domain name
+                int     d_next                  # pointer to next domain
+                int     d_type                  # primitive type
+                int     d_nelem                 # number of d_type elements
+                int     d_format                # pointer to format string
+                int     d_units                 # pointer to units string
+                int     d_default               # default value or pointer
+        }
+
+        struct relation_descriptor {
+                int     r_symtype               # type of symbol
+                int     r_name                  # pointer to relation name
+                int     r_next                  # pointer to next relation
+                int     r_basesize              # base size of relation
+                int     r_size_can_vary         # variable size attributes
+                int     r_nattributes           # number of attributes
+                int     r_first_attribute       # pointer to first attribute
+        }
+
+        struct attribute_descriptor {
+                int     a_symtype               # type of symbol
+                int     a_name                  # pointer to attribute name
+                int     a_next                  # pointer to next attribute
+                int     a_parent                # pointer to parent relation
+                int     a_domain                # domain of definition
+                int     a_nelem                 # number of elements
+                int     a_comment               # pointer to comment string
+        }
+
+        struct mapping_descriptor {
+                int     m_symtype               # type of symbol
+                int     m_name                  # pointer to mapping name
+                int     m_next                  # pointer to next mapping
+                int     m_size                  # struct size
+                int     m_nfields               # number of fields
+                int     m_first_field           # pointer to first field
+        }
+
+        struct mapfield_descriptor {
+                int     f_symtype               # type of symbol
+                int     f_name                  # pointer to field name
+                int     f_next                  # pointer to next field
+                int     f_parent                # pointer to parent mapping
+                int     f_type                  # datatype (SPP or mapping)
+                int     f_offset                # offset in SPP struct
+                int     f_nelem                 # number of elements
+                int     f_lenfield              # length field if pointer
+                int     f_dfname                # datafile object mapped
+        }
+
+
+
+                                 -26-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+6.3 DATA RECORDS
+
+    Each data table consists of zero or more fixed or variable size DATA
+RECORDS, stored within the pages in the data area of  the  datafile.   A
+single  page  may  contain records from multiple tables, and the records
+forming a table are  not  necessarily  stored  contiguously  within  the
+datafile.
+
+There  is  no  constraint  on  the  length  of  a record other than that
+imposed by the requirement that a  record  must  be  contained  entirely
+within  a  page.   Large  variable  length arrays, logically represented
+within  records  as  array  valued  fields,  are  stored  in  separately 
+allocated  data pages (via the access method storage allocator) if there
+is insufficient space to store the array  in  the  page  containing  the
+record; such arrays are permitted to span multiple pages.
+
+Each  page will typically contain some free space allowing records which
+change size when updated to be updated in-place,  or  allowing  physical
+insertion  of  new  records  in  storage order.  If a page overflows the
+page is split and a new page is added elsewhere in the  file,  e.g.,  at
+the  end  of  file.   Hence, records may not be stored in strict storage
+order in a table which is subject to updates which increase the size  of
+a  record,  or  which  is  subject  to  insertions  other  than  at EOF.
+Deleting a record or table does not  free  the  space  occupied  by  the
+record  or table, hence space is not reclaimed and undelete is possible.
+The datafile copy operation may  be  used  to  reclaim  space  freed  by
+deleting  records or tables, as well as to reorder tables so the storage
+order matches the logical record order for more efficient access.
+
+New domains or relations may be defined, or new records or tables  added
+to  the  datafile,  at  any  time.   New fields may be added to existing
+relations, even after data tables based on  those  relations  have  been
+created.   Adding  a  new  field  (column)  to  a table causes a default
+valued field to be implicitly added to each existing  record.   Existing
+records are not modified unless explicitly updated or inserted.
+
+
+
+6.3.1 PAGE AND RECORD STORAGE FORMATS
+
+    The  format in which data is stored in the file pages is designed to
+permit efficient record update and insertion of variable  size  records,
+as  well  as efficient record storage and retrieval.  Within a datafile,
+a record is uniquely identified and located by its record  id,  or  RID.
+The  value  of  the  RID  is  formed from the page number and the record
+number within the page.
+
+The figure below illustrates the page layout used by the access  method.
+The  PH structure (page header), stored first in the page, consists of a
+count of the number of records in the page, plus a pointer to  the  next
+storage  location  at  either  end  of  the  page.   Records  are stored
+immediately following the page header,  as  tightly  as  they  will  fit
+
+
+                                 -27-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+together.   An  array  of record offsets is maintained at the end of the
+page; as the page fills the packed record and record  offset  structures
+grow  towards each other.  When a record update or insertion would cause
+the structures to overlap the page is full and the next record  must  be
+placed in a new page.
+
+The  advantage  of this scheme is that records may be moved about within
+a page, e.g., due to an insertion or update which changes the size of  a
+record,  without  affecting  the record id.  Record retrieval efficiency
+is not affected.  The commercial  databases  DB2  and  INGRES  both  use
+essentially the same scheme.
+
+
+                Page N
+                +---------------------------------------+
+                | PH <packed record> <packed record>    |
+                | <packed record> ->                    |
+                |                                       |
+                |                                       |
+                |                                       |
+                |                     <- R4 R4 R3 R2 R1 | 
+                +---------------------------------------+
+
+                           File Page (RID = N+Rn)
+
+Within  a page, records are stored in a machine independent, compressed,
+byte stream format.  For  maximum  efficiency  when  accessing  records,
+however,  the smallest unit of storage (smallest field size) is 16 bits,
+except within character strings which are always byte packed.
+
+Each stored record consists of a fixed header  used  by  the  system  to
+store  information  describing  the record, followed by the user defined
+fields of the record, i.e.:
+
+        TID+DELETE_BIT          # table to which record belongs
+        NEXT                    # RID of next record in table
+        RLEN                    # total record length
+
+        length of fixed size part of record     +
+        fixed offset fields                     |-- PACKED RECORD
+        variable offset and size fields         +
+
+The TID, or table id, identifies the table to which the record  belongs.
+The  NEXT  field  is  the RID of the next record of that table, allowing
+tables to be read sequentially.  The RLEN field specifies the length  of
+the  record  minus the record header.  The packed record itself follows;
+this is just an opaque binary byte stream to the file manager.   If  the
+table  supports variable length fields then the records will be variable
+length, consisting of a word giving the length of the fixed part of  the
+record  (which  can  change  if  a  new  field  is  subsequently added),
+followed by the fixed part of the record and then  the  variable  length
+fields, which are pointed to by offsets in the fixed part of the record.
+
+
+                                 -28-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+6.3.2 PACKED RECORD FORMAT
+
+    As  noted  earlier,  a packed record is an opaque byte stream to the
+file manager (access method), hence in principle the same access  method
+could  be  used  to  store  records packed in a variety of formats.  The
+packed record format documented here is that  implemented  by  the  DFIO
+table  access  procedures, using the information stored in the DFIO data
+dictionary.
+
+The format of a record containing only FIXED SIZE FIELDS is very simple:
+all  field  values  are encoded into their machine independent form, and
+the field values stored in the packed record  concatenated  together  in
+the  order  specified  when  the  parent relation was defined, with each
+field occupying an integral number of  16-bit  words  of  storage.   The
+field  values are preceded by a word FLEN specifying the length in words
+of the record:
+
+        FLEN field1 field2 ... fieldN <end>
+
+The reason for storing FLEN, even though it may be identical  for  every
+record,  is to document the actual size of the record in case the record
+format is changed by altering the table to add a new column.   This  may
+happen  after  a  number  of records have already been inserted into the
+table; if the offset of the new field is greater than the stored  record
+length,  the  default  value  of  the field will be used.  Note that new
+fields are always added at the right, i.e., at the end of a record.
+
+        FLEN field1 field2 ...
+            (fieldI.nelem fieldI.offset)
+            (fieldJ.nelem fieldJ.offset) ...  fieldN
+            fieldI.value fieldJ.value
+        <end>
+
+The format for a record containing VARIABLE LENGTH FIELDS  is  identical
+except  that [1] the entry for a variable length field in the fixed size
+part of the packed record consists of the field length plus  the  offset
+to  the  field  value,  rather  than the field value itself, and [2] the
+field values follow the fixed size  part  of  the  record,  concatenated
+together  in the order in which they occur in the record.  If a field is
+too large to fit in the  same  page  as  the  packed  record,  then  the
+storage  manager  is  called to allocate an external buffer, and the BID
+of the buffer is stored in place of the usual field offset.
+
+While there is currently  no  explicit  provision  for  NULL  VALUES  in
+records,  the default value feature provided by the DOMAIN construct can
+be used to accomplish the same thing,  e.g.,  the  default  value  of  a
+domain  could  be  INDEF,  0,  -1, or any other numerical value which is
+outside the range of legal values for that domain (0 is assumed  if  the
+default  is not specified).  The main shortcoming of this scheme is that
+null value checking is left up to the  application.   Null  values  must
+not appear in fields which are part of the primary key for a record.
+
+
+
+                                 -29-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+6.3.3 RECOVERY
+
+    Part  of the motivation for the page structure of the datafile is to
+facilitate recovery of a datafile which has an illegal  or  inconsistent
+structure,  due  to  a  program  error  or  system  crash occuring while
+writing to the datafile.  Since  only  the  page  or  pages  in  a  file
+manager  buffer  at  the  time of a crash can be corrupted, it should be
+possible to write a program which  reads  through  the  datafile  pages,
+automatically  detecting and repairing (possibly with some loss of data)
+any inconsistencies found therein.   A  regular  file  structure  and  a
+certain  amount  of  redundancy in the storage of structural information
+is required to make this possible.
+
+
+
+6.4 BINARY DATA FORMAT
+
+    One requirement of the DFIO data format was that  the  datafiles  be
+machine  independent,  so  that  they  may  be  read on any machine, and
+accessed from any node in a local area  network.   The  obvious  way  to
+achieve  this  is  to  use  the non-byte swapped 2's complement and IEEE
+binary floating point formats, but  it  turns  out  that  this  approach
+ignores   other   considerations  which  are  important  in  a  database 
+application.
+
+The problems arise because we want a  packed  record  to  appear  as  an
+opaque  binary  byte stream to the access method, yet we want the access
+method to maintain  and  search  indexes  on  the  stored  data  tables.
+Logically  there  might  be  any  number  of  different binary datatypes
+supported by the high level code, but we do not want the  access  method
+to  have  to  know  about these and implement each datatype as a special
+case.   Furthermore,  we  do  not  want  to  suffer   the   inefficiency 
+associated   with   converting  to  and  from  the  machine  independent 
+representation of  each  datatype  when  maintaining  or  searching  the
+indexes,  or  evaluating a selection predicate in a sequential scan of a
+table.
+
+Ideally we would like to have only one datatype  at  the  access  method
+level,  namely, the machine dependent integer type (whether it be 8, 16,
+or  32  bit).   Composite  primary  keys  would  be  formed  by   simply 
+concatenating  the  integer  elements  of  the  key  fields  to form the
+primary key, an integer array.  The external  format  would  be  machine
+integers,  hence  there would be no format conversion overhead for order
+comparisions, and we could  evaluate  selection  predicates  and  search
+indexes  with  only  a  few  integer order comparisons per record, which
+would be very fast.
+
+Our goal therefore is to convert all high level datatypes  to  sequences
+of  integers,  and maintain packed records as simple integer arrays.  To
+achieve a reasonable compromise between packing efficiency  and  runtime
+efficiency  we  shall  use  type  SHORT integers (character data will be
+packed two characters  per  word).   The  primary  requirements  on  our
+
+
+                                 -30-
+DFIO (Feb88)             Datafile I/O Interface             DFIO (Feb88)
+
+
+
+conversion  formulas for datatypes such as LONG integer and REAL are the
+following:
+
+    o   It shall be possible to use a sequence of  short  integer  order
+        comparisons  to  perform  order  comparisons  on the fields of a
+        record, regardless of the actual datatype.
+    
+    o   Conversion to and from the short integer format and the  machine
+        dependent data format shall be as efficient as possible.
+
+For  example,  if  X  and  Y  are  32  bit  machine  reals,  the machine
+independent representation would be two, two word short integer  arrays,
+e.g.,  x[2]  and  y[2].   If X=Y, then x[1]=y[1] and x[2]=y[2].  If X<Y,
+then either x[1]<y[1] or x[1]=y[1] and x[2]<y[2].
+
+Given a packed record represented as an array of type short integer,  we
+can  use  the  existing  MII  (machine independent integer) interface to
+carry out the remaining transformation required  to  convert  the  short
+integer  machine datatype to the external data format, 16 bit signed 2's
+complement integers.  On  most  modern  machines  no  transformation  is
+required  and this step is a no-op (one has to byte swap on a VAX) hence
+we achieve our goal of being able to operate directly  on  the  external
+data   format   with  integer  order  comparison  machine  instructions, 
+regardless of the actual datatype of a field of a record.

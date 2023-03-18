@@ -1,0 +1,262 @@
+                            The IRAF System Packages
+                               IRAF Version 2.8
+
+
+
+
+clpackage.dataio:
+	 bintxt - Convert a binary file to an IRAF text file
+      mtexamine - Examine the structure of a magnetic tape
+     rcardimage - Convert a cardimage file into a text file
+        reblock - Copy a binary file, optionally reblocking
+          rfits - Convert a FITS image into an IRAF image
+     rtextimage - Convert text files to IRAF images
+	    t2d - Fast tape to disk copy 
+	 txtbin - Convert an IRAF text file to a binary file
+     wcardimage - Convert text files to cardimage files
+	  wfits - Convert an IRAF image into a FITS image
+     wtextimage - Convert an IRAF image to a text file
+
+
+clpackage.images:
+         blkavg - Block average or sum a list of images
+	 blkrep - Block replicate a list of images
+	 boxcar - Boxcar smooth a list of 2-D images
+      chpixtype - Change the pixel type of a list of images
+       convolve - Convolve a list of 2-D images with a rectangular filter
+          fit1d - Fit a function to image lines or columns
+	fmedian - Quantize and median filter a 2-D image or a list of images
+	  fmode - Quantize and modal filter a 2-D image or list of images
+	  gauss - Convolve a list of 2-D images with an elliptical Gaussian
+	 geomap - Calculate a coordinate transformation
+	geotran - Geometrically transform a set of 2-D images
+       gradient - Convolve a list of 2-D images with a gradient operator
+	  hedit - Header editor
+	hselect - Select a subset of images satisfying a boolean expression
+        imarith - Simple image arithmetic
+      imcombine - Combine images pixel-by-pixel using various algorithms
+	 imcopy - Copy an image
+	imdebug - Image debugging package (currently undocumented)
+       imdelete - Delete a list of images
+       imdivide - Image division with zero checking and rescaling
+         imgets - Return the value of an image parameter as a string
+       imheader - Print an image header
+    imhistogram - Compute image histogram
+      imlintran - Linearly transform a list of 2-D images
+       imrename - Rename one or more images
+        imshift	- Shift a list of 2-D images 
+	imslice - Slice images into images of lower dimension
+	imstack - Stack images into a single image of higher dimension
+   imstatistics - Compute and print statistics for a list of images
+          imsum - Compute the sum, average, or median of a set of images
+       imsurfit	- Fit a surface to a 2-D image
+    imtranspose - Transpose a 2-D image
+	laplace - Laplacian filter a list of 2-D images
+      lineclean - Replace deviant pixels in image lines
+     listpixels - Convert an image section into a list of pixels
+        magnify - Magnify a list of 1-D or 2-D images
+	 median - Median filter a 2-D image or list of images
+	 minmax - Compute the minimum and maximum pixel values in an image
+	   mode - Modal filter a 2-D image or list of images
+       register - Register a set of images
+	 rotate - Rotate and shift a list of 2-D images
+       sections - Expand an image template on the standard output
+     shiftlines - Shift image lines
+             tv - Image display load and control package
+
+
+clpackage.images.tv:
+	  blink - Blink two frames
+	     cv - Control image device, display "snapshot"
+	    cvl - Load image display (newer version of 'display')
+	display - Load an image or image section into the display
+	  erase - Erase an image frame
+	  frame - Select the frame to be displayed
+	lumatch - Match the lookup tables of two frames
+     monochrome - Select monochrome enhancement
+    pseudocolor - Select pseudocolor enhancement
+	    rgb - Select true color mode (red, green, and blue frames)
+	 window - Adjust the contrast and dc offset of the current frame
+	   zoom - Zoom in on the image (change magnification)
+
+
+clpackage.language:
+	  intro - A brief introduction to IRAF
+Language components:
+          break * Break out of a loop
+	   case * One setting of a switch
+       commands - A discussion of the syntax of IRAF commands
+	cursors - Graphics and image display cursors
+   declarations - Parameter/variable declarations
+        default * The default clause of a switch
+           else * Else clause of IF statement
+            for * C-style for loop construct
+             if * If statement 
+           goto * Goto statement
+        logging - Discussion of CL logging
+           next * Start next iteration of a loop
+     parameters - Discussion of parameter attributes
+      procedure * Start a procedure script
+         return * Return from script with an optional value
+         switch * Multiway branch construct
+          while * While loop
+Builtin Commands and Functions:
+	 access - Test if a file exists
+	   back - Return to the previous directory (after a chdir)
+	   beep - Send a beep to the terminal
+	    bye - Exit a task or package
+	  cache - Cache parameter files, or print the current cache list
+	     cd - Change directory
+	  chdir - Change directory
+	     cl - Execute commands from the standard input
+	  clbye - A cl followed by a bye (used to save file descriptors)
+          clear - Clear the terminal screen
+	 defpac - Test if a package is defined
+	 defpar - Test if a parameter is defined
+        deftask - Test if a task is defined
+	 dparam - Dump a pset as a series of task.param=value assignments
+	   edit - Edit a text file
+       ehistory - Edit history file to re-execute commands
+	 envget - Get the string value of an environment variable
+         eparam - Edit parameters of a task
+	  error - Print error code and message and abort
+      flprcache - Flush the process cache
+	 fprint * Print a line into a parameter
+	  fscan * Scan a list
+	 gflush - Flush any buffered graphics output
+       hidetask - Make a task invisible to the user
+        history - Display  commands previously executed
+           jobs - Display status of background jobs
+	   keep - Make recent set, task, etc. declarations permanent
+	   kill - Kill a background job
+	 logout - Log out of the CL
+	 lparam - List the parameters of a task
+       mathfcns - Mathematical routines
+	 mktemp - Make a temporary (unique) file name
+	   osfn - Return the host system equivalent of an IRAF filename
+        package - Define a new package, or print the current package names
+        prcache - Show process cache, or lock a process into the cache
+	  print - Format and print a line on the standard output
+         putlog - Put a message to the logfile
+	  radix - Encode a number in the specified radix
+       redefine - Redefine a task
+	  reset - Reset the value of an environment variable
+	   scan * Scan the standard input
+        service - Service a query from a background job
+	    set - Set an environment variable
+           show - Show an environment variable
+          sleep - Hibernate for a specified time
+        strings - String manipulation routines
+	   stty - Set/show terminal characteristics
+	   task - Define a new task
+           time - Print the current time
+        unlearn - Restore the default parameters for a task or package
+	 update - Update a task's parameters (flush to disk)
+	   wait - Wait for all background jobs to complete
+
+
+clpackage.lists:
+	average - Compute the mean and standard deviation of a list
+	columns - Convert multicolumn file to separate files
+	lintran - Perform linear transformation of a list
+       rgcursor - Read the graphics cursor (makes a list)
+      rimcursor - Read the image display cursor (makes a list)
+	  table - Format a list of words into a table
+	 tokens - Break a file up into a stream of tokens
+	 unique - Delete redundant elements from a list
+	  words - Break a file up into a stream of words
+
+
+clpackage.plot:
+	calcomp - Plot metacode on a Calcomp pen plotter
+	contour - Make a contour plot of an image
+	crtpict - Generate greyscale plots of IRAF images
+      gkidecode - Decode metacode on the standard output
+	 gkidir - Directory listing of metacode file
+     gkiextract - Extract individual frames from metacode file
+      gkimosaic - Condense metacode frames to fit on one page
+	  graph - Graph one or more image sections or lists
+	 hafton - Generate half-tone plots of an image
+	 implot - Plot lines and columns of images using cursors
+       nsppkern - Plot metacode on a NSPP (NCAR) plotter device
+	   pcol - Plot a column of an image
+	  pcols - Plot the average of a range of image columns
+	   prow - Plot a line (row) of an image
+	  prows - Plot the average of a range of image lines
+	pvector - Plot an arbitrary vector in a 2D image
+      sgidecode - Decode an SGI format metacode file
+	sgikern - Simple graphics interface (SGI) graphics kernel
+        showcap - Show and decode graphcap entries
+       stdgraph - Plot metacode on the standard graphics device
+        stdplot - Plot metacode on the standard plotter device
+	surface - Make a surface plot of an image
+	velvect - Plot representation of a velocity field
+
+
+clpackage.softools:
+	generic - Preprocess a generic source file
+     hdbexamine - Examine a help database
+	  lroff - Lroff (line-roff) text formatter
+       mkhelpdb - Make (compile) a help database
+      mkmanpage - Make a manual page
+	  mkpkg - Make or update an object library or package
+	 mktags - Tag all procedure declarations in a set of files
+      mkttydata - Build cache for termcap/graphcap device entries
+	  rmbin - Find/delete binary files in subdirectories
+	rmfiles - Find/delete files in subdirectories
+	   rtar - Read a TAR format archive file
+	   wtar - Write a TAR format archive file
+             xc - Compile and/or link a program
+	  xyacc - Build an SPP language parser
+
+
+clpackage.system:
+       allocate - Allocate a device, i.e., magtape drive mta, mtb, ...
+    concatenate - Concatenate a list of files
+	   copy - Copy a file or files (use IMCOPY for imagefiles)
+	  count - Count the number of lines, words, characters in a text file
+     deallocate - Deallocate a previously allocated device
+         delete - Delete a file or files (use IMDELETE to delete imagefiles)
+	devices - Print information on the locally available devices
+      devstatus - Print the status of a device (mta, mtb, ...)
+      directory - List the files in a directory
+      diskspace - Show how much diskspace is available
+	  files - Expand a file template into a list of files
+         gripes - Send suggestions, complaints, etc. to the system
+	   head - Print the first few lines of a text file
+           help - Print online documentation
+         lprint - Print a file on the line printer device
+	  match - Print all lines in a file that match a pattern
+	  mkdir - Create a new directory
+       mkscript - Make a command script
+      movefiles - Move files to a directory
+      netstatus - Print the status of the local network
+	   news - Page through the system news file
+           page - Page through a file
+      pathnames - Expand a file template into a list of OS pathnames
+        protect - Protect a file from deletion
+     references - Find all help database references for a given topic
+         rename - Rename a file
+         rewind - Rewind a device (magtape)
+	   sort - Sort a text file
+	    spy - Show processor status
+	   tail - Print the last few lines of a file
+	    tee - Tee the standard output into a file
+	   type - Type a text file on the standard output
+      unprotect - Remove delete protection from a file
+
+
+clpackage.utilities:
+	 curfit - Fit data with Chebyshev, Legendre or spline curve
+	  detab	- Replace tabs with tabs and blanks
+	  entab - Replace blanks with tabs and blanks
+	  lcase - Convert a file to lower case
+	polyfit - Fit polynomial to list of X,Y data
+	  split - Split a large file into smaller segments
+       translit - Replace or delete specified characters in a file
+	  ucase - Convert a file to upper case
+	  urand - Uniform random number generator
+
+
+Note: Language package keywords are starred. To get help on a keyword enclose
+it in quotes.

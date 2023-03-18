@@ -1,0 +1,53 @@
+
+                      IRAF System Handbook Volume 3A
+
+                            Table of Contents
+
+[The following documents are in IRAF System Handbook Volume 3A.  Those
+documents marked with an * can be found in the network archive as 
+either compressed ASCII text (.txt.Z) or compressed PostScript (.ps.Z)
+format documents. The names of the files, as they exist in the archive,
+are given in ().]
+
+
+System Information:
+
+Directory Structure
+ * IRAF/UNIX Directory Structure (d28sun.ps.Z, d29.sun.ps.Z)
+ * IRAF/VMS Directory Structure  (d29vms.ps.Z, d29vms.ps.Z)
+
+IRAF Overview
+ * The IRAF Data Reduction and Analysis System, by Doug Tody, April 1986.
+   (iraf.ps.Z)
+
+Package Structure
+ * IRAF Applications Packages, Package Structure and Requirements, by IRAF
+   Group and CSAC, September 1983, draft. (packages.txt.Z)
+
+Benchmarks
+ * A Set of Benchmarks for Measuring IRAF System Performance, by Doug Tody,
+   revised July 1987. (bench.ps.Z)
+
+ * IRAF V2.5  Table of Selected Benchmark Results, May 1987. (bench_tab.ps.Z)
+
+
+CL Information:
+
+CL User's Guide
+ * A User's Introduction to the IRAF Command Language Version 2.3, by Peter
+   MB Shames and Doug Tody, revised August 1986. (cluser.ps.Z)
+
+Parameter Sets
+ * Named External Parameter Sets in the CL and related revisions, by Doug
+   Tody, October 1986. (pset.ps.Z)
+
+CL Manual Pages
+ * On-line help pages for "language" package. (lang28.txt.Z, lang28.ps.Z)
+
+CL Programmer's Manual
+ * CL Programmer's Manual, by Elwood Downey, Doug Tody, and George Jacoby,
+   revised September 1983. (clman.ps.Z)
+
+Specs of IRAF CL
+   Detailed Specifications of the IRAF Command Language Version 1.2, by
+   Doug Tody, Elwood Downey, and George Jacoby, June 1982.

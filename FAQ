@@ -1,0 +1,4095 @@
+
+    This is the Frequently Asked Questions list for the IRAF (Image Reduction
+    and Analysis Facility) project.  Within this file, you will find an index
+    of questions organized by topic followed by the answers.  This list has 
+    been compiled by members of the NOAO IRAF group and is believed to be 
+    accurate as of 05/02/00.  For further information about anything 
+    listed here or additional IRAF questions not mentioned in this FAQ, please 
+    contact IRAF Site Support at iraf@noao.edu, iraf::noao, or 520-318-8160.
+
+    An HTML version of this document with links to all the mentioned archives,
+    newsgroups, and documents is available as
+
+		http://iraf.noao.edu/faq/FAQ.html
+
+
+05/02/00
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+
+
+Section  1.   GENERAL
+ 1.1   What is IRAF?
+ 1.2   Should I get it - is it appropriate for my needs?
+ 1.3   What general image processing tools are included with the core system?
+ 1.4   What software does IRAF have for spectral data?
+ 1.5   What software does IRAF have for direct imaging data?
+ 1.6   Are the IRAF reduction packages limited to use with NOAO instruments?
+ 1.7   How do I get IRAF; how much does it cost?
+ 1.8   Is IRAF public domain software?
+ 1.9   What are the system requirements if I want to install IRAF?
+ 1.10  What is the current version of IRAF?
+ 1.11  When is the next version of IRAF going to be released?
+ 1.12  What is the status of XGterm and XImtool?
+ 1.13  On which platforms does IRAF run?
+ 1.14  Does IRAF run on a PC under DOS?  under Unix?
+ 1.15  If I upgrade my OS will IRAF continue to run?
+ 1.16  How difficult is it to port IRAF to my own system?
+ 1.17  What window systems does IRAF run under?
+ 1.18  Is IRAF easy to install?
+ 1.19  How widely used is IRAF?
+ 1.20  How do I acknowledge IRAF in a publication?
+
+Section  2.   SUPPORT SERVICES
+ 2.1   What types of services can I expect as an IRAF user?
+ 2.2   What sort of on-line help is available in IRAF?
+ 2.3   Where can I send general questions about IRAF?
+ 2.4   Can I talk to a real person with installation or user questions?
+ 2.5   Is there an IRAF network archive; how do I access it; what's in it?
+ 2.6   Is there an IRAF network mail facility yet?  How do I access it?
+ 2.7   Can I get IRAF newsgroup information through a listserver?  
+ 2.8   What is the IRAFINFO facility?
+
+Section  3.   DOCUMENTATION
+ 3.1   How can I learn to use IRAF?
+ 3.2   Is there a beginner's guide for IRAF?
+ 3.3   Is there IRAF help online?
+ 3.4   What general documentation is available?  Where can I find it?
+ 3.5   What documentation do you recommend that I have for the latest release?
+ 3.6   What manuals are available for helping me do photometry?
+ 3.7   What manuals are available for helping me do spectroscopy?
+ 3.8   What documents are available for general image processing?
+ 3.9   What programming documentation is available?
+ 3.10  How can I learn more about the WCS in IRAF?
+ 3.11  What installation manuals are available and where are they?
+ 3.12  Are there revisions notices for the last release?
+ 3.13  Is there a buglog for IRAF?  How can I get a copy?
+ 3.14  Is there a manual for SAOimage?
+ 3.15  How can I subscribe to the IRAF Newsletter?
+ 3.16  What is the last issue of the IRAF Newsletter?
+ 3.17  Can I get back issues of the IRAF Newsletter?
+ 3.18  Is there an index for the Newsletter?
+
+Section  4.   LAYERED PACKAGES
+ 4.1   What are layered or external packages?
+ 4.2   What layered packages are available?  How do I get them?
+ 4.3   How can I get the CTIO package?
+ 4.4   What is the STSDAS package?   How can I get it?
+ 4.5   I need the TABLES package.  How can I get it?
+ 4.6   What is PROS/XRAY package?  How can I get it?
+ 4.7   What is the EUV package?  How can I get it?
+ 4.8   Where do I send problem reports for the layered packages?
+ 4.9   How can I contribute my own software to IRAF so others can use it?
+
+Section  5.   DATA FORMATS
+ 5.1   What data formats are supported?
+ 5.2   How can I convert my data to the IRAF image format?
+ 5.3   How do I convert my ascii text file of wavelength and flux into an
+       IRAF image?
+ 5.4   Does IRAF support world coordinate systems in images?
+ 5.5   What is the IRAF disk image format?
+ 5.6   How do I convert my GIF/JPEG images to IRAF?
+ 5.7   What are the "..image.imh" files associated with each of my images?  Can
+       I delete them to free up disk space?
+
+Section  6.   WINDOW SYSTEMS
+ 6.1   When I try to make an IRAF plot on my screen all I get is garbage in 
+       my window.  How can I get an IRAF plot?
+ 6.2   How is stty "xtermjh" different from a standard "xterm" window?
+ 6.3   Why can't I get vector graphics from AIX/IRAF in an AIXterm window?
+ 6.4   Are we limited to having a single SAOimage process running per CPU?
+ 6.5   Can I run multiple SAOimage processes simultaneously from my account?
+ 6.6   What do I do about "Warning libxxx.s.o older than expected"?
+
+Section  7.   IMAGE DISPLAY
+ 7.1   How can I generate or display an RGB image?
+ 7.2   What is the proper value of "stdimage" for use with SAOimage or XImtool?
+ 7.3   How can I change the size of the frame buffer from the CL?
+ 7.4   What do I change to add a custom frame buffer size?
+ 7.5   How do I get a hardcopy of an image displayed with XImtool or SAOimage?
+ 7.6   What can I use for image display on a monochrome monitor?
+
+Section  8.   GRAPHICS
+ 8.1   What hardcopy output devices are supported with the distributed system?
+ 8.2   What additional SGI translators are available; how do I get them?
+ 8.3   What VMS/IRAF files do I edit to get my output device interfaced?
+ 8.4   What UNIX/IRAF files do I edit to get my output device interfaced?
+ 8.5   Can I generate color PostScript of an IRAF plot or displayed image?
+ 8.6   Does IRAF support Encapsulated PostScript?
+
+Section  9.   SYSTEM INSTALLATIONS
+ 9.1   I don't have enough diskspace for the entire system - what can I do?
+ 9.2   What does the IRAF install script really do - what files are modified?
+ 9.3   I'm not able to write in /usr - can I still install IRAF?
+ 9.4   Can I have more than one version of IRAF installed at a time?
+ 9.5   Can we make our local software look like an IRAF package?
+ 9.6   What does "ERROR: Cannot open device (node!imtool,,512,512)" mean?
+ 9.7   Where's my image?  I display an image to SAOimage but get no image dis-
+       played and no error, only the cl prompt.  
+ 9.8   Why am I told "task `cl' has no param file" when I try to start the CL?
+ 9.9   What does "ERROR: Cannot open connected subprocess (pkg$x_pkg.e) mean?
+ 9.10  What do I do about "Warning libxxx.so older than expected" or "ld.so:
+   libXXX.so: can't open file" messages?
+ 9.11  Why does VMS/IRAF report "cannot open tmp$uidxxx" when accessing a tape?
+ 9.12  Why does my script tell me  "dictionary full"?
+ 9.13  What does "Warning: Out of space in image header" mean?
+ 9.14  Why does PHOT warn "Graphics overlay not available for display device."?
+ 9.15  Why does my task report "ERROR: parameter `foo' not found"?
+ 9.16  What does "ERROR: MWCS: dimension mismatch (mw_translate)" mean?
+ 9.17  My pixel files were moved to another disk and now the i_pixfile pathname
+       in the image headers is wrong.  How can IRAF find the pixels?
+ 9.18  How do I turn off the system id banner in output hardcopy plots?
+ 9.19  Why does IRAF kick me out when I type ^Z to exit EPARAM?
+
+Section 10.   NETWORK INSTALLATIONS
+10.1   What's different about installing Unix IRAF on a network instead of a 
+       standalone machine?
+10.2   If IRAF is NFS mounted to all the client nodes, why do I need to run the
+       install script on each node?
+10.3   How do I access a remote tape drive from IRAF?
+10.4   Where can I find information on the structure and fields for the tapecap
+        file?
+10.5   Can I use a VMS tape drive from a UNIX IRAF installation?
+10.6   How do I suppress the password prompt when accessing pixels?
+10.7   How do I disable IRAF networking for disk image access, but keep it to
+       access the tape drives?
+
+Section 11.   HARDWARE
+11.1   On which platforms does IRAF run?
+11.2   What's the best machine to buy if I plan to run IRAF?
+11.3   What are the recommended hardware requirements of a workstation?
+11.4   What type of mag tape devices are supported and not supported?
+11.5   Should I buy a 24-bit frame buffer for my Sun?
+11.6   Can I use my Windows 9x PC to display IRAF images?
+11.7   Do you have benchmarks for IRAF on various machines?
+
+Section 12.   PROGRAMMING
+12.1   What programming languages can I use for IRAF software development?
+12.2   Can I install IRAF or layered software without having IRAF permissions?
+12.3   Can I call IMFORT procedures from C?
+12.4   Where are the IRAF libraries used by FC or XC for IMFORT tasks?
+12.5   Can I build IRAF software without using FC or XC?
+12.6   What Fortran compilers are supported?
+12.7   Can I call IRAF tasks from Unix C-shell scripts?
+12.8   I was wondering if you could provide a bit more info on how to use the new 
+   ability of the IRAF cl (#!cl) to act as a shell for Unix scripts.
+12.9   Will IRAF work with the Korn shell or tcsh?
+
+Section 13.   APPLICATIONS
+13.1   What is the meaning of the coefficients returned with the CURFIT task?
+13.2   What does "ERROR: MWCS: dimension mismatch (mw_translate)" mean?
+13.3   My pixel files were moved to another disk and now the i_pixfile pathname
+       in the image headers is wrong.  How can IRAF find the pixels?
+13.4   How do I turn off the system id banner in output hardcopy plots?
+13.5   How can I find out what tasks are in IRAF?
+13.6   Is the surface photometry package available yet?
+13.7   I have a spectrum in a one dimensional image for which I had no
+       trouble running IDENTIFY, REIDENTIFY, and REFSPECTRA but when I run
+       DISPCOR I get the error "ERROR: MWCS: attribute not found (spec1)"
+13.8   Is there an ASTROMETRY package I can use?
+13.9   Whom should I contact if I have problems with the xray package?
+
+Section 14.   XGterm/XImtool ISSUES
+14.1   How do I change colors (cursor, background, text, etc) in my XGterm 
+       window?
+14.2   How do I change the crosshair cursor color so it appears on my mono-
+       chrome monitor?
+14.3   How do I start XImtool with private fifo pipes?
+14.4   How should I set up my users to run Ximtool on an X-terminal?
+14.5   Can I control more than one XImtool at the same time?
+14.6   How can I change the background color in my ximtool window - the default
+       color is black - I want white?
+14.7   Can I set the size and placement of the xgterm graphics window at 
+       startup time?
+14.8   Can I set the size and placement of the ximtool window at startup time?
+14.9   How can I tell what the default resources are for xgterm and ximtool?  
+       Is there a file somewhere with these values in them?
+14.10    Can FOCAS make use of the socket connections in XImtool for image
+       display?
+14.11   When I try to start up XImtool I get an error about a BadMatch.
+14.12   About how much disk space is needed to install 2.11 for Sun machines.
+14.13   After upgrading to V2.11 external package tasks no longer recognize my 
+       images.
+
+Section 15.   PC-IRAF
+15.1   Is there a version of IRAF that will run on my PC?
+15.2   What Operating Systems are supported?
+15.3   What is the minimal hardware configuration?
+15.4   What is the recommended hardware configuration?
+15.5   How much disk space does IRAF require?
+15.6   Where can I get PC/IRAF?
+15.7   Where can I get precompiled binaries for external packages.
+15.8   Is there a CD-ROM distribution or runtime system?  How much does it cost?
+15.9   Will IRAF run on my laptop?
+15.10  How hard is it to install Linux?
+15.11  Where can I get Linux?
+15.12  How can I be sure my version of Linux is compatible?
+15.13  Where can I get help installing Linux?
+15.14  What if my hardware isn't currently supported?
+
+
+Section  1.   GENERAL
+
+
+ 1.1   What is IRAF?
+
+ 	IRAF is the Image Reduction and Analysis Facility, a general purpose 
+software system for the reduction and analysis of scientific data.  IRAF is 
+written and supported by the IRAF programming group at the National Optical 
+Astronomy Observatories (NOAO) in Tucson, Arizona.  IRAF includes a good 
+selection of programs for general image processing and graphics applications, 
+plus a large number of programs for the reduction and analysis of optical 
+astronomy data within the NOAO package.  External or layered packages are 
+also available for the analysis of HST, XRAY and EUV data.  IRAF provides 
+a complete programming environment, which includes the Command Language 
+script facility, the IMFORT Fortran programming interface, and the fully 
+featured SPP/VOS programming environment in which the portable IRAF system 
+is written.  
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.2   Should I get it - is it appropriate for my needs?
+
+ There are basically three reasons to get IRAF:
+	The first one is that you have astronomical data that needs to be 
+processed and you are looking for a mature, Unix-, PC-, or VMS-based, image
+processing system to do the work.  
+	The second reason is that you would like to develop some astronomical 
+software and are looking for a popular astronomical software package - one 
+with a broad selection of tools - to build on to lessen your work.  IRAF 
+provides the software developer with a rich programming environment that 
+includes file management tools, interactive graphics and display, portability, 
+and much MUCH more. 
+	The third reason to acquire IRAF is to process data that is similar
+to astronomical data, and the basic interactive graphics, display tools,
+and image operators provided by IRAF would be useful for your application.
+
+If you have questions about the suitability of IRAF to your application
+contact site support at iraf@noao.edu.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.3   What general image processing tools are included with the core system?
+
+ The IRAF core system is the basic IRAF system and does not include the
+suite of reduction packages known as the NOAO package.  (But note that
+the NOAO package is included in all IRAF distributions.)  The IRAF core
+system provides tools for reading and writing data in the transportable
+FITS format (although other i/o tools are available), interactive graphics
+and image display tools for examining your data, tools for image registration 
+and cleaning bad pixels, a variety of smoothing operators, and tools for 
+image arithmetic, image statistics and combining image frames.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.4   What software does IRAF have for spectral data?
+
+ IRAF has a rich selection of tools for spectral reduction and analysis in
+the NOAO package that spans 1-d, 2-d, echelle, and fibor spectroscopy.  These 
+tools include basic CCD reductions and flat fielding, distortion corrections 
+for 2-d data, extraction of 2-d and echelle frames, wavelength and flux 
+calibration, radial velocity analysis, and a multitude of tasks for
+manipulating spectra in general.  The tasks provide the user with the 
+option of batch or interactive processing.  
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.5   What software does IRAF have for direct imaging data?
+
+ Besides the image operators provided by the basic core system (see earlier
+FAQ) the NOAO package in IRAF provides tools for basic CCD reductions, 
+mosaicing, aperture and PSF-fitting (DAOPHOT) photometry, and photometric 
+calibration.  A package for surface photometry is planned and will be added 
+at a later date. 
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.6   Are the IRAF reduction packages limited to use with NOAO instruments?
+
+ The many reduction packages within the IRAF system are not limited to
+use with NOAO instruments.  The tasks within IRAF have been developed to
+be as generic as possible to encompass a wide range of uses.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.7   How do I get IRAF; how much does it cost?
+
+ IRAF is available free of charge over the network.  Use anonymous FTP to
+connect to node iraf.noao.edu (140.252.1.1) and "get README".  Each level 
+of the archive has a README file to assist you with your selections or with
+your transfers.  It is possible to use DECnet for some transfers - contact
+us (iraf@noao.edu) for details.
+
+If acquiring IRAF over the network is not an option for you (but we do prefer
+you retrieve it that way) then an orderform is available.
+A small recovery fee is charged for mailed
+distributions along with any shipping and handling fees.  Typical orders in the 
+US run about $58 (US), and foreign shipments run between $100-$250 (when
+documentation is included).
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.8   Is IRAF public domain software?
+
+ Although IRAF is available free of charge over the network to anyone who
+may find it useful it is not considered public domain software since it is 
+copyrighted.  Here is part of the copyright notice that appears in the 
+distributed system.
+-----------------
+Copyright(c) 1986 Association of Universities for Research in Astronomy Inc.
+ 
+The IRAF software is publicly available, but is NOT in the public domain.
+The difference is that copyrights granting rights for unrestricted use and
+redistribution have been placed on all of the software to identify its authors.
+You are allowed and encouraged to take this software and use it as you wish,
+subject to the restrictions outlined below.
+ 
+Permission to use, copy, modify, and distribute this software and its
+documentation is hereby granted without fee, provided that the above copyright
+notice appear in all copies and that both that copyright notice and this
+permission notice appear in supporting documentation, and that references to
+the Association of Universities for Research in Astronomy Inc. (AURA),
+the National Optical Astronomy Observatories (NOAO), or the Image Reduction
+and Analysis Facility (IRAF) not be used in advertising or publicity
+pertaining to distribution of the software without specific, written prior
+permission from NOAO.  NOAO makes no representations about the suitability
+of this software for any purpose.  It is provided "as is" without express or
+implied warranty.
+ 
+NOAO DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL NOAO
+BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION
+OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN 
+CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.9   What are the system requirements if I want to install IRAF?
+
+ For a typical, single-user, workstation environment you will need a
+minimum of 64Mb of memory and ~128Mb of swap space.  You will need about 
+128 of diskspace for the IRAF system (this varies a bit with the platform),
+although it can be stripped to about half that after the installation.  If 
+you are configuring a server your memory and swap space needs will be more 
+(maybe much more!).  For details about a particular platform or configuration 
+check with site support at iraf@noao.edu.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.10  What is the current version of IRAF?
+
+ The current version of IRAF varies a bit with the platform.
+
+    PLATFORM              CURRENT RELEASE	RELEASE DATE
+    --------              ---------------       ------------
+
+    AIX4                  V2.11.3               15 December 1999
+    DUNX                  V2.11.3               15 December 1999
+    HPUX                  V2.11.3               15 December 1999
+    IRIX                  V2.11.3               15 December 1999
+    PCIX                  V2.11.3                7 December 1999
+    SSOL                  V2.11.3                7 December 1999
+    VMS7                  V2.11.3               15 December 1999
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.11  When is the next version of IRAF going to be released?
+
+ 
+	It is always difficult for us to predict exact release dates,
+so the best thing to do is check the archive (iraf.noao.edu) occasionally
+for new distributions or check with us occassionally (iraf@noao.edu) for
+an update if this is critical for your scheduling.  Users can subscribe
+to the announcements newsgroup on our web page and be notified by mail.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.12  What is the status of XGterm and XImtool?
+
+ The X11IRAF project is being developed independently of the normal IRAF
+system development.  They are X based tools for support of vector graphics
+and image display, the long awaited replacements for Xterm and SAOimage.
+Versions of XGterm, XImtool and XTapemon are available in the /iraf/x11iraf
+directory on iraf.noao.edu.   A new version was recently made available that
+contains many enhancements, especially to ximtool (e.g. hardcopy capability,
+image load/save, on-line help, etc).  All tasks are now fully documented
+and easily buildable from source on all supported iraf platforms.  A bug-fix
+release was made available in Aug 97, most users should upgrade to this 
+version.  Another version to support the prototype science GUIs (XAPPHOT,
+SPECTOOL, and XRV) is planned for the near future that will also include
+many bug fixes and necessary system enhancements (contact site support for
+updates)
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.13  On which platforms does IRAF run?
+
+ IRAF runs on the following platforms:
+
+        Platform		Descrition
+
+	AIX4			IBM/RS6000 AIX 4.x
+	DUNX			Digital Unix 4.0 (OSF, Compaq Tru64)
+	HPUX			HP-UX 10.20
+	IRIX			SGI IRIX 6.x
+	PCIX			FreeBSD 3.3
+	PCIX			Slackware Linux 4.0
+	PCIX			RedHat Linux 5.x
+	PCIX			RedHat Linux 6.x	
+	PCIX			SuSE Linux 6.x
+	PCIX			Solaris 7 for Intel
+	SSOL			SunOS 4.x
+	SSOL			Solaris 5.5, 5.6, 5.7, 5.8
+	VMS7			VAX/VMS 7.1
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.14  Does IRAF run on a PC under DOS?  under Unix?
+
+ The V2.11 IRAF system for PCs running Linux/FreeBSD is now 
+available from the iraf.noao.edu archives or on the V2.11 CD-ROM by filling
+out the IRAF orderform.  No port is planned
+for DOS/Windows 95/98 since it is an insufficient operating system to support
+IRAF.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.15  If I upgrade my OS will IRAF continue to run?
+
+ Minor upgrades to the OS do not normally affect the operation of IRAF, but
+major changes to the OS may.  If in doubt, check with the IRAF group
+(iraf@noao.edu) before upgrading.
+	It should be stressed however, that after ANY operating system upgrade
+which affects the system /dev or /usr directories, it is necessary to rerun 
+the IRAF install script to recreate image display fifo pipes in /dev and
+symbolic links for /usr/include/iraf.h.  The install script in this case
+must be run on all IRAF client machines in order to re-establish to 
+critical system links needed by all IRAF machines.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.16  How difficult is it to port IRAF to my own system?
+
+ The average individual will probably have great difficulty in porting IRAF
+to their own system - IRAF is a big and complex system and one should not
+underestimate the amount of work involved in a port.  We have had very few
+successful ports done by people who were not highly skilled systems people
+with some large degree of knowledge about IRAF internals.
+	Unfortunately, the IRAF group does not have the resources to assist 
+with private ports, so anyone attempting this challenge is more or less on 
+their own.  For more information about IRAF ports see the README file in 
+iraf/v210/PORT in the IRAF network archive on the node iraf.noao.edu 
+(140.252.1.1).
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.17  What window systems does IRAF run under?
+
+ The only supported window system is X,  any X window manager should be
+sufficient.  If you use X Windows then you will want to use XGterm for your
+graphics terminal and XImtool as your image display server, these can be
+downloaded as part of the X11IRAF package from /iraf/x11iraf in our archives.
+Note that IRAF itself is not dependent on a window system, many non-graphics
+tasks can be run from the raw console and older terminal such as VT640 may
+also be used and would lack only an image display.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.18  Is IRAF easy to install?
+
+ The IRAF installation is straightforward but not trivial.  Source code,
+object libraries, and executable are included in all distributions.
+Installation guides and site managers guides are available for each
+distribution in the same directory.  If the instructions are followed your
+installation should go smoothly.  (One step of the installation does require
+root privileges.)  Any problems encountered can usually be handled by the IRAF
+site support people in a timely fashion (iraf@noao.edu).
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.19  How widely used is IRAF?
+
+ Since IRAF is available freely over the network we are only able to 
+estimate the number of sites or users.  Our records suggest there are
+approximately 5000 users at about 1500 sites throughout the world.  Our
+newsletter mailing list has roughly 1500 recipients.  These numbers indicate
+that IRAF is a major software package in the US and abroad.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 1.20  How do I acknowledge IRAF in a publication?
+
+  There are two papers appropriate as references for IRAF in a
+publication.  They are:
+
+Tody, D. 1986, "The IRAF Data Reduction and Analysis System" in Proc. SPIE
+        Instrumentation in Astronomy VI, ed. D.L. Crawford, 627, 733
+
+Tody, D. 1993, "IRAF in the Nineties" in Astronomical Data Analysis Software
+         and Systems II, A.S.P. Conference Ser., Vol 52, eds. R.J. Hanisch,
+         R.J.V. Brissenden, & J. Barnes, 173.
+
+The more recent paper includes more references.  Both are available from
+the anonftp archive on iraf.noao.edu in iraf/docs (see README).  No special
+acknowledgement is required as a matter of policy so we don't blatantly
+state these anywhere, but a mention is always appreciated.  A footnote 
+describing IRAF may also be used when appropriate:
+
+    "IRAF is distributed by the National Optical Astronomy Observatories,
+    which are operated by the Association of Universities for Research
+    in Astronomy, Inc., under cooperative agreement with the National
+    Science Foundation."
+
+
+
+Section  2.   SUPPORT SERVICES
+
+
+ 2.1   What types of services can I expect as an IRAF user?
+
+      IRAF support services includes a HOTLINE phone number
+(520/318-8160) that can be called to speak to an actual person, as well as
+an email address (iraf@noao.edu) where general questions can be sent.  The
+HOTLINE is tended by an answering machine when nobody is available
+immediately and all messages sent to iraf are logged to guarantee a reply
+(usually the same day).
+	Information about IRAF can be found in our anonymous ftp network
+archive iraf.noao.edu (140.252.1.1)  or our home page http://iraf.noao.edu.  
+We've also set up an alternate newsgroup hierarchy called 'adass' (after
+the ADASS conference series) to handle not only the IRAF related groups but
+any astronomical data analysis software system.  More information on these
+services is found below.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 2.2   What sort of on-line help is available in IRAF?
+
+	Help for all tasks is available simply by typing "help <taskname>".
+Typing the 'help' command by itself in a package will list a one-line
+description of all tasks within the package.  Users can search for help on
+a particular topic using the REFERENCES task.  Additional help topics are
+available with certain packages, these are listed with the package help
+file.  Lastly, the IRAF system contains some documentation in the iraf$doc
+directory, these are unformatted TROFF files or IRAF help pages mostly 
+these found here include system manager's guides, installation manuals, etc).
+	Additional documentation in the form of cookbooks and user's guides
+are available from the IRAF network archive iraf.noao.edu in the iraf/docs
+subdirectory.  The 'README' file there serves as a table of contents for
+what is available, all files are compressed PostScript and can be transferred
+via anonymous ftp.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 2.3   Where can I send general questions about IRAF?
+
+	The general e-mail address for the IRAF Project is iraf@noao.edu.
+Mail sent to this account is logged to guarantee a reply (usually within
+24-hours).  It is read by several people and the most appropriate person will
+reply.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 2.4   Can I talk to a real person with installation or user questions?
+
+	The IRAF Hotline number is 520/318-8160.  An answering machine will
+pick up if nobody is in the office at the time you call, leave a short message
+describing the problem and a number where you can be reached.  
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 2.5   Is there an IRAF network archive; how do I access it; what's in it?
+
+	The iraf network archive address is iraf.noao.edu (140.252.1.1), log
+in via anonymous ftp (i.e. as user 'anonymous', give your email address as
+the password).   The archive contains the IRAF distribution for every supported
+architecture (in the iraf subdirectory), as well as external layered packages
+(in the iraf/extern subdir), user-contributed software (in contrib), IRAF doc-
+umentation (iraf/docs), ADASS conference information (iraf/conf), and much 
+more.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 2.6   Is there an IRAF network mail facility yet?  How do I access it?
+
+	The new network service that just went into operation is a USENET and 
+email based network news facility.  This consists of a collection of newsgroups
+organized as a USENET alternate news hierarchy called 'adass', after the 
+software conference of the same name (astronomical data analysis software
+and systems).  Although our main interest in developing this was to have a
+place to put some IRAF newsgroups, we named the new news hierarchy 'adass' 
+in case there is any interest in expanding this in the future to include 
+other non-IRAF astronomy software newsgroups.
+	The advantage of an alternate news hierarchy is that it is easier to 
+target the desired community, in our case the astronomical community.  The
+disadvantage of starting a new news hierarchy is that initially there is no
+distribution system in place.  To carry the newsgroups locally a site must
+get a feed from some other site.  To read or post news, an individual need
+only have some NNTP-based newsreader software and access to an NNTP (network
+news) server somewhere on the net which carries the desired newsgroups and
+which permits the user to read and post news.  As part of the mail network
+project we will be providing an NNTP server on the main IRAF server 
+iraf.noao.edu which will allow anyone to read and post to the adass newsgroups 
+(but only to those newsgroups).
+	The current list of newsgroups are the following (this may change):
+
+    adass.general                   important announcements
+    adass.misc                      miscellaneous discussion
+    adass.admin                     adass newsgroup administration
+    adass.test                      test postings
+ 
+    adass.conference                adass software conference
+ 
+    adass.iraf.readme               the mail network README file
+    adass.iraf.announce             new iraf software or facilities
+    adass.iraf.applications         applications discussion group
+    adass.iraf.programming          programming discussion group
+    adass.iraf.system               system issues, system administration
+    adass.iraf.misc                 miscellaneous discussion
+    adass.iraf.buglog               project buglogs (computer generated)
+    adass.iraf.sources              small programs or documents
+
+The adass.iraf newsgroups are intended to be shared by the IRAF user
+community and all the groups and individuals developing software for IRAF
+(i.e., not just the NOAO IRAF group).  To subscribe to newsgroups and get
+a feed directly interested users should contact the iraf group. 
+	Since the adass groups are available to an NNTP-based newsreader they
+can be accessed by anyone using a command such as
+
+	% xrn -nntpServer iraf.noao.edu
+
+We now have mail drops for all the ADASS newsgroups.  The mail address for
+each group is the newsgroup name with the dots replaced with dashes, e.g.
+"adass.iraf.applications" becomes "adass-iraf-applications@iraf.noao.edu".
+That is a lot to type so there are also aliases for the more important
+newsgroups:
+
+    Alias          Newsgroup
+
+    adass          adass-conference
+    announce       adass-iraf-announce
+    sources        adass-iraf-sources
+    apps           adass-iraf-applications
+    misc           adass-iraf-misc
+    prog           adass-iraf-programming
+    sys            adass-iraf-system
+
+In this way users can 'post' and read to the various groups until a feed is 
+set up directly to their site.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 2.7   Can I get IRAF newsgroup information through a listserver?  
+
+ Yes, you can get newsgroup information via a listserver.  The list server
+address is "listproc@iraf.noao.edu".  To get information about the list 
+server send it the following request:
+
+               % mail listproc@iraf.noao.edu
+               help
+
+(You can omit the 'Subject:' line).  This will cause a list of all the commands
+recognized by the list server to be returned via e-mail.
+
+To subscribe to a newsgroup send the following request to the listserver:
+
+    subscribe <newsgroup> <your name and affiliation> e.g.
+
+    % mail listproc@iraf.noao.edu
+    subscribe adass-iraf-announce "Joe Smith, Boston University"
+    subscribe adass-iraf-buglog "Joe Smith, Boston University"
+
+Note that the "dashed" form of the newsgroup/list name is used for the
+listserver, rather than the "dotted" form.  Multiple requests can be
+included on successive lines, for example to subscribe to multiple
+newsgroups.  To unsubscribe from a newsgroup send the "unsubscribe
+<newsgroup>" request.
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 2.8   What is the IRAFINFO facility?
+
+ General information about the IRAF software is available via e-mail through
+the IRAFINFO facility.  To get started send the following message to the 
+IRAFINFO server:
+
+               % mail irafinfo@iraf.noao.edu
+               get iraf info
+
+For a list of all the files available via the IRAFINFO facility send the 
+request "index iraf" to irafinfo.
+
+
+Section  3.   DOCUMENTATION
+
+
+ 3.1   How can I learn to use IRAF?
+
+ The best way to learn to use IRAF is to actually sit down and use it, making
+use of available cookbooks, the Beginner's Guide, or exercises.
+ 
+1) If you have some photometric or spectroscopic data that need to be reduced 
+then sit down with one of the cookbooks available for these procedures, select
+a small subset of data, and actually start to do some reductions.  Become
+familiar with the online help to assist you with understanding the tasks.
+ 
+2) There is "A Beginner's Guide to Using IRAF (IRAF Version 2.10)" that has
+many examples in it that you can also use to get started.  This manual is
+available in the pub directory in our IRAF network archive as the file
+beguide.ps.Z (compressed PostScript).
+
+3) There are also some IRAF exercises available.  These are exercises that 
+use real data to do basic CCD reductions, photometric reductions through
+standard calibration, spectroscopic reductions through extraction and
+wavelength calibration, and data i/o manipulations.  These exercises are
+bundled together in a tar file and are available in the IRAF network archive
+in the /iraf/misc directory as exer2102.tar.Z - see the exer2102.readme for
+installation instructions (a version is also available for V2.10.3 systems).
+
+The IRAF network archive can be reached by anonymous FTP to the node
+iraf.noao.edu (140.252.1.1).  Binary files (including compressed PostScript
+and tar files with a '.Z' extension) need to be transferred as "binary".
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.2   Is there a beginner's guide for IRAF?
+
+ There is a "draft" beginner's guide for IRAF that is available in the pub
+directory in the anonymous FTP archive on iraf.noao.edu (140.252.1.1) - it is
+called beguide.ps.Z.  This file is distributed as compressed PostScript so be
+sure to set binary mode before the transfer.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.3   Is there IRAF help online?
+
+ All tasks in IRAF have "help" pages describing the parameters used by
+the tasks and how the tasks work.  These can be accessed by "help <taskname>"
+or "phelp <taskname>" - the phelp task allows you to space back in the help
+file as well as forward (help only goes forward).
+
+If you would like to print a help file to your default IRAF printer (defined
+by the IRAF environment variable "printer") then use the following:
+
+   cl> show printer
+   cl> set printer = <your_printer>
+   cl> help <taskname> | lprint  
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.4   What general documentation is available?  Where can I find it?
+
+ There is a lot of IRAF documentation available in the form of technical 
+specifications for an interface or package, cookbooks for specific 
+procedures, programming documents, or overviews of packages or procedures.
+Most of these documents are available by anonymous FTP to the node iraf.noao.edu
+(140.252.1.1) - look at the README file in the /iraf/docs directory for a list
+of the documents available to you in this directory.
+
+Some documents are also available in the iraf$doc directory as part of your
+IRAF distribution.
+
+If you cannot find documentation on a certain topic that you feel should be
+documented, please send mail to iraf@noao.edu - there are a few documents,
+like the beginner's guide in pub (beguide.ps.Z), that may be available in
+another directory or simply not online yet.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.5   What documentation do you recommend that I have for the latest release?
+
+ Here is a brief list of IRAF documentation that may be useful for V2.11.
+All documentation is available in the IRAF network archive in the /iraf/docs
+directory accessible by anonymous FTP to the node iraf.noao.edu, unless
+otherwise noted.
+
+Introductory Materials:
+
+    A Beginner's Guide to Using IRAF (IRAF Version 2.10), Jeannette Barnes,
+    August 1993, (beguide.ps.Z in the pub directory)
+
+    A User's Introduction to the IRAF Command Language Version 2.3, Peter MB 
+    Shames and Doug Tody, August 1986, (cluser.ps.Z)
+
+    Preliminary Test Procedure for IRAF, IRAF Version 2.11, Jeannette Barnes,
+    revised Sept 1997, (testproc.ps.Z)
+
+
+Cookbooks and Guides:
+
+    A User's Guide to CCD Reductions with IRAF, Philip Massey, Feb 1997,
+    (ccduser3.ps.Z)
+
+    A User's Guide to Reducing Slit Spectra with IRAF, Phil Massey, Frank 
+    Valdes, Jeannette Barnes, April 1992, (spect.ps.Z)
+
+    A User's Guide to Reducing Echelle Spectra With IRAF, Daryl Willmarth 
+    and Jeannette Barnes, May 1994, (ech.ps.Z)
+
+    Guide to the Coude Three Fiber Reduction Task DO3FIBER, Francisco Valdes,
+    April 1992, (do3fiber.ps.Z)
+
+    Guide to the ARGUS Reduction Task DOARGUS, Francisco Valdes, April 1992,
+    (doargus2.ps.Z)
+
+    Guide to the Multifiber Reduction Task DOFIBERS, Francisco Valdes,
+    April 1992, (dofibers2.ps.Z)
+
+    Guide to the HYDRA Reduction Task DOHYDRA, Francisco Valdes, April 1992,
+    (dohydra.ps.Z)
+
+    Guide to the Slit Spectra Reduction Task DOSLIT, Francisco Valdes,
+    February 1993, (doslit.ps.Z)
+
+    Guide to the Slit Spectra Reduction Task DOECSLIT, Francisco Valdes,
+    February 1993, (doecslit.ps.Z)
+
+    Guide to the Fiber Optic Echelle Reduction Task DOFOE, Francisco Valdes,
+    April 1992, (dofoe.ps.Z)
+
+    A User's Guide to Stellar CCD Photometry with IRAF, Philip Massey and 
+    Lindsey Davis, April 1992, (daophot2.ps.Z)
+
+    Specifications for the Aperture Photometry Package, Lindsey Davis, revised 
+    October 1987, (apspec.ps.Z)
+
+    A Reference Guide to the IRAF/DAOPHOT Package, Lindsey E. Davis, January 
+    1994, (daorefman.ps.Z)
+
+    Photometry Using IRAF, Lisa A. Wells, February 1994, (photom.ps.Z)
+
+    Rectifying and Registering Images Using IRAF, Lisa A. Wells, April 1994,
+    (reg.ps.Z)
+
+    Cleaning Images of Bad Pixels and Cosmic Rays Using IRAF, Lisa A. Wells 
+    and David J. Bell, September 1994, (clean.ps.Z)
+
+
+Programming Guides:
+
+    A User's Guide to Fortran Programming in IRAF  The IMFORT Interface,
+    Doug Tody, September 1986, (imfort.ps.Z)
+
+    Specifying Pixel Directories with IMFORT, Doug Tody, June 1989,
+    (imfortmem.ps.Z)
+
+    An Introductory User's Guide to IRAF Scripts, revised by Rob Seaman,
+    September 1989, (script.ps.Z)
+
+    An Introductory User's Guide to IRAF SPP Programming, Rob Seaman,
+    October 1992, (sppguide.ps.Z)
+
+
+Other Useful Documents:
+
+    IRAF Newsletter, April 1998 (newslet_14.pdf, newslet_14.ps.gz)
+
+    Table of Contents for IRAF Newsletters, (TOC_news.txt)
+
+    Table of Contents for IRAF User Handbook Volume 1A, (TOC210_vol1a.txt)
+
+    Table of Contents for IRAF User Handbook Volume 2B, (TOC210_vol2b.txt)
+
+    The IRAF Packages, IRAF Version 2.10, (glos210a.ps.Z)
+
+    The NOAO Packages, IRAF Version 2.10, (glos210b.ps.Z)
+
+    IRAF Version 2.10 Revisions Summary, July 1992, (v210revs.ps.Z)
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.6   What manuals are available for helping me do photometry?
+
+ IRAF users doing photometry might find the following documents useful.  They
+are all available in our anonymous FTP archive on iraf.noao.edu (140.252.1.1)
+in the /iraf/docs directory.
+
+    Photometry Using IRAF, Lisa A. Wells, February 1994, (photom.ps.Z)
+
+    A User's Guide to CCD Reductions with IRAF, Philip Massey, Feb 1997,
+    (ccduser3.ps.Z)
+
+    A User's Guide to Stellar CCD Photometry with IRAF, Philip Massey and 
+    Lindsey Davis, April 1992, (daophot2.ps.Z)
+
+    Specifications for the Aperture Photometry Package, Lindsey Davis, revised 
+    October 1987, (apspec.ps.Z)
+  
+    A User's Guide to the IRAF Apphot Package, Lindsey Davis, revised May 1989, 
+    (apuser.ps.Z)
+
+    A Reference Guide to the IRAF/DAOPHOT Package, Lindsey E. Davis, January 
+    1994, (daorefman.ps.Z)
+
+    See the online help for photcal.pcintro and photcal.config describing the 
+    PHOTCAT package.
+
+    A Beginner's Guide to Using IRAF (IRAF Version 2.10), Jeannette Barnes,
+    August 1993, (beguide.ps.Z in the pub directory)
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.7   What manuals are available for helping me do spectroscopy?
+
+ IRAF users wishing to do spectroscopic reductions will find a variety
+of documents available for the different types of reductions possible.
+They are all available in our anonymous FTP archive on iraf.noao.edu in
+the /iraf/docs directory.
+
+    A User's Guide to CCD Reductions with IRAF, Philip Massey, Feb 1997,
+    (ccduser3.ps.Z)
+ 
+    A User's Guide to Reducing Slit Spectra with IRAF, Phil Massey, Frank 
+    Valdes, Jeannette Barnes, April 1992, (spect.ps.Z)
+
+    A User's Guide to Reducing Echelle Spectra With IRAF, Daryl Willmarth 
+    and Jeannette Barnes, May 1994, (ech.ps.Z)
+ 
+    Guide to the Coude Three Fiber Reduction Task DO3FIBER, Francisco Valdes,
+    April 1992, (do3fiber.ps.Z)
+ 
+    Guide to the ARGUS Reduction Task DOARGUS, Francisco Valdes, April 1992,
+    (doargus2.ps.Z)
+ 
+    Guide to the Multifiber Reduction Task DOFIBERS, Francisco Valdes,
+    July 1995, (dofibers.ps.Z)
+ 
+    Guide to the HYDRA Reduction Task DOHYDRA, Francisco Valdes, July 1995,
+    (dohydra.ps.Z)
+ 
+    Guide to the Slit Spectra Reduction Task DOSLIT, Francisco Valdes,
+    Feb 1993, (doslit.ps.Z)
+ 
+    Guide to the Slit Spectra Reduction Task DOECSLIT, Francisco Valdes,
+    Feb 1993, (doecslit.ps.Z)
+ 
+    Guide to the Fiber Optic Echelle Reduction Task DOFOE, Francisco Valdes,
+    April 1992, (dofoe.ps.Z)
+
+    See the online help for onedspec.package and onedspec.specwcs for a 
+    discussion of the onedspec package, the spectral image formats, and the
+    dispersion world coordinate systems.
+
+    A Beginner's Guide to Using IRAF (IRAF Version 2.10), Jeannette Barnes,
+    August 1993, (beguide.ps.Z in the pub directory)
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.8   What documents are available for general image processing?
+
+ We have very little documentation directed at general image processing.
+We are trying to rectify that however.  For now we recommend the 
+following documents from our FTP archive on iraf.noao.edu in the /iraf/docs
+directory.
+
+    A Beginner's Guide to Using IRAF (IRAF Version 2.10), Jeannette Barnes,
+    August 1993, (beguide.ps.Z in the pub directory)
+
+    The IRAF Packages, IRAF Version 2.10, (glos210a.ps.Z)
+ 
+    The NOAO Packages, IRAF Version 2.10, (glos210b.ps.Z)
+
+    Rectifying and Registering Images Using IRAF, Lisa A. Wells, April 1994,
+    (reg.ps.Z)
+
+    Cleaning Images of Bad Pixels and Cosmic Rays Using IRAF, Lisa A. Wells 
+    and David J. Bell, September 1994, (clean.ps.Z)
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.9   What programming documentation is available?
+
+ There are several manuals available to assist you with programming in IRAF;
+the one you will need will depend on the type of programming you expect to do.
+They are all available in the /iraf/docs directory on the node iraf.noao.edu
+(140.252.1.1) by anonymous FTP.  The documents are compressed so be sure
+to declare binary before the transfer.
+
+1) scripts - An Introductory User's Guide to IRAF Scripts, revised by Rob 
+Seaman, September 1989, 49 pages (script.ps.Z).
+
+2) IMFORT - A User's Guide to Fortran Programming in IRAF: The IMFORT 
+Interface, Doug Tody, September 1986, 29 pages [manual pages not included]
+(imfort.ps.Z).
+
+Specifying Pixel Directories with IMFORT, Doug Tody, June 1989, 1 page [short
+memo describing a modification to IMFORT] (imfortmem.ps.Z)
+
+3) SPP -  An Introductory User's Guide to IRAF SPP Programming, Rob Seaman, 
+October 1992, 76 pages (sppguide.ps.Z).
+
+SPP Reference Manual, Zolt Levay, October 1992 - see the archives at
+stsci.edu in the software/stsdas/v1.3/doc/programmer/spp directory.
+
+4) There are many more older documents that may be referenced by the above
+that are also available.  These are all listed in the TOC_vol3a.txt
+and TOC_vol3b.txt files in /iraf/docs.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.10  How can I learn more about the WCS in IRAF?
+
+ There is no one document that we can refer you to learn more about the
+WCS.  Depending on your needs one or more of the following may be useful.
+
+1) sys$mwcs/MWCS.hlp - this is the main technical document describing the WCS
+interace. You can read this from within IRAF by typing "phelp mwcs$MWCS.hlp f+".
+
+2) A more user friendly description of the WCS can be found in the help pages
+for the tasks wcsedit and wcsreset in the proto package.
+
+3) Typing "phelp onedspec.specwcs" will give you information about the way
+the WCS in implemented in the spectroscopic packages along with a description
+of the spectroscopic keywords used.
+
+4) There were article in two IRAF Newsletters discussing this interface
+that may useful to review as well - Number 9 (February/June 1990 - page 3) and
+Number 12 (July 1992 - page 5).
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.11  What installation manuals are available and where are they?
+
+ Installation manuals are available for each distribution and are in the
+same directory as the distributions themselves in the /iraf/v211 directory in
+the IRAF network archive (anonymous FTP to iraf.noao.edu [140.252.1.1]).
+These installation (and Site Manager Guide's) are also available as unformatted
+TROFF source in the iraf$doc directory.  They may also be obtained in the
+web at /iraf/web/docs/igsm.html.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.12  Are there revisions notices for the last release?
+
+ Yes, there are revisions notes for the last general release of IRAF,
+Version 2.11.  They are available by anonymous FTP to the node iraf.noao.edu
+in the /iraf/v211 directory, or on-line as unformatted LROFF in the file
+iraf$doc/v211revs.hlp.
+
+There are several different types of revisions notes available:
+
+    -r--r--r--   1 tody     iraf       95493 Aug 30  1997 sysnotes.v211
+    -r--r--r--   1 tody     iraf       54496 Aug 30  1997 v211revs.txt
+    -rw-r--r--   1 tody     iraf       21384 Aug 21 18:29 v2112revs.txt
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.13  Is there a buglog for IRAF?  How can I get a copy?
+
+ Yes, there is buglog for IRAF.  You can retrieve it by anonymous FTP
+to the node iraf.noao.edu (140.252.1.1).  The file, bugs.log, is in the 
+/iraf/v211 directory and is continuously updated, it may be searched on the
+web at /iraf/web/search.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.14  Is there a manual for SAOimage?
+
+ Yes, the "User Manual for SAOimage" by M. VanHilst, dated 1 January 1991. 
+It is available by anonymous FTP to iraf.noao.edu in the contrib directory 
+as the file saoimage/saoimage.ps.Z - this is a compressed PostScript file so be 
+sure to declare binary before the transfer.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.15  How can I subscribe to the IRAF Newsletter?
+
+  The easiest way is to use the electronic form available from our
+subscription page.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.16  What is the last issue of the IRAF Newsletter?
+
+ The last issue of the IRAF Newsletter was Newsletter #14, dated April
+1998.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.17  Can I get back issues of the IRAF Newsletter?
+
+ Back issues of the IRAF Newsletter are available by anonymous FTP to 
+iraf.noao.edu in the directory /iraf/docs.  See the files newslet*.  These are
+compressed PostScript files so be sure to transfer them as binary.
+
+	-rw-r--r--  1 iraf        60139 Aug 10  1990 newslet_1.ps.Z
+	-rw-r--r--  1 iraf        76093 Nov 15  1990 newslet_2.ps.Z
+	-rw-r--r--  1 iraf        40020 Jun 27  1990 newslet_3.ps.Z
+	-rw-r--r--  1 iraf        44810 Jul  8  1990 newslet_4.ps.Z
+	-rw-r--r--  1 iraf        61481 Jun 27  1990 newslet_5.ps.Z
+	-rw-r--r--  1 iraf        49042 Jun 27  1990 newslet_6.ps.Z
+	-rw-r--r--  1 iraf       118945 Jun 27  1990 newslet_7.ps.Z
+	-rw-r--r--  1 iraf        40042 Jun 27  1990 newslet_8.ps.Z
+	-rw-r--r--  1 iraf        89599 Jun 27  1990 newslet_9.ps.Z
+	-rw-r--r--  1 iraf        68959 Apr 11  1991 newslet_10.ps.Z
+	-rw-r--r--  1 iraf        30197 Apr 26  1992 newslet_11.ps.Z
+	-rw-r--r--  1 jbarnes     96795 May 25  1993 newslet_12.ps.Z
+	-rw-r--r--  1 jbarnes    129569 Mar  9  1995 newslet_13.ps.Z
+	-rw-r--r--  1 jbarnes    299262 May  8  1998 newslet_14.pdf
+	-rw-r--r--  1 jbarnes    235893 May  8  1998 newslet_14.ps.gz
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 3.18  Is there an index for the Newsletter?
+
+ There is no index for the IRAF Newsletter, but we do have a file containing
+the Table of Contents for each Newsletter - perhaps this will help.  You
+can acquire this file by anonymous FTP to iraf.noao.edu in the directory
+/iraf/docs.  See the TOC_news.txt file.
+
+
+
+Section  4.   LAYERED PACKAGES
+
+
+ 4.1   What are layered or external packages?
+
+ 	Layered or external packages are IRAF software packages that are 
+"layered" on the distributed IRAF system.  You must first install IRAF and 
+be sure it is running properly.  Only then you can install any layered pack-
+ages.  The layered packages use the full functionality and portability aspects
+of IRAF, and are a straightforward way for 3rd party developers to develop 
+code within the IRAF environment.
+	The NOAO package within the IRAF distributed system is really a layered
+package and can be used by 3rd party developers as a template for software
+development.
+	Layered packages are also a convenient way for the IRAF project to 
+make new software available to our users before the next major release.  In 
+this way the software gets more extensive testing before being included in a 
+release while the users benefit from the new capabilities.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 4.2   What layered packages are available?  How do I get them?
+
+ There are many layered packages available, ranging from very large packages
+to those that are just a couple of tasks (the IRAF project sometimes exports
+preliminary version of new software as layered software).
+
+Here is a list of known layered packages from outside the IRAF project.
+
+    STSDAS - the Space Telescope Science Data Analysis System consists of
+        applications software, utility packages, and support software used to
+        calibrate and analyze data from the Hubble Space Telescope.  Available
+        from stsci.edu in the software/stsdas directory.
+
+    TABLES - the STSDAS TABLES package, used for support of the TABLES format 
+        used by the STSDAS and PROS packages and NOAO.DIGIPHOT.  Distributed 
+        separately from STSDAS as of v1.3; available from stsci.edu in the
+        software/stsdas directory.
+
+    XRAY - the SAO Post-Reduction Off-line Software (PROS) package for analysis
+        of reduced X-ray data.  The PROS software includes spatial, spectral,
+        timing, data I/O and conversion routines, plotting applications and
+        general algorithms for performing arithmetic operations with imaging 
+	data.  Available from sao-ftp.harvard.edu in the pub/pros directory.
+
+    EUV - analysis software for data from the Extreme Ultraviolet Explorer.
+        Available from cea-ftp.cea.berkeley.edu in the pub/software directory.
+
+    FTOOLS - a collection of utility programs to create, examine, or
+        modify data files in the FITS (Flexible Image Transport System) format.
+        Available from legacy.gsfc.nasa.gov in the software/ftools/release
+        directory.
+
+    RVSAO - Harvard-Smithsonian CfA package for obtaining radial velocities 
+        from spectra.  Available from cfa-ftp.harvard.edu in the /pub/iraf
+        directory.
+
+    GRASP - a GONG Reduction and Analysis Software Package for the reduction and
+        analysis of GONG data in particular and helioseismic imaging data in 
+        general.  Available from helios.tuc.noao.edu (140.252.8.105) in 
+        pub/gong/grasp_soft.
+
+    CTIO - a collection of tasks developed and distributed by CTIO.  Available
+        from iraf.noao.edu in the iraf/extern directory, see the ctio.readme 
+        file for installation instructions.
+
+    MEM0C - Maximum Entropy Method Package for image restoration, developed 
+        by Dr. Nailong Wu. Available from iraf.noao.edu in the contrib 
+        directory.
+
+Here is a list of layered packages distributed by the IRAF project.  All
+of these packages are available in the iraf/extern directory on the node
+iraf.noao.edu (140.252.1.1).  Each package has a [package_name].readme
+file associated with it that provides installation instructions.
+
+    ADCCDROM (31 March 1993) - a package containing tasks to read the ADC 
+	CD-ROM (text format) with a variety of sorting choices (you must have 
+	Volume 1 available and mounted somewhere in the IRAF network as a 
+	directory tree).   See adccdrom.readme.
+
+    COLOR (14 March 1996) -  a prototype package for creating RGB composite 
+        images from IRAF images.  See color.readme.
+
+    CRUTIL (v1.4, 06 Jan 2000) - Cosmic ray removal utility package.
+
+    DIGIPHOTX (10 May 1999) - Current DIGIPHOT package software distributed as 
+	an external package for distributing bug fixes and for older platforms.
+	See digiphotx.readme.
+
+    DIGIPHOTX (10 May 1999) - a new version of the NOAO.DIGIPHOT package (that 
+	will be included in the next release of IRAF) that contains the DAOPHOT 
+	II algorithms, a new curve of growth task, several new tasks in the 
+	PTOOLSX package, and minor enhancements and bug fixes.  
+	See digiphotx.readme.
+
+    ESOWFI (v1.1, 31 Jan 1999) - ESO WFI Mosaic reduction package.
+
+    FINDER (v2.2, 11 Feb 2000) - Determine accurate positions for objects on
+	CCD frames using the Space Telescope Guide Star Catalogue as reference
+	stars.
+
+    FITSUTIL (03 Dec 1999) - FITS file format utilities.
+
+    FOCAS (03 Sep 1999) - the Faint Object Classification and Analysis System,
+	for creating and manipulating catalogs of objects from digital 
+	astronomical images.  See readme.focas.  A separate FAQ is available 
+	for this package at in the iraf archive 'iraf/extern' subdirectory as 
+	focas.faq.
+
+    GMISC (25 Jan 2000) - Contains the development versions of those Gemini 
+        reduction packages, scripts, and tasks written by the NOAO IRAF group.
+
+    ICE (v1.8.1, 02 Feb 2000) - The IRAF Control Environment ccdacq package
+	supports CCD data acquisition from within the IRAF environment.
+
+    IFOCAS (17 Nov 1999) - IRAF faint object classification and analysis
+	system.  Used to detect and catalog objects in images.
+
+    IMCNV (20 Dec 1999) - Image conversion utilities, these tasks are all
+	installed in V2.11.  See imcnv.readme.
+
+    IMMATCHX (20 Dec 1999) - Image matching package, these tasks are all
+	installed in V2.11.  See immatchx.readme.
+
+    MFILTERS (18 Jul 1996) - Median/Modal Filtering package.  See
+	mfilters.readme.
+
+    MSCRED (v3.2.3, January 2000) - CCD mosaic reduction package.
+
+    NMISC (v12-p6, 18 Jan 2000) - a selection of new NOAO tasks being made
+	available prior to the next release.  The current tasks in this package 
+	are KPNOFOCUS, PSFMEASURE, SURFIT, SPECFOCUS, STARFOCUS, and XREGISTER.
+
+    SPECTIME (v1.0, October 20, 1999) - Spectral exposure time calculator.
+
+    SPPTOOLS (28 Oct 1995) - an ad hoc external package primarily of
+	interest to IRAF developers working in SPP.  Various tasks in this
+	package will print the calling sequences of procedures within tasks,
+	format code according to accepted standards, create / query identifier
+	databases, and create / rename external packages.  Of special interest
+	is the spplint task that can be used to check the code for certain
+	types of programming errors.
+
+    VOL (22 Feb 1995) - a suite of prototype tasks used for volume rendering.
+	See readme.vol.
+
+Other software, not considered layered software, that the reader may
+find useful is listed below.  These are available from iraf.noao.edu
+in the named directory.
+
+    SAOIMAGE - an X window system pseudocolor display program for greyscale 
+        images, developed originally by Mike VanHilst while at SAO.  Can be 
+        used standalone or as an image display server with IRAF.  See the
+        saoimage.readme file for installation instructions.  Available from
+	the iraf/contrib/saoimage directory with associated files, pre-compiled 
+	binaries for various architectures.
+
+    CBIND.C - C bindings for IMFORT programming on Unix hosts. See the file
+	cbind.readme, available from the iraf/misc directory as the file
+	cbind.c, and ANSI C version is available as cbind.ansi.c.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 4.3   How can I get the CTIO package?
+
+ The CTIO package is available from the IRAF network archive.  Since this
+is an layered package on IRAF you must have a running IRAF system before you 
+can install this package.
+
+     % ftp iraf.noao.edu (or 140.252.1.1)
+     ftp> log in as anonymous
+     ftp> use your email address as the password
+     ftp> cd iraf/extern
+     ftp> binary
+     ftp> get ctio.readme
+     ftp> get ctio.tar.Z
+     ftp> quit
+ 
+Installation questions can be directed to iraf@noao.edu.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 4.4   What is the STSDAS package?   How can I get it?
+
+ The STSDAS package is a science software package maintained and distributed 
+by the Space Telescope Science Institute and consists of applications software,
+utility packages, and support software used to calibrate and analyze data from 
+the Hubble Space Telescope.  It is an layered package on the distributed IRAF
+system, so you must have IRAF installed and running before you can install
+STSDAS.  Note that STSDAS also requires the TABLES package.
+
+The package is available by anonymous FTP to ftp.stsci.edu from the 
+/pub/software/stsdas directory or from our archive's /contrib directory.
+Questions should be directed to help@stsci.edu.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 4.5   I need the TABLES package.  How can I get it?
+
+ The STSDAS TABLES package, which supports the TABLES format used by 
+the STSDAS and PROS packages and IRAF.NOAO.DIGIPHOT, is distributed by the
+Space Telescope Science Institute.  It is available separately from STSDAS 
+as of v1.3. This is an layered package on the distributed IRAF system so you 
+must have a running IRAF system before you can install TABLES.
+
+TABLES is available from stsci.edu in the software/stsdas directory.  Questions
+should be directed to help@stsci.edu.  Binaries of the latest version for
+most architectures are available in the contrib directory.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 4.6   What is PROS/XRAY package?  How can I get it?
+
+ XRAY is the SAO Post-Reduction Off-line Software (PROS) package for analysis
+of reduced X-ray data.  The PROS software includes spatial, spectral, timing, 
+data I/O and conversion routines, plotting applications and general algorithms 
+for performing arithmetic operations with imaging data.
+
+The package is available from sao-ftp.harvard.edu in the pub/pros directory.
+Questions should be directed to hotseat@cfa.harvard.edu. 
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 4.7   What is the EUV package?  How can I get it?
+
+ The EUV package is analysis software for data from the Extreme Ultraviolet 
+Explorer.  It is available from cea-ftp.cea.berkeley.edu in the pub/software 
+directory.  Questions should be directed to egoinfo@cea.berkeley.edu.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 4.8   Where do I send problem reports for the layered packages?
+
+ Problems with the various layered packages should be sent to the following:
+
+          PACKAGES                    CONTACT
+          --------                    -------
+
+        STSDAS, TABLES              help@stsci.edu
+        XRAY                        hotseat@cfa.harvard.edu                    
+        EUV                         egoinfo@cea.berkeley.edu
+        RVSAO                       mink@cfa.harvard.edu
+        SAOimage                    iraf@noao.edu
+        FTOOLS                      pence@tetra.gsfc.nasa.gov
+        GRASP                       grasp@noao.edu
+        MEM0C                       nailong@stsci.edu
+
+        COLOR                       iraf@noao.edu
+        CTIO                             ""
+	MFILTERS			 ""
+	NMISC			 	 ""
+	DIGIPHOTX			 ""
+	IMMATCHX			 ""
+	IMCNV			 	 ""
+        FOCAS                            ""
+        ADCCDROM                         ""
+        CBIND                            ""
+        DIGIPHOTX                        ""
+        VOL                              ""
+        SPPTOOLS                         ""
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 4.9   How can I contribute my own software to IRAF so others can use it?
+
+ Users are encouraged to put their software in our ftp 'contrib' directory
+for distribution to other users.  A 'readme' file describing what the 
+software is, how it's installed, and especially who to contact with
+questions or problems should also be put in the directory with the same
+name as the package itself.  New versions of the software can be installed
+in the contrib directory at any time.  Alternatively, small programs, CL 
+scripts and such can be posted to the adass.iraf.sources newsgroup.
+	We suggest that external packages be formatted as a standard layered
+package, this will make it much easier for others to install and minimize
+problems.  Users can create a new package by using any existing layered
+package as a template and editing/renaming the appropriate files.  Feel
+free to contact the IRAF group if you have any questions about how a package
+is created or installed.
+
+
+
+Section  5.   DATA FORMATS
+
+
+ 5.1   What data formats are supported?
+
+  Data for use with IRAF can be stored as images, text files, or binary  
+tables.  The currently supported image types are OIF format (used for most
+applications), STF format (used for HST data w/ STSDAS), QPOE format (used
+for event list data such as from the XRAY satellites), and PLIO for pixel
+list (used to flag individual pixels in a region of interest).  V2.11.x IRAF
+includes a FITS image kernal to support disk FITS images directly.
+        Text files are typically used as database or configuration files with
+tasks, image data in text files may be converted to an image format in a
+number of ways (see below).  Binary tables are manipulated using the TABLES
+layered package, some tasks accept these directly as input.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 5.2   How can I convert my data to the IRAF image format?
+
+	Various tasks for converting data to IRAF image format exist in the 
+DATAIO package, for example, RFITS converts FITS files to IRAF image files.
+A complete list of data conversion tasks can be found using the command:
+  
+		cl> refer convert
+
+Starting with V2.11 the new tasks IMPORT/EXPORT in the DATAIO package are
+available to convert a wide variety of formats in and out of the IRAF format.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 5.3   How do I convert my ascii text file of wavelength and flux into an
+       IRAF image?
+
+ There are currently 3 ways to do this.  One is to use the SINTERP task,
+which can be used to interpolate a table of x,y pairs and create a spectrum.
+If your data are linear, no interpolation is necessary, and SINTERP can
+create an output image with as many pixels as input values.
+
+Another method is to use RTEXTIMAGE, optionally piping the data through FIELDS
+to extract the correct column of pixel data, followed by hand editing with
+HEDIT to define required header fields.
+
+The third method is to use the RSPECTEXT task in the ONEDSPEC package.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 5.4   Does IRAF support world coordinate systems in images?
+
+	IRAF does support various coordinate systems in addition to the
+pixel array coordinates.  This was described in IRAF Newsletter #12, July 1992,
+"World Coordinate System Support in IRAF V2.10".  These coordinate systems are 
+specified in the image headers under specific keywords.  The most common type 
+of world coordinate system is linear.  The linear coordinate systems are de-
+scribed using the standard keywords defined by the basic FITS documentation. 
+Hence images in FITS with linear coordinates can be easily imported into IRAF.
+The astronomical celestial projections are also supported.  This follows a 
+description similar to current FITS proposals.  A description of the syntax 
+used in IRAF is given in the help for the task WCSEDIT.  This task may be 
+used to create or modify such world coordinate systems.
+	There are more complex non-linear coordinate systems used in
+spectra.  These are described in the document "specwcs.ps.Z" in the IRAF
+documentation archive.  For export to other systems one should "linearize"
+such spectra since the formats are not generally adopted.
+	The world coordinate systems relate the pixel coordinates to user
+"world" coordinates.  If one extractions sections of an image the world
+coordinates continue to be valid.  This is done by adding a transformation
+between the current pixel (called logical) coordinates and the original
+pixel (call physical) coordinates.  This may even involve changes in
+dimension.  The transformation is defined by the LT keywords.  One may
+reset the physical coordinate systems (for linear or celestial systems)
+using the task WCSRESET.  This does not apply to the nonlinear spectral
+coordinates.  One may also remove a world coordinate system with WCSRESET.
+In this case the world coordinate system is then the physical coordinates.
+	In many IRAF tasks, such as LISTPIXELS and IMPLOT, there is a
+parameter called "wcs".  This allows these tasks to use either "logical",
+"physical", or "world" coordinates.  The values of this parameters are the
+quoted names.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 5.5   What is the IRAF disk image format?
+
+      The IRAF disk image format is intentionally not documented, outside
+the source files (e.g., imio$iki/oif).  This is because the format is 
+subject to change with time (e.g. the format changed dramatically between
+V2.10 and V2.11), and should never be written directly from a user program.
+IRAF images should only be written through a standard interface such as
+IMFORT or SPP/IMIO. At present the CVOS interface in STSDAS V2.1 may be used
+by host or iraf C programs to access the image interfaces.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 5.6   How do I convert my GIF/JPEG images to IRAF?
+
+ There are several paths you can take to get GIF/JPEG images into IRAF 
+format.  For GIF images the simplest method is to use the IMPORT task in
+the DATAIO package to convert directly.  Unfortunately IMPORT does not 
+support JPEG.  If you want to convert to FITS we suggest using the
+ImageMagick package (available from ftp.x.org, which is mirrored at other
+X11 FTP sites that may be closer to you) also has a conversion task called
+CONVERT that will go from JPEG or GIF to FITS automatically.  For interactive
+conversion the XV task is recommended.
+        Note that the process can also be reversed to get back to a GIF/JPEG
+image, in this case using the EXPORT task to go to GIF and the above tools
+for a final conversion to JPEG.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 5.7   What are the "..image.imh" files associated with each of my images?  Can
+       I delete them to free up disk space?
+
+  The ..*.imh files are hard links to the *.imh files used to protect
+the headers from being deleted with DELETE, rather than deleting the image
+with IMDELETE.  They don't take up any more disk space than the image
+files they are links to, i.e. in a directory with both the ..imh files 
+and the headers, deleting the .. files doesn't free up any disk space.
+Silimarly deleting the imh files doesn't actually free up space because
+the link still points to it, but if you IMDELETE the files (getting rid of 
+both the .. and imh files) you only recover space occupied by the header
+files, not twice that.
+        A hard link (what the .. files are) is just a standard directory
+entry like the file to which it's linked, to remove the file from the
+system all hard links to it must be removed, even if the original file
+was moved/renamed.
+	You can use the UNPROTECT command to remove these protection files
+(but that isn't recommended), similarly the PROTECT command will create
+them for images that don't have them.
+
+
+
+
+Section  6.   WINDOW SYSTEMS
+
+
+ 6.1   When I try to make an IRAF plot on my screen all I get is garbage in 
+       my window.  How can I get an IRAF plot?
+
+ You need to be running from a window that is capable of displaying IRAF
+graphics and have the window type properly identified in the CL.  If you 
+are running IRAF in a workstation environment then check to be sure that 
+you are running IRAF from either an XGterm or an XTerm window.  Other
+terminal emulators (such as cmdtool, rxvt, aixterm, etc) on your desktop
+do not support graphics.  
+
+The next step is be sure you have the value of your terminal type set
+correctly.  
+
+      cl> stty			       # reports current settings
+      cl> stty xgterm nlines=###       # for XGterm
+      cl> stty xterm nlines=###        # for XTERM, status line in
+				       # graphics window
+      cl> stty xtermjh nlines=###      # for XTERM, status line in
+				       # text window
+      cl> stty vt640                   # for retrographics terminal
+
+Look at the dev$graphcap file for other valid terminal types if you are using
+a standard terminal and not a workstation.
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 6.2   How is stty "xtermjh" different from a standard "xterm" window?
+
+ They are identical except for the location of the status line, the single
+line used within graphics applications for user input.  With xterm, this
+line is written in reverse video at the bottom of the graphics window.  Since
+xterm can't erase and overwrite this line, the status line is written to a
+new location within the graphics window each time it is used, consuming 
+window space until the window is redrawn.  The xtermjh terminal type writes
+the status line to the text window, leaving the graphics window entirely
+free of status line i/o.  Most people using tasks that make even moderate
+use of the graphics status line prefer the "xtermjh" setting.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 6.3   Why can't I get vector graphics from AIX/IRAF in an AIXterm window?
+
+	The AIXterm window is not a supported graphics terminal emulator,
+users should use an XTerm window instead.  This requires that the X11rte.obj
+product be installed (use the "lslpp -l" command t verify this).  Another
+possible source of confusion is the fact that /usr/bin/X11/xterm is a symbolic
+link which could be pointing to the aixterm executable.  If so this link
+should be reset so it points to /usr/lpp/X11/Xamples/bin/xterm.  If a 
+graphics task results in garbage being written to the screen it is usually 
+a sign that the wrong terminal emulator is being run.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 6.4   Are we limited to having a single SAOimage process running per CPU?
+
+ 	No, we have a workaround for this frequently encountered limitation.
+By default, there is a single set of fifo pipes in /dev used for communication
+with the DISPLAY task, limiting the number of successful SAOimage processes to
+one per cpu.  (See IRAF Newsletter #11, April 1991, "Setting up Multiple Fifo 
+Pipes for [V1.02] SAOimage".)  However, SAOimage allows the user to specify a 
+set of personal fifo pipes to be used instead of the ones in the system /dev 
+directory.  For multiple SAOimage processes to run per CPU, the user must
+create personal pipes and define the paths to these new pipes in a private
+copy of graphcap as described below.
+
+To create the personal pipes and graphcap file it is suggested you create
+a subdirectory of your iraf login directory named 'dev' in which to put 
+the files.  A sequence of commands such as the following should be all that
+is needed (note the location of the 'mknod' command may differ, on some
+systems the 'mkfifo' command is preferred):
+ 
+	% cd ~/iraf			# create the 'dev' subdirectory
+	% mkdir dev
+	% cd dev
+  
+	% /usr/sbin/mknod imt1i p	# create the fifo pipes
+	% /usr/sbin/mknod imt1o p
+	% chmod 600 imt1o imt1i
+        % sed s+imtool,,+imtool,$cwd/imt1,+g $iraf/dev/graphcap > mygraphcap
+ 
+The last command edits a personal copy of the graphcap file.
+
+	To start up SAOimage with the "new" fifo pipes, use the following  
+command  with  appropriate  pathname  substitutions.  Note that the "idev" 
+to SAOimage  is  the  imt1o  pipe  (the SAOimage input is the DISPLAY task 
+output):
+ 
+   % saoimage -idev /mydir/dev/imt1o -odev /mydir/dev/imt1i &
+
+To direct the CL to use your private copy of graphcap, put this line in your 
+loginuser.cl file:
+  
+   set graphcap = home$dev/mygraphcap
+
+Note that the "saoimage" command above is valid for V1.07; earlier versions
+of SAOimage require a "-imtool" inserted before the &.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 6.5   Can I run multiple SAOimage processes simultaneously from my account?
+
+	It is possible for a user to have multiple SAOimages running.  This 
+situation is not the same as multiple users each running SAOimage on the same 
+CPU.  That was addressed in an IRAF Newsletter article (INL #11, April 1991, 
+"Setting up Multiple Fifo Pipes for SAOimage") which is included in the prev-
+ious entry of this FAQ listing.  There are similarities between the two 
+scenarios, so you should understand the NL article before continuing with 
+this discussion.  We assume you are running v1.06 or v1.07 of SAOimage.
+	Say a user wants to have 2 SAOimage windows running and be able to
+display to them independently from a CL session.  For each SAOimage process, 
+the user must provide the following 4 items: fifo pipes, saoimage aliases, 
+dev$graphcap modifications, and a private imtoolrc file.  In this example, 
+two SAOimages are defined, each recognizing 3 frame buffer sizes.  
+
+1) Create the fifo pipes, perhaps in /mydir/dev/devices where /mydir/ refers 
+   to the login directory of the user in this and the following items.  I 
+   will name the pipes imt1i, imt1o and imt2i, imt2o:  
+
+   % cd
+   % mkdir dev
+   % cd dev
+
+   % /usr/sbin/mknod imt1i p
+   % /usr/sbin/mknod imt1o p
+   % chmod 600 imt1o imt1i
+
+   % /usr/sbin/mknod imt2i p
+   % /usr/sbin/mknod imt2o p
+   % chmod 600 imt2o imt2i
+
+2) Define two aliases for saoimage, specifying the personal pipes created 
+   above, perhaps in a .cshrc file (with idev, odev as defined above):
+
+ % alias   saoimage1 'saoimage -idev /mydir/dev/imt1o -odev /mydir/dev/imt1i &'
+ % alias   saoimage2 'saoimage -idev /mydir/dev/imt2o -odev /mydir/dev/imt2i &'
+
+3) For each frame buffer size, make an entry in dev$graphcap with a unique 
+   name and proper fifo pipe specification in the DD string.  As the NL
+   article recommends, copy dev$graphcap into /mydir/dev/mygraphcap and 
+   add a "reset graphcap = home$dev/mygraphcap" statement to your login.cl
+   file.  In these sample graphcap entries, stdimage devices imt1, imt2, and
+   imt3 use the imt1 fifo pipes with frame buffer sizes 512, 800 and 1024 
+   square respectively.  The devices imt61, imt62, and imt63 use the imt2 
+   fifo pipes with frame buffer sizes 512, 800, and 1024 square.  
+
+   imt1|imt512|imtool|Imtool display server:\
+        :cn#1:LC:BS@:z0#1:zr#200:\
+        :DD=node!imtool,/mydir/dev/imt1,512,512:tc=iism70:
+   imt2|imt800|:cn#2:xr#800:yr#800:\
+        :LC:BS@:z0#1:zr#200:\
+        :DD=node!imtool,/mydir/dev/imt1,800,800:tc=iism70:
+   imt3|imt1024|:cn#3:xr#1024:yr#1024:\
+        :LC:BS@:z0#1:zr#200:\
+        :DD=node!imtool,/mydir/dev/imt1,1024,1024:tc=iism70:
+
+   imt61|imt512a|imtool|Imtool display server:\
+        :cn#1:LC:BS@:z0#1:zr#200:\
+        :DD=node!imtool,/mydir/dev/imt2,512,512:tc=iism70:
+   imt62|imt800a|:cn#2:xr#800:yr#800:\
+        :LC:BS@:z0#1:zr#200:\
+        :DD=node!imtool,/mydir/dev/imt2,800,800:tc=iism70:
+   imt63|imt1024a|:cn#3:xr#1024:yr#1024:\
+        :LC:BS@:z0#1:zr#200:\
+        :DD=node!imtool,/mydir/dev/imt2,1024,1024:tc=iism70:
+
+4) Corresponding to each graphcap entry, make an entry in imtoolrc.  SAOimage 
+   looks for a user imtoolrc file defined in your environment (setenv imtoolrc
+   or setenv IMTOOLRC), and if that's not found, ~/.imtoolrc is used.  If 
+   that's not found, /usr/local/lib/imtoolrc is used; imtoolrc was copied into
+   this directory from dev$imtoolrc  by the install script.  So copy the 
+   original imtoolrc file in ~/.imtoolrc (for example) and edit it to include 
+   the following entries (entries 1-3 are unchanged from the original file):
+
+ 1  2  512  512         # imt1|imt512
+ 2  2  800  800         # imt2|imt800
+ 3  2 1024 1024         # imt3|imt1024
+
+ # User added formats.
+ 61  2  512  512         # imt61|imt512a
+ 62  2  800  800         # imt62|imt800a
+ 63  2 1024 1024         # imt63|imt1024a
+
+   SAOimage allows only 64 frame buffer configurations.  XImtool allows more 
+   and the distributed imtoolrc file has more than 64 entries.  To add your 
+   new entries, you'll have to clobber some of the first 64 entries and 
+   replace them with your own.  In this example, I redefined imt61-63.  
+
+And, that's all there is to it!  Start up saoimage1 and saoimage2, login to
+the CL (with your graphcap redefined) and try displaying to imt1 and imt61.
+One thing to watch for in debugging this is "zombie saoimage processes".  If
+you interrupt the DISPLAY task with ^C and certainly in other ways, you can
+end up with an SAOimage process running without a connected window.  If you
+try to display and you get no output and no error, this may be the cause.
+Use "ps -aux" to find the process and then kill it. 
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 6.6   What do I do about "Warning libxxx.s.o older than expected"?
+
+      This usually indicates a missing or insufficient definition for 
+the LD_LIBRARY_PATH host environment variable.  For example, on a Sun
+system this may be set to simply '/usr/openwin/lib',  but if the application
+in question was compiled under the local X11R5 system the missing shared
+object may be in /usr/lib/X11 (or some other path).  In rare cases the missing 
+object is in the compiler directory (e.g. in /usr/lang/SC1.x under SunOS).
+        To find out where the missing file is and reset the LD_LIBRARY_PATH
+variable appropriately, try the following:
+
+        % echo $LD_LIBRARY_PATH         # see what the current setting is
+        /usr/lib/X11
+        % ldd `which saoimage`          # check dependencies
+             -lX11.4 => /usr/openwin/lib/libX11.so.4.3
+             -lc.1 => /usr/lib/libc.so.1.7.3
+             -ldl.1 => /usr/lib/libdl.so.1.0
+        % setenv LD_LIBRARY_PATH  /usr/lib/X11:/usr/openwin/lib
+
+This last command reset the variable so both /usr/lib/X11 and /usr/openwin/lib
+are searched for the needed file, the command should run normally after that,
+the directories /lib, /usr/lib and /usr/local/lib are searched by default.
+
+
+
+Section  7.   IMAGE DISPLAY
+
+
+ 7.1   How can I generate or display an RGB image?
+
+ 	Typically to do color composite imaging (RGB), you need a display 
+with 24 bit hardware, with 8 bitplanes each for red, green, and blue.  The 
+RGB task in IMAGES.TV displays an rgb picture from 3 separate images only on 
+the 24-bit IIS model 70/75 or Gould Deanza Image Displays, not on 8-bit
+workstation monitors.  
+	In addition, the EXPORT task in DATAIO is capable of combining
+images and producing either 8-bit pseudocolor or 24-bit images of various
+formats (rasterfile, gif, EPS, etc).  Once the 24-bit image has been created
+it may be displayed in 24-bit mode using a program such as XV, although
+without the control you may have with display in ximtool.  For more
+information or questions contact site support.
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 7.2   What is the proper value of "stdimage" for use with SAOimage or XImtool?
+
+	The 'stdimage' environment variable defines the frame buffer
+configuration used for image display.  The form of this value is generally
+an 'imt' prefix followed by the configuration number (or an equivalent
+alias), available configurations must be defined in both the dev$graphcap
+file as well as the dev$imtoolrc file.  Check the latter file for a list
+of available frame buffer configurations, or by simply typing GDEVICES
+at the CL prompt.
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 7.3   How can I change the size of the frame buffer from the CL?
+
+	Simply by changing the value of 'stdimage' then re-displaying the
+image.  To find out what frame buffer configurations are supported use the
+GDEVICES command, for example
+
+	cl> gdev
+        #                        ALIASES    NX   NY  DESCRIPTION
+                                    imtx   512  512  Imtool display server
+                      imt1 imt512 imtool   512  512  Imtool display server
+                             imt2 imt800   800  800  
+				   :        :    :      :
+	cl> reset stdimage = imt800
+	cl> display dev$pix 1
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 7.4   What do I change to add a custom frame buffer size?
+
+ There are two files that need to be modified to create your own frame 
+buffer size, imtoolrc and graphcap.  You will need to restart the display 
+window to activate these changes.
+
+  o First you need to copy over the system imtoolrc file into your home 
+    directory, and then modify the file so it reflects your new frame 
+    buffer size.  Note the name change during the copy.
+
+       % cd
+       % cp /iraf_path/dev/imtoolrc .imtoolrc
+       % vi .imtoolrc
+
+    Go to the end of the file and add an entry for your particular frame
+    buffer following the examples in the file (contrary to what is in the
+    file, keep you frame numbers less than 64).
+
+  o Next, copy over the system graphcap file and edit it in a similar fashion
+    following the examples under the "STDIMAGES devices" section.  Now when
+    you log into IRAF point to this new graphcap file, and then reset the
+    value for stdimage.
+
+       % cp /iraf_path/dev/graphcap mygraphcap
+       % vi mygraphcap
+       [restart the display window and log into the CL]
+       cl> reset graphcap = /home_path/mygraphcap
+       cl> gflush
+       cl> reset stdimage = my_new_frame_buffer
+
+    When editing the graphcap entry be sure to modify the ":cn" (configuration
+    number) field as well as the buffer sizes (the :xr and :yr fields as well
+    as the DD string).  After resetting the graphcap environment variable be
+    sure to type a 'gflush' to reinitialize the graphics system.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 7.5   How do I get a hardcopy of an image displayed with XImtool or SAOimage?
+
+ XImtool contains a 'Print' setup panel which can be used to set the output
+device or hardcopy options.  
+	With SAOimage it's the 'Print' button after hitting 'Etc', the
+hardcopy is generated by execution of a user configurable command known as
+the R_DISPOSE string.  SAOimage requires that R_DISPOSE be defined before
+starting SAOimage.
+
+For Unix systems, R_DISPOSE is defined as a Unix environment variable.
+It is usually best to define this variable in the .cshrc file since
+it will then be valid for any window or menu that starts the display server,
+otherwise it must be defined in the same shell (window) that starts
+saoimage.  Typical values are:
+
+    setenv R_DISPOSE "lpr -Plw -r %s"		# default string
+    setenv R_DISPOSE  'lpr -Plw5 -r -s %s'	# send to printer 'lw5'
+    setenv R_DISPOSE  'mv %s $HOME/plot.ps'	# move to home dir
+ 
+With VMS, the R_DISPOSE command is defined as a global symbol, as in
+
+	$ R_DISPOSE :== print/queue=postscript/delete "%s"
+
+The symbol typically gets defined in the SAOSETUP.COM file, which is run as
+part of the SAOimage start up procedure.  See host$x11/run/saosetup.com for
+more information.  
+
+If the R_DISPOSE string is reset from a terminal window care must be taken
+that the server is then started from that window (not a window manager menu)
+in order for the new value to take effect.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 7.6   What can I use for image display on a monochrome monitor?
+
+	At this time, the only choice for users in your situation is to use 
+the SAOimage display server.  SAOimage is an image display server for the X 
+environment which includes a dithering algorithm that will display images
+on some monochrome servers.
+
+
+
+Section  8.   GRAPHICS
+
+
+ 8.1   What hardcopy output devices are supported with the distributed system?
+
+ UNIX IRAF distributions include these SGI translators:
+
+    sgi2uapl.c  - PostScript for Apple LaserWriters and many more PS plotters
+    sgi2uhpgl.c - HP Graphics Language for HP 7550A and other pen plotters
+    sgi2uimp.c  - Impress language for Imagen printers
+    sgi2uqms.c  - QMS Vector Graphics (Talaris Lasergrafix, QUIC Command Mode)
+    sgi2ueps.c  - Encapsulated PostScript, PS-Adobe-3.0, EPSF-3.0
+    sgi2uhplj.c - HP Printer Command Language (HP LaserJet Series)
+    sgi2uptx.c  - Printronix plotter
+
+    sgi2gif.c   - Read an IRAF SGI bitmap file on standard input and convert
+		  to a GIF format image on standard outout. (See also
+		  iraf$unix/gdev/sgidev/README.gif).
+    sgi2xbm.c   - Read an IRAF SGI bitmap file on standard input and convert
+		  to an XBM format image on standard outout.
+
+In addition, Versatec plotters are supported (no SGI translator needed).
+
+VMS IRAF distributions include these SGI translators:
+
+    sgi2vapl.f  - PostScript for Apple LaserWriters and many more PS plotters 
+    sgi2vhpl.f  - HP Printer Command Language (HP LaserJet Series)
+    sgi2vln03.c - for LN03 Plus, in Tek mode 
+    sgi2vtri.f  - Trilog plotter
+    sgi2vccp.f  - translates to Calcomp or Versaplot calls
+    sgi2vhpp.f  - HP Graphics Language for HP 7550A and other pen plotters
+    sgi2vptx.f  - Printronix plotter
+    sgi2vver.f  - Versatec
+    sgi2veps.f  - Encapsulated PostScript, PS-Adobe-3.0, EPSF-3.0
+    sgi2vimp.f  - Impress language for Imagen printers
+    sgi2vqms.f  - QMS Vector Graphics (Talaris Lasergrafix, QUIC Command Mode)
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 8.2   What additional SGI translators are available; how do I get them?
+
+ We ask that sites who write additional SGI translators send the code to 
+iraf@noao.edu for possible inclusion in future IRAF releases.  At this time, 
+all translators we know about are distributed with IRAF, but contact us for 
+the latest information about any additional plotters or printers not mentioned
+above.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 8.3   What VMS/IRAF files do I edit to get my output device interfaced?
+
+ There are two sources of hardcopies from an IRAF session.  One is from 
+CL tasks such as those in the plot package and elsewhere, the other is
+from the printing capability of the display server, e.g., the etc.print
+selection of SAOimage.
+        Hardcopy of images displayed with SAOimage is controlled with a
+VMS logical R_DISPOSE.  This is described in the V2.10 saosetup.com file, in
+host$x11/run.  You define R_DISPOSE to be the host command that prints a
+PostScript file to the intended device, such as
+
+        $! R_DISPOSE :== print/queue=postscript/delete "%s"
+
+        Plots made from CL tasks, such as CONTOUR, get disposed to a
+printer based on information in the dev$graphcap file.  The best documentation
+on how all this works is the SGI manual, available from the anonftp archive.
+[Get the (binary) compressed, PostScript file sgi.ps.Z containing "The IRAF 
+Simple Graphics Interface (SGI)", Doug Tody, August 1986, 9 pages, from the
+iraf/docs subdirectory of the anonftp archive on iraf.noao.edu.]  As an 
+example, the CL device "lw" or "rps1" is defined like this in graphcap:
+
+    lw|rps1|                :tc=vapl:
+
+    vapl|VMS generic interface to 300dpi Apple Laserwriter (Postscript):\
+        :DD=vapl,tmp$sgk,submit/que=fast/noprint/nolog \
+        /para=\050"vapl","$F","$(XO) $(XW) $(YO) $(YW) $(PW) 7 1 RPS1" \
+        \051 irafhlib\072sgiqueue.com:tc=sgi_apl:
+
+The DD string contains a host command to submit the hlib$sgiqueue.com
+procedure file to the IRAF "fast" queue (as defined in hlib$irafuser.com).
+In the DD string, replace "nolog" with "keep" to generate a sgiqueue.log
+file in your sys$login directory for debugging if necessary.  Optionally,
+replace RPS1 with the name of your PostScript device queue.  You can put
+this information in hlib$sgiqueue.com if you prefer, in which case you'd
+replace RPS1 from the above DD string with the word "none".  This means
+to leave the output file in the tmp$ area to be disposed of as directed 
+in sgiqueue.com.  If no queue specification is mentioned at all, the default 
+queue is sys$print.  In any case, these statements in sgiqueue.com are 
+executed:
+
+    $! Apple LaserWriter (Postscript)
+    $ vapl:
+    $  sgi2vapl     := $irafhlib:sgi2vapl
+    $  sgi2vapl     'p2' 'p3'
+    $!  print/passall/noform/delete 'p2'.apl
+    $  delete       'p2'.;0
+    $  exit
+
+If you gave a queue name in the graphcap DD string, no changes are
+necessary.  If you specified "none", modify the (commented out) print 
+command to be the proper host command at your site for disposing a file of
+PostScript to the intended device.  Refer to the PS file as 'p2'.apl.
+Execute the CL command "gflush" after making any change to graphcap.
+You should also execute "gflush" (or submit another plot or log out
+of the CL) to flush the graphics buffer and start the sgiqueue.com process.
+
+To print text with the LPRINT task, information in dev$termcap is used.
+CL device "vmsprint" is set up to send output to the sys$print queue.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 8.4   What UNIX/IRAF files do I edit to get my output device interfaced?
+
+ There are two sources of hardcopies from an IRAF session.  One is 
+from CL tasks such as those in the PLOT and other packages, the other is
+from the printing capability of the display server, e.g., the etc.print
+selection of SAOimage or the XImtool Print panel.
+	Hardcopy of images display with SAOimage is controlled with a
+UNIX shell variable R_DISPOSE.  It can be defined as the host command
+used to dispose a PostScript file to the desired printer, such as:
+
+	% setenv R_DISPOSE "lpr -Plw5 %s"
+
+        Plots made from CL tasks, such as CONTOUR, get disposed to a printer 
+based on information in the dev$graphcap file.  The best documentation on 
+how all this works is the SGI manual, available from the anonftp archive.
+[Get the (binary) compressed, PostScript file sgi.ps.Z containing "The IRAF
+Simple Graphics Interface (SGI)", Doug Tody, August 1986, 9 pages, from the
+iraf/docs subdirectory of the anonftp archive on iraf.noao.edu.]  Basically, 
+an IRAF graphics task produces "GKI metacode", which is converted to "SGI 
+metacode" by the SGI graphics kernel.  An SGI translator is then used to 
+convert the SGI metacode into PostScript, HPGL, or some other graphics 
+language before sending the result to the printer in question.  There are 
+sample entries for most supported devices in graphcap, and a few defaults 
+you can use for any Postscript printer.
+	To interface your graphics device, you may have to edit the host 
+command found in the 3rd field of the "DD string" to be correct for your site.
+Looking at the graphcap entry for lw5, a PostScript laserwriter in use at
+NOAO as an example:
+
+nlw|lw5|                :tc=uapl5:
+uapl5|UNIX generic interface to 300dpi Apple Laserwriter NT on Orion:\
+        :xs#0.269:ys#0.210:ar#0.781:\
+        :DD=apl,tmp$sgk,!{ sgidispatch sgi2uapl $F -l$(XO) -w$(XW) -b$(YO) \
+        -h$(YW) -p$(PW) | lpr -Plw5; rm $F; }&:tc=sgi_apl:
+sgi_apl|Apple Laserwriter (Postscript) 300dpi:\
+        :kf=bin$x_sgikern.e:tn=sgikern:cw#.0125:ch#.0294:\
+        :ar#0.762:xs#0.267:ys#0.203:xr#3180:yr#2380:\
+        :MF#1:XO#55:XW#3180:YO#90:YW#2380:PW#2.4:
+
+Note how the 3 parts of the entry are linked together with the tc= field.
+Device lw5 (aliased to nlw) is a PostScript device, so it uses the sgi2uapl
+SGI translator.  The output from the translator is piped to the Unix command
+
+        lpr -Plw5
+
+It is this site specific part of the DD command that you are most likely
+to have to edit, probably just by specifying another device name instead of
+lw5.  You can also add an alias that makes more sense to your site than
+"lw5" if you like.  The sgi_apl entry should not have to be changed.
+
+Without making any changes at all to graphcap, you can send output to 
+device lpr, lp, or lw.  This uses a "generic" graphcap entry which 
+generates PostScript and sends it to the default Unix printer with 
+the command "lpr" (no device specified with -P).  This entry should 
+work for you "out of the box", assuming you want to access the Unix
+default printer and it is a PostScript device.  If you want to access 
+a non-default printer from IRAF, you will most likely have to edit (at 
+least) the site specific portion of the DD command in graphcap as 
+illustrated above.
+
+If you don't append a device name to the :.snap command, the output goes
+to your stdplot device as defined in the cl:
+
+        cl> show stdplot
+        lw5
+
+If this isn't enough information to get things working, write to iraf@noao.edu 
+and tell us what sort of printer you're trying to access and what Unix command 
+you use to print to it.  If you happen to have an HP LaserJet, there was an
+article on interfacing this sort of device to IRAF in Newsletter #12, 
+July 1992.  Newsletter are also available from our anonftp archive, in
+the iraf/docs subdirectory on iraf.noao.edu.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 8.5   Can I generate color PostScript of an IRAF plot or displayed image?
+
+ At this time, there's no way in the IRAF core system to produce color
+PostScript of graphics.  But the PostScript graphics kernel in STSDAS
+can produce both publication quality graphics (when used with their IGI
+package) and color PostScript.  You can generate a color hardcopy of an 
+image displayed with SAOimage using tasks in V1.2.2 or later 
+of STSDAS.  You would display the image and write out its color map with 
+SAOimage.  Then the displayed image is saved as gki metacode and input, along 
+with the color map, to the PSIKERN.  The PostScript kernel will eventually be 
+part of the IRAF core system and is described in the Summer 1992 STSDAS 
+Newsletter.  The Newsletters, and STSDAS itself, are available from the anonftp 
+archive on stsci.edu.  Their site support group (help@stsci.edu) can give you 
+more information about PSIKERN.  
+	Direct color PostScript conversion of images is included in V2.11
+as part of the new EXPORT task, or available from the XImtool display server
+directly.
+
+It is also possible to use host utilities that generate color PostScript.
+For example, the "screendump" command that comes standard with Sun
+writes the contents of the screen as a Sun rasterfile to the STDOUT.  You
+can capture this to a file and then all that's left is to convert it to
+color PostScript.  If you are running X windows (i.e. OpenWindows) then 
+try using the XV utility (available from most X ftp sites, try ftp.x.org
+(198.112.44.100)) to read in the rasterfile, crop out whatever you don't
+want, and then save the result as a color PS file you can then send to the
+printer.  For a less interactive approach, and one that can be used from
+SunView, the "San Diego IMAGE Tools" are also very good.  These are available
+as binary-only from ftp.sdsc.edu in the pub/sdsc/graphics/imtools directory.
+There are utilities to crop an image, and the conversion command you're
+looking for (once these are installed) is
+
+        % screendump | imconv -ras - -ps dump.ps -outclt -outindex
+
+to convert the screendump to a color PS equivalent.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 8.6   Does IRAF support Encapsulated PostScript?
+
+ Yes, IRAF includes an SGI translator to generate Encapsulated
+PostScript.  The following EPS logical devices are available:
+
+	eps or epsf	- portrait orientation
+	epsl or epsfl   - landscape orientation
+	epsh or epshalf - half page, portrait orientation
+
+These options can be invoked with an interactive graphics command such as
+	:.snap eps 
+by specifying the graphics output device via a hidden task parameter
+	cl> contour dev$pix dev=eps
+or by setting the stdplot environment variable before running the task.
+	cl> reset stdplot = eps
+
+In addition, the PostScript generated by the XImtool or SAOimage display
+servers is encapsulated, EPSF-2.0.
+
+
+
+Section  9.   SYSTEM INSTALLATIONS
+
+
+ 9.1   I don't have enough diskspace for the entire system - what can I do?
+
+	The IRAF system is distributed in three parts: the source tree
+for the core system and the NOAO package (the as.* files), the binaries
+for the core system (the ib.* files), and the NOAO package binaries (the
+nb.* files).  Because the system is distributed with source, considerable
+disk space can be recovered by stripping the source files with the 
+
+	cl> mkpkg strip			# strip the core system
+	cl> cd noao			# move to NOAO directory
+	cl> mkpkg -p noao strip		# strip the NOAO package
+
+utility, run as iraf from the iraf root.  The source files are not required 
+for a run-time system.  Software development, including IMFORT programming 
+and building external packages, can still be accomplished on a stripped system.
+	The "mkpkg strip" is normally done after unpacking the as and ib/nb
+files, after IRAF is fully installed.  On systems where space is extremely 
+tight, you can run "mkpkg strip" immediately after unpacking the as files
+and running the install script.  This would free sufficient space to allow
+the binaries to be unpacked.  We estimate about 1/2 the total diskspace
+consumed by IRAF is recovered by stripping the source.  If this is still not
+sufficient, it is possible to delete individual binaries by hand.  IRAF site
+support can advise you as to which binaries are least likely to be useful
+for your particular applications.
+	It is important to remember that IRAF doesn't necessarily have to 
+be installed on a disk local to the machine, any available (e.g. NFS mounted)
+disk will do.   External packages can similarly be stripped of source.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.2   What does the IRAF install script really do - what files are modified?
+
+ In general terms the install script does the following:
+
+	- edits the iraf pathname and imdir directory in the following files:
+		hlib$cl.csh
+		hlib$mkiraf.csh
+		hlib$libc/iraf.h
+	- creates fifo pipes for image display in the /dev directory
+	- creates the /usr/include/iraf.h symbolic link defining the iraf root
+	- sets root ownership for the tape allocation task 'alloc.e'
+	- creates symbolic links for IRAF commands like 'cl' in the site
+	  dependent 'local bin directory'.
+
+Because the install script affects files in system directories, root permission
+is required to run it successfully.  Workarounds for some things done by the
+install script can be found elsewhere in this FAQ.
+	The install script must be run on each client machine to create the
+fifo pipes for that node.  If nodes in the network will be sharing an
+iraf directory tree, the iraf root must appear to be the same on all nodes. 
+This can be done with a symbolic link and is necessary so the definition of
+the iraf root in the shared hlib$cl.csh file is valid for all nodes.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.3   I'm not able to write in /usr - can I still install IRAF?
+
+	The only thing done by the Unix IRAF install script in /usr is the 
+creation of a symbolic link /usr/include/iraf.h.  This file contains 
+definitions necessary to rebuild IRAF (which you will not be doing) and
+defines the IRAF root and HOST directories used in iraf networking.  The CL
+must know the IRAF root or it cannot start.  However, this information is now
+part of the $hlib/cl.csh script, so /usr/include/iraf.h is no longer searched
+when starting the CL.  /usr/include/iraf.h is searched, however, when the IRAF
+root must be known without starting the CL, as in any node! reference invoking
+IRAF networking.  For this reason, the /usr/include/iraf.h symbolic link is
+a required part of the IRAF installation.
+
+	It is common, although not necessary, to choose /usr/local/bin as
+the "local bin directory" when installing IRAF.  This is where the install
+script makes links for commands such as 'cl' and 'mkiraf'.  Any directory
+(outside of the iraf tree!) can serve this purpose as long as it is in each 
+user's search path.  It is also possible to make these commands available as
+aliases, by putting the following in each user's .login file: 
+  
+	setenv 	iraf	/path/iraf/		# note trailing '/' !!
+	source  $iraf/unix/hlib/irafuser.csh
+	alias	cl 	$hlib/cl.csh
+  
+Even if you cannot write to the system directories, it is still imperative 
+that the install script be run (as user 'iraf' at least) so that the files
+in the IRAF system are properly edited with the required pathnames.  If this
+is not done the system may not run at all, or images will be inaccessible.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.4   Can I have more than one version of IRAF installed at a time?
+
+	Yes, but it's not recommended.  Usually the only time this is needed
+is when locally written software fails to run after an IRAF upgrade (e.g.
+large scripts using obsoleted tasks or parameters).  In this case it is
+better in the long term to upgrade the software.
+	Where there is no alternative to having both systems around it is
+possible to have separate installations of the system, but only one can be
+'installed' in the normal way for doing program development.  What's typically
+done is that a host level script such as
+
+	#! /bin/csh
+	# IRAFO -- Run the "old" (previous) version of IRAF.
+ 
+	setenv  iraf    /ursa/iraf/irafo/
+	setenv  host    $iraf/unix/
+	setenv  hlib    $iraf/unix/hlib/
+	setenv  hbin    $iraf/unix/bin/
+ 
+	# Set value of IRAFARCH and determine platform architecture.
+	if (`uname -r | cut -c1` == 5) then
+	    setenv IRAFARCH ssun
+	else
+	    setenv IRAFARCH sparc
+	endif
+ 
+	# Run the desired CL.
+	setenv arch .$IRAFARCH
+        exec $iraf/bin.$IRAFARCH/cl.e
+
+is put in the local bin directory (which should be common to all users).  The
+path definitions for $iraf should be changed to point to the iraf root dir-
+ectory for the old system (or whichever one is not the default).  Users would
+start up IRAF using this script (call it 'irafo' or something) instead of
+using the 'cl' command.
+	In this way it is possible to have two versions of IRAF available at
+the same time, but problems can arise if you log into one version using a
+login.cl or parameter files generated by the other version of iraf.  It is 
+easiest to create separate login directories for each version to isolate any 
+version specific files.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.5   Can we make our local software look like an IRAF package?
+
+	Section 8 of the "Introductory User's Guide to IRAF Scripts" (avail-
+able as "script.ps.Z" from the iraf/docs directory of the iraf.noao.edu ftp
+archive) deals with creating a personal package of tasks, including help
+pages.  Similarly, Chapter 7 of the "Introductory User's Guide to IRAF SPP
+Programming" (available as 'sppguide.ps.Z' in the iraf archive iraf/docs 
+directory), also covers the creation of an IRAF package.  Lastly, Chapter 4 
+of the "SPP Reference Manual" written by the STSDAS group (available via ftp 
+as stsci.edu:software/stsdas/doc/programmer/spp in the file 'SPPManual.ps') 
+discusses how to implement a package of SPP tasks.
+	Note that any external package available from our archive can be
+used as a template for creating a new package.  Indeed, the SPPTOOLS external
+package has tasks which create and rename packages.  Contact iraf@noao.edu
+if you still have questions about how to create a package.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.6   What does "ERROR: Cannot open device (node!imtool,,512,512)" mean?
+
+ This message indicates a problem with the communications between the 
+IRAF DISPLAY task and the image display server, e.g., SAOimage or Imtool.  
+There are several known causes:
+
+1. First verify that an XImtool or SAOimage process is running.  You must have
+   a display window open before attempting to send output to it.  The window
+   can be iconified, but it must be running.
+
+2. If you are running SAOimage, make sure the message "Open to accept IRAF
+   input" appears in the text window from which you started SAOimage.  If not,
+   restart SAOimage so it uses the IRAF fifo pipes.  For the current version
+   of SAOimage, v1.07, or greater, this is the default.  It can be 
+   explicitly specified by adding the command line argument +imtool.  Note that 
+   the -imtool flag turns OFF IRAF communication for v1.06/1.07 of SAOimage.
+   If you're running v1.02 of SAOimage, the -imtool command line argument is
+   required for communication with IRAF.
+
+3. If that's not it, you may have an installation problem.  One function of
+   the install script is to make entries for the fifo pipes in the /dev
+   directory:
+
+   lrwxrwxrwx  1 root           10 Oct  6  1989 /dev/imt1 -> /dev/imt1o
+   prwxrwxrwx  1 root            0 Oct 27  1988 /dev/imt1i
+   prwxrwxrwx  1 root            0 Oct 27  1988 /dev/imt1o
+
+   This may have failed for some reason when you ran install.  Make sure you
+   ran install as root after defining the IRAF environment variables.
+   This problem will generally only affect SAOimage displays since IRAF will
+   attempt to use unix sockets to connect to XImtool.
+
+4. Another possibility is that the install script was not run on this
+   particular node.  Install must be run on (or for) each node in the network
+   you intend to use with IRAF.  For those nodes that have a local /usr
+   partition, run the install script on the machine itself.  For those nodes
+   that don't have a local /usr partition, run install on the server for the
+   diskless node, then run install on the diskless node itself.  More 
+   information about installing IRAF on a network is found elsewhere in this 
+   FAQ listing.
+
+If none of these explains your problem contact site support for assistance.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.7   Where's my image?  I display an image to SAOimage but get no image dis-
+       played and no error, only the cl prompt.  
+
+ If there's no error, DISPLAY has successfully sent the image to an SAOimage 
+process, but apparently not the one you intended.  The image could have
+been sent to another user's SAOimage window (see information about multiple
+SAOimage processes per CPU elsewhere in this FAQ) or to a "zombie" process.
+If you interrupt the DISPLAY task with ^C and certainly in other ways, you 
+can end up with an SAOimage process running without a connected window.  If 
+you try to display and you get no output and no error, this may be the cause.
+On Unix systems, you can use "ps -aux" to find the process and then kill it. 
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.8   Why am I told "task `cl' has no param file" when I try to start the CL?
+
+	The error message almost always means there is an error in the iraf 
+root pathname and the param file simply can't be found.  But since there's 
+a small chance the parameter file for the CL has been deleted or had read 
+removed, get a long listing of the file permissions:
+	
+	tucana% ls -l $iraf/pkg/cl/cl.par
+	-rw-r--r--  1 tody         1811 May 29  1992 /usr/iraf//pkg/cl/cl.par
+ 
+If that checks out, you probably have an incorrect definition of the IRAF 
+root directory in one of two places.  The iraf root is defined in the 
+hlib$cl.csh script which gets edited by the install script.  The iraf 
+root can also be defined in the user's environment, which takes precedence
+over the cl.csh definition.  
+	If only the iraf account shows the error, it may be this definition 
+that is wrong.  Make sure the login directory for the iraf account 
+is $iraf/local, that is, the local subdirectory of the iraf root directory.  
+Otherwise, the .login file won't be read as intended at login time.  If the 
+error is seen for users other than iraf it may be that something went wrong 
+when install was run that resulted in an incorrect definition of iraf being 
+placed in hlib$cl.csh.  Sometimes people have an "old" definition of iraf in 
+their .login or .cshrc file which can cause the error.  Also check that the
+value of IRAF in /usr/include/iraf.h (which is a symbolic link to 
+hlib$libc/iraf.h) is correct.  To solve the error, you need to determine 
+the source of the incorrect value for the iraf root directory.  Make sure 
+any definition of iraf in .login or .cshrc includes a trailing slash.
+	A second but less likely cause is that the user's environment has
+defined a 'host' environment variable, typically as the machine name.  IRAF
+assumes that 'host', if defined, is the path to the iraf$unix (or iraf$vms)
+directory.  Removing or resetting this definition will fix the problem.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.9   What does "ERROR: Cannot open connected subprocess (pkg$x_pkg.e) mean?
+
+	In general, the message indicates the named executable can't be found 
+or executed for some reason.  It could be a problem with permissions (no read 
+or execute permission) or, more likely, the executable can't be found.  The 
+named executable (x_pkg.e) is first looked for in the package bin directory, 
+e.g., bin$ or noaobin$.  [The last placed searched is the package root 
+directory as reported in the error message.]  You can cd to the package bin 
+directory and look around:
+ 
+	cl> cd noaobin
+	cl> path
+	tucana!/usr/iraf/noao/bin.sparc/
+	cl> dir long+
+ 
+	If all non-script tasks in the NOAO package can't be executed, an
+installation error may have occurred.  Check that the noao bin executables
+were placed in the directory pointed to by the noao$bin.`mach' symbolic link.
+It may be that they weren't installed at all or that they were placed in the
+wrong directory.
+	Often, when tasks in an external package can't be executed, it is be-
+cause mkpkg failed and the executables weren't created.  Check the spool file 
+for errors.  Another possibility with external packages is that the "-p pkg" 
+flag was omitted on the mkpkg command line, in which case the executables end 
+up in the pkg root directory with names like "pkgbinx_pkg.e".  In this case, 
+you can simply move them to the the appropriate bin directory, the architecture 
+correct subdirectory of the package root directory.  A trivial reason for
+this error with external packages is that the package root is incorrectly
+defined (maybe a missing trailing slash (UNIX) or unescaped $ (VMS)).  
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.10  What do I do about "Warning libxxx.so older than expected" or "ld.so:
+   libXXX.so: can't open file" messages?
+
+	This usually indicates a missing or insufficient definition for 
+the LD_LIBRARY_PATH host environment variable.  For example, on a Sun
+system this may be set to simply '/usr/openwin/lib',  but if the application
+in question was compiled under the local X11R5 system the missing shared
+object may be in /usr/lib/X11.  In rare cases the missing object is in
+the compiler directory.
+	To find out where the missing file is and reset the LD_LIBRARY_PATH
+variable appropriately, try the following:
+
+	% echo $LD_LIBRARY_PATH		# see what the current setting is
+	/usr/lib/X11
+	% ldd `which saoimage`		# check dependencies
+             -lX11.4 => /usr/openwin/lib/libX11.so.4.3
+             -lc.1 => /usr/lib/libc.so.1.7.3
+             -ldl.1 => /usr/lib/libdl.so.1.0
+	% setenv LD_LIBRARY_PATH  /usr/lib/X11:/usr/openwin/lib
+
+This last command reset the variable so both /usr/lib/X11 and /usr/openwin/lib
+are searched for the needed file, the command should run normally after that,
+the directories /lib, /usr/lib and /usr/local/lib are searched by default.
+
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.11  Why does VMS/IRAF report "cannot open tmp$uidxxx" when accessing a tape?
+
+	The error "cannot open file (tmp$uidxxxxx)" typically indicates a 
+problem with the definition of the tmp directory.  Either the directory
+doesn't exist or you don't have write permission in it.  In VMS/IRAF, 
+tmp$ is defined as tempdisk:[iraftmp], where tempdisk is defined in 
+hlib$irafuser.com as part of the IRAF installation.  It is necessary to 
+create a directory [.iraftmp] as a subdirectory of the tempdisk area.
+Some sites choose to have private tmp areas rather than a single area for
+all IRAF users.  This is described in the VMS/IRAF IG; often the private
+tmp directory is a subdirectory of the user's login directory.  
+ 
+Another less likely explanation is that you may have tmp defined relative to 
+the current directory, so when you change directories, tmp can't be found.  
+Tmp should be an absolute pathname.  How is tmp defined in your login.cl file?
+The first step is to see how tmp$ is defined on your system and whether or not 
+you can edit a junk file in the directory:
+ 
+        cl> show tmp
+        tempdisk:[iraftmp]
+        cl> show tempdisk
+        usr$0:
+        cl> edit tmp$junk
+ 
+Contact iraf@noao.edu if the problems continue.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.12  Why does my script tell me  "dictionary full"?
+
+	`Dictionary full' means the CL's dictionary (what it uses to catalog
+tasks, packages, parameters, etc.) is full.  It can occur legitimately if
+you are loading really long scripts with lots of loaded packages, local
+variables, etc.  It can also occur illegitimately, e.g. if a script were
+repeatedly loading the same things in a loop and not unloading them.  The
+first thing to check is that it is not the latter; if you have to, send us
+your script.
+    	If it turns out that it is not a fault in the script design, then the
+size of the dictionary can be increased.  To increase the size of the diction-
+ary, you would need to edit an include file in the CL package directory and 
+rebuild the CL.  To do this:
+ 
+	cl> edit pkg$cl/config.h
+	...change DICTSIZE from its current value to something 
+	    larger (say, 50% larger)
+	% cd $iraf/pkg/cl
+	% mkpkg update
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.13  What does "Warning: Out of space in image header" mean?
+
+	This means that the 'min_lenuserarea' iraf environment variable is
+too small for the header size.  This value is set as a system default in
+the hlib$zzsetenv.def but can be reset by the user in their login.cl file
+by uncommenting the definition (i.e. removing the '#' sign) and increasing
+the size.  Certain packages which deal with large headers will set this to
+an appropriate value when the package is loaded.  See IRAF Newsletter #10, 
+October 1990 (available from iraf/docs on iraf.noao.edu), for a related 
+discussion of "Problems with Long Image Headers".
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.14  Why does PHOT warn "Graphics overlay not available for display device."?
+
+	For all platforms, graphics overlay is not currently available on
+the image display in the digital photometry tasks.  These tasks can read from,
+but not write to, the image display.  The warning message you report is normal
+behavior for this task.  The PHOT and POLYMARK manual pages give examples
+of working interactively from a contour plot, by setting the task.display
+parameter to stdgraph and the CL environment variable stdimcur to stdgraph.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.15  Why does my task report "ERROR: parameter `foo' not found"?
+
+	This most often happens after an IRAF upgrade when the parameters for
+a particular task may have changed, but the parameter file in the user's 
+uparm directory contain the set for the previous version.  It is usually 
+cured with an "unlearn <task>" command, or by initializing the uparm directory
+with a new MKIRAF (which is recommended anyway after an IRAF upgrade).
+        In cases where the problem continues, it means the last IRAF update
+wasn't done properly (e.g. the patch files were not applied before installing
+the binaries).  Contact site support if you are unsure of the installation.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.16  What does "ERROR: MWCS: dimension mismatch (mw_translate)" mean?
+
+	This message means there is some error in the image header dealing
+with the description of the world coordinate system (WCS).  In particular
+the WCSDIM keyword is incorrect.  The value of this keyword should
+either match the dimensionality of the image if there is no WAXMAP01
+keyword or half of the number of elements in that keyword if
+present (that is if there are 6 numbers then WCSDIM should be 3).
+
+How does this happen?  The most common way in V2.10-V2.10.1 is that
+the images produced by the APEXTRACT package when the "extras" parameter
+is set, which produces 3D images, has a bug that sets WCSDIM=2.  This
+can be easily fixed by:
+
+        cl> hedit <images> wcsdim 3
+        cl> hedit <images> cd3_3 1. add+
+        cl> hedit <images> ltm3_3 1. add+
+
+The last two additions are to avoid a "matrix inversion error" because
+if the WCS dimensionality is 3 then there must be nonzero elements
+for the step per pixel.  The NPROTO.LINPOL task also has a similar
+error which may be fixed similarly.  Other possibilities are improper
+editing of the image header by a user. 
+
+In all cases, if this is a problem send a header listing of a
+representative image to iraf@noao.edu for NOAO tasks or to the
+appropriate developer for other packages so the bug can be fixed and
+to get advice on working around the problem.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.17  My pixel files were moved to another disk and now the i_pixfile pathname
+       in the image headers is wrong.  How can IRAF find the pixels?
+
+ The pixels of an IRAF image are stored separately from the image header.
+The pathname to the pixel file is contained in a header parameter referenced as
+"pixfile" by the HSELECT and HEDIT tasks.  Users occasionally need to
+modify this pixel pathname, most commonly when the disk containing the pixels
+has been renamed or if the pixel files have been moved en masse for system 
+administration reasons to a new location.  The following method enables you to
+modify a large number of image headers to contain new pixel pathnames.  The 
+technique is to first create a temporary file of image names and their current
+pixel pathnames using the task HSELECT.  You globally edit this temporary file
+to contain the new pixel pathnames and then use the modified file as input to
+the HEDIT task.
+
+       cl> hselect *.imh $I,pixfile yes > filin
+       .... [do a global edit to filin and edit in the new pixel pathname]
+       cl> list="filin"
+       cl> {
+           while(fscan(list,s1,s2) != EOF)
+           hedit(s1,"pixfile",s2,verify-)
+           }
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.18  How do I turn off the system id banner in output hardcopy plots?
+
+ In any task that uses the GTOOLS interface (like SPLOT but not IMPLOT), you
+can turn off the sysid banner with a cursor command.  In interactive cursor
+mode, try the command :/help for a full help page.  You'll see:
+  
+    :/sysid [yes|no]        Include the standard IRAF user/date banner?
+    :/title string          Title
+  
+The sysid banner includes information from the CL variable "version":
+        cl> show version
+        NOAO/IRAF V2.11EXPORT
+  
+So you can modify the sysid banner by resetting "version" to be the null
+string or anything you want:
+        cl> reset version = ""
+  
+You can also reset the CL variable "userid" to personalize the banner.  This
+will affect IMPLOT as well as SPLOT plot banners.
+
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ 9.19  Why does IRAF kick me out when I type ^Z to exit EPARAM?
+
+	The ^Z sequence has probably been mapped to the suspend character 
+on your machine.  [You bring a suspended process back into the foreground 
+with the UNIX 'fg' command.]  The ^Z is being intercepted by the terminal
+driver and suspending the CL before the EPARAM task ever sees it.  Mapping
+of control characters is typically done with the stty command from a .login
+file.
+	Whatever keytroke you use to EXIT_UPDATE in eparam, it must be noted 
+in the <editor>.ed file in dev$, where <editor> is the name of the editor
+you are using (e.g., dev$vi.ed).  You can have your own copy of this file in
+your iraf home directory ("cl> show home").  The CL looks first in your home 
+directory before searching dev$ for the ed file.  You can also have multiple 
+choices for the mapping in the .ed file, such as already exist for the MOVE_UP 
+and related keystrokes.  
+
+
+
+Section 10.   NETWORK INSTALLATIONS
+
+
+10.1   What's different about installing Unix IRAF on a network instead of a 
+       standalone machine?
+
+	In most respects the installation is the same, provided a single
+installation can be fed to client machines in the local network by using
+an NFS (auto)mounted disk.  The installation proceeds normally on the 
+server, however the install script must also be run on each of the client
+nodes (to create the /dev fifo pipes and local bin directory links).  
+Since nodes in the network will be sharing an iraf directory tree, the 
+iraf root must appear to be the same on all nodes.  This can be done with a 
+symbolic link and is necessary so the definition of the iraf root in the 
+shared hlib$cl.csh file is valid for all nodes.
+	Once the system is installed the dev$hosts file must be edited with
+the name of all machines in the local iraf network.  Verify that the path
+name to the irafks.e kernel server is correct for each machine.  The
+NETSTATUS task can later be used to see which machines are in the network.
+With this done any resource (tape, disk, or image display) can be accessed
+using the 'node!' syntax.  Note that images are created with a pixel pathname
+embedded in the header that includes the node name on which it was created.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+10.2   If IRAF is NFS mounted to all the client nodes, why do I need to run the
+       install script on each node?
+
+	The IRAF install script creates several links in the system dir-
+ectories, in /dev for the fifo pipes needed for SAOimage image display, and
+/usr for the /usr/include/iraf.h file.  Links are also made for commands like
+'cl' in a "local bin directory", usually /usr/local/bin.  If IRAF is not run
+on the client nodes, iraf networking will fail because of a missing <iraf.h>
+although IRAF itself may continue to work because of the NFS mounted disks.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+10.3   How do I access a remote tape drive from IRAF?
+
+	A remote tape drive is accessed just as any other resource in iraf
+using the 'node!' syntax, for example
+
+	cl> alloce ursa!mta
+
+to allocate a tape known as 'mta' on the node 'ursa'.  In all commands that
+reference the drive the device name must have the node! syntax.  This requires
+that IRAF networking has been configured between the two machines, by making
+appropriate modifications to the dev$hosts file. 
+	The node!device syntax differentiates the device from a device known 
+by the same name on the local machine.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+10.4   Where can I find information on the structure and fields for the tapecap
+        file?
+
+	The individual tapecap fields are defined entirely in the program
+header comments for the IRAF tape driver, $iraf/unix/os/zfiomt.c.  This
+information however does not explain fully how to set these values.  A more
+detailed description of the tapecap file can be found in the platform
+Site Manager's Guide for each platform.  An explanation of the various
+fields was given in the last issue of the Newsletter and is available as
+
+	http://iraf.noao.edu/irafnews/apr98/irafnews.1f.html
+
+If you still have questions about tapecaps or need an example entry from
+which to begin, contact site support.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+10.5   Can I use a VMS tape drive from a UNIX IRAF installation?
+
+	This requires that IRAF be installed successfully on both the Unix 
+and VMS hosts, and that the tape drive be configured correctly for local
+access.  Once that is done the VMS system is added to the Unix system's
+dev$hosts file wo that the rexec-callback protocol be used to make the conn-
+ection.  For example, if the unix host is 'tucana' and the VMS host is known
+as 'robur', then tucana's dev$hosts file would contain an entry of the form
+
+robur                  		: -rcb robur!irafks
+
+This says that from tucana the rexec-callback protocol (the '-rcb') is to
+be used to connect to robur.  On the VMS system the IRAF kernel server will
+access the tape and pass the output through the network back to the local
+host.
+	On systems where the only reason to access a VMS system is for tape
+access users should contact the iraf group for a "kernel server kit" which
+can be used in place of a full-fledged IRAF installation.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+10.6   How do I suppress the password prompt when accessing pixels?
+
+	With V2.10 IRAF and after, the default protocol used for IRAF 
+networking between between two Unix hosts is rsh.  In this situation, with a 
+properly configured host network, the password prompts should not appear.  If 
+it does, then the 'rexec' protocol, not rsh, is being used to make the 
+connection.
+	This can happen for several reasons. The /etc/hosts.equiv file names
+the "trusted hosts" in the network, meaning that the 'rsh' command at the host
+level can be used between machines.  System administrators sometimes worry 
+about this being a security hole and won't set up the hosts.equiv file or 
+else it's incomplete on all systems.  One workaround for this is to put the 
+name of the hosts in a personal '.rhosts' file in the user's login directory 
+to accomplish the same thing.  The rsh protocol can also fail if the user 
+doesn't have an account or has a different password on the remote machine.
+	To use the rexec protocol explicitly users can add the passwd in 
+their .irafhosts file for a particular node along with a parameter override.
+For example
+
+	pisces	: tapeuser tapetape protocol=rex
+	*	: <user> <user>
+
+In this case any network connection to node 'pisces' will be done as a user
+named 'tapeuser' whose password is 'tapetape' using the rexec protocol. All
+other connections to other nodes (which match the '*') will be done in the
+normal way, if the rsh fails then once again the passwd prompt will appear.
+This is most often done to connect to a remote resource on a machine on which
+they don't have an account or the login/passwd is different.  Note that the
+'*' entry must be the last line in the file, any nodes which follow it will 
+be ignored.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+10.7   How do I disable IRAF networking for disk image access, but keep it to
+       access the tape drives?
+
+ 	When you install IRAF networking (by adding your host names to
+dev$hosts), IRAF networking is used for all remote access of peripherals
+(tapes) and disks, as well as remote imtool use.  Wherever the CL encounters
+the node! syntax and the nodename appears in dev$hosts, IRAF networking will
+be used.  IRAF networking must be used for remote tape access and remote use
+of IMTOOL.  You can disable it for disk access (and so use NFS to access the
+disks) by some creative editing in the dev$hosts file.  IRAF networking is
+used when the local and remote node appear on separate lines in dev$hosts;
+in this way they are defined as distinct nodes.  If two node names appear on
+a single line, they are aliased and interpreted as being the same node.  You
+can alias those nodes which you will not need IRAF networking.  You may want
+to create a new node name to be used exclusively for tape access.  Say you
+have three nodes (ast1, ast2, ast3) and ast1 has the tape drive.  Edit
+dev$hosts to include the following, with appropriate pathname substitutions;
+note that only the KS pathname for the tape node will actually be used:
+ 
+ast1 ast2 ast3                  : ast1!/iraf/iraf/bin.ssun/irafks.e
+astmt                           : ast1!/iraf/iraf/bin.ssun/irafks.e
+ 
+IRAF networking has been disabled for nodes ast[123] and will not
+be used to access pixel files beginning with those nodenames.  For
+tape access, the user has to reference the new node name, as in:
+
+        cl> rfits astmt!mta
+
+
+
+Section 11.   HARDWARE
+
+
+11.1   On which platforms does IRAF run?
+
+ IRAF currently runs on the following platforms:
+
+        Platform                Descrition
+
+        AIX4                    IBM/RS6000 AIX 4.x</td>
+        DUNX                    Digital Unix 4.0 (OSF, Compaq Tru64)
+        HPUX                    HP-UX 10.20
+        IRIX                    SGI IRIX 6.x
+        PCIX                    FreeBSD 3.3
+        PCIX                    Slackware Linux 4.0
+        PCIX                    RedHat Linux 5.x
+        PCIX                    RedHat Linux 6.x
+        PCIX                    SuSE Linux 6.x
+        PCIX                    Solaris 7 for Intel
+        SSOL                    SunOS 4.x
+        SSOL                    Solaris 5.5, 5.6, 5.7
+        VMS7                    VAX/VMS 7.1
+
+Plans for supporting LinuxPPC on a Macintosh are also in the works.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+11.2   What's the best machine to buy if I plan to run IRAF?
+
+	Because of the different budgets people have available, the deals 
+they can get from vendors for multiple purchases, local system management 
+support, the number of expected users, and the extent of non-IRAF use the 
+machine might get, it is impossible for the IRAF Project to recommend a 
+specific platform to users considering a purchase.  If there is some doubt 
+about whether IRAF is supported for a particular machine users should contact 
+the IRAF group with any questions, we would also be happy to answer any 
+questions about specific devices or configurations.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+11.3   What are the recommended hardware requirements of a workstation?
+
+	Hardware requirements depend largely on the number of expected users,
+the types of reductions to be done, and what additional software will be
+used.  A typical single-user workstation requires a minimum of 32Mb RAM
+(2-3 times that in swap space), enough disk for the OS, X windows, the IRAF
+system and sufficient room for data.  Some type of tape drive is also des-
+ireable.  Servers or multiple-user systems will typically have more RAM and 
+disk, graphics accelerator cards are not required but may, in some cases, 
+speed up window performance.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+11.4   What type of mag tape devices are supported and not supported?
+
+	The dev$tapecap file can be used to configure most tape devices for
+use with IRAF.  Current entries include Exabyte, DAT, 1/2" reel, QIC cart-
+ridge tapes, Mac DC2000 cartridge tape, and Mac FDHD floppy disks.  There
+are currently no entries for other types of floppy drives or optical devices,
+but it's possible entries could be written for these.  
+	The distributed tapecap file is missing entries for DAT devices using
+the native Sun ST driver, contact the IRAF group for information on how this 
+may be installed.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+11.5   Should I buy a 24-bit frame buffer for my Sun?
+
+	IRAF doesn't currently take advantage of 24-bit frame buffers, though
+several experiments with 24-bit display have been done.  While IRAF may not
+use such a card, graphics accelerators on some such cards may speed up window
+performance.  Users considering such a card should make purchase decisions
+based on factors other than expected IRAF use.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+11.6   Can I use my Windows 9x PC to display IRAF images?
+
+	This is possible provided you have an X server running on the PC
+(several are available for PCs).  If displaying from a remote machine,
+typical usage would be to run the display server (SAOimage or XImtool) on 
+the IRAF host system, setting the '-display' command line flag or 'DISPLAY'
+environment variable to display the window on the PC.  Since the server is
+running on the same node as IRAF there is no need to set the IRAF 'node'
+environment variable (or it should be set to the name of the IRAF host).
+Care should be taken to reset the number of colors for the display to use
+only 8-bits (i.e. 256 colors) in order for the display servers to work
+properly. 
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+11.7   Do you have benchmarks for IRAF on various machines?
+
+	A complete set of benchmarks for IRAF has not been done since 1987,
+the results of those are obsolete now anyway.  While some machines are gen-
+erally faster than others, benchmark results often depend on the task being
+tested, disk access times, available memory and a variety of other factors.
+Proper benchmarks should fairly use both I/O-bound and CPU-bound tasks in
+testing, as well as multiple image formats and data types, in order to draw
+any objective conclusions about relative performance.  Head-to-head comparisons
+between machines may not be of much interest to certain users if their usage 
+is much different that that being tested.
+	The 1987 benchmark results are available in the iraf archive as
+iraf.noao.edu:iraf/docs/bench.ps.Z.
+
+
+
+Section 12.   PROGRAMMING
+
+
+12.1   What programming languages can I use for IRAF software development?
+
+	The native IRAF language is SPP (Subset Pre-Processor), a portable
+pre-processor language which resembles C.  Tasks written in SPP will run on 
+all supported IRAF platforms without change.  Programming in SPP makes 
+available the full facilities of the IRAF VOS (Virtual Operating System).
+	Users may also program with the IMFORT interface, a library of 
+subroutines for reading and writing OIF format images.  IMFORT is written
+for use with Fortran, but a C language binding is available for Unix.
+	In addition, the CL provides a scripting language which can be used to
+write high level tasks.  Large applications are best written as compiled code
+for optimization, but scripts allow the user to build tasks upon existing
+software quickly. 
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+12.2   Can I install IRAF or layered software without having IRAF permissions?
+
+	An iraf user account is recommended for installing IRAF.  IRAF is
+distributed with a login directory for "iraf" that includes environment 
+definitions that make the installation go more smoothly.  In addition, 
+the iraf account is useful for maintaining the system locally, perhaps by 
+more than one person, and for IRAF site support, should we ever need to 
+log in and sort out a problem.  It is not absolutely required that IRAF be
+installed by "iraf", but it is strongly recommended.
+	Installing layered software for private use can be done by any user 
+who simply declares the package in their loginuser.cl file as e.g.
+
+	reset   nmisc             = /iraf/extern/nmisc/
+	task 	nmisc.pkg         = nmisc$nmisc.cl
+
+	Installing layered software to be used by all IRAF users should be 
+done from the iraf account.  It will be necessary to modify hlib$extern.pkg, 
+owned by iraf, and in most cases reconfigure the package architecture, e.g., 
+
+	cl> mkpkg -p nmisc sparc
+
+before building the binaries.  Software development requires environment def-
+initions already set up for the default iraf user account.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+12.3   Can I call IMFORT procedures from C?
+
+ 	Yes, a Unix C binding for IMFORT procedures is available from the 
+IRAF network archive in the /iraf/misc directory as 'cbind.c'. To use this 
+binding, compile an object module cbind.o and then link this with your C 
+program.  Further information can be found in /iraf/misc/cbind.readme.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+12.4   Where are the IRAF libraries used by FC or XC for IMFORT tasks?
+
+	The FC command is a foreign task defined in your login.cl that calls
+the IRAF XC compiler with appropriate flags and libraries, i.e.
+
+    task    $fc = ("$" // envget("iraf") // "unix/hlib/fc.csh" //
+            " -h $* -limfort -lsys -lvops -los")
+
+The four required IRAF libraries are
+ 
+	-limfort -lsys -lvops -los
+ 
+The first three of these libraries are in the bin$ directory, e.g., 
+iraf$bin.ssun.  The fourth library, libos.a, is in the hbin$ directory, e.g., 
+iraf$unix/bin.ssun.  All four libraries are required to build an IMFORT task 
+successfully, as is the '-h' flag to XC.  Platform dependent libraries are
+linked automatically by the XC task.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+12.5   Can I build IRAF software without using FC or XC?
+
+	Most IRAF packages are written in the native SPP language, using 
+'mkpkg' files to build the packages.  While it's possible to reconstruct the 
+sequence of f77, cc, gcc, or ld commands that XC uses, it is much easier to just
+use XC.  XC knows the IRAF root as well as the IRAF and host libraries that are
+required to build an executable.
+	It is a bit easier to build an individual IMFORT task without using 
+FC/XC, provided you know the path to the iraf root directory.  For example, 
+the XC command to build the example IMFORT task imheader is:
+  
+	% xc -h -o imhead.e imhead.f -limfort -lsys -lvops -los
+  
+The FC command is a task alias defined in the login.cl that simply uses the
+above syntax to define the needed libraries.  Since host level compilers 
+don't know where to find the libraries, you need to explicitly name 
+the path.  For example, a cc command equivalent to the xc command above is:
+  
+	% cc -o imhead.e imhead.o /usr/iraf/bin.sparc/libimfort.a \
+	   /usr/iraf/bin.sparc/libsys.a  /usr/iraf/bin.sparc/libvops.a \
+	   /usr/iraf/unix/bin.sparc/libos.a 
+  
+These library paths may also be used in Makefiles to compile tasks, but 
+the user is responsible for including the platform-dependent libraries.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+12.6   What Fortran compilers are supported?
+
+      For all supported systems the native Fortran compiler for that system
+is used by default.  For SunOS systems, the V1.3 and V1.4 compilers are 
+currently the only supported versions,  support for the V3 and V4 SUNPro
+compilers is only available under Solaris/IRAF.  F2C/GCC is used on PC-IRAF
+systems only (w/ the F2C executable and library distributed as part of IRAF
+so no separate installation is required, it is assumed GCC is available on
+the machine). G77 is not currently supported on any platform, although it
+may work depending on the platform and software being compiled, contact
+site support if you have questions.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+12.7   Can I call IRAF tasks from Unix C-shell scripts?
+
+	There are three ways to run an IRAF task outside of the CL,
+either invoke the executable directly with the correct command line arguments,
+run the CL with the input redirected to execute the task, or use the host CL
+scripting capability.
+
+In the first case you must know in which executable the task resides, core IRAF 
+system tasks (e.g. things in the PLOT and IMAGES packages) have their 
+executables in the main $iraf/bin.<arch> directory, NOAO package tasks have the 
+executables in the $iraf/noao/bin.<arch> directory.  There is usually a 
+separate executable for each package and you can probably figure out which one 
+goes for each package otherwise just look at the package cl file to find out, 
+for example the PLOT package defines the task in the $iraf/pkg/plot/plot.cl 
+file, if you look in their you'll see that is defines the tasks as (part of the 
+file reads)
+  
+task    contour,
+        surface,
+        hafton,
+        velvect         = "plot$x_ncar.e"
+  
+which means that the CONTOUR, SURFACE, etc tasks are in the "x_ncar.e" exec-
+utable.
+        Once you find the correct binary, you need to create a file with the
+task parameters: usually it's easiest to set the parameters and then dump
+the parameter file with 'dpar', e.g.
+  
+        cl> dpar listpix > listpix.par
+  
+Then to run the task you would do something like:
+  
+        % $iraf/bin.sparc/x_images.e listpix @listpix.par
+  
+In this case you must be careful that ALL of the task parameters are defined,
+this is done by 'dpar' but empty string parameters will be prompted for.
+        In the second case you create a command file and input it to the cl,
+for example
+  
+        % cl < cl.input >& some_logfile
+  
+where cl.input contains CL commands such as
+    
+        wfits.scale=no                  # set a parameter
+        wfits image*.imh mta            # call a task
+        logout                          # logout of the CL
+    
+You must be careful about making sure you are in the right directory and
+that parameters are given explicitly if they're like to change, but with 
+this approach you can call any iraf task.
+        In both cases you need to be careful about redirecting any input or
+output that is required, both text and graphics.  You can redirect graphics
+output either by setting the "device" parameter to e.g. 'stdvdm' or using
+the '>G' syntax as in
+  
+        cl> surface dev$pix >G surf.plot
+        cl> surface dev$pix dev="stdplot"       # to print it out
+        cl> surface dev$pix dev="stdvdm"        # save metacode to uparm dir
+  
+The host CL scripting capability is covered in another part of this FAQ.
+
+Which of these approaches works best for depends depends on the tasks you need
+and the complexity of the script.  Note that by using OS escapes in IRAF
+scripts it may be simpler to write an IRAF script to do the same thing.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+12.8   I was wondering if you could provide a bit more info on how to use the new 
+   ability of the IRAF cl (#!cl) to act as a shell for Unix scripts.
+
+ Starting with V2.11.2 IRAF CL scripts have had the capability of being 
+executed as host commands. This is still a primitive feature of the OpenIRAF 
+project in development but is a functional part of the system. This page will 
+evolve with more information as problems and tips are discovered and as this 
+facility becomes a realistic part of programming systems using IRAF.  See
+our web page at /iraf/web/new_stuff/cl_host.html for
+details and examples.
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+12.9   Will IRAF work with the Korn shell or tcsh?
+
+	In general the choice of login shell for users shouldn't matter.
+All host-level scripts in IRAF are written using the C-shell, these should
+run as long as a C-shell is available somewhere in the system.  Similarly,
+forked processes are run in the Bourne shell (such as the dispose commands
+in the dev$graphcap file) which must also be available.  
+
+
+
+Section 13.   APPLICATIONS
+
+
+13.1   What is the meaning of the coefficients returned with the CURFIT task?
+
+ These coefficients are described in the design document for the curfit math 
+package, which is called by the curfit task.  The document can be printed with 
+the following command:
+ 
+     cl> help math$curfit/doc/curfit.spc fi+ | lprint
+ 
+Sections 3.2 (algorithms) and 6 (references) are most useful.  Note that curfit
+evaluates the spline explicitly, NOT with look-up tables; the algorithms
+section is out of date and the comments about look-up tables should be
+ignored.  The references used when writing the cubic spline code are:
+ 
+    (1) Carl de Boor, "A Practical Guide to Splines", 1978,  Springer-Verlag
+        New York Inc.
+ 
+    (2) P.M.  Prenter,  "Splines  and Variational Methods", 1975, John Wiley
+        and Sons Inc.
+ 
+     The curfit package uses the least squares cubic spline described
+in detail in Chapter 14 of reference (1). The actual spline functions
+are the cardinal-B splines appropriate for fitting data with uniformly
+spaced knots. The cubic splines can be represented in terms of derivatives
+as you mentioned or as polynomial coefficients. The IRAF curfit package uses
+the latter representation.  The transformation from one to the other is
+described in the above references.
+     Finally you might find it useful to look at a couple of the 
+routines in the curfit package itself. The following will give you the
+clearest idea of how the the spline function is evaluated once the
+coefficients are fit.
+ 
+               math$curfit/cvevalr.x
+               math$curfit/cv_b1evalr.x
+ 
+Given the fit the first routine evaluates the fitted spline at an arbitrary
+value of x by calling the second routine which does the actual mathematics.
+The second routine first normalizes the data, then figures out which
+spline piece it belongs to, then computes the non-zero spline functions which
+will be multiplied by the appropriate coefficients.
+     If the purpose of your query is to figure out how to take the
+coefficients and use them in your program as opposed to a simple
+how does it work question, you will have to understand how the
+normalization is done and the routine to look at is the following
+ 
+               math$curfit/cvinitr.x
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+13.2   What does "ERROR: MWCS: dimension mismatch (mw_translate)" mean?
+
+      This message means there is some error in the image header dealing
+with the description of the world coordinate system (WCS).  In particular
+the WCSDIM keyword is incorrect.  The value of this keyword should
+either match the dimensionality of the image if there is no WAXMAP01
+keyword or half of the number of elements in that keyword if
+present (that is if there are 6 numbers then WCSDIM should be 3).
+
+How does this happen?  The most common way is that
+the images produced by the APEXTRACT package when the "extras" parameter
+is set, which produces 3D images, has a bug that sets WCSDIM=2.  This
+can be easily fixed by:
+
+        cl> hedit <images> wcsdim 3
+        cl> hedit <images> cd3_3 1. add+
+        cl> hedit <images> ltm3_3 1. add+
+
+The last two additions are to avoid a "matrix inversion error" because
+if the WCS dimensionality is 3 then there must be nonzero elements
+for the step per pixel.  The NPROTO.LINPOL task also has a similar
+error which may be fixed similarly.  Other possibilities are improper
+editing of the image header by a user. 
+
+In all cases, if this is a problem send a header listing of a
+representative image to iraf@noao.edu for NOAO tasks or to the
+appropriate developer for other packages so the bug can be fixed and
+to get advice on working around the problem.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+13.3   My pixel files were moved to another disk and now the i_pixfile pathname
+       in the image headers is wrong.  How can IRAF find the pixels?
+
+ The pixels of an IRAF image are stored separately from the image header.
+The pathname to the pixel file is contained in a header parameter referenced as
+"pixfile" by the HSELECT and HEDIT tasks.  Users occasionally need to
+modify this pixel pathname, most commonly when the disk containing the pixels
+has been renamed or if the pixel files have been moved en masse for system 
+administration reasons to a new location.  The following method enables you to 
+modify a large number of image headers to contain new pixel pathnames.  The 
+technique is to first create a temporary file of image names and their current 
+pixel pathnames using the task HSELECT.  You globally edit this temporary file 
+to contain the new pixel pathnames and then use the modified file as input to
+the HEDIT task.
+
+       cl> hselect *.imh $I,pixfile yes > filin
+       .... [do a global edit to filin and edit in the new pixel pathname]
+       cl> list="filin"
+       cl> {
+           while(fscan(list,s1,s2) != EOF)
+           hedit(s1,"pixfile",s2,verify-)
+           }
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+13.4   How do I turn off the system id banner in output hardcopy plots?
+
+ In any task that uses the GTOOLS interface (like SPLOT but not IMPLOT),
+you can turn off the sysid banner with a cursor command.  In interactive cursor
+mode, try the command :/help for a full help page.  You'll see:
+  
+        :/sysid [yes|no]        Include the standard IRAF user/date banner?
+        :/title string          Title
+  
+The sysid banner includes information from the CL variable "version":
+
+        cl> show version
+        NOAO/IRAF V2.10DEVELOP
+  
+So you can modify the sysid banner by resetting "version" to be the null
+string or anything you want:
+
+        cl> reset version = ""
+  
+You can also reset the CL variable "userid" to personalize the banner.  This
+will affect IMPLOT as well as SPLOT plot banners.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+13.5   How can I find out what tasks are in IRAF?
+
+ 	The simplest way to "browse" the system for a task that does something
+in particular is to use the REFERENCES task with a keyword.  For example,
+ 
+        cl> refer photometry
+ 
+will return a list of all tasks with the keyword 'photometry' in the descript-
+ion.  To actually get a list of *every* task in the system you could use
+the command "help [a-z]*.", the resulting output will have the description
+of each task in every package.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+13.6   Is the surface photometry package available yet?
+
+	The surface photometry package for IRAF is not yet complete, in fact
+work on it has not been started.  In the meantime we are suggesting that sites
+look at the ISOPHOTE package in STSDAS.  STSDAS is available via anonymous ftp
+to stsci.edu in the software/stsdas directory (note that you will also need
+the TABLES package to build this), users can contact the STSDAS support people
+directly by writing help@stsci.edu.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+13.7   I have a spectrum in a one dimensional image for which I had no
+       trouble running IDENTIFY, REIDENTIFY, and REFSPECTRA but when I run
+       DISPCOR I get the error "ERROR: MWCS: attribute not found (spec1)"
+
+    DISPCOR currently only works on pure one dimensional or multispec
+images.  In some cases what appears to be a one dimensional image
+is not.  The two cases are when an image is really 2D but with an
+axis length of 1 for the second axis and when a 1D section of a
+2D image has been extracted.  In the first case the image header
+will show a size of [###,1] where the first number is the length
+and the second number is 1.  In this case apply imcopy or imslice
+
+        cl> imcopy <image>[*,1] <newimage>
+
+and then do the steps for the second case.  In the case of a 1D section
+of a 2D image you will find the keywords WCSDIM=2 and WAXMAP01 = '1 0 0 0'.
+To turn such an image into a pure 1D spectrum simply delete these
+keywords:
+
+        cl> hedit <images> wcsdim,waxmap01 del+ update+
+
+At this point DISPCOR should work.  This situtation applies to V2.10.
+In V2.11 DISPCOR has been enhance to work on such data.  In particular,
+1D image sections of 2D images and 2D images with spectra along the
+lines provided there are 10 or fewer lines (with 1 line being common).
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+13.8   Is there an ASTROMETRY package I can use?
+
+ The ASTROMETRY package is under development now and parts of it are
+available in the new IMMATCH package under IMAGES (which was restructured
+for V2.11).  While this is not the final form of the ASTROMETRY package,
+the new tasks can do a lot of the necessary steps.  In addition, there may
+be several alternatives you can use:  The GASP package in STSDAS (available 
+by anonftp to stsci.edu in the software/stsdas dir) has several tasks:
+
+       eqxy - Get (x,y) from a table of (ra,dec) given the pltsol coeff.
+    makewcs - Write the WCS on the image header based on the plate sol.
+     pltsol - Calculate plate solution from table of positions.
+       xyeq - Get (ra,dec) from a table of (x,y) given the pltsol coeff.
+
+STSDAS is a large external package so I'd see if it's available there 
+somewhere before installing it, if you have problems or questions you can
+contact their support people by writing help@stsci.edu. 
+	We also use a non-iraf task locally called ASTRO that does plate
+solutions, but I think GASP is a better package.  If you're interested in
+ASTRO contact Dave Bell (dbell@noao.edu) for more information. 
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+13.9   Whom should I contact if I have problems with the xray package?
+
+ Please send email to rsdc@cfa.harvard.edu.
+
+It will help us if you include copies of both banners - that which appears
+when you enter IRAF (showing the version number) and that which appears
+when you invoke the xray package.  Also useful (depending on your problem)
+are your platform and operating system, a copy of the parameter file for the
+task that is giving you problems, and a copy of the error message.
+
+
+Section 14.   XGterm/XImtool ISSUES
+
+
+14.1   How do I change colors (cursor, background, text, etc) in my XGterm 
+       window?
+
+    The crosshair cursor color is set by the "crosshairCursorColor" X
+resource, you would reset it by defining e.g.
+
+    *Gterm.crosshairCursorColor:   cyan
+
+in your .Xdefaults file.  The background and text colors are set using a 
+combination of X resources to set the predefined colors and an iraf environ-
+ment variable to say which colors are used for text, background, axis labels,
+etc.  The color resources are named 'color0' through 'color9', colors zero
+and one are the background and foreground colors respectively and defaults
+to white on black.  You set these resources using e.g.
+
+    *Gterm*color0:                 darkslategrey
+    *Gterm*color1:                 linen
+    *Gterm*color2:                 red
+    *Gterm*color3:                 green
+    *Gterm*color4:                 blue
+    *Gterm*color5:                 cyan
+    *Gterm*color6:                 yellow
+    *Gterm*color7:                 purple
+    *Gterm*color8:                 magenta
+    *Gterm*color9:                 slategray
+
+The environment variable I mentioned is called 'glbcolor' and is defined in
+V2.10.3 (or after) to be
+
+        pt=3,fr=9,al=3,tl=6,ax=5,tk=5
+where
+        pt      - plot title
+        fr      - viewport frame (the background around the plotting area)
+        al      - axis labels
+        tl      - tick label
+        ax      - axis
+        tk      - tick
+        gr      - grid between tick marks
+
+The numbers are the color indices above (i.e. "tk=5" say that the tick marks
+are done in color5 (cyan)).   To make use of xgterm color graphics you
+should have the following set in your login.cl or loginuser.cl file:
+
+        stty xgterm
+
+Color graphics is enabled only if you are using V2.10.3BETA or a
+later version of IRAF, but using X resources you can still change 
+the background and foreground colors when working with an earlier version
+of IRAF.  Resources for the text window are the same as for xterm.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+14.2   How do I change the crosshair cursor color so it appears on my mono-
+       chrome monitor?
+
+  The crosshair cursor color is set by the "crosshairCursorColor" X
+resource, you would reset it by defining e.g.
+
+    *Gterm.crosshairCursorColor:      white
+
+in your .Xdefaults file.  Alternatively you can start XGterm by setting the
+reource on the command line using e.g.
+
+	% xgterm -xrm "*crosshairCursorColor:white"
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+14.3   How do I start XImtool with private fifo pipes?
+
+  Ximtool running with V2.10.3 will accept a connection on a domain socket
+so using private fifo pipes (e.g. for X-terminal users) is no longer the
+preferred method.  For older IRAF versions provate pipes provide a backward
+compatability and can still be used in the same way.  The pipes used are
+defined by the 'input_fifo' and 'output_fifo' reources.   When starting 
+XImtool you specify the fifo's to use with something like
+
+    % ximtool -fifo /path/imt1
+
+The 'i' and 'o' parts of the pipe name are appended automatically.  You can
+tell IRAF where the private fifos are by defining the IMTDEV unix environment
+variable as
+
+	setenv IMTDEV  fifo:/path/imt1i:/path/imt1o
+
+before starting the CL.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+14.4   How should I set up my users to run Ximtool on an X-terminal?
+
+  X-terminal users (or others who are running XImtool on a server) will want 
+to disable the fifo pipes and the tcp/ip port so that only the unix domain
+sockets are used (otherwise another user displaying to the /dev fifo pipes
+may have their image appear on your screen since XImtool will still read 
+the pipes).  The fifo pipes are disabled by setting the "input_fifo" XImtool
+resource to "none", tcp/ip sockets are disabled by betting the "port" re-
+source to zero.  This can be done on the command line using e.g.
+
+        % ximtool -xrm "*input_fifo:none" -xrm "*port:0"
+
+This command can easily be aliased but the X resources can also be per-
+manently set by adding the following lines to your .Xdefaults file:
+
+        XImtool*port:           0
+        XImtool*input_fifo:     none
+
+These values will take effect the next time the window system is started
+or can be loaded immediately using the command
+
+        % xrdb -load ~/.Xdefaults
+
+XImtool can then be started without any command line arguments and only
+the domain socket will be used.  These are created automatically and will
+be unique for each user so conflicts are avoided.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+14.5   Can I control more than one XImtool at the same time?
+
+   Yes, but controlling them from the same IRAF session is complicated.
+Since XImtool can accept two inputs simultaneously and has multiple
+frame buffers users should consider whether they really need two XImtools
+in the first place.  If so then the easiest way is to control them from
+different IRAF sessions so that different socket numbers can be assigned
+to each session, each XImtool would be started with a different socket
+number as well.  For example, in the first XGterm window you would define
+the socket and start XImtool using
+
+      % setenv IMTDEV         unix:/u2/smith/iraf/dev/IMT1%d
+      % ximtool -xrm "*input_fifo:none" -xrm "*port:0" \
+                -xrm "*unixaddr:/u2/smith/iraf/dev/IMT1%d" &
+
+In a second XGterm window you change the socket number slightly and start
+things using
+
+      % setenv IMTDEV         unix:/u2/smith/iraf/dev/IMT2%d
+      % ximtool -xrm "*input_fifo:none" -xrm "*port:0" \
+                -xrm "*unixaddr:/u2/smith/iraf/dev/IMT2%d" &
+
+Each IRAF session will write to a different socket, and each XImtool will
+be listening on a different socket.  It should be noted that something
+similar can also be done using either fifos or tcp/ip sockets for the
+connection.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+14.6   How can I change the background color in my ximtool window - the default
+       color is black - I want white?
+
+   The image display window in XImtool is nothing more than a GTerm widget
+so the trick is to simply change the background and foreground colors.  A
+"reverse video" option may be included in a later release to simplify this,
+for now defining the following resources in your .Xdefaults file should 
+work:
+
+        XImtool*imagewin.color0: white
+        XImtool*imagewin.color1: black
+
+These may also be specified on the command line using
+
+    % ximtool -xrm "*imagewin.color0:white" -xrm "*imagewin.color1: black"
+
+[NOTE for SAOtng Users:  resource settings for SAOtng should be specified
+as e.g. "*color0" instead of "*imagewin.color0" due to small differences
+in the code.]
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+14.7   Can I set the size and placement of the xgterm graphics window at 
+       startup time?
+
+   As with GTerm the graphics window geometry can be specified with the
+"-G" or "%geom" flag on the command line, for instance
+
+        % xgterm -G 1100x350+10-10       # or alternatively
+        % xgterm %1100x350+10-10
+
+will produce a wide rectangular window in the lower portion of the screen
+suitable for examining spectra.  The geometry may also be specified in the
+user's .Xdefaults file by specifying
+
+        XGterm*tekGeometry:             1100x350+10-10
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+14.8   Can I set the size and placement of the ximtool window at startup time?
+
+   To reset the geometry of the XImtool window itself use something like
+
+        % ximtool -xrm "*imagewin.height:800" -xrm "*imagewin.width:600"
+
+or in your .Xdefaults file put 
+
+	XImtool*imagewin.width:		600
+	XImtool*imagewin.height:	800
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+14.9   How can I tell what the default resources are for xgterm and ximtool?  
+       Is there a file somewhere with these values in them?
+
+      A full listing of resources is available in the man pages distributed
+with X11IRAF.  For XImtool, the Gterm widget (used for the display) resources
+and described fully in the XGterm man page.   If the manual pages for
+X11IRAF tasks were not installed on your system they are available in 
+PostScript form from the /iraf/x11iraf directory in our archive along with 
+the main X11IRAF distribution files.
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+14.10    Can FOCAS make use of the socket connections in XImtool for image
+       display?
+
+	Yes, as long as it was compiled against a V2.10.3 or later system.
+Users may be familiar with setting the FOCASPIPE environment variable to 
+define a personal fifo pipe to be used instead of the default /dev/imt* 
+pipes, internally this pipe specification is turned into the same 
+"fifo:<input_fifo>:<output_fifo>" syntax used when defining the IMTDEV 
+environment variable.  This means that if FOCASPIPE is an empty string, 
+i.e. it's defined simply with
+
+	% setenv FOCASPIPE
+
+the display code uses the same heuristic to determine the connection type
+(looks for IMTDEV specification and if not found attempts to use the
+default unix domain socket) as a normal IRAF display command, so with 
+this definition and using XImtool as a display server there is no need
+to use private fifos with FOCAS.  This also means that in this case IMTDEV
+can still be used to define the connection type, what's not obvious is 
+that it's also possible to set FOCASPIPE as you would IMTDEV to specify
+the protocol.  For example, the following are equivalent to display to 
+a remote XImtool running on node foo.bar.edu:
+
+	% setenv IMTDEV inet:foo.bar.edu
+	% setenv FOCASPIPE
+	% fdisplay
+or
+	% setenv FOCASPIPE inet:foo.bar.edu
+	% fdisplay
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+14.11   When I try to start up XImtool I get an error about a BadMatch.
+
+           This means you're using something other than an 8-bit
+PseudoColor X visual.  Unfortunately none of the display servers
+(ximtool/saoimage/saotng) can work with this so you're only choice is to
+configure an 8-bit display and start your X session in PseudoColor mode.
+The details of how to do this depend on the particular platform, for 
+Linux/BSD systems using XFree86 this can be done with
+
+        % startx -- -bpp 8
+
+For Solaris systems, you'll need to start your X server in 8-bit PseudoColor 
+mode using something like
+
+	/usr/openwin/bin/Xsun :0 -dev /dev/fb defclass PseudoColor
+
+Note that you can put the above command in ~/.xserverrc.
+
+You can switch back to 24-bit when you don't need ximtool.  There's is
+also a utility called Xnest you can try which runs a PseudoColor visual
+under your 24-bit visual, you'll have to get this separately.  Overall it
+may just be easiest to switch back and forth and use the above when you
+need ximtool.
+
+Here are some additional details:
+
+When XImtool was first written, about 5-6 years ago, 24-bit displays were
+still only available on high end systems or specialized platforms such as
+SGI, most PCs in the world also lacked the video cards for 24-bit and
+Linux was still in it's early stages.  Nowadays it's hard to buy a new
+system that doesn't have 24-bit support.  It was always thought that
+24-bit support would be added but it wasn't deemed a priority at the
+beginning when the Gterm widget was being written.
+
+The problem is not that it's difficult to display an image on a 24-bit
+screen, it's that unlike programs such as XV (which display a static
+image), Ximtool has too allow brightness/contrast stretching when viewing
+the image.  This is currently done, for speed reasons, by recomputing and
+rewriting the colormap used to display the image (rather than redisplaying
+the image itself).  However, in a 24-bit display there is no colormap so
+modifying the image to increase the contrast becomes non-trivial and more
+expensive.  There are plans to make XImtool and the Gterm widget on which
+it relies work under a 24-bit display, this will be part of the x11iraf
+work in progress now, but I cannot give you a date for when this will be
+ready.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+14.12   About how much disk space is needed to install 2.11 for Sun machines.
+
+   It depends on whether you install only one or both the SunOS and
+Solaris architectures.  The breakdown is roughly
+
+    as.ssol.gen.Z      70Mb     "all sources" compressed tar file
+    ib.sos4.sun.Z      21Mb     CORE system binaries for SunOS
+    ib.ssol.sun.Z      35Mb     CORE system binaries for Solaris
+    nb.sos4.sun.Z      15Mb     NOAO package binaries for SunOS
+    nb.ssol.sun.Z      21Mb     NOAO package binaries for SunOS
+
+You'll also need room for external packages, but you can recover ~50Mb
+by stripping the iraf sources once installed, external packages can
+also be stripped. 
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+14.13   After upgrading to V2.11 external package tasks no longer recognize my 
+       images.
+
+   In V2.11 the OIF image format was changed to make it machine independent
+and to increase the size of the pixfile pathname.  In order to read this new
+format all external packages or local IMFORT tasks *must* be relinked against
+V2.11 to be able to read the new format.  V2.11 can still read the old format,
+and where required you can force IRAF to write the old format by doing
+
+	cl> reset oifversion = 1
+
+before creating new images.
+
+
+Section 15.   PC-IRAF
+
+
+15.1   Is there a version of IRAF that will run on my PC?
+
+ Yes, with some restrictions.  As long as you have an x86 based
+PC with at least 8Mb RAM running Linux (other OS's will follow) you can
+run the latest IRAF as well as all of the X11IRAF utilities and
+external packages.  DOS/Windows are insufficient for running IRAF but we
+may eventually support other systems such as Windows NT.
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+15.2   What Operating Systems are supported?
+
+
+        FreeBSD 3.3
+        Slackware Linux 4.0
+        RedHat Linux 5.x
+        RedHat Linux 6.x
+        SuSE Linux 6.x
+        Solaris x86 7
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+15.3   What is the minimal hardware configuration?
+
+ A minimal system should have at least
+
+            16 Mb RAM
+            500 Mb disk
+            15" 1024x768 8-bit monitor
+            486-33DX processor
+
+IRAF will probably run with as little as 8Mb RAM but the system will most 
+likely be paging heavily, especially if the X server is also running.
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+15.4   What is the recommended hardware configuration?
+
+ A recommended system would have 
+
+            128 Mb RAM
+            9+ Gb SCSI/EIDE disk
+            17" 1600x1200 8-bit monitor
+            P-600 or faster processor
+
+        A suitable desktop or deskside PC-IRAF system should have 1 Gb or 
+more of disk and 64-128 Mb of memory;  half this system would work but we 
+wouldn't recommend it.  A Pentium CPU and a PCI backplane are recommended.
+There are indications that PCI (or at least a fast local bus) makes a big 
+difference in the overall performance of the newer PCs.  A large system 
+cache (256 Kb is common on current systems) is necessary to realize the 
+speed of the newer processors.  A DAT/Exabyte might also be preferred to
+import data if the machine is not on a fast network.
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+15.5   How much disk space does IRAF require?
+
+ The following summarizes the disk requirements in megabytes for 
+the major components of IRAF after installation (uncompress and untar).
+These values will vary depending on the platform.
+
+        Component       Size (Mb)         Comment
+        ---------       ----------        ------------
+        AS                70              All sources
+        IB                20              normal CORE iraf binaries
+        NB                25              normal NOAO package binaries
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+15.6   Where can I get PC/IRAF?
+
+ We strongly recommend that Linux/IRAF be downloaded from our
+anonymous ftp archive distribution ftp://iraf.noao.edu/iraf/v211/PCIX,
+this is not only free but means you can download any recent patches as well.
+A CD-ROM distribution is also available (see below) for a cost of $53 US
+that includes external packages, documentation and contributed software
+but since these discs are produced by-hand there may be a slight delay in
+filling the order (interested users should fill out and return the orderform.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+15.7   Where can I get precompiled binaries for external packages.
+
+ For some of the major external packages not supported by IRAF
+(e.g. STSDAS/TABLES), check ftp://iraf.noao.edu/contrib.  For IRAF sponsored
+packages look in ftp://iraf.noao.edu/iraf/extern for contact site support if
+you have problems building from the sources.
+
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+15.8   Is there a CD-ROM distribution or runtime system?  How much does it cost?
+
+ IRAF is available on CD-ROM by filling out and sending the orderform found
+at our website.  This is
+currently a V2.11.3 distribution CD containing the V2.11 systems
+presently in release, as well as documentation, external packages, and 
+contributed software also available from the archive.   The cost is $35 plus a 
+standard $23 shipping and handling charge.  We are planning a PC-IRAF runtime 
+CD-ROM so IRAF needn't be installed directly on the hard drive.
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+15.9   Will IRAF run on my laptop?
+
+ As long as you have sufficient disk, memory, and Linux or other
+supported Unixes are running, yes!
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+15.10  How hard is it to install Linux?
+
+ This is a common question but one that can't really be answered 
+accurately.  A lot depends on which distribution of Linux you have (see
+below),  how much you know about the hardware and Unix system management,
+and the type of system you have.  Linux is a high-quality Unix implementation
+and lots of help is available on the net for new users, pointers to various
+CD distributors can be found on pciraf.html.  For a
+"standard configuration" installation is usually made easier by installation
+scripts for Linux that do most of the real work for you, configuration of
+networking, local printers, X, etc may be left to the user once the base
+system is installed.  It's not a bad idea to try an installation once and then 
+do it again once you know what's required.
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+15.11  Where can I get Linux?
+
+ Linux is freely available via anonymous ftp from several sites (a good
+place to start would be sunsite.unc.edu, redhat.com, debian.org, etc) or an
+be ordered on CD-ROM from various distributors who package the system for
+easier installation, but for a cost of $15-$60 depending on the vendor.
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+15.12  How can I be sure my version of Linux is compatible?
+
+  PC-IRAF V2.11.3 was built using FreeBSD 3.2, Slackware 4.0
+(LNUX), Red Hat 6.1 (RHUX), SuSE 6.3 (SUSE), and Solaris 7 (SOL7).  Support
+is also available for RedHat 5.x systems but users should consult the note
+at the end of the distribution README file for special installation
+instructions.
+
+        Several distributions of Linux are supported directly because these
+are the most popular with users and they represent different "flavors" of
+Linux currently available.  In most cases the Slackware (LNUX) binaries will
+work on any platform not named explicitly here (Debian, Corel, etc) but
+since Linux distributions change much more rapidly than IRAF it may be that
+for a certain distribution version a different IRAF binary will be required.
+Users should contact site support (iraf@noao.edu) with any questions.
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+15.13  Where can I get help installing Linux?
+
+ Many common problems and installation considerations are discussed in
+the various "HOWTO" documents at the Linux FTP sites, these have also been
+compiled into a book from O'Reilly Assoc. called _Running Linux_ by Matt
+Welsh.  There are also numerous FAQs and documentation in circulation.  If
+you have a specific question and can't find help in these documents, the
+best solution is to post a question to the comp.os.linux newsgroups, the
+users on the net can be very helpful and have likely encountered the same
+problems themselves.  For a starting point on Linux help see our PC-IRAF
+web page at pciraf.html.
+
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+15.14  What if my hardware isn't currently supported?
+
+ This is most often the case with new hardware (e.g. SCSI adapters
+or video/sound cards) where drivers for these boards haven't yet been written
+for the Linux kernel.  It's usually only a matter of a few months before
+somebody on the net will contribute a driver for the hardware and support
+will appear in one of the almost weekly kernel releases.  Care should be
+taken though when installing the Linux system if you're in fact installing a
+new distribution that may include something like ELF binaries which may not
+be supported by IRAF itself.  Kernel updates can be done independent of a
+full installation which is the best route to add support for new hardware.
+	If you have a clone board for something like a sound card (which IRAF
+won't use) or SCSI adapter that isn't a true clone you can also run into 
+problems.  For these situations consult the net for advice on what can be
+used as a workaround, in some cases there will be no workaround so the best
+advice for new hardware purchases is to research or use only "standard"
+components in your hardware.

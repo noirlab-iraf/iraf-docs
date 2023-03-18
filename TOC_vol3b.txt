@@ -1,0 +1,66 @@
+
+                      IRAF System Handbook Volume 3B
+
+                            Table of Contents
+
+[The following documents are in IRAF System Handbook Volume 3B.  Those
+documents marked with an * can be found in the network archive as 
+either compressed ASCII text (.txt.Z) or compressed PostScript (.ps.Z)
+format documents. The names of the files, as they exist in the archive,
+are given in ().]
+
+
+FORTRAN Programming:
+
+IMFORT Interface
+ * Specifying Pixel Directories with IMFORT, by Doug Tody, June 26, 1989.
+   (imfortmem.ps.Z)
+
+ * A User's Guide to Fortran Programming in IRAF, The IMFORT Interface,
+   by Doug Tody, revised April 1987. (imfort.ps.Z)
+
+
+SPP/VOS Programming:
+
+Programmer's Crib Sheet
+ * Programmer's Crib Sheet for the IRAF Program Interface, by Doug Tody,
+   September 1983. (prog_crib.txt.Z)
+
+Reference Manual for SPP
+ * A Reference Manual for the IRAF Subset Preprocessor Language, by Doug Tody,
+   revised September 1983. (spp.txt.Z)
+
+Standards and Conventions
+ * IRAF Standards and Conventions, by Elwood Downey et al., August 1983.
+   (std.ps.Z)
+
+System Interface
+ * A Reference Manual for the IRAF System Interface, by Doug Tody, May 1984.
+   (os.ps.Z)
+
+Graphics I/O
+ * Graphics I/O Design, by Doug Tody, revised April 1987. (gio.txt.Z)
+
+SGI
+ * The IRAF Simple Graphics Interface (SGI), by Doug Tody, August 1986.
+   (sgi.ps.Z)
+
+Image I/O
+ * IRAF IMIO Overview, by Doug Tody, May 1986. (imio_1.txt.Z)
+
+ * New Release of image i/o, etc., by Doug Tody, May 1985. (imio_2.ps.Z)
+
+ * The IRAF Image I/O Interface, Design Strategies, Status and Plans, by Doug
+   Tody, November 1983. (imio_3.ps.Z)
+
+ * The Image Header, by Doug Tody. (imio_4.txt.Z)
+
+Database I/O
+ * Design of the IRAF Database Subsystem, by Doug Tody, October 1985, draft.
+   (dbio.txt.Z)
+
+
+Historical Documents:
+
+Role of Preprocessor
+   The Role of the Preprocessor, by Doug Tody, revised April 1982.
